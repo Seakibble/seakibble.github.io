@@ -37,6 +37,7 @@
 // Define base and accent colors
 $base-color: #60c404;
 $base-color-hover: darken($base-color, 10%);
+$anti-color: #0c2f7a;
 // Define background colors
 $background: #fff;
 $background-alt: #f2eeee;
@@ -80,6 +81,7 @@ $text: #74808a;
 
 body {
     font-family: 'Lato', sans-serif;
+    background: white;
     font-size: 15px;
     color: $text;
     &.active {
@@ -93,11 +95,18 @@ h3,
 h4,
 h5 {
     color: $heading;
+    font-weight: 300;
+    margin: 0 0 15px 0;
 }
 
 h3 {
     border-left: 4px solid $base-color;
     padding-left: 10px;
+    font-size: 1.5em;
+}
+
+h4 {
+    font-size: 1.2em;
 }
 
 // No JS styles
@@ -145,13 +154,13 @@ header {
     top: 0;
     width: 100%;
     text-align: center;
-    z-index: 15;
+    z-index: 100;
     animation-name: dropHeader;
     animation-iteration-count: 1;
     animation-timing-function: ease-in-out;
     animation-delay: 0.25s;
     animation-duration: 0.75s;
-    background: white;
+    background: rgba(255, 255, 255, 0.9);
     border-top: 2px solid $base-color;
     .header-branding {
         float: left;
@@ -236,6 +245,10 @@ footer {
     padding: 50px 0;
 }
 
+iframe {
+    border: none;
+}
+
 .copyright {
     padding-top: 20px;
     p {
@@ -283,6 +296,7 @@ footer {
     color: #fff;
     padding: 15px 25px;
     border: 3px solid #fff;
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 3px;
     @include transition();
     &:hover {
@@ -334,8 +348,6 @@ footer {
     height: 100vh;
     min-height: 500px;
     max-height: 1080px;
-    background: url(../images/lead-bg.jpg);
-    background-size: cover;
     padding: 15px;
     overflow: hidden;
 }
@@ -368,7 +380,8 @@ footer {
     }
 }
 
-#lead-overlay {
+#lead-overlay,
+#lead-boids {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -376,8 +389,12 @@ footer {
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba($base-color-hover, 0.8);
-    z-index: 1;
+}
+
+#lead-overlay {
+    background: darken($anti-color, 0%);
+    opacity: 0.4;
+    z-index: 2;
 }
 
 #lead-down {
@@ -495,17 +512,11 @@ footer {
     border-radius: 3px;
     text-align: left;
     h3 {
-        font-size: 1.5em;
-        font-weight: 300;
-        color: $heading;
         display: inline-block;
         margin: 0;
     }
     h4 {
-        font-size: 1.2em;
-        font-weight: 300;
         color: #7e8890;
-        margin: 0 0 15px 0;
     }
     p {
         margin: 0;
@@ -542,6 +553,7 @@ footer {
     left: 0;
     top: 10px;
     font-weight: 300;
+    font-size: 1.2em;
     color: #374054;
 }
 
@@ -568,10 +580,8 @@ footer {
     border: 1px solid $border;
     text-align: left;
     h3 {
-        font-weight: 500;
         float: left;
         margin: 0;
-        color: $heading;
     }
     span {
         float: right;
@@ -579,8 +589,6 @@ footer {
     h4 {
         color: $text;
         clear: both;
-        font-weight: 500;
-        margin: 0 0 15px 0;
         border-left: 4px solid $base-color;
         padding-left: 10px;
     }
@@ -645,12 +653,6 @@ footer {
 
 .project-info {
     padding: 30px;
-    h3 {
-        font-size: 1.5em;
-        font-weight: 300;
-        color: $heading;
-        margin: 0 0 15px 0;
-    }
     p {
         margin: 0 0 15px 0;
     }
