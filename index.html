@@ -6,8 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Max Leeming</title>
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="seakibble.ico" type="image/x-icon">
+        <link rel="icon" href="seakibble.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
         <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -24,27 +24,30 @@
                 <span>Close</span>
                 <i class="fa fa-times" aria-hidden="true"></i>
             </div>
-            <div class="header-branding">
-                MAX LEEMING
-            </div>
+            <a href="https://maxleeming.ca">
+                <div class="header-branding">
+                    <img class="header-branding__logo" src="images/seakibble.png" />
+                    <span class="header-branding__text">MAX LEEMING</span>
+                </div>
+            </a>
             <ul id="menu">
                 <li>
-                    <a href="#about">About</a>
+                    <a class="nav__link" href="#about">About</a>
                 </li>
                 <li>
-                    <a href="#experience">Experience</a>
+                    <a class="nav__link" href="#experience">Experience</a>
                 </li>
                 <li>
-                    <a href="#education">Education</a>
+                    <a class="nav__link" href="#education">Education</a>
                 </li>
                 <li>
-                    <a href="#projects">Projects</a>
+                    <a class="nav__link" href="#projects">Projects</a>
                 </li>
                 <li>
-                    <a href="#skills">Skills</a>
+                    <a class="nav__link" href="#skills">Skills</a>
                 </li>
                 <li>
-                    <a href="#contact">Contact</a>
+                    <a class="nav__link" href="#contact">Contact</a>
                 </li>
             </ul>
         </header>
@@ -52,8 +55,14 @@
 
         <div id="lead">
             <div id="lead-content">
-                <h1>Max Leeming</h1>
-                <h2>Interactive Multimedia Developer</h2>
+                <div class="lead-content__titles">
+                    <h1>Max Leeming</h1>
+                    <span class="lead-content__subtitle">
+                        <span>Interactive</span>
+                        <span>Multimedia</span>
+                        <span>Developer</span>
+                    </span>
+                </div>
                 <a href="#" class="btn-rounded-white">Download Resume</a>
             </div>
             <!-- End #lead-content -->

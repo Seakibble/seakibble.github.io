@@ -35,8 +35,12 @@
 */
 
 // Define base and accent colors
-$base-color: #60c404;
-$base-color-hover: darken($base-color, 10%);
+$seakibble-green: #60c404;
+$seakibble-green-hover: darken($seakibble-green, 10%);
+$seakibble-blue: #00aeef;
+$seakibble-blue-hover: darken($seakibble-blue, 10%);
+$seakibble-orange: #ff9a00;
+$seakibble-orange-hover: darken($seakibble-orange, 10%);
 $anti-color: #0c2f7a;
 // Define background colors
 $background: #fff;
@@ -44,8 +48,8 @@ $background-alt: #f2eeee;
 // Define border colors
 $border: #dcd9d9;
 // Define text colors
-$heading: #543740;
-$text: #74808a;
+$heading: #385437;
+$text: #778a74;
 /*
     ---------------------
     ----- 2. Mixins -----
@@ -100,7 +104,7 @@ h5 {
 }
 
 h3 {
-    border-left: 4px solid $base-color;
+    border-left: 4px solid $seakibble-blue;
     padding-left: 10px;
     font-size: 1.5em;
 }
@@ -161,12 +165,24 @@ header {
     animation-delay: 0.25s;
     animation-duration: 0.75s;
     background: rgba(255, 255, 255, 0.9);
-    border-top: 2px solid $base-color;
+    border-top: 2px solid $seakibble-blue;
     .header-branding {
         float: left;
         font-size: 1.6em;
-        padding: 5px 20px;
         letter-spacing: 1px;
+        padding: 0 5px;
+        .header-branding__text {
+            display: block;
+            padding: 5px;
+            float: left;
+            color: $text;
+        }
+        .header-branding__logo {
+            height: 45px;
+            padding: 5px;
+            display: block;
+            float: left;
+        }
     }
     ul {
         text-align: center;
@@ -178,18 +194,18 @@ header {
         display: inline-block;
         font-size: 1.2em
     }
-    a {
+    .nav__link {
         display: block;
         color: black;
         padding: 10px;
         @include transition(0.15s);
         &:hover {
-            color: $base-color;
+            color: $seakibble-blue;
             text-decoration: none;
             background: $background-alt;
         }
         &:focus {
-            color: $base-color;
+            color: $seakibble-blue;
             text-decoration: none;
         }
     }
@@ -214,7 +230,7 @@ header {
     position: fixed;
     right: 15px;
     top: 10px;
-    color: $base-color;
+    color: $seakibble-blue;
     font-size: 1.5em;
     z-index: 20;
     padding: 0 7px;
@@ -231,7 +247,7 @@ header {
     padding-right: 15px;
     padding-top: 10px;
     cursor: pointer;
-    color: $base-color;
+    color: $seakibble-blue;
     span {
         font-size: 0.5em;
         text-transform: uppercase;
@@ -286,7 +302,7 @@ iframe {
         color: $text;
         padding: 10px;
         &:hover {
-            color: $base-color;
+            color: $seakibble-blue;
         }
     }
 }
@@ -295,13 +311,14 @@ iframe {
     display: inline-block;
     color: #fff;
     padding: 15px 25px;
-    border: 3px solid #fff;
-    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #333;
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 3px;
     @include transition();
     &:hover {
-        color: $base-color;
-        background: #fff;
+        color: white;
+        border-color: white;
+        background: rgba(255, 255, 255, 0.1);
         text-decoration: none;
     }
 }
@@ -329,7 +346,7 @@ iframe {
         left: 0;
         right: 0;
         margin: 0 auto;
-        background: $base-color;
+        background: $seakibble-blue;
     }
 }
 
@@ -355,28 +372,39 @@ iframe {
 #lead-content {
     position: absolute;
     z-index: 10;
-    width: 80%;
+    width: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    h1,
-    h2 {
-        margin: 0;
+    .lead-content__titles {
+        background: rgba(0, 0, 0, 0.25);
+        border-top: 1px solid rgba(0, 0, 0, 0.45);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.45);
+        margin-bottom: 50px;
     }
     h1 {
         color: #fff;
         font-weight: 900;
-        font-size: 5em;
+        font-size: 4em;
         text-transform: uppercase;
         letter-spacing: 0.1em;
         line-height: 0.9em;
+        margin: 0;
+        padding-top: 20px;
     }
-    h2 {
-        color: lighten($base-color, 25%);
+    .lead-content__subtitle {
+        display: block;
+        color: lighten($seakibble-green, 20%);
         font-weight: 500;
-        font-size: 2.25em;
-        margin-bottom: 50px;
+        font-size: 2.15em;
+        padding-bottom: 15px;
+        :nth-child(2) {
+            color: lighten($seakibble-blue, 25%);
+        }
+        :nth-child(3) {
+            color: lighten($seakibble-orange, 20%);
+        }
     }
 }
 
@@ -413,7 +441,7 @@ iframe {
         width: 35px;
         height: 35px;
         border-radius: 50%;
-        border: 3px solid lighten($base-color, 25%);
+        border: 3px solid white;
         text-align: center;
     }
     i {
@@ -481,7 +509,7 @@ iframe {
         right: auto;
         height: 100%;
         width: 3px;
-        background: $base-color;
+        background: $seakibble-green;
         z-index: 0;
     }
     &:after {
@@ -489,8 +517,8 @@ iframe {
         content: '';
         width: 3px;
         height: 40px;
-        background: $base-color;
-        background: linear-gradient(to bottom, $base-color, rgba($base-color, 0));
+        background: $seakibble-green;
+        background: linear-gradient(to bottom, $seakibble-green, rgba($seakibble-green, 0));
         top: 100%;
         left: 303px;
     }
@@ -498,7 +526,7 @@ iframe {
         margin-bottom: 15px;
     }
     h4 {
-        border-left: 4px solid $base-color;
+        border-left: 4px solid $seakibble-blue;
         padding-left: 10px;
         margin: 0;
     }
@@ -534,7 +562,7 @@ iframe {
     color: #fff;
     width: 50px;
     height: 50px;
-    background: $base-color;
+    background: $seakibble-blue;
     border-radius: 50%;
     float: left;
     z-index: 99;
@@ -589,7 +617,7 @@ iframe {
     h4 {
         color: $text;
         clear: both;
-        border-left: 4px solid $base-color;
+        border-left: 4px solid $seakibble-blue;
         padding-left: 10px;
     }
     p,
@@ -621,7 +649,8 @@ iframe {
     max-width: 1000px;
     margin: 0 auto 30px auto;
     background: #fff;
-    border-radius: 4px;
+    border-radius: 2px;
+    border-top: 2px solid $seakibble-orange;
 }
 
 .project-image {
@@ -666,11 +695,11 @@ iframe {
     padding: 6px 10px;
     border-radius: 2px;
     color: white;
-    background: $base-color;
+    background: $seakibble-blue;
     @include transition();
     &:hover {
         color: white;
-        background: $base-color-hover;
+        background: $seakibble-blue-hover;
         text-decoration: none;
         box-shadow: 0 2px 2px rgba(0, 0, 0, 0.22);
     }
@@ -765,7 +794,7 @@ iframe {
         display: block;
         width: 20%;
         margin: 0 auto;
-        background: $base-color;
+        background: $seakibble-blue;
         border-radius: 1px;
         padding: 5px 10px;
         border: none;
@@ -774,7 +803,7 @@ iframe {
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
         @include transition();
         &:hover {
-            background: $base-color-hover;
+            background: $seakibble-blue-hover;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
         }
     }
