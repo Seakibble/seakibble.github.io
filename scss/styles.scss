@@ -86,7 +86,7 @@ $text: #778a74;
 body {
     font-family: 'Lato', sans-serif;
     background: white;
-    font-size: 15px;
+    font-size: 18px;
     color: $text;
     &.active {
         overflow: hidden;
@@ -106,11 +106,11 @@ h5 {
 h3 {
     border-left: 4px solid $seakibble-blue;
     padding-left: 10px;
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 h4 {
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 // No JS styles
@@ -168,7 +168,7 @@ header {
     border-top: 2px solid $seakibble-blue;
     .header-branding {
         float: left;
-        font-size: 1.6em;
+        font-size: 1.3em;
         letter-spacing: 1px;
         padding: 0 5px;
         .header-branding__text {
@@ -198,6 +198,7 @@ header {
         display: block;
         color: black;
         padding: 10px;
+        font-size: 0.9em;
         @include transition(0.15s);
         &:hover {
             color: $seakibble-blue;
@@ -677,7 +678,11 @@ iframe {
 
 .project-text {
     grid-area: text;
+    display: grid;
+    grid-template-areas: "words" "link";
+    grid-template-rows: auto 45px;
     max-width: 350px;
+    position: relative;
 }
 
 .project-info {
@@ -687,10 +692,14 @@ iframe {
     }
 }
 
+.project-repo-container {
+    grid-area: link;
+}
+
 .project-repo-link {
     display: block;
     margin: 0 auto;
-    width: 110px;
+    width: 150px;
     text-align: center;
     padding: 6px 10px;
     border-radius: 2px;
@@ -725,8 +734,9 @@ iframe {
 */
 
 #skills {
-    padding: 50px 15px;
+    padding: 50px 20% 15px;
     text-align: center;
+
     h2 {
         color: $heading;
         margin-bottom: 50px;
@@ -746,6 +756,26 @@ iframe {
         list-style: none;
         cursor: default;
         font-size: 1.2em;
+
+        transition: color 0.15s, background 0.3s;
+
+        &:hover {
+            color: white;
+            background: $seakibble-blue;
+        }
+    }
+}
+
+.skills-groups {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+}
+
+.skills-group {
+    h3 {
+        border-left: 0;
+        border-bottom: #e1e1e1 solid 1px;
+        margin: 0 20px;
     }
 }
 
@@ -883,6 +913,18 @@ iframe {
     }
 } // Medium Devices
 @media only screen and (max-width: 992px) {
+    .project-video,
+    .project:nth-child(2n) .project-video {
+        grid-template-areas: "video" "text";
+        grid-template-rows: auto auto;
+        grid-template-columns: auto;
+        justify-items: center;
+    }
+
+    .project-text {
+        max-width: none;
+    }
+
     #lead {
         height: auto;
         min-height: auto;
