@@ -188,7 +188,7 @@ header {
         text-align: center;
         margin: 0;
         float: right;
-        padding: 0 10px;
+        padding: 0 10px 0 0;
     }
     li {
         display: inline-block;
@@ -353,6 +353,22 @@ iframe {
 
 .background-alt {
     background: $background-alt;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+    
+    .video-container iframe,
+    .video-container object,
+    .video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /*
@@ -623,7 +639,7 @@ iframe {
     }
     p,
     ul {
-        margin: 0;
+        margin: 15px 0 0;
     }
     ul {
         padding: 0 0 0 15px;
@@ -666,7 +682,7 @@ iframe {
     grid-gap: 30px;
     border-top: 1px solid #e1e1e1;
     padding-top: 25px;
-    iframe {
+    .video-container {
         grid-area: video;
     }
 }
@@ -683,12 +699,16 @@ iframe {
     grid-template-rows: auto 45px;
     max-width: 350px;
     position: relative;
+    grid-gap: 20px;
 }
 
 .project-info {
     padding: 30px;
     p {
         margin: 0 0 15px 0;
+    }
+    p:last-child {
+        margin: 0;
     }
 }
 
@@ -769,13 +789,14 @@ iframe {
 .skills-groups {
     display: grid;
     grid-template-columns: 3fr 2fr;
+    grid-gap: 20px;
 }
 
 .skills-group {
     h3 {
         border-left: 0;
         border-bottom: #e1e1e1 solid 1px;
-        margin: 0 20px;
+        margin: 0 10px;
     }
 }
 
@@ -918,7 +939,6 @@ iframe {
         grid-template-areas: "video" "text";
         grid-template-rows: auto auto;
         grid-template-columns: auto;
-        justify-items: center;
     }
 
     .project-text {
@@ -929,8 +949,13 @@ iframe {
         height: auto;
         min-height: auto;
         max-height: auto;
-        padding: 100px 15px;
+        padding: 100px 0;
     }
+
+    header .nav__link {
+        font-size: 0.8em;
+    }
+
     #lead-content {
         position: relative;
         transform: none;
@@ -948,6 +973,11 @@ iframe {
         p {
             text-align: left;
         }
+    }
+
+    .skills-groups {
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
     }
 } // Small Devices
 @media only screen and (max-width: 768px) {
@@ -989,9 +1019,8 @@ iframe {
         display: none;
     }
     .education-block {
-        h3,
-        span {
-            float: none;
+        h3 {
+            width: 225px;
         }
     }
     .project-image {
