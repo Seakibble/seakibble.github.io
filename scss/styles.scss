@@ -260,6 +260,13 @@ header {
 
 footer {
     padding: 50px 0;
+
+    .footer-icon {
+        height: 24px;
+        position: relative;
+        top: -1px;
+        color: #778a74;
+    }
 }
 
 iframe {
@@ -312,9 +319,8 @@ iframe {
     display: inline-block;
     color: #fff;
     padding: 15px 25px;
-    border: 1px solid #333;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 3px;
+    margin: 0 15px;
+    background: $seakibble-blue;
     @include transition();
     &:hover {
         color: white;
@@ -396,8 +402,6 @@ iframe {
     text-align: center;
     .lead-content__titles {
         background: rgba(0, 0, 0, 0.25);
-        border-top: 1px solid rgba(0, 0, 0, 0.45);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.45);
         margin-bottom: 50px;
     }
     h1 {
@@ -494,7 +498,11 @@ iframe {
         color: $heading;
     }
     p {
-        margin: 0;
+        margin: 0 0 15px;
+    }
+    a {
+        display: inline;
+        margin: 0 10px 0 0;
     }
 }
 
