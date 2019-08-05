@@ -164,7 +164,7 @@ header {
     animation-timing-function: ease-in-out;
     animation-delay: 0.25s;
     animation-duration: 0.75s;
-    background: rgba(255, 255, 255, 0.9);
+    background: #fbfbfb;
     border-top: 2px solid $seakibble-blue;
     .header-branding {
         float: left;
@@ -367,12 +367,17 @@ iframe {
     padding-top: 30px; height: 0; overflow: hidden;
 }
     
-    .video-container iframe,
-    .video-container object,
-    .video-container embed {
+.video-container iframe,
+.video-container object,
+.video-container embed {
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.image-container > img {
     width: 100%;
     height: 100%;
 }
@@ -534,7 +539,7 @@ iframe {
         right: auto;
         height: 100%;
         width: 3px;
-        background: $seakibble-green;
+        background: lighten($seakibble-blue, 30);
         z-index: 0;
     }
     &:after {
@@ -542,8 +547,8 @@ iframe {
         content: '';
         width: 3px;
         height: 40px;
-        background: $seakibble-green;
-        background: linear-gradient(to bottom, $seakibble-green, rgba($seakibble-green, 0));
+        background: lighten($seakibble-blue, 30);
+        background: linear-gradient(to bottom, lighten($seakibble-blue, 30), rgba($seakibble-blue, 0));
         top: 100%;
         left: 303px;
     }
@@ -639,11 +644,14 @@ iframe {
     span {
         float: right;
     }
+    h4:first-of-type {
+        margin-bottom: 0;
+    }
     h4 {
         color: $text;
         clear: both;
         border-left: 4px solid $seakibble-blue;
-        padding-left: 10px;
+        padding: 10px 0 0 10px;
     }
     p,
     ul {
@@ -724,6 +732,12 @@ iframe {
     grid-area: link;
 }
 
+.center-blocks {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 37px;
+}
+
 .project-repo-link {
     display: block;
     margin: 0 auto;
@@ -734,12 +748,20 @@ iframe {
     color: white;
     background: $seakibble-blue;
     @include transition();
-    &:hover {
+    &:hover, &:focus {
         color: white;
         background: $seakibble-blue-hover;
         text-decoration: none;
         box-shadow: 0 2px 2px rgba(0, 0, 0, 0.22);
     }
+    &:visited {
+        text-decoration: none;
+        color: white;
+    }
+}
+
+.project-repo-link--double {
+    float:left;
 }
 
 .no-image {
@@ -975,6 +997,9 @@ iframe {
         h2 {
             font-size: 1.75em;
         }
+        .lead-content__subtitle {
+            font-size: 1.75em;
+        }
     }
     #about {
         text-align: center;
@@ -1014,13 +1039,16 @@ iframe {
     }
     #lead-content {
         h1 {
-            font-size: 2em;
+            font-size: 2.5em;
         }
         h2 {
             font-size: 1.3em;
         }
         a {
             padding: 10px 20px;
+        }
+        .lead-content__subtitle {
+            font-size: 1.5em;
         }
     }
     #lead-down {
@@ -1051,7 +1079,7 @@ iframe {
 @media only screen and (max-width: 480px) {
     #lead-content {
         h1 {
-            font-size: 1.5em;
+            font-size: 2em;
         }
         h2 {
             font-size: 1em;
@@ -1059,6 +1087,12 @@ iframe {
         a {
             font-size: 0.9em;
             padding: 5px 10px;
+        }
+        .lead-content__subtitle {
+            font-size: 1.75em;
+            span {
+                display: block;
+            }
         }
     }
 }

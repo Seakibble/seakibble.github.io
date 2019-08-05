@@ -31,24 +31,12 @@
                 </div>
             </a>
             <ul id="menu">
-                <li>
-                    <a class="nav__link" href="#about">About</a>
-                </li>
-                <li>
-                    <a class="nav__link" href="#experience">Experience</a>
-                </li>
-                <li>
-                    <a class="nav__link" href="#education">Education</a>
-                </li>
-                <li>
-                    <a class="nav__link" href="#projects">Projects</a>
-                </li>
-                <li>
-                    <a class="nav__link" href="#skills">Skills</a>
-                </li>
-                <li>
-                    <a class="nav__link" href="#contact">Contact</a>
-                </li>
+                <li><a class="nav__link" href="#about">About</a></li>
+                <li><a class="nav__link" href="#projects">Projects</a></li>
+                <li><a class="nav__link" href="#skills">Skills</a></li>
+                <li><a class="nav__link" href="#experience">Experience</a>
+                <li><a class="nav__link" href="#education">Education</a></li>
+                <li><a class="nav__link" href="#contact">Contact</a></li>
             </ul>
         </header>
         <!-- End header -->
@@ -95,15 +83,221 @@
         </div>
         <!-- End #about -->
 
+        <div id="projects" class="background-alt">
+                <h2 class="heading">Projects</h2>
+                <div class="container">
+                    <div class="row">
+                        <div class="project shadow-large">
+                            <!-- End .project-image -->
+                            <div class="project-info">
+                                <h3>Metal Shepherd</h3>
+                                <div class="project-video">
+                                    <div class="project-text">
+                                        <div>
+                                            <p>The culmination of my time at university was a year long senior project: Metal Shepherd - a 3D action-adventure game inspired by Dark Souls and Journey. </p>
+                                            <p>I worked with a team of four, which included another programmer, an artist, and the project manager.</p>
+                                            <p>My roles on this project included general programming, enemy AI, level design, bug fixing, web development, sound design, and producing the soundtrack.</p>
+                                        </div>
+                                        <div class="project-repo-container">
+                                            <a class="project-repo-link" href="http://darkshore.ca/" target="_blank">See the Game</a>
+                                        </div>
+                                    </div>
+                                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/QHQsuUidqc8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                                </div>
+                            </div>
+                            <!-- End .project-info -->
+                        </div>
+                        <!-- End .project -->
+
+                        <div class="project shadow-large">
+                            <!-- End .project-image -->
+                            <div class="project-info">
+                                <h3>Sovereign</h3>
+                                <div class="project-video">
+                                    <div class="project-text">
+                                        <div>
+                                            <p>Sovereign is a roguelike web game I'm developing whenever I get a chance. The gameplay is heavily inspired by classic DOS games such as <a href="https://www.nethack.org/" target="_blank">NetHack</a> and <a href="https://umoria.org/" target="_blank">Moria</a>. </p>
+                                            <p>The basic mechanics are based on <a href="https://dnd.wizards.com/" target="_blank">Dungeons and Dragons 5th Edition</a>, and involve exploring proceedurally generated caverns and dungeons, collecting weapons and gaining power, heading as deep into the depths as you can.</p>
+                                        </div>
+                                        <div class="project-repo-container center-blocks">
+                                            <a class="project-repo-link" href="https://maxleeming.ca/sovereign/" target="_blank">See the Game</a>
+                                            <a class="project-repo-link" href="https://github.com/Seakibble/sovereign" target="_blank">See the Code</a>
+                                        </div>
+                                    </div>
+                                    <div class="image-container"><img src="images/sovereign.PNG" /></div>
+                                </div>
+                            </div>
+                            <!-- End .project-info -->
+                        </div>
+                        <!-- End .project -->
+                        
+                        <div class="project shadow-large">
+                            <!-- End .project-image -->
+                            <div class="project-info">
+                                <h3>Sky Fight</h3>
+                                <div class="project-video">
+                                    <div class="project-text">
+                                        <div>
+                                            <p>Sky fight is a game I made in my 3rd year of university. It was built with processing, using Box2D and OSC. The aim is to survive for as long as you can as objects fall from above. You consist of a vulnerable hexagon, with an attached flail, which you can swing around. The chain does not hurt you but the business end does.</p>
+                                            <p>Later in the game, triangular enemies will join the fray. You can use your flail to hurt them, but likewise, so can they.</p>
+                                        </div>
+                                        <div class="project-repo-container">
+                                            <a class="project-repo-link" href="https://github.com/Seakibble/sky-fight" target="_blank">See the Code</a>
+                                        </div>
+                                    </div>
+                                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/bQAk_LvoCGo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                                </div>
+                            </div>
+                            <!-- End .project-info -->
+                        </div>
+                        <!-- End .project -->
+    
+                        <div class="project shadow-large">
+                            <!-- End .project-image -->
+                            <div class="project-info">
+                                <h3>Boids Flocking Implementation</h3>
+                                <div class="project-video">
+                                    <div class="project-text">
+                                        <div>
+                                            <p>Boids is a relatively well known algorithm that models a seemingly complex, chaotic flock of constantly moving agents. This version was written in Java using Processing.</p>
+                                            <p>Each agent follows three simple rules: Alignment (try to go in the same direction as nearby agents), Cohesion (try to get close to nearby agents), and Separation (try to avoid getting too close to nearby agents).</p>
+                                            <p>I also made another version (featured at the top of the page), which I wrote in JavaScript.</p>
+                                        </div>
+                                        <div class="project-repo-container">
+                                            <a class="project-repo-link" href="https://github.com/Seakibble/ml-boids" target="_blank">See the Code</a>
+                                        </div>
+                                    </div>
+                                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/DNTOa_gTfv0" frameborder="0" allow="autoplay; encrypted-media"
+                                        allowfullscreen></iframe></div>
+                                </div>
+                            </div>
+                            <!-- End .project-info -->
+                        </div>
+                        <!-- End .project -->
+    
+                        <div class="project shadow-large">
+                            <!-- End .project-image -->
+                            <div class="project-info">
+                                <h3>Neon City Escape</h3>
+                                <div class="project-video">
+                                    <div>
+                                        <p>For my third year 3D anmiation class, one of the more demanding assignments was to create a 30-40 second 3D animation. This involved finding models to use, creating the scene, animating it, setting up cameras, rendering, editing, and performing any other post production.</p>
+                                        <p>Of all the assignments I've done in university, this was probably the most intensive, in terms of scale and time dedicated to getting it done. It helped me appreciate how much work 3D movies involve, and why specialists are necessary for that sort of work.</p>
+                                    </div>
+                                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/qHATp_DdTEo" frameborder="0" allow="autoplay; encrypted-media"
+                                        allowfullscreen></iframe></div>
+                                </div>
+                            </div>
+                            <!-- End .project-info -->
+                        </div>
+                        <!-- End .project -->
+    
+                        <div class="project shadow-large">
+                            <!-- End .project-image -->
+                            <div class="project-info">
+                                <h3>Arduino Sythesizer</h3>
+                                <div class="project-video">
+                                    <div class="project-text">
+                                        <div>
+                                            <p>I had an interesting course in third year called Sensor-Based Interaction, an advanced programming class focusing on hardware, sensors, and interactive installations. The final project was to create something strange and interactive in a small team using three randomly chosen sensors.</p>
+                                            <p>We chose a synthesizer. A force sensor controlled the volume, a joystick determined the current cord, and a distance sensor determined the number of voices.</p>
+                                        </div>
+                                        <div class="project-repo-container">
+                                            <a class="project-repo-link" href="https://github.com/Seakibble/arduino-synthesizer" target="_blank">See the Code</a>
+                                        </div>
+                                    </div>
+                                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/huE761nokh4" frameborder="0" allow="autoplay; encrypted-media"
+                                        allowfullscreen></iframe></div>
+                                </div>
+                            </div>
+                            <!-- End .project-info -->
+                        </div>
+                        <!-- End .project -->
+    
+                        <div class="project shadow-large">
+                            <!-- End .project-image -->
+                            <div class="project-info">
+                                <h3>Mobile Phone Public Service Announcement</h3>
+                                <div class="project-video">
+                                    <div>
+                                        <p>The final project for my second year AV course was to make a sixty second video in the style of a comercial, or a public service announcement.</p>
+                                        <p>This was done in teams of four, but the groupwork only covered the scripting, filming and production. All editing and post-production was done by each team member - meaning we each had our own version.</p>
+                                        <p>This is my version, which was produced using Adobe Premiere Pro and After Effects.</p>
+                                    </div>
+                                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/Bqe26rHVgrs" frameborder="0" allow="autoplay; encrypted-media"
+                                        allowfullscreen></iframe></div>
+                                </div>
+                            </div>
+                            <!-- End .project-info -->
+                        </div>
+                        <!-- End .project -->
+    
+                        <div class="project shadow-large">
+                            <!-- End .project-image -->
+                            <div class="project-info">
+                                <h3>Population Infographic</h3>
+                                <div class="project-video">
+                                    <div>
+                                        <p>One of the most enjoyable video projects I've worked on, this assignment involved creating an infographic about a topic of our choice, using Adobe After Effects.</p>
+                                        <p>It was particularly interesting to me because it was more or less my first time creating something just using After Effects, and though I remember feeling pleased with the result, I was sure I could do significantly better the next time, just because of how much I'd learned.</p>
+                                    </div>
+                                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/WKtm1herTPg" frameborder="0" allow="autoplay; encrypted-media"
+                                        allowfullscreen></iframe></div>
+                                </div>
+                            </div>
+                            <!-- End .project-info -->
+                        </div>
+                        <!-- End .project -->
+                    </div>
+                </div>
+            </div>
+            <!-- End #projects -->
+
+            <div id="skills">
+                <h2 class="heading">Skills</h2>
+                <div class="skills-groups">
+                    <div class="skills-group">
+                        <h3>Programming</h3>
+                        <ul>
+                            <li>Bash</li>
+                            <li>Behat</li>
+                            <li>C</li>
+                            <li>C++</li>
+                            <li>C#</li>
+                            <li>CSS</li>
+                            <li>HTML</li>
+                            <li>Java</li>
+                            <li>JavaScript</li>
+                            <li>Less</li>
+                            <li>Node.js</li>
+                            <li>PHP</li>
+                            <li>Python</li>
+                            <li>Sass</li>
+                            <li>SQL</li>
+                        </ul>
+                    </div>
+                    <div class="skills-group">
+                        <h3>Tools</h3>
+                        <ul>
+                            <li>After Effects</li>
+                            <li>Audition</li>
+                            <li>Maya</li>
+                            <li>PhotoShop</li>
+                            <li>Premiere Pro</li>
+                            <li>Unity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- End #skills -->
+
         <div id="experience" class="background-alt">
             <h2 class="heading">Experience</h2>
             <div id="experience-timeline">
                 <div data-date="Sept. 2016 – June 2017">
                     <div class="experience-header">
                         <div class="experience-headings">
-                            <h3>
-                                <a href="https://carleton.ca/" target="_blank">Carleton University</a>
-                            </h3>
+                            <h3><a href="https://carleton.ca/" target="_blank">Carleton University</a></h3>
                             <h4>Multimedia Developer</h4>
                         </div>
                     </div>
@@ -154,9 +348,11 @@
                     <a href="http://www.algonquincollege.com/" target="_blank">Algonquin College</a>
                 </h3>
                 <span class="education-date">2014 - 2019</span>
-                <h4><a href="http://bitdegree.ca/index.php?Program=IMD" target="_blank">Bachelor of Information Technology</br> - Interactive Multimedia &amp; Design (co-op)</a></h4>
-                <p>IMD is a four year program offered by Carleton University in collaboration with Algonquin College that covers the full range of digital media, both from the creative side, and the technical side. The program emphasizes continuous learning, in and outside the classroom, and to embrace working with new and cutting edge tools and technologies you've never worked with before.</p>
-                <p>A wide range of topics are covered including:</p> 
+                <h4><a href="http://bitdegree.ca/index.php?Program=IMD" target="_blank">Bachelor of Information Technology</br> — Interactive Multimedia &amp; Design (co-op)</a></h4>
+                <h4><a href="http://bitdegree.ca/index.php?Program=IMD" target="_blank">Advanced Diploma</br> — Interactive Media Design</a></h4>
+                <p>IMD is a four year program offered by Carleton University in collaboration with Algonquin College that covers the full range of digital media, both from the creative side, and the technical side. The program emphasizes continuous learning, in and outside the classroom, and to embrace working with new and cutting edge tools and technologies we've never worked with before.</p> 
+                <p>As a graduate of the program, I was awarded a bachelor's degree from Carleton and an advanced diploma from Algonquin.</p>
+                <p>I learned a substantial amount about various topics during this program including:</p> 
                     <ul>
                         <li><b>Project Management</b> - Scrum, Kanban, source control</li>
                         <li><b>Programming</b> - Software dev, web dev, mobile app dev, harware</li>
@@ -167,192 +363,6 @@
             <!-- End .education-block -->
         </div>
         <!-- End #education -->
-
-        <div id="projects" class="background-alt">
-            <h2 class="heading">Projects</h2>
-            <div class="container">
-                <div class="row">
-                    <div class="project shadow-large">
-                        <!-- End .project-image -->
-                        <div class="project-info">
-                            <h3>Metal Shepherd</h3>
-                            <div class="project-video">
-                                <div class="project-text">
-                                    <div>
-                                        <p>The culmination of my time at university was a year long senior project: Metal Shepherd - a 3D action-adventure game inspired by Dark Souls and Journey. </p>
-                                        <p>I worked with a team of four, which included another programmer, an artist, and the project manager.</p>
-                                        <p>My roles on this project included general programming, enemy AI, level design, bug fixing, web development, sound design, and producing the soundtrack.</p>
-                                    </div>
-                                    <div class="project-repo-container">
-                                        <a class="project-repo-link" href="http://darkshore.ca/" target="_blank">See the Game</a>
-                                    </div>
-                                </div>
-                                <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/QHQsuUidqc8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                            </div>
-                        </div>
-                        <!-- End .project-info -->
-                    </div>
-                    <!-- End .project -->
-                    
-                    <div class="project shadow-large">
-                        <!-- End .project-image -->
-                        <div class="project-info">
-                            <h3>Sky Fight</h3>
-                            <div class="project-video">
-                                <div class="project-text">
-                                    <div>
-                                        <p>Sky fight is a game I made in my 3rd year of university. It was built with processing, using Box2D and OSC. The aim is to survive for as long as you can as objects fall from above. You consist of a vulnerable hexagon, with an attached flail, which you can swing around. The chain does not hurt you but the business end does.</p>
-                                        <p>Later in the game, triangular enemies will join the fray. You can use your flail to hurt them, but likewise, so can they.</p>
-                                    </div>
-                                    <div class="project-repo-container">
-                                        <a class="project-repo-link" href="https://github.com/Seakibble/sky-fight" target="_blank">See the Code</a>
-                                    </div>
-                                </div>
-                                <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/bQAk_LvoCGo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                            </div>
-                        </div>
-                        <!-- End .project-info -->
-                    </div>
-                    <!-- End .project -->
-
-                    <div class="project shadow-large">
-                        <!-- End .project-image -->
-                        <div class="project-info">
-                            <h3>Boids Flocking Implementation</h3>
-                            <div class="project-video">
-                                <div class="project-text">
-                                    <div>
-                                        <p>Boids is a relatively well known algorithm that models a seemingly complex, chaotic flock of constantly moving agents. This version was written in Java using Processing.</p>
-                                        <p>Each agent follows three simple rules: Alignment (try to go in the same direction as nearby agents), Cohesion (try to get close to nearby agents), and Separation (try to avoid getting too close to nearby agents).</p>
-                                        <p>I also made another version (featured at the top of the page), which I wrote JavaScript.</p>
-                                    </div>
-                                    <div class="project-repo-container">
-                                        <a class="project-repo-link" href="https://github.com/Seakibble/ml-boids" target="_blank">See the Code</a>
-                                    </div>
-                                </div>
-                                <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/DNTOa_gTfv0" frameborder="0" allow="autoplay; encrypted-media"
-                                    allowfullscreen></iframe></div>
-                            </div>
-                        </div>
-                        <!-- End .project-info -->
-                    </div>
-                    <!-- End .project -->
-
-                    <div class="project shadow-large">
-                        <!-- End .project-image -->
-                        <div class="project-info">
-                            <h3>Neon City Escape</h3>
-                            <div class="project-video">
-                                <div>
-                                    <p>For my third year 3D anmiation class, one of the more demanding assignments was to create a 30-40 second 3D animation. This involved finding models to use, creating the scene, animating it, setting up cameras, rendering, editing, and performing any other post production.</p>
-                                    <p>Of all the assignments I've done in university, this was probably the most intensive, in terms of scale and time dedicated to getting it done. It helped me appreciate how much work 3D movies involve, and why specialists are necessary for that sort of work.</p>
-                                </div>
-                                <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/qHATp_DdTEo" frameborder="0" allow="autoplay; encrypted-media"
-                                    allowfullscreen></iframe></div>
-                            </div>
-                        </div>
-                        <!-- End .project-info -->
-                    </div>
-                    <!-- End .project -->
-
-                    <div class="project shadow-large">
-                        <!-- End .project-image -->
-                        <div class="project-info">
-                            <h3>Arduino Sythesizer</h3>
-                            <div class="project-video">
-                                <div class="project-text">
-                                    <div>
-                                        <p>I had an interesting course in third year called Sensor-Based Interaction, an advanced programming class focusing on hardware, sensors, and interactive installations. The final project was to create something strange and interactive in a small team using three randomly chosen sensors.</p>
-                                        <p>We chose a synthesizer. A force sensor controlled the volume, a joystick determined the current cord, and a distance sensor determined the number of voices.</p>
-                                    </div>
-                                    <div class="project-repo-container">
-                                        <a class="project-repo-link" href="https://github.com/Seakibble/arduino-synthesizer" target="_blank">See the Code</a>
-                                    </div>
-                                </div>
-                                <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/huE761nokh4" frameborder="0" allow="autoplay; encrypted-media"
-                                    allowfullscreen></iframe></div>
-                            </div>
-                        </div>
-                        <!-- End .project-info -->
-                    </div>
-                    <!-- End .project -->
-
-                    <div class="project shadow-large">
-                        <!-- End .project-image -->
-                        <div class="project-info">
-                            <h3>Mobile Phone Public Service Announcement</h3>
-                            <div class="project-video">
-                                <div>
-                                    <p>The final project for my second year AV course was to make a sixty second video in the style of a comercial, or a public service announcement.</p>
-                                    <p>This was done in teams of four, but the groupwork only covered the scripting, filming and production. All editing and post-production was done by each team member - meaning we each had our own version.</p>
-                                    <p>This is my version, which was produced using Adobe Premiere Pro and After Effects.</p>
-                                </div>
-                                <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/Bqe26rHVgrs" frameborder="0" allow="autoplay; encrypted-media"
-                                    allowfullscreen></iframe></div>
-                            </div>
-                        </div>
-                        <!-- End .project-info -->
-                    </div>
-                    <!-- End .project -->
-
-                    <div class="project shadow-large">
-                        <!-- End .project-image -->
-                        <div class="project-info">
-                            <h3>Population Infographic</h3>
-                            <div class="project-video">
-                                <div>
-                                    <p>One of the most enjoyable video projects I've worked on, this assignment involved creating an infographic about a topic of our choice, using Adobe After Effects.</p>
-                                    <p>It was particularly interesting to me because it was more or less my first time creating something just using After Effects, and though I remember feeling pleased with the result, I was sure I could do significantly better the next time, just because of how much I'd learned.</p>
-                                </div>
-                                <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/WKtm1herTPg" frameborder="0" allow="autoplay; encrypted-media"
-                                    allowfullscreen></iframe></div>
-                            </div>
-                        </div>
-                        <!-- End .project-info -->
-                    </div>
-                    <!-- End .project -->
-                </div>
-            </div>
-        </div>
-        <!-- End #projects -->
-
-        <div id="skills">
-            <h2 class="heading">Skills</h2>
-            <div class="skills-groups">
-                <div class="skills-group">
-                    <h3>Programming</h3>
-                    <ul>
-                        <li>Bash</li>
-                        <li>Behat</li>
-                        <li>C</li>
-                        <li>C++</li>
-                        <li>C#</li>
-                        <li>CSS</li>
-                        <li>HTML</li>
-                        <li>Java</li>
-                        <li>JavaScript</li>
-                        <li>Less</li>
-                        <li>Node.js</li>
-                        <li>PHP</li>
-                        <li>Python</li>
-                        <li>Sass</li>
-                        <li>SQL</li>
-                    </ul>
-                </div>
-                <div class="skills-group">
-                    <h3>Tools</h3>
-                    <ul>
-                        <li>After Effects</li>
-                        <li>Audition</li>
-                        <li>Maya</li>
-                        <li>PhotoShop</li>
-                        <li>Premiere Pro</li>
-                        <li>Unity</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- End #skills -->
 
         <div id="contact">
             <h2 class="heading">Get in Touch</h2>
