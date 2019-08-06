@@ -113,15 +113,24 @@ h4 {
     font-size: 1.1em;
 }
 
-p a {
+p a,
+h3 a,
+h4 a {
     font-weight: bold;
     border-bottom: 1px solid $border;
-    transition: color 0.2s;
+    transition: border-color 0.2s, color 0.2s;
 
     &:hover {
         color: #101010;
+        border-color: #101010;
         text-decoration: none;
     }
+}
+
+h4 a, h3 a {
+    font-weight: 400;
+    border-bottom: none;
+    
 }
 
 // No JS styles
