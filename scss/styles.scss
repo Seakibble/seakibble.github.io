@@ -120,17 +120,19 @@ h4 a {
     border-bottom: 1px solid $border;
     transition: border-color 0.2s, color 0.2s;
 
+    &:active,
+    &:focus,
     &:hover {
         color: #101010;
-        border-color: #101010;
+        border-color: #202020;
         text-decoration: none;
     }
 }
 
 h4 a, h3 a {
     font-weight: 400;
-    border-bottom: none;
-    
+    border-bottom-color: rgba(0,0,0,0);
+
 }
 
 // No JS styles
@@ -528,7 +530,6 @@ iframe {
     }
     a {
         display: inline;
-        margin: 0 10px 0 0;
     }
 }
 
@@ -840,7 +841,7 @@ iframe {
 
 .skills-groups {
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 4fr 3fr;
     grid-gap: 20px;
 }
 
