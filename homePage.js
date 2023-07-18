@@ -114,7 +114,10 @@ Boid = function (_id, _x, _y, _master) {
             ctx.globalCompositeOperation = 'source-over';
             ctx.fillStyle = this.config.color;
             ctx.beginPath();
-            ctx.arc(this.pos.x, this.pos.y, (this.config.baseWeight - 4) / 3 * 20, 0, Math.PI * 2, true);
+            let size = 20
+            if (container.offsetWidth < 1000) size = 10
+                
+            ctx.arc(this.pos.x, this.pos.y, (this.config.baseWeight - 4) / 3 * size, 0, Math.PI * 2, true);
             ctx.fill();
         },
         Update: function () {
