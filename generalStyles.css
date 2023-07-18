@@ -1,0 +1,184 @@
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 20px;
+
+    min-height: 100vh;
+    background: black;
+    color: #eff;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Josefin Sans', sans-serif;
+    padding-top: 1em;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2em;
+}
+h3 {
+    font-size: 1.5em;
+    text-align: left;
+    margin-bottom: 0.35em;
+}
+h4 {
+    padding-top: 0;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 0.5em;
+}
+
+p {
+    margin-top: 2.5em;
+    line-height: 1.6em;
+}
+
+ol, ul {
+    padding-left: 1em;
+}
+
+li {
+    padding-bottom: 0.5em;
+    margin-left: 0.5em;
+    list-style-type: square;
+}
+
+
+ol {
+    list-style: none;
+    counter-reset: my-awesome-counter;
+}
+ol li {
+    list-style-type: none;
+    counter-increment: my-awesome-counter;
+    position: relative;
+}
+ol li::before {
+    position: absolute;
+    left: -1.3em;
+    content: counter(my-awesome-counter) ". ";
+    color: rgb(70,120,250);
+    font-weight: bold;
+}
+
+.content {
+    min-height: 92vh;
+}
+
+footer {
+    text-align: center;
+    width: 100%;
+    background: rgb(5, 10, 32);
+    
+    padding: 1em 0;
+    min-height: 8vh;
+    font-size: 0.7em;
+    color:rgb(83, 110, 179);
+    display: grid;
+    align-items: center;
+}
+footer p {
+    margin: 0;
+}
+
+.wrapper {
+    max-width: 800px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.seperator {
+    margin: 0.25em auto 2em;
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: rgb(70,120,250);
+}
+
+h3 + .seperator {
+    background: rgba(0, 0, 0, 0.05);
+    margin-bottom: 1em;
+    width: 100%;
+}
+.cardHolder {
+    display: grid;
+    grid-gap: 30px;
+    padding-bottom: 30px;
+}
+
+.card {
+    background:rgb(185, 197, 255);
+    border-radius: 10px;
+    color: black;
+    padding: 20px;
+    box-shadow: black 0 3px 10px;
+    border: 5px solid rgba(255, 255, 255, 0.5);
+
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: 1fr 1fr;
+}
+.card .nameBox, .card .instructionBox {
+    grid-column: span 2;
+}
+
+.card .instructionBox {
+    padding-top: 1em;
+    border-top: 2px solid rgba(0,0,0, 0.05);
+}
+
+.card h3 {
+    padding-top: 0;
+}
+
+.card p {
+    margin-top: 1em;
+}
+div > p:first-of-type {
+    margin-top: 0;
+}
+
+.tags {
+    display: grid;
+    grid-gap: 10px;
+    grid-auto-flow: column;
+    justify-content: start;
+    
+    padding: 0.25em 0;
+    border-bottom: 2px solid rgba(0,0,0, 0.05);
+    border-top: 2px solid rgba(0,0,0, 0.05);
+}
+
+.tags span {
+    justify-self: start;
+    padding: 3px 8px;
+    background: crimson;
+    color: white;
+    border-radius: 5px;
+    font-size: 0.8em;
+}
+
+.recipes {
+    background-image: linear-gradient(rgb(10, 25, 94), rgb(5, 10, 32));
+    min-height: 92vh;
+}
+
+.aboutBox {
+    display: grid;
+}
+
+.bigPic {
+    width: 60%;
+    align-self: center;
+    justify-self: center;
+}

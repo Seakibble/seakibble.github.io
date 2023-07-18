@@ -1,445 +1,78 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Max Leeming</title>
-        <link rel="shortcut icon" href="seakibble.ico" type="image/x-icon">
-        <link rel="icon" href="seakibble.ico" type="image/x-icon">
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-        <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/styles.css" rel="stylesheet">
-    </head>
 
-    <body>
-        <div id="mobile-menu-open" class="shadow-large">
-            <i class="fa fa-bars" aria-hidden="true"></i>
-        </div>
-        <!-- End #mobile-menu-toggle -->
-        <header class="shadow">
-            <div id="mobile-menu-close">
-                <span>Close</span>
-                <i class="fa fa-times" aria-hidden="true"></i>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Red+Hat+Display&family=Satisfy&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="generalStyles.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="icon" type="image/x-icon" href="/cute-sharp-tiny.png">
+
+    <title>Sharkside</title>
+</head>
+<body>
+    <div class="content">
+        <section class="surface">
+            <div class="stars"></div>
+            <div id="sunsetFade" class="sunsetFade"></div>
+            <div id="skyFade" class="skyFade"></div>
+            <div id="sunContainer">
+                <canvas id="sunCanvas"></canvas>
             </div>
-            <a href="https://maxleeming.ca">
-                <div class="header-branding">
-                    <img class="header-branding__logo" src="images/seakibble.png" />
-                    <span class="header-branding__text">MAX LEEMING</span>
+        </section>
+        <section class="hero">
+            <div class="nameplate">
+                <p class="wrapper fancy">The Personal Website of</p>
+                <div class="titleWrapper">
+                    <h1 id="title">MAX LEEMING</h1>
+                    <h1 class="titleMask" id="titleMask">
+                        <span class="letter">M</span><span class="letter">A</span><span class="letter">X</span>
+                        <span class="letter">L</span><span class="letter">E</span><span class="letter">E</span><span class="letter">M</span><span class="letter">I</span><span class="letter">N</span><span class="letter">G</span>
+                    </h1>
                 </div>
-            </a>
-            <ul id="menu">
-                <li><a class="nav__link" href="#about">About</a></li>
-                <li><a class="nav__link" href="#projects">Projects</a></li>
-                <li><a class="nav__link" href="#skills">Skills</a></li>
-                <li><a class="nav__link" href="#experience">Experience</a>
-                <li><a class="nav__link" href="#education">Education</a></li>
-                <li><a class="nav__link" href="#contact">Contact</a></li>
-            </ul>
-        </header>
-        <!-- End header -->
-
-        <div id="lead">
-            <div id="lead-content">
-                <div class="lead-content__titles">
-                    <h1>Max Leeming</h1>
-                    <span class="lead-content__subtitle">
-                        <span>Interactive</span>
-                        <span>Multimedia</span>
-                        <span>Developer</span>
-                    </span>
+                <div class="downArrow">
+                    <a href="#aboutMe">
+                        <img src="/images/arrow-down.png">
+                    </a>
                 </div>
             </div>
-            <!-- End #lead-content -->
 
-            <iframe id="lead-boids" src="https://seakibble.github.io/ml-boids-js/" title="Boids JavaScript Implementation Demo"></iframe>
-            <div id="lead-overlay"></div>
-
-            <div id="lead-down">
-                <span>
-                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                </span>
+            <div class="wrapper buttons">
+                <a>Game</a>
+                <a>Music</a>
+                <a href="/recipes.html">Recipes</a>
             </div>
-            <!-- End #lead-down -->
-        </div>
-        <!-- End #lead -->
-
-        <div id="about">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h2 class="heading">About Me</h2>
-                    </div>
-                    <div class="col-md-8">
-                        <p>Howdy!</p>
-                        <p>I'm a programmer and developer with a degree in information technology. I specialize in digital multimedia projects where the technical overlaps with the creative, and I excel in small team environments.</p>
-                        <p>In my spare time I <a href="https://maxleeming.bandcamp.com/album/metal-shepherd-ost" target="_blank">produce music</a>, tinker about with various <a href="https://github.com/Seakibble" target="_blank">programming projects</a>, work on <a href="https://www.youtube.com/channel/UC4GzdOdLQBVLxuX4tJm3JiQ" target="_blank">video projects</a>, and run a couple of Dungeons & Dragons campaigns.</p>
-                        <p>Check out <a href="documents/Resume_Max_Leeming.pdf" download>my resume</a>.</p>
-                    </div>
-                </div>
+            <div id="container">
+                <canvas id="canvas"></canvas>
             </div>
-        </div>
-        <!-- End #about -->
-
-        <div id="projects" class="background-alt">
-                <h2 class="heading">Projects</h2>
-                <div class="container">
-                    <div class="row">
-                        <div class="project shadow-large">
-                            <!-- End .project-image -->
-                            <div class="project-info">
-                                <h3>Metal Shepherd</h3>
-                                <div class="project-video">
-                                    <div class="project-text">
-                                        <div>
-                                            <p>The culmination of my time at university was a year long senior project: Metal Shepherd - a 3D action-adventure game inspired by Dark Souls and Journey. </p>
-                                            <p>I worked with a team of four, which included another programmer, an artist, and the project manager.</p>
-                                            <p>My roles on this project included general programming, enemy AI, level design, bug fixing, web development, sound design, and producing the soundtrack.</p>
-                                        </div>
-                                        <div class="project-repo-container center-blocks">
-                                            <a class="project-repo-link" href="http://darkshore.ca/" target="_blank">See the Game</a>
-                                            <a class="project-repo-link" href="https://maxleeming.bandcamp.com/album/metal-shepherd-ost" target="_blank">Hear the Music</a>
-                                        </div>
-                                    </div>
-                                    <div class="video-container"><iframe title="Metal Shepherd Teaser Trailer" width="560" height="315" src="https://www.youtube.com/embed/QHQsuUidqc8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                                </div>
-                            </div>
-                            <!-- End .project-info -->
-                        </div>
-                        <!-- End .project -->
-
-                        <div class="project shadow-large">
-                            <!-- End .project-image -->
-                            <div class="project-info">
-                                <h3>Seakibble YouTube Channel</h3>
-                                <div class="project-video">
-                                    <div class="project-text">
-                                        <div>
-                                            <p>One of my favourite hobbies is creating videos for my YouTube channel, which is geared towards analyzing mechanics and design ideas in video games. The process for these videos usually consists of coming up with an idea, developing a script, recording narration, collecting footage, editing, and adding any necessary effects and audio.</p>
-                                            <p>Perhaps the most important aspect of my process is the retrospective, where I decide what improvements and changes I need to make in the future.</p>
-                                        </div>
-                                        <div class="project-repo-container">
-                                            <a class="project-repo-link" href="https://www.youtube.com/channel/UC4GzdOdLQBVLxuX4tJm3JiQ" target="_blank">See the Channel</a>
-                                        </div>
-                                    </div>
-                                    <div class="video-container"><iframe title="Deconstructing Undertale's Battle System Video" width="560" height="315" src="https://www.youtube.com/embed/Rq6lsQBTS94" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></iframe></div>
-                                </div>
-                            </div>
-                            <!-- End .project-info -->
-                        </div>
-                        <!-- End .project -->
-
-                        <div class="project shadow-large">
-                            <!-- End .project-image -->
-                            <div class="project-info">
-                                <h3>Sovereign</h3>
-                                <div class="project-video">
-                                    <div class="project-text">
-                                        <div>
-                                            <p>Sovereign is a roguelike web game I'm developing whenever I get a chance. The gameplay is heavily inspired by classic DOS games such as <a href="https://www.nethack.org/" target="_blank">NetHack</a> and <a href="https://umoria.org/" target="_blank">Moria</a>. </p>
-                                            <p>The basic mechanics are based on <a href="https://dnd.wizards.com/" target="_blank">Dungeons and Dragons 5th Edition</a>, and involve exploring proceedurally generated caverns and dungeons, collecting weapons and gaining power, heading as deep into the depths as you can.</p>
-                                        </div>
-                                        <div class="project-repo-container center-blocks">
-                                            <a class="project-repo-link" href="https://maxleeming.ca/sovereign/" target="_blank">See the Game</a>
-                                            <a class="project-repo-link" href="https://github.com/Seakibble/sovereign" target="_blank">See the Code</a>
-                                        </div>
-                                    </div>
-                                    <div class="image-container"><img alt="Sovereign screenshot" src="images/sovereign.PNG" /></div>
-                                </div>
-                            </div>
-                            <!-- End .project-info -->
-                        </div>
-                        <!-- End .project -->
-                        
-                        <div class="project shadow-large">
-                            <!-- End .project-image -->
-                            <div class="project-info">
-                                <h3>Sky Fight</h3>
-                                <div class="project-video">
-                                    <div class="project-text">
-                                        <div>
-                                            <p>Sky fight is a game I made in my 3rd year of university. It was built with processing, using Box2D and OSC. The aim is to survive for as long as you can as objects fall from above. You consist of a vulnerable hexagon, with an attached flail, which you can swing around. The chain does not hurt you but the business end does.</p>
-                                            <p>Later in the game, triangular enemies will join the fray. You can use your flail to hurt them, but likewise, so can they.</p>
-                                        </div>
-                                        <div class="project-repo-container">
-                                            <a class="project-repo-link" href="https://github.com/Seakibble/sky-fight" target="_blank">See the Code</a>
-                                        </div>
-                                    </div>
-                                    <div class="video-container"><iframe title="Sky Fight Demo Video" width="560" height="315" src="https://www.youtube.com/embed/bQAk_LvoCGo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                                </div>
-                            </div>
-                            <!-- End .project-info -->
-                        </div>
-                        <!-- End .project -->
-    
-                        <div class="project shadow-large">
-                            <!-- End .project-image -->
-                            <div class="project-info">
-                                <h3>Boids Flocking Implementation</h3>
-                                <div class="project-video">
-                                    <div class="project-text">
-                                        <div>
-                                            <p>Boids is a relatively well known algorithm that models a seemingly complex, chaotic flock of constantly moving agents. This version was written in Java using Processing.</p>
-                                            <p>Each agent follows three simple rules: Alignment (try to go in the same direction as nearby agents), Cohesion (try to get close to nearby agents), and Separation (try to avoid getting too close to nearby agents).</p>
-                                            <p>I also made another version (featured at the top of the page), which I wrote in JavaScript.</p>
-                                        </div>
-                                        <div class="project-repo-container">
-                                            <a class="project-repo-link" href="https://github.com/Seakibble/ml-boids" target="_blank">See the Code</a>
-                                        </div>
-                                    </div>
-                                    <div class="video-container"><iframe title="Boids Processing Implementation Demo Video" width="560" height="315" src="https://www.youtube.com/embed/DNTOa_gTfv0" frameborder="0" allow="autoplay; encrypted-media"
-                                        allowfullscreen></iframe></div>
-                                </div>
-                            </div>
-                            <!-- End .project-info -->
-                        </div>
-                        <!-- End .project -->
-    
-                        <div class="project shadow-large">
-                            <!-- End .project-image -->
-                            <div class="project-info">
-                                <h3>Neon City Escape</h3>
-                                <div class="project-video">
-                                    <div>
-                                        <p>For my third year 3D anmiation class, one of the more demanding assignments was to create a 30-40 second 3D animation. This involved finding models to use, creating the scene, animating it, setting up cameras, rendering, editing, and performing any other post production.</p>
-                                        <p>Of all the assignments I've done in university, this was probably the most intensive, in terms of scale and time dedicated to getting it done. It helped me appreciate how much work 3D movies involve, and why specialists are necessary for that sort of work.</p>
-                                    </div>
-                                    <div class="video-container"><iframe title="Neon City Escape Video" width="560" height="315" src="https://www.youtube.com/embed/qHATp_DdTEo" frameborder="0" allow="autoplay; encrypted-media"
-                                        allowfullscreen></iframe></div>
-                                </div>
-                            </div>
-                            <!-- End .project-info -->
-                        </div>
-                        <!-- End .project -->
-    
-                        <div class="project shadow-large">
-                            <!-- End .project-image -->
-                            <div class="project-info">
-                                <h3>Arduino Synthesizer</h3>
-                                <div class="project-video">
-                                    <div class="project-text">
-                                        <div>
-                                            <p>I had an interesting course in third year called Sensor-Based Interaction, an advanced programming class focusing on hardware, sensors, and interactive installations. The final project was to create something strange and interactive in a small team using three randomly chosen sensors.</p>
-                                            <p>We chose a synthesizer. A force sensor controlled the volume, a joystick determined the current cord, and a distance sensor determined the number of voices.</p>
-                                        </div>
-                                        <div class="project-repo-container">
-                                            <a class="project-repo-link" href="https://github.com/Seakibble/arduino-synthesizer" target="_blank">See the Code</a>
-                                        </div>
-                                    </div>
-                                    <div class="video-container"><iframe title="Arduino Synthesizer Demo Video" width="560" height="315" src="https://www.youtube.com/embed/huE761nokh4" frameborder="0" allow="autoplay; encrypted-media"
-                                        allowfullscreen></iframe></div>
-                                </div>
-                            </div>
-                            <!-- End .project-info -->
-                        </div>
-                        <!-- End .project -->
-    
-                        <div class="project shadow-large">
-                            <!-- End .project-image -->
-                            <div class="project-info">
-                                <h3>Mobile Phone Public Service Announcement</h3>
-                                <div class="project-video">
-                                    <div>
-                                        <p>The final project for my second year AV course was to make a sixty second video in the style of a comercial, or a public service announcement.</p>
-                                        <p>This was done in teams of four, but the groupwork only covered the scripting, filming and production. All editing and post-production was done by each team member - meaning we each had our own version.</p>
-                                        <p>This is my version, which was produced using Adobe Premiere Pro and After Effects.</p>
-                                    </div>
-                                    <div class="video-container"><iframe title="Mobile Phone PSA Video" width="560" height="315" src="https://www.youtube.com/embed/Bqe26rHVgrs" frameborder="0" allow="autoplay; encrypted-media"
-                                        allowfullscreen></iframe></div>
-                                </div>
-                            </div>
-                            <!-- End .project-info -->
-                        </div>
-                        <!-- End .project -->
-    
-                        <div class="project shadow-large">
-                            <!-- End .project-image -->
-                            <div class="project-info">
-                                <h3>Population Infographic</h3>
-                                <div class="project-video">
-                                    <div>
-                                        <p>One of the most enjoyable video projects I've worked on, this assignment involved creating an infographic about a topic of our choice, using Adobe After Effects.</p>
-                                        <p>It was particularly interesting to me because it was more or less my first time creating something just using After Effects, and though I remember feeling pleased with the result, I was sure I could do significantly better the next time, just because of how much I'd learned.</p>
-                                    </div>
-                                    <div class="video-container"><iframe title="Population Infographic Video" width="560" height="315" src="https://www.youtube.com/embed/WKtm1herTPg" frameborder="0" allow="autoplay; encrypted-media"
-                                        allowfullscreen></iframe></div>
-                                </div>
-                            </div>
-                            <!-- End .project-info -->
-                        </div>
-                        <!-- End .project -->
-                    </div>
-                </div>
+            <div id="surfaceFade" class="surfaceFade"></div>
+            <div id="starFade" class="starFade"></div>
+            <div class="seafade"></div>
+            
+        </section>
+        <section>
+            <div class="wrapper">
+                <h2 id="aboutMe">About Me</h2>
+                <span class="seperator"></span>
+                <p>I'm a composer, web developer, and ostensibly also a wizard. I run tabletop roleplaying games for my friends and occasionally play video games. I have a yellow belt in Judo and I also do Muay Thai Kickboxing. You have been warned.</p>
+                <p>For a sample of my musical work, please feast your ears upon this track, which is probably my most popular.</p>
+                <iframe width="100%" height="200" src="https://clyp.it/1ek4oq24/widget" frameborder="0"></iframe>
             </div>
-            <!-- End #projects -->
+        </section>
+    </div>
+    <footer>
+        <p>El footer. Something will likely be kicking around down here.</p>
+    </footer>
 
-            <div id="skills">
-                <h2 class="heading">Skills</h2>
-                <div class="skills-groups">
-                    <div class="skills-group">
-                        <h3>Programming</h3>
-                        <ul>
-                            <li>Bash</li>
-                            <li>Behat</li>
-                            <li>C</li>
-                            <li>C++</li>
-                            <li>C#</li>
-                            <li>CSS</li>
-                            <li>HTML</li>
-                            <li>Java</li>
-                            <li>JavaScript</li>
-                            <li>Less</li>
-                            <li>Node.js</li>
-                            <li>PHP</li>
-                            <li>Python</li>
-                            <li>Sass</li>
-                            <li>SQL</li>
-                        </ul>
-                    </div>
-                    <div class="skills-group">
-                        <h3>Tools</h3>
-                        <ul>
-                            <li>After Effects</li>
-                            <li>Audition</li>
-                            <li>Git</li>
-                            <li>JIRA</li>
-                            <li>Maya</li>
-                            <li>PhotoShop</li>
-                            <li>Premiere Pro</li>
-                            <li>Tortiose SVN</li>
-                            <li>Unity</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- End #skills -->
-
-        <div id="experience" class="background-alt">
-            <h2 class="heading">Experience</h2>
-            <div id="experience-timeline">
-                <div data-date="Aug. 2019 – Present">
-                    <div class="experience-header">
-                        <div class="experience-headings">
-                            <h3><a href="https://skypyre.com/" target="_blank">SkyPyre Studios</a></h3>
-                            <h4>Game Developer</h4>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>Programming and developing games</li>
-                        <li>Producing and editing company videos</li>
-                        <li>Creating music and audio for company media and products</li>
-                    </ul>
-                </div>
-
-                <div data-date="Jan. 2017 – Dec. 2017, <br/> Apr. 2018 – Aug. 2018">
-                    <div class="experience-header">
-                        <div class="experience-headings">
-                            <h3>
-                                <a href="https://bankofcanada.ca" target="_blank">Bank of Canada</a>
-                            </h3>
-                            <h4>Web Developer (Co-op, Summer Student)</h4>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>Worked with an agile team to develop and maintain five websites managed by the Bank of Canada</li>
-                        <li>Researched and implemented data migration test automation, saving weeks of time</li>
-                        <li>Developed tools to replace the Bank’s print publications with fully digital and interactive publications</li>
-                    </ul>
-                </div>
-
-                <div data-date="Sept. 2016 – June 2017">
-                    <div class="experience-header">
-                        <div class="experience-headings">
-                            <h3><a href="https://carleton.ca/" target="_blank">Carleton University</a></h3>
-                            <h4>Multimedia Developer</h4>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>Scripted and oversaw the production of a series of tutorial videos for two online introductory programming courses</li>
-                        <li>Worked with the courses' professor to ensure the videos provided a comparable learning experience to in-person classes</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- End #experience -->
-
-        <div id="education">
-            <h2 class="heading">Education</h2>
-            <div class="education-block">
-                <h3>
-                    <a href="https://carleton.ca/" target="_blank">Carleton University</a> &
-                    <a href="http://www.algonquincollege.com/" target="_blank">Algonquin College</a>
-                </h3>
-                <span class="education-date">2014 - 2019</span>
-                <h4>Bachelor of Information Technology</br> — <a href="http://bitdegree.ca/index.php?Program=IMD" target="_blank">Interactive Multimedia &amp; Design (co-op)</a></h4>
-                <h4>Advanced Diploma in Applied Arts</br> — <a href="http://bitdegree.ca/index.php?Program=IMD" target="_blank">Interactive Media Design</a></h4>
-                <p>IMD is a four year program offered by Carleton University in collaboration with Algonquin College that covers the full range of digital media, both from the creative side, and the technical side. The program emphasizes continuous learning, in and outside the classroom, and to embrace working with new and cutting edge tools and technologies we've never worked with before.</p> 
-                <p>As a graduate of the program, I was awarded a bachelor's degree from Carleton and an advanced diploma from Algonquin.</p>
-                <p>I learned a substantial amount about various topics during this program including:</p> 
-                    <ul>
-                        <li><b>Project Management</b> - Scrum, Kanban, source control</li>
-                        <li><b>Programming</b> - Software dev, web dev, mobile app dev, harware</li>
-                        <li><b>Video Production</b> - Filming, editing, audio, matchmoving, FX</li>
-                        <li><b>3D</b> - Modelling, texturing, rigging, animation, rendering, motion capture</li>
-                </ul>
-            </div>
-            <!-- End .education-block -->
-        </div>
-        <!-- End #education -->
-
-        <div id="contact">
-            <h2 class="heading">Get in Touch</h2>
-            <div id="contact-form">
-                <form method="POST" action="https://formspree.io/max.leeming@gmail.com">
-                    <input type="hidden" name="_subject" value="Contact request from personal website" />
-                    <input type="email" name="_replyto" placeholder="Your email" required>
-                    <textarea name="message" placeholder="Your message" required></textarea>
-                    <button class="project-repo-link" type="submit">Send</button>
-                </form>
-            </div>
-            <!-- End #contact-form -->
-        </div>
-        <!-- End #contact -->
-
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-5 copyright">
-                        <p>Copyright &copy; 2019 Max Leeming</p>
-                    </div>
-                    <div class="col-sm-2 top">
-                        <span id="to-top">
-                            <i class="fa fa-chevron-up" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <div class="col-sm-5 social">
-                        <ul>
-                            <li>
-                                <a href="https://github.com/Seakibble/" target="_blank">
-                                    <i class="fa fa-github" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://stackoverflow.com/" target="_blank">
-                                    <i class="fa fa-stack-overflow" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.facebook.com/profile.php?id=100013049438270/" target="_blank">
-                                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- End footer -->
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="js/scripts.min.js"></script>
-    </body>
-
+    <script src="homePage.js" ></script>
+</body>
 </html>
