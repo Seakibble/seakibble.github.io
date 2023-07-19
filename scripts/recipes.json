@@ -1,0 +1,98 @@
+[
+    {
+        "name": "Italian Sausage Soup",
+        "pic": "max_oh_no.jpg",
+        "tags": [
+            "Serves 6-8 Italians"
+        ],
+        "about": "This is a definite favourite meal of mine. I love making it when I feel sick or just need to be reminded of home.",
+        "ingredients": [
+            "4-6 Italian sausages",
+            "A bunch of kale",
+            "1 can of chopped tomates",
+            "6 cups of water",
+            "2 beef stock cubes",
+            "1 can of mixed beans",
+            "1 cup of Macoroni",
+            "Garlic",
+            "Basil",
+            "Cheese",
+            "Bread"
+        ],
+        "instructions": [
+            "Remove the sausages from their casings and brown them in a big pot. Add the garlic (chopped or minced) when they're about halfway brown.",
+            "When the sausages are brown, add the tomatoes, water, beef stock, beans and season with basil, salt and pepper to taste. Bring to a boil.",
+            "Add the Macoroni and bring to a simmer until the macoroni is cooked.",
+            "Add the kale. Wait 10-15 minutes.",
+            "Garnish with cheese, then serve with a slice or two of bread."
+        ],
+        "notes": [
+            "For the cheese, I recommend Monterey Jack or Cheddar."
+        ]
+    },
+    {
+        "name": "Tortellini Soup",
+        "pic": "max_prayer.jpg",
+        "tags": [
+            "Serves 6-8 Tortellinis"
+        ],
+        "about": "One of the classic meals my mother used to make, this soup is one of my biggest comfort foods.",
+        "ingredients": [
+            "1 large pack of fresh Tortellini",
+            "1 kielbasa sausage, chopped",
+            "1 onion, chopped",
+            "1 can of chopped tomates",
+            "6 cups of water",
+            "2 stock cubes",
+            "1 can of mixed beans",
+            "Garlic",
+            "Basil",
+            "Cheese",
+            "Bread"
+        ],
+        "instructions": [
+            "Saute the onion and garlic (chopped or minced) in oil. When they're nearly done, add the sausage.",
+            "Add the tomatoes, water, stock cubes, beans and basil. Bring to a steady simmer.",
+            "Add the tortellini. Wait until it's cooked, probably about 10 minutes or so.",
+            "Garnish with cheese, then serve with a slice or two of lovely bread!"
+        ],
+        "notes": ["For the cheese, I recommend Monterey Jack or Cheddar."]
+    },
+    {
+        "name": "Paneer",
+        "tags": ["Vegetarian"]
+    },
+    {
+        "name": "Lentils and Rice",
+        "tags": [
+            "Vegetarian"
+        ]
+    },
+    {
+        "name": "Bowtie Pasta"
+    },
+    {
+        "name": "Italian Sausage and Zucchini"
+    },
+    {
+        "name": "Sterz"
+    },
+    {
+        "name": "Sauerkraut Soup"
+    },
+    {
+        "name": "Vegetarian Chilli",
+        "tags": [
+            "Vegetarian"
+        ]
+    },
+    {
+        "name": "Dad's Chilli"
+    },
+    {
+        "name": "Shakshouka",
+        "tags": [
+            "Vegetarian"
+        ]
+    }
+]
