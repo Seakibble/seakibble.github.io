@@ -52,24 +52,6 @@ li {
     list-style-type: square;
 }
 
-
-ol {
-    list-style: none;
-    counter-reset: my-awesome-counter;
-}
-ol li {
-    list-style-type: none;
-    counter-increment: my-awesome-counter;
-    position: relative;
-}
-ol li::before {
-    position: absolute;
-    left: -1.3em;
-    content: counter(my-awesome-counter) ". ";
-    color: rgb(70,120,250);
-    font-weight: bold;
-}
-
 .content {
     min-height: 92vh;
 }
@@ -172,12 +154,35 @@ h3 + .seperator {
     border-top: 2px solid rgba(0,0,0, 0.05);
 }
 
+.instructionBox > ol {
+    list-style: none;
+    counter-reset: my-awesome-counter;
+}
+.instructionBox > ol li {
+    list-style-type: none;
+    counter-increment: my-awesome-counter;
+    position: relative;
+}
+.instructionBox > ol li::before {
+    position: absolute;
+    left: -1.3em;
+    content: counter(my-awesome-counter) ". ";
+    color: rgb(70,120,250);
+    font-weight: bold;
+}
+
+.noteBox li {
+    list-style-type: decimal;
+}
+
+
 .card h3 {
     padding-top: 0;
 }
 
 .card p {
     margin-top: 1em;
+    line-height: 1.2em;
 }
 div > p:first-of-type {
     margin-top: 0;
@@ -192,6 +197,16 @@ div > p:first-of-type {
     padding: 0.25em 0;
     border-bottom: 2px solid rgba(0,0,0, 0.05);
     border-top: 2px solid rgba(0,0,0, 0.05);
+}
+
+.noteBox {
+    padding: 15px 0 0;
+    margin-top: 10px;
+    border-top: 2px solid rgba(0,0,0, 0.05);
+    font-size: 0.9em;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-column-gap: 10px;
 }
 
 .tags span {
@@ -218,9 +233,17 @@ div > p:first-of-type {
 }
 
 .bigPic {
-    width: 60%;
+    padding-top:20px;
+    width: 100%;
+    object-fit: cover;
     align-self: center;
     justify-self: center;
+}
+
+p.emphasis {
+    font-weight: bold;
+    color: crimson;
+    line-height: 1em;
 }
 
 @media only screen and (max-width: 1200px) {

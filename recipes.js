@@ -25,7 +25,8 @@ const recipes = [
             "Add the Macoroni and bring to a simmer until the macoroni is cooked.",
             "Add the kale. Wait 10-15 minutes.",
             "Garnish with cheese, then serve with a slice or two of bread."
-        ]
+        ],
+        notes: ["You can do cool stuff with this recipe!", 'And other stuff too.']
     },
     {
         name: "Tortellini Soup",
@@ -92,6 +93,7 @@ function setSelectedRecipe(recipe) {
     let $about = document.getElementById('about')
     let $ingredients = document.getElementById('ingredients')
     let $instructions = document.getElementById('instructions')
+    let $notes = document.getElementById('notes')
     let $pic = document.getElementById('pic')
     
     $name.textContent = recipe.name ? recipe.name : '???'
@@ -126,6 +128,21 @@ function setSelectedRecipe(recipe) {
         }
     } else {
         $ingredients.innerHTML = '???'
+    }
+
+    if (Array.isArray(recipe.notes)) {
+        if (recipe.notes.length == 0) $notes.innerHTML = ''
+        else {
+            let output = '<div class="noteBox"><p class="emphasis">Notes:</p><ol>'
+        
+            for (let i = 0; i < recipe.notes.length; i++) {
+                output += "<li>" + recipe.notes[i] + "</li>"
+            }
+            output += '</ol></div>'
+            $notes.innerHTML = output
+        }
+    } else {
+        $notes.innerHTML = ''
     }
 }
 

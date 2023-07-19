@@ -252,12 +252,41 @@ boids[0].config = sharkConfig
 
 ////////////////////////////////////////////////////////////////////////////////////
 
+var fps, fpsInterval, now, then, elapsed;
+function startAnimating(fps) {
+    fpsInterval = 1000 / fps;
+    then = Date.now();
+    animate();
+}
+
+function animate() {
+    // request another frame
+    requestAnimationFrame(animate);
+
+    // calc elapsed time since last loop
+    now = Date.now();
+    elapsed = now - then;
+
+    // if enough time has elapsed, draw the next frame
+
+    if (elapsed > fpsInterval) {
+
+        // Get ready for next frame by setting then=now, but also adjust for your
+        // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
+        then = now - (elapsed % fpsInterval);
+
+        // Put your drawing code here
+        draw()
+    }
+}
+
+
 function init() {
     // ctx.globalCompositeOperation = 'source-over';
     ctx.fillStyle = 'rgb(70,120,250)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    window.requestAnimationFrame(draw);
+    startAnimating(60)
 }
 
 let $title = document.getElementById('title')
@@ -275,6 +304,9 @@ const max_oh_no = new Image(60, 60)
 max_oh_no.src = '/images/max_moon.png'
 
 function drawSun() {
+    // get height of the surface canvas
+    let surfaceHeight = $skyFade.offsetHeight - 40
+
     let rays = 6
     let raySpeed = 0.1
 
@@ -290,7 +322,7 @@ function drawSun() {
 
     // sun rays
     for (let i = 0; i < rays; i++) {
-        sunCtx.translate(sunPos, $sunCanvas.height - dayTime * 150);
+        sunCtx.translate(sunPos, $sunCanvas.height - dayTime * surfaceHeight);
         sunCtx.rotate((timeOffset / 1000 * raySpeed) + (360/rays) * i * Math.PI / 180);
 
         // sunCtx.fillRect(0, -15, 2000, 30);
@@ -308,13 +340,13 @@ function drawSun() {
 
     // daytime Sun
     sunCtx.beginPath();
-    sunCtx.translate(sunPos, $sunCanvas.height - dayTime * 150);
+    sunCtx.translate(sunPos, $sunCanvas.height - dayTime * surfaceHeight);
     sunCtx.arc(0, 0, 50, 0, 2 * Math.PI);
     sunCtx.fillStyle = "rgb(250, 230, 0)";
     sunCtx.fill();
     sunCtx.resetTransform()
 
-    sunCtx.translate(sunPos, $sunCanvas.height - dayTime * 150);
+    sunCtx.translate(sunPos, $sunCanvas.height - dayTime * surfaceHeight);
     sunCtx.beginPath();
     sunCtx.arc(0, 0, 42, 0, 2 * Math.PI);
     sunCtx.fillStyle = "rgb(250, 250, 0)";
@@ -323,7 +355,7 @@ function drawSun() {
 
     // sunset Sun
     sunCtx.beginPath();
-    sunCtx.translate(sunPos, $sunCanvas.height - dayTime * 150);
+    sunCtx.translate(sunPos, $sunCanvas.height - dayTime * surfaceHeight);
     sunCtx.arc(0, 0, 50, 0, 2 * Math.PI);
     sunCtx.fillStyle = "rgb(250, 100, 100, " + duskTime + ")";
     sunCtx.fill();
@@ -331,7 +363,7 @@ function drawSun() {
 
     // sunset Moon
     sunCtx.beginPath();
-    sunCtx.translate($sunCanvas.width - sunPos, $sunCanvas.height - -dayTime * 220 + 100);
+    sunCtx.translate($sunCanvas.width - sunPos, $sunCanvas.height - -dayTime * (surfaceHeight+80) + 100);
     sunCtx.arc(0, 0, 40, 0, 2 * Math.PI);
     sunCtx.fillStyle = "rgb(255, 255, 255)";
     sunCtx.fill();
@@ -342,7 +374,7 @@ function drawSun() {
 
     // underwater
     for (let i = 0; i < rays; i++) {
-        ctx.translate(sunPos, $sunCanvas.height - dayTime * 150 - $sunCanvas.height);
+        ctx.translate(sunPos, $sunCanvas.height - dayTime * surfaceHeight - $sunCanvas.height);
         ctx.rotate((timeOffset / 1000 * raySpeed) + (360 / rays) * i * Math.PI / 180);
         
         ctx.beginPath();
@@ -416,8 +448,6 @@ function draw() {
 
     // Draw sun
     drawBoat()
-
-    window.requestAnimationFrame(draw);
 }
 
 init();
