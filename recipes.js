@@ -87,7 +87,9 @@ const recipes = [
 let $tableDiv = document.getElementById('tableDiv') 
 let $display = document.getElementById('displayedRecipe')
 
-function setSelectedRecipe(recipe) {
+function setSelectedRecipe(index) {
+    let recipe = recipes[index]
+
     let $name = document.getElementById('name')
     let $tags = document.getElementById('tags')
     let $about = document.getElementById('about')
@@ -145,25 +147,42 @@ function setSelectedRecipe(recipe) {
     } else {
         $notes.innerHTML = ''
     }
+    if ($tableDiv.getElementsByClassName('selected')[0]) $tableDiv.getElementsByClassName('selected')[0].classList.remove('selected')
+
+    document.getElementById('recipe-'+index).classList.add('selected')
 }
 
 function getTable() {
     for (let i = 0; i < recipes.length; i++) {
-        $tableDiv.innerHTML += "<div data-id='"+i+"'>" + recipes[i].name + "</div>"
-    }
-    
+        let urlName = makeURLFriendly(recipes[i].name)
+        $tableDiv.innerHTML += "<a href=#"+urlName+" id='recipe-"+i+"'><div data-id='"+i+"'>" + recipes[i].name + "</div></a>"
+    }    
+}
+
+function makeURLFriendly(text) {
+    return text.replaceAll(' ', '_').toLowerCase()
 }
 
 function selectRecipe(e) {
     let $clicked = e.target
     if ($clicked.dataset.id) {
-        setSelectedRecipe(recipes[$clicked.dataset.id])
-        document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
+        setSelectedRecipe($clicked.dataset.id)
+        if (document.body.clientWidth <= 700) document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
     } else alert('Something went wrong?!')
 }
 
+
 getTable()
-setSelectedRecipe(recipes[0])
+if (window.location.hash) {
+    for (let i = 0; i < recipes.length; i++) {
+        if (recipes[i] && recipes[i].name && '#' + makeURLFriendly(recipes[i].name) == window.location.hash) {
+            setSelectedRecipe(i)
+            break
+        }
+    }
+} else {
+    setSelectedRecipe(0)
+}
 
 
 $tableDiv.addEventListener("click",selectRecipe)
