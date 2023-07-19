@@ -96,7 +96,8 @@ function setSelectedRecipe(recipe) {
     let $notes = document.getElementById('notes')
     let $pic = document.getElementById('pic')
     
-    $name.textContent = recipe.name ? recipe.name : '???'
+    $name.innerHTML = recipe.name ? recipe.name : '???'
+    $name.innerHTML += '<a class="anchor" id="top"></a>'
     
 
     $about.textContent = recipe.about ? recipe.about : '???'
@@ -155,8 +156,10 @@ function getTable() {
 
 function selectRecipe(e) {
     let $clicked = e.target
-    if ($clicked.dataset.id) setSelectedRecipe(recipes[$clicked.dataset.id])
-    else alert('Something went wrong?!')
+    if ($clicked.dataset.id) {
+        setSelectedRecipe(recipes[$clicked.dataset.id])
+        document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
+    } else alert('Something went wrong?!')
 }
 
 getTable()

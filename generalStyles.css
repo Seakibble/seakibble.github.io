@@ -52,6 +52,13 @@ li {
     list-style-type: square;
 }
 
+a.anchor {
+    display: block;
+    position: relative;
+    top: -60px;
+    visibility: hidden;
+}
+
 .content {
     min-height: 92vh;
 }
@@ -254,7 +261,7 @@ p.emphasis {
 
 
 @media only screen and (max-width: 700px) {
-    .card {
+    #displayedRecipe.card {
         grid-template-columns: 1fr;
     }
     .card .nameBox, .card .instructionBox {
