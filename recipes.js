@@ -26,36 +26,124 @@ const recipes = [
             "Add the kale. Wait 10-15 minutes.",
             "Garnish with cheese, then serve with a slice or two of bread."
         ]
-    }
+    },
+    {
+        name: "Tortellini Soup",
+        pic: 'max_prayer.jpg',
+        tags: [
+            "Serves 6-8 Tortellinis"
+        ],
+        about: "One of the classic meals my mother used to make, this soup is one of my biggest comfort foods.",
+        ingredients: [
+            "1 large pack of fresh Tortellini",
+            "1 kielbasa sausage, chopped",
+            "1 onion, chopped",
+            "1 can of chopped tomates",
+            "6 cups of water",
+            "2 stock cubes",
+            "1 can of mixed beans",
+            "Garlic (chopped or minced)",
+            "Basil",
+            "Cheese (Monterey Jack or Cheddar recommended)",
+            "Bread"
+        ],
+        instructions: [
+            "Saute the onion and garlic in oil. When they're nearly done, add the sausage.",
+            "Add the tomatoes, water, stock cubes, beans and basil. Bring to a steady simmer.",
+            "Add the tortellini. Wait until it's cooked, probably about 10 minutes or so.",
+            "Garnish with cheese, then serve with a slice or two of lovely bread!"
+        ]
+    },
+    {
+        name: "Paneer"
+    },
+    {
+        name: "Lentils and Rice"
+    },
+    {
+        name: "Bowtie Pasta"
+    },
+    {
+        name: "Italian Sausage and Zucchini"
+    },
+    {
+        name: "Sterz"
+    },
+    {
+        name: "Sauerkraut Soup"
+    },
+    {
+        name: "Vegetarian Chilli"
+    },
+    {
+        name: "Dad's Chilli"
+    },
+    {
+        name: "Shakshouka"
+    },
 ]
 
-
+let $tableDiv = document.getElementById('tableDiv') 
 let $display = document.getElementById('displayedRecipe')
+
 function setSelectedRecipe(recipe) {
     let $name = document.getElementById('name')
     let $tags = document.getElementById('tags')
     let $about = document.getElementById('about')
     let $ingredients = document.getElementById('ingredients')
     let $instructions = document.getElementById('instructions')
+    let $pic = document.getElementById('pic')
     
-    $name.textContent = recipe.name
-    $about.textContent = recipe.about
+    $name.textContent = recipe.name ? recipe.name : '???'
+    
 
-    $instructions.innerHTML = recipe.instructions
-    $instructions.innerHTML = ''
-    for (let i = 0; i < recipe.instructions.length; i++) {
-        $instructions.innerHTML += "<li>" + recipe.instructions[i] + "</li>"
+    $about.textContent = recipe.about ? recipe.about : '???'
+    
+    $pic.src = recipe.pic ? '/images/recipes/' + recipe.pic : ''
+
+    if (Array.isArray(recipe.instructions)) {
+        $instructions.innerHTML = ''
+        for (let i = 0; i < recipe.instructions.length; i++) {
+            $instructions.innerHTML += "<li>" + recipe.instructions[i] + "</li>"
+        }
+    } else {
+        $instructions.innerHTML = '???'
     }
 
-    $tags.innerHTML = ''
-    for (let i = 0; i < recipe.tags.length; i++) {
-        $tags.innerHTML += "<span>"+recipe.tags[i]+"</span>"
+    if (Array.isArray(recipe.tags)) {
+        $tags.innerHTML = ''
+        for (let i = 0; i < recipe.tags.length; i++) {
+            $tags.innerHTML += "<span>" + recipe.tags[i] + "</span>"
+        }
+    } else {
+        $tags.innerHTML = '???'
     }
 
-    $ingredients.innerHTML = ''
-    for (let i = 0; i < recipe.ingredients.length; i++) {
-        $ingredients.innerHTML += "<li>" + recipe.ingredients[i] + "</li>"
+    if (Array.isArray(recipe.ingredients)) {
+        $ingredients.innerHTML = ''
+        for (let i = 0; i < recipe.ingredients.length; i++) {
+            $ingredients.innerHTML += "<li>" + recipe.ingredients[i] + "</li>"
+        }
+    } else {
+        $ingredients.innerHTML = '???'
     }
 }
 
+function getTable() {
+    for (let i = 0; i < recipes.length; i++) {
+        $tableDiv.innerHTML += "<div data-id='"+i+"'>" + recipes[i].name + "</div>"
+    }
+    
+}
+
+function selectRecipe(e) {
+    let $clicked = e.target
+    if ($clicked.dataset.id) setSelectedRecipe(recipes[$clicked.dataset.id])
+    else alert('Something went wrong?!')
+}
+
+getTable()
 setSelectedRecipe(recipes[0])
+
+
+$tableDiv.addEventListener("click",selectRecipe)

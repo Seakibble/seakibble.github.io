@@ -47,7 +47,7 @@ h1.titleMask span {
 .stars {
     height: 20vh;
     width: 100%;
-    background-image: url("stars.jpg");
+    background-image: url("/images/stars.jpg");
     z-index: -2;
     position: absolute;
 }
@@ -194,21 +194,21 @@ iframe {
 
 
 @media only screen and (max-width: 600px) {
-  .fancy {
-    font-size: 1.2em;
-  }
+    .fancy {
+        font-size: 1.2em;
+    }
     h1 {
-    font-size: 2em;
-  }
-  
-  .buttons {
-    grid-auto-flow: row;
-    padding-top: 8vh;
-  }
+        font-size: 2em;
+    }
 
-  .nameplate {
-    padding-top: 10vh;
-}
+    .buttons {
+        grid-auto-flow: row;
+        padding-top: 8vh;
+    }
+
+    .nameplate {
+        padding-top: 10vh;
+    }
 }
 
 
