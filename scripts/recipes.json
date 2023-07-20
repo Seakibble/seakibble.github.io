@@ -33,7 +33,7 @@
         "tags": [
             "Serves 9-12"
         ],
-        "about": "Most of the recipies I know come from my Mom. This is one of the few exceptions. It remains to this day the best chilli recipe I know, and it always reminds me of my Dad and the times we cooked it together. Invariably, he would forget one of the ingredients. This was such a consistent happenstance that it became a running joke that forgetting an ingredient was tradition. As such, each time he made it, it was a little bit different. Regardless, it always had a certian signature flavour that can't be beaten by any other chilli recipe.",
+        "about": "Most of the recipies I know come from my Mom. This is one of the few exceptions. It remains to this day the best chilli recipe I know, and it always reminds me of my Dad and the times we cooked it together. Invariably, he would forget one of the ingredients. This was such a consistent happenstance that it became a running joke that forgetting an ingredient was tradition. As such, each time he made it, it was a little bit different. Regardless, it always had a certian signature flavour that can't be beaten by any other chilli recipe. I highly recommend eating this with cornbread or <a class='quickLink' href='#moms_cheese_biscuits'>Cheese Biscuits</a>.",
         "ingredients": [
             "1 lb lean ground beef",
             "1 pack smoked bacon (chopped into small squares)",
@@ -61,8 +61,31 @@
         "notes": [
             "Every person I've ever met has claimed that chilli should be eaten with rice. They are all wrong. The correct way to eat chilli is with fusilli pasta. This is because that's the way Dad always served this chilli recipe, and if you disagree, you simply haven't experienced the majesty of chilli with fusilli. The chilli gets locked into all the twists, and it's just so delicious! Try it! You'll never go back!",
             "A lazy alternative to pasta or rice that I occasionally restort to is na'an bread. I've had a lot of issues in the past overeating because I underestimated the amount of pasta I was making. I've found portion control to be a lot easier with na'an.",
-            "One of the best things about chilli is that it's a fantastic freezer meal. When I make a batch, I typically eat leftovers for a day or two, then freeze the rest. 2-3 serving spoons-worth in a ziplock bag is usually about a portion for me, and I easily end up with 6 or more bags.",
-            "Highly recommend eating this with cornbread or <a href='#cheese_biscuits'>Cheese Buscuits</a>."
+            "One of the best things about chilli is that it's a fantastic freezer meal. When I make a batch, I typically eat leftovers for a day or two, then freeze the rest. 2-3 serving spoons-worth in a ziplock bag is usually about a portion for me, and I easily end up with 6 or more bags."
+        ]
+    },
+    {
+        "name": "Rice with Onions",
+        "isVegetarian": true,
+        "tags": ["Serves 1+"],
+        "about": "Less of a meal on its own, this is the traditional recipe I follow for any situation where I need to make rice. It's part of every recipe of my grandfather's that involves making rice and it always turns out great! If you're feeling lazy, you can skip the onion and just follow the rest of the instructions for plain rice. If you want to make a large batch for several people, just multiply the amounts by the number of people.",
+        "ingredients": [
+            "1/2 cup of rice",
+            "3/4 cup of water",
+            "1/3 onion (chopped)",
+            "A pinch of salt"
+        ],
+        "instructions": [
+            "Saute the onion in a saucepan with a bit of oil or butter for 3-5 minutes.",
+            "Add the rice, and stir it around a bit to make sure it's fully mixed with the onion.",
+            "Add the water, and salt if desired. If you're making a big batch of rice, the ratio should always be 2 parts rice, 3 parts water. Set the burner to maximum.",
+            "As the water evaporates, wait until it dips below the level of the rice. Then put the lid on and turn the burner to low.",
+            "Wait 15-20 minutes for it to cook. Then serve with your preferred meal."
+        ],
+        "notes": [
+            "You may choose to wash your rice first before adding it to the saucepan, to remove some of the starch. This causes it to come out fluffier.",
+            "When putting the lid on, the amount of water still inside determines how mushy or dry the rice will be. The more water, the mushier the rice. It takes practice to figure out what your preference is, but as a general rule, you should be seeding drops of condensation on the inside of the lid after 10-20 seconds. If your lid isn't transparent, you can lift it up just to see.",
+            "If cooking a larger batch of rice, you'll have to let more water evaporate than you might expect. The exact timing depends on the amount of rice you're cooking and how deep the pot is that you're cooking in (or rather, how deep the rice is)."
         ]
     },
     {
@@ -70,7 +93,7 @@
         "tags": [
             "Serves 6-8"
         ],
-        "about": "This is a definite favourite meal of mine. Apparently it was originally a recipe by Rachael Ray, but my mother has been making it for years and put her own spin on it. Spicy and delicious, I love making it when I feel glum and just need to be reminded of home.",
+        "about": "This is a definite favourite meal of mine. Apparently it was originally a recipe by Rachael Ray, but my mother has been making it for years and put her own spin on it. Spicy and delicious, I love making it when I feel glum and just need to be reminded of home. I highly recommend eating this with Mom's Tasty <a class='quickLink' href='#moms_cheese_biscuits'>Cheese Biscuits</a>.",
         "ingredients": [
             "4-6 Italian sausages",
             "A bunch of kale (or spinach)",
@@ -91,8 +114,7 @@
             "Garnish with cheese, then serve."
         ],
         "notes": [
-            "For the cheese, I recommend Monterey Jack or Cheddar.",
-            "Highly recommend eating this with Mom's Tasty <a href='#cheese_biscuits'>Cheese Buscuits</a>."
+            "For the cheese, I recommend Monterey Jack or Cheddar."
         ]
     },
     {
@@ -127,10 +149,36 @@
         ]
     },
     {
-        "name": "Paneer",
+        "name": "Paneer Curry",
         "pic": "paneer.jpg",
         "isVegetarian": "true",
-        "tags": []
+        "tags": ["Serves 4-6"],
+        "about": "An absolutely fantastic spicy meal. It's not the easiest thing to find, but if you do happen to get your hands on some paneer, this recipe is a great way to make it. I usually stock up on paneer because it freezes really well.",
+        "ingredients": [
+            "A pack of paneer (indian cheese)",
+            "A can of chopped tomates",
+            "1/2 cup table cream",
+            "1/2 cup of peas",
+            "Ginger",
+            "Garlic (chopped)",
+            "A tbsp total of Indian chili powder, garem masala, black mustard seeds, cumin seeds, corriander powder, cumin powder",
+            "Rice or na'an bread",
+            "Cilantro for garnish"
+        ],
+        "instructions": [
+            "Cut the paneer into cubes. Heat 1/2 inch of oil in a large frying pan (medium heat). Brown the paneer on both sides.",
+            "As the paneer is finished, pull out the pieces and place them on a paper towel to absorb the excess oil.",
+            "Drain the oil, leaving about 4 tablespoons' worth. Grate in the ginger and add the garlic, stirring for 30 seconds.",
+            "Add the spices, and stir for 45-60 seconds. Make sure it doesn't burn.",
+            "Add the tomatoes and about half an inch of water. Stir and bring to a boil. Then cover and reduce to a simmer.",
+            "Set rice going.",
+            "Cook the tomatoes until it's really incorporated fully (15 minutes or so).",
+            "Add the paneer, and let it sit for a while on low heat.",
+            "Add the peas. Add water if it's too dry. Let the peas soften.",
+            "Add cream, and salt to taste.",
+            "Serve with rice or na'an bread. Garnish with cilantro."
+        ],
+        "notes": ["If you're working with frozen paneer, make sure you move it to the fridge the day before to defrost. I don't recommend trying to thaw it in water because I find it gets very crumbly and that makes frying it harder."]
     },
     {
         "name": "Italian Sausage and Zucchini",
@@ -138,20 +186,20 @@
         "tags": [
             "Serves 4-6"
         ],
-        "about": "One of my Grandy's recipes, and probably one of my all time favourite dinners. He made this for us once on one of our trips to Florida where he and my Grandma lived. Apparently he adapted it from an old French recipe. Quick, easy, delicious!",
+        "about": "One of my Grandy's recipes, and probably one of my all time favourite dinners. He made this for us once on one of our trips to Florida where he and my Grandma lived. Apparently he adapted it from an old French recipe. Quick, easy, delicious! For the complete experience, make sure you use Grandy's <a class='quickLink' href='#rice_with_onions'>Rice with Onions</a> recipe too.",
         "ingredients": [
             "4-6 hot italian sausages (sliced)",
             "An onion (chopped)",
             "1 can of chopped tomates",
-            "2-3 zuchinnis, sliced",
-            "fennel seeds",
+            "2-3 zuchinnis (sliced)",
+            "Fennel seeds (crushed)",
             "1 and a half cups of water",
-            "1/2 cup of rice per person"
+            "Rice"
         ],
         "instructions": [
             "Fry the onion in oil for about 3 minutes.",
             "Add the sausages and cook until they're brown.",
-            "Add the tomatoes, zuchinni, and water. Bring to a boil, then cover and reduce to a gentle simmer for at least 15 minutes.",
+            "Add the tomatoes, fennel seeds, zuchinni and water. Bring to a boil, then cover and reduce to a gentle simmer for at least 15 minutes.",
             "Cook the rice.",
             "When the rice is ready, serve on a plate or bowl, spooning the sauce over it."
         ],
@@ -160,30 +208,26 @@
         ]
     },
     {
-        "name": "Chana Masala",
-        "pic": "chana_masala.jpg",
+        "name": "Mom's Cheese Biscuits",
+        "pic": "moms_cheese_biscuits.jpg",
         "isVegetarian": "true",
-        "tags": [
-            ""
-        ]
-    },
-    {
-        "name": "Pizza",
-        "pic": "pizza.jpg",
-        "isVegetarian": "true",
-        "tags": []
-    },
-    {
-        "name": "Cheese Biscuits",
-        "pic": "cheese_buscuits.jpg",
-        "isVegetarian": "true",
-        "tags": []
-    },
-    {
-        "name": "Picadillo",
-        "pic": "picadillo.jpg",
-        "tags": [
-            "Serves 4-6"
-        ]
+        "tags": ["Serves 10-12"],
+        "about": "Delicious, soft and puffy, these biscuits will go great with any soup or chilli on this list.",
+        "ingredients": [
+            "2 Cups Bisquick biscuit mix",
+            "2/3 cup milk",
+            "1/2 cup cheddar cheese (shredded)",
+            "1/4 cup butter (melted)",
+            "1/4 tsp garlic powder",
+            "1/4 tsp dried parsely"
+        ],
+        "instructions": [
+            "Preheat oven to 450 degrees",
+            "Mix biscuit mix, milk and cheese until soft dough forms, and beat vigorously for 30 seconds.",
+            "Drop dough by spoonfuls onto a greased cookie sheet. Bake for 8-10 minutes or until golden brown.",
+            "Mix butter, garlic powder, and dried parsley. When the biscuits are done, slather the mix over them before removing them from the cookie sheet.",
+            "Serve warm."
+        ],
+        "notes": []
     }
 ]

@@ -85,6 +85,7 @@ function setSelectedRecipe(index) {
 }
 
 function getTable() {
+    $tableDiv.innerHTML = ''
     for (let i = 0; i < recipes.length; i++) {
         let urlName = makeURLFriendly(recipes[i].name)
         let output = ''
@@ -106,13 +107,24 @@ function selectRecipe(e) {
     let $clicked = e.target
     if ($clicked.dataset.id) {
         setSelectedRecipe($clicked.dataset.id)
-        if (document.body.clientWidth <= 700) document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
+        scrollToRecipe()
     } else alert('Something went wrong?!')
 }
 
+function scrollToRecipe() {
+    if (document.body.clientWidth <= 700) document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
+}
 
-function init() {
-    getTable()
+function quickLink(e) {
+    if (e.target.classList.contains("quickLink")) {
+        setTimeout(() => {
+            selectRecipeFromURL()
+            scrollToRecipe()
+        }, 10);
+    }
+}
+
+function selectRecipeFromURL() {
     if (window.location.hash) {
         for (let i = 0; i < recipes.length; i++) {
             if (recipes[i] && recipes[i].name && '#' + makeURLFriendly(recipes[i].name) == window.location.hash) {
@@ -123,7 +135,14 @@ function init() {
     } else {
         setSelectedRecipe(0)
     }
+}
 
+function init() {
+    getTable()
+    selectRecipeFromURL()
+
+    
+    $display.addEventListener("click", quickLink)
     $tableDiv.addEventListener("click", selectRecipe)
 }
 
@@ -164,11 +183,35 @@ function init() {
         "tags": []
     },
     {
-        "name": "Korosht",
+        "name": "Loobia Korosht",
         "tags": []
     },
     {
         "name": "Ham and Pasta",
+        "tags": []
+    },
+    {
+        "name": "Kalar's Sauce"
+    },
+    {
+        "name": "Picadillo",
+        "pic": "picadillo.jpg",
+        "tags": [
+            "Serves 4-6"
+        ]
+    },
+    {
+        "name": "Chana Masala",
+        "pic": "chana_masala.jpg",
+        "isVegetarian": "true",
+        "tags": [
+            ""
+        ]
+    },
+    {
+        "name": "Pizza",
+        "pic": "pizza.jpg",
+        "isVegetarian": "true",
         "tags": []
     }
 
