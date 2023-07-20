@@ -17,27 +17,25 @@ function setSelectedRecipe(index) {
     let $ingredients = document.getElementById('ingredients')
     let $instructions = document.getElementById('instructions')
     let $notes = document.getElementById('notes')
-    let $pic = document.getElementById('pic')
     
+
+    // generate name
     $name.innerHTML = recipe.name ? recipe.name : '???'
-    $name.innerHTML += '<a class="anchor" id="top"></a>'
+    $name.insertAdjacentHTML('afterEnd', '<a class="anchor" id="top"></a>')
     
-
-    $about.textContent = recipe.about ? recipe.about : '???'
-    
-    $pic.src = recipe.pic ? '/images/recipes/' + recipe.pic : ''
-
-    if (Array.isArray(recipe.instructions)) {
-        $instructions.innerHTML = ''
-        for (let i = 0; i < recipe.instructions.length; i++) {
-            $instructions.innerHTML += "<li>" + recipe.instructions[i] + "</li>"
-        }
-    } else {
-        $instructions.innerHTML = '???'
+    $about.innerHTML = ''
+    // generate image
+    if (recipe.pic) {
+        $about.innerHTML += "<img class='bigPic' src=" + ('/images/recipes/' + recipe.pic) + ">"
     }
 
+    // generate about text
+    $about.innerHTML += "<p>" + (recipe.about ? recipe.about : '???') + "</p>"
+
+    // generate tags
     if (Array.isArray(recipe.tags)) {
         $tags.innerHTML = ''
+        if (recipe.isVegetarian) $tags.innerHTML += "<span class='green'>Vegetarian</span>"
         for (let i = 0; i < recipe.tags.length; i++) {
             $tags.innerHTML += "<span>" + recipe.tags[i] + "</span>"
         }
@@ -45,6 +43,7 @@ function setSelectedRecipe(index) {
         $tags.innerHTML = '???'
     }
 
+    // generate ingredients
     if (Array.isArray(recipe.ingredients)) {
         $ingredients.innerHTML = ''
         for (let i = 0; i < recipe.ingredients.length; i++) {
@@ -54,6 +53,17 @@ function setSelectedRecipe(index) {
         $ingredients.innerHTML = '???'
     }
 
+    // generate instructions
+    if (Array.isArray(recipe.instructions)) {
+        $instructions.innerHTML = ''
+        for (let i = 0; i < recipe.instructions.length; i++) {
+            $instructions.innerHTML += "<li>" + recipe.instructions[i] + "</li>"
+        }
+    } else {
+        $instructions.innerHTML = '???'
+    }
+
+    // generate notes
     if (Array.isArray(recipe.notes)) {
         if (recipe.notes.length == 0) $notes.innerHTML = ''
         else {
@@ -68,15 +78,23 @@ function setSelectedRecipe(index) {
     } else {
         $notes.innerHTML = ''
     }
-    if ($tableDiv.getElementsByClassName('selected')[0]) $tableDiv.getElementsByClassName('selected')[0].classList.remove('selected')
 
+    // Update selected recipe in table
+    if ($tableDiv.getElementsByClassName('selected')[0]) $tableDiv.getElementsByClassName('selected')[0].classList.remove('selected')
     document.getElementById('recipe-'+index).classList.add('selected')
 }
 
 function getTable() {
     for (let i = 0; i < recipes.length; i++) {
         let urlName = makeURLFriendly(recipes[i].name)
-        $tableDiv.innerHTML += "<a href=#"+urlName+" id='recipe-"+i+"'><div data-id='"+i+"'>" + recipes[i].name + "</div></a>"
+        let output = ''
+        output += "<a href=#" + urlName + " id='recipe-" + i + "'><div data-id='" + i + "'>"
+        output += recipes[i].name
+        if (recipes[i].isVegetarian) {
+            output += "<span class='veg'>V</span>"
+        }
+        output += "</div></a>"
+        $tableDiv.innerHTML += output
     }    
 }
 
@@ -108,3 +126,73 @@ function init() {
 
     $tableDiv.addEventListener("click", selectRecipe)
 }
+
+
+/*
+/// Recipes to add
+
+,
+    {
+        "name": "Paneer",
+        "isVegetarian": "true",
+        "tags": []
+    },
+    {
+        "name": "Lentils and Rice",
+        "isVegetarian": "true",
+        "tags": []
+    },
+    {
+        "name": "Bowtie Pasta",
+        "isVegetarian": "true"
+    },
+    {
+        "name": "Italian Sausage and Zucchini"
+    },
+    {
+        "name": "Sterz"
+    },
+    {
+        "name": "Sauerkraut Soup"
+    },
+    {
+        "name": "Vegetarian Chilli",
+        "isVegetarian": "true",
+        "tags": []
+    },
+    {
+        "name": "Shakshouka",
+        "isVegetarian": "true",
+        "tags": []
+    },
+    {
+        "name": "Mushroom Burgers",
+        "isVegetarian": "true",
+        "tags": []
+    },
+    {
+        "name": "Picadillo",
+        "tags": [
+            "Serves 4-6"
+        ]
+    },
+    {
+        "name": "Chana Masala",
+        "isVegetarian": "true",
+        "tags": [""]
+    },
+    {
+        "name": "Korosht",
+        "tags": []
+    },
+    {
+        "name": "Cheese Biscuits",
+        "isVegetarian": "true",
+        "tags": []
+    },
+    {
+        "name": "Ham and Pasta",
+        "tags": []
+    }
+
+*/

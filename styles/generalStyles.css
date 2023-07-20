@@ -49,13 +49,25 @@ ol, ul {
 li {
     padding-bottom: 0.5em;
     margin-left: 0.5em;
-    list-style-type: square;
+    list-style-type: disc;
+}
+a {
+    color:rgb(0, 31, 109);
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 1px solid grey;
+
+    transition: border-color 0.2s, color 0.2s;
+}
+a:hover {
+    border-color: rgb(0, 31, 109);
+    color: rgb(70,120,250);
 }
 
 a.anchor {
     display: block;
     position: relative;
-    top: -80px;
+    top: -95px;
     visibility: hidden;
 }
 
@@ -118,7 +130,20 @@ h3 + .seperator {
 #displayedRecipe.card {
     display: grid;
     grid-gap: 1em;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+}
+
+h3 {
+    font-family: 'Satisfy', cursive;
+    text-align: center;
+}
+h3::before, h3::after {
+    content: "—";
+    margin: 0.5em;
+}
+
+#table.card {
+    align-self: start;
 }
 
 #tableDiv {
@@ -154,6 +179,8 @@ h3 + .seperator {
 #tableDiv a {
     color: black;
     text-decoration: none;
+    font-weight: normal;
+    border: none;
 }
 #tableDiv .selected {
     background: rgb(0, 31, 109);
@@ -168,10 +195,29 @@ h3 + .seperator {
     background:rgb(0, 21, 74)
 }
 
+.veg {
+    float: right;
+    background: rgb(0, 63, 0, 0.75);
+    color: rgb(68, 255, 68);
+    font-weight: bold;
+    padding: 3px 5px 2px;
+    border-radius: 20px;
+    position: relative;
+    font-size: 0.8em;
+    top: -1px;
 
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.selected .veg {
+    background: rgb(68, 255, 68, 0.8);
+    color: rgb(0, 63, 0);    
+}
+
+/* 
 .card .nameBox, .card .instructionBox {
     grid-column: span 2;
-}
+} */
 
 .card .instructionBox {
     padding-top: 1em;
@@ -236,10 +282,14 @@ div > p:first-of-type {
 .tags span {
     justify-self: start;
     padding: 3px 8px;
-    background: crimson;
+    background: rgb(0, 31, 109);
     color: white;
     border-radius: 5px;
     font-size: 0.8em;
+}
+
+.tags span.green {
+    background: rgb(0, 63, 0);
 }
 
 .recipes {
@@ -252,22 +302,64 @@ div > p:first-of-type {
 
 .aboutBox {
     display: grid;
-    align-content: flex-start;
-    
+    align-items: flex-start;
+    align-content: start;
+    border-bottom: 2px solid rgba(0,0,0, 0.05);
+    grid-template-columns: auto auto;
+    grid-template-rows: auto 1fr;
+    padding-bottom: 20px;
+}
+.aboutBox img + p {
+    margin-left: 20px;
+}
+
+#ingredients {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .bigPic {
-    padding-top:20px;
+    box-sizing: border-box;
     width: 100%;
+    max-height: 200px;
     object-fit: cover;
     align-self: center;
     justify-self: center;
+    border: 2px solid rgba(0,0,0, 0.05);
 }
 
 p.emphasis {
     font-weight: bold;
-    color: crimson;
+    color: rgb(0, 31, 109);
     line-height: 1em;
+}
+
+nav {
+    background:rgb(185, 197, 255);
+    text-align: center;
+    font-size: 1.2em;
+    box-shadow: rgb(6, 0, 42) 0 0 10px;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+}
+nav a {
+    background:rgb(255,255,255, 0.4);
+    padding: 15px;
+    display: inline-block;
+    height: 100%;
+    color: rgba(0, 0, 0, 0.9);
+    font-weight: normal;
+    border-right: 2px solid rgba(0, 0, 0, 0.1);
+    border-bottom: none;
+}
+nav a:first-child {
+    border-left: 2px solid rgba(0, 0, 0, 0.1);
+}
+nav a:hover {
+    background:rgb(70,120,250);
+    color: white;
+    border-right: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 @media only screen and (max-width: 1200px) {
@@ -278,10 +370,29 @@ p.emphasis {
 
 
 @media only screen and (max-width: 700px) {
+    h3::before, h3::after {
+        content: '';
+        margin: 0;
+    }
+    .card {
+        border-radius: 0;
+        border-right: none;
+        border-left: none;
+    }
+    .wrapper {
+        padding-left: 0;
+        padding-right: 0;
+    }
     #displayedRecipe.card {
         grid-template-columns: 1fr;
     }
     .card .nameBox, .card .instructionBox {
         grid-column: span 1;
+    }
+    .aboutBox {
+        grid-template-columns: auto;
+    }
+    .bigPic {
+        margin-bottom: 10px;
     }
 }

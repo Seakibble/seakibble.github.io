@@ -1,11 +1,68 @@
 [
     {
+        "name": "Poached Eggs and Bagels",
+        "pic": "poached_eggs_and_bagels.jpg",
+        "isVegetarian": true,
+        "tags": [
+            "Serves 1-2"
+        ],
+        "about": "A solid way to start your day, I have it pretty much every morning for breakfast with a mug of coffee. Can't for the life of me remember if I got this recipe from someone else or developed it myself, but I suspect the latter.",
+        "ingredients": [
+            "2 eggs",
+            "1 bagel",
+            "Cream cheese",
+            "Sunflower seeds",
+            "Pumpkin seeds",
+            "Parmesan"
+        ],
+        "instructions": [
+            "Set a saucepan half to two-thirds filled with water to high heat.",
+            "Crack the eggs into a small bowel.",
+            "When it's boiling, whisk it to create a vortex, and gently drop the eggs into the center. Put the lid on, turn off the heat, and set a timer for 3 and a half to 4 minutes, depending on how runny you want the eggs.",
+            "While you're waiting, slice the bagel, spread cream cheese on both halves and sprinkle the seeds on top - pumpkin first then sunflower, for the optimal spread.",
+            "When the eggs are done, scoop them out with a big serving spoon and drop them each on a bagel.",
+            "Season liberally with pepper (and salt if you like, I don't care for it myself), and paremsan."
+        ],
+        "notes": [
+            "If memory serves, I learned this method for poaching eggs from Gordon Ramsey, and it's never let me down. The trick is to whisk as fast as you can and immediately drop the eggs in. If you wait too long, the vortex will fade and the eggs will not stay together."
+        ]
+    },
+    {
+        "name": "Dad's Fabulous Chilli",
+        "tags": [
+            "Serves 8-12"
+        ],
+        "about": "Most of the recipies on this site come from my Mom. This is one of the few exceptions. It remains to this day the best chilli recipe I know, and it always reminds me of my Dad and the times we cooked it together. Invariably, he would forget one of the ingredients. This was such a consistent happenstance that it became a running joke that forgetting an ingredient was tradition. As such, each time he made it, it was a little bit different.",
+        "ingredients": [
+            "1 lb ground beef",
+            "A can of chopped tomatoes",
+            "A pack of white mushrooms",
+            "4 bell peppers (any red, yellow or orange)",
+            "An onion",
+            "Garlic",
+            "Pasta (fusilli)",
+            "Ketchup",
+            "A can of tomato paste",
+            "A can of kidney beans",
+            "The Missing Ingredient"
+        ],
+        "instructions": [
+            "R"
+        ],
+        "notes": [
+            "For the cheese, I recommend a sharp, aged Cheddar, but regular Cheddar or Monterey Jack also work just fine.",
+            "Every person I've ever met has claimed that chilli should be eaten with rice. They are all wrong. The correct way to eat chilli is with fusilli pasta. This is because that's the way Dad always served this chilli recipe, and if you disagree, you simply haven't experienced the majesty of chilli with fusilli. The pasta gets locked into all the twists, and it's just so delicious! Try it! You'll never go back!",
+            "A lazy alternative to pasta or rice that I occasionally restort to is na'an bread. I've had a lot of issues in the past overeating because I underestimated the amount of pasta I was making. I've found portion control to be a lot easier with na'an.",
+            "One of the best things about chilli is that it's a fantastic freezer meal. When I make a batch, I typically eat leftovers for a day or two, then freeze the rest. 2-3 serving spoons-worth into ziplock bags is usually about a portion for me, and I easily end up with 6 or more bags.",
+            "Highly recommend eating this with cornbread or <a href='#cheese_biscuits'>Cheese Buscuits</a>."
+        ]
+    },
+    {
         "name": "Italian Sausage Soup",
-        "pic": "max_oh_no.jpg",
         "tags": [
             "Serves 6-8 Italians"
         ],
-        "about": "This is a definite favourite meal of mine. I love making it when I feel sick or just need to be reminded of home.",
+        "about": "This is a definite favourite meal of mine. I love making it when I feel sick or just need to be reminded of home. Apparently it's a variation of a recipe by Rachael Ray.",
         "ingredients": [
             "4-6 Italian sausages",
             "A bunch of kale",
@@ -17,14 +74,14 @@
             "Garlic",
             "Basil",
             "Cheese",
-            "Bread"
+            "Fresh bread"
         ],
         "instructions": [
             "Remove the sausages from their casings and brown them in a big pot. Add the garlic (chopped or minced) when they're about halfway brown.",
             "When the sausages are brown, add the tomatoes, water, beef stock, beans and season with basil, salt and pepper to taste. Bring to a boil.",
             "Add the Macoroni and bring to a simmer until the macoroni is cooked.",
             "Add the kale. Wait 10-15 minutes.",
-            "Garnish with cheese, then serve with a slice or two of bread."
+            "Garnish with cheese, then serve with a slice or two of lovely bread."
         ],
         "notes": [
             "For the cheese, I recommend Monterey Jack or Cheddar."
@@ -32,23 +89,23 @@
     },
     {
         "name": "Tortellini Soup",
-        "pic": "max_prayer.jpg",
         "tags": [
             "Serves 6-8 Tortellinis"
         ],
         "about": "One of the classic meals my mother used to make, this soup is one of my biggest comfort foods.",
         "ingredients": [
             "1 large pack of fresh Tortellini",
-            "1 kielbasa sausage, chopped",
+            "1 kielbasa sausage, sliced",
             "1 onion, chopped",
             "1 can of chopped tomates",
             "6 cups of water",
             "2 stock cubes",
             "1 can of mixed beans",
+            "1 can of chick peas",
             "Garlic",
             "Basil",
             "Cheese",
-            "Bread"
+            "Fresh bread"
         ],
         "instructions": [
             "Saute the onion and garlic (chopped or minced) in oil. When they're nearly done, add the sausage.",
@@ -56,43 +113,9 @@
             "Add the tortellini. Wait until it's cooked, probably about 10 minutes or so.",
             "Garnish with cheese, then serve with a slice or two of lovely bread!"
         ],
-        "notes": ["For the cheese, I recommend Monterey Jack or Cheddar."]
-    },
-    {
-        "name": "Paneer",
-        "tags": ["Vegetarian"]
-    },
-    {
-        "name": "Lentils and Rice",
-        "tags": [
-            "Vegetarian"
-        ]
-    },
-    {
-        "name": "Bowtie Pasta"
-    },
-    {
-        "name": "Italian Sausage and Zucchini"
-    },
-    {
-        "name": "Sterz"
-    },
-    {
-        "name": "Sauerkraut Soup"
-    },
-    {
-        "name": "Vegetarian Chilli",
-        "tags": [
-            "Vegetarian"
-        ]
-    },
-    {
-        "name": "Dad's Chilli"
-    },
-    {
-        "name": "Shakshouka",
-        "tags": [
-            "Vegetarian"
+        "notes": [
+            "For the cheese, I recommend Monterey Jack or Cheddar.",
+            "If you intend to eat this slowly over the course of a few days as leftovers, or if you freeze it, I recommend cooking the tortellini only on the day you eat it. As leftovers, the pasta gets soggy very quickly, and I find it goes bad quite fast. Easiest way to do it is separate the portion of the soup you intend to eat as you make it, then cook the amount of tortellini you want in that. Then you can store the pasta-less remainder in the fridge or freezer, as desired."
         ]
     }
 ]

@@ -96,6 +96,7 @@ h1.titleMask span {
     top: 0;
     box-shadow: rgba(0, 0, 0, 0.2) 0 5px 5px;
     text-decoration: none;
+    font-weight: normal;
 
     transition: background-color 0.10s, border-color 0.20s, top 0.15s;
 }
@@ -116,6 +117,9 @@ h1.titleMask span {
 
     display: grid;
     justify-items: center;
+}
+.downArrow a {
+    border: none;
 }
 
 .downArrow img {
