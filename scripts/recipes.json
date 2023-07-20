@@ -66,6 +66,7 @@
     },
     {
         "name": "Rice with Onions",
+        "pic": "rice_with_onions.jpg",
         "isVegetarian": true,
         "tags": ["Serves 1+"],
         "about": "Less of a meal on its own, this is the traditional recipe I follow for any situation where I need to make rice. It's part of every recipe of my grandfather's that involves making rice and it always turns out great! If you're feeling lazy, you can skip the onion and just follow the rest of the instructions for plain rice. If you want to make a large batch for several people, just multiply the amounts by the number of people.",
@@ -211,7 +212,7 @@
         "name": "Mom's Cheese Biscuits",
         "pic": "moms_cheese_biscuits.jpg",
         "isVegetarian": "true",
-        "tags": ["Serves 10-12"],
+        "tags": ["Makes 10-12 Biscuits"],
         "about": "Delicious, soft and puffy, these biscuits will go great with any soup or chilli on this list.",
         "ingredients": [
             "2 Cups Bisquick biscuit mix",
@@ -229,5 +230,99 @@
             "Serve warm."
         ],
         "notes": []
+    },
+    {
+        "name": "Picadillo",
+        "pic": "picadillo.jpg",
+        "tags": [
+            "Serves 4-6"
+        ],
+        "about": "A traditional South American dish, picadillo comes in innumerable variations. This is the one I'm used to. It's absolutely delicious and well worth trying if you want a hearty, flavourful meal.",
+        "ingredients": [
+            "1 lb lean ground beef",
+            "2 large tomatoes (chopped)",
+            "1.5 tbsp Tomato paste",
+            "1 onion (chopped)",
+            "1 large cubanelle pepper (chopped)",
+            "1 medium potato (cubed)",
+            "1 cup of water",
+            "Green olives",
+            "Rasins",
+            "Beefstock",
+            "Garlic (chopped)",
+            "Ground cumin (1/2 - 3/4 tsp)",
+            "Red pepper flakes (optional for extra spicy)",
+            "Rice",
+            "1 envelope of Sazon Goya seasoning (optional)",
+            "cilantro (optional garnish)"
+        ],
+        "instructions": [
+            "Brown the beef in a deep frying pan. When halfway done, add the onions and garlic.",
+            "When done browning, drain the grease, add the tomatoes, tomato paste, cumin, Sazon Goya, peppers, potatoes, and a cup of water.",
+            "Bring to a boil, then reduce to a simmer.",
+            "Set rice going.",
+            "Add olives and raisins. Cover, and simmer until the water has reduced a bit. Season with stock to taste.",
+            "Simmer on very low for 15 minutes.",
+            "serve with rice, garnish with cilantro."
+        ],
+        "notes": []
+    },
+    {
+        "name": "Chana Masala",
+        "pic": "chana_masala.jpg",
+        "isVegetarian": "true",
+        "tags": [
+            "Serves 4-6"
+        ],
+        "about": "I got this recipe from my friend Owen, and it's a great go to meal.",
+        "ingredients": [
+            "1 onion",
+            "1-3 jalapenos",
+            "1 can of diced tomates",
+            "1 can of chick peas",
+            "1/2 cup of water",
+            "Rice or na'an bread",
+            "Lime juice or white vinegar",
+            "Ginger",
+            "Garlic (chopped)",
+            "Tumeric (1/2 - 1 tbsp)",
+            "Sugar (1 tbsp)",
+            "Garem Masala (1 tbsp)"
+        ],
+        "instructions": [
+            "Saute onion in some oil. While that's going, slice the jalapenos into quarters, then slice into small chunks. You can remove the seeds if you desire a less skin-meltingly spicy experience.",
+            "Add the garlic, ginger, and garem masala. Continue frying for 45-60 seconds.",
+            "Add tomates, chick peas, and water. Then add the tumeric.",
+            "Cook on medium for at least 30 minutes.",
+            "Add sugar and lime juice. Salt and pepper to taste.",
+            "Serve with rice or na'an bread."
+        ],
+        "notes": ["Customizing the spice level of this is easy. The mildest experience is 1 jalapeno without seeds. You can either keep the seeds, or add additional jalapenos to boost the spiciness. Or do both if you can handle the heat. I usually do one jalapeno with seeds, and that works for me."]
+    },
+    {
+        "name": "Kalar's Sauce",
+        "isVegetarian": "true",
+        "tags": [
+            "Serves 4-6"
+        ],
+        "about": "This recipe originally came from The River Cafe in London. It's an authentic Italian tomato sauce. The reason we call it Kalar's Sauce is because when our dog, a border collie called Kalar (named after the Star Trek character), got lymphoma and was on chemotherapy, she'd lost her appetite and my mother tried a lot of different things to get her to eat. One day, she'd made this sauce and offered her a bit. She ate it. So to get her to eat, she put this sauce on her food and she'd eat it. That's how it became known as Kalar's Sauce.",
+        "ingredients": [
+            "2-3 large cans of chopped tomatoes",
+            "Lots of grated garlic",
+            "Lots of fresh basil",
+            "Lot of olive oil",
+            "Salt and pepper to taste",
+            "Pasta (spaghetti or fusilli are good)",
+            "Parmesan"
+        ],
+        "instructions": [
+            "In a large pot, add some oil and turn the heat to medium high.",
+            "Add the garlic and tomatoes. You want to get a nice steady rolling boil. The point is to reduce the tomatoes to a nice thickish, saucy consistency. The exact time depends on the amount of water in the tomatoes, but it doesn't need to be precise. Keep an eye on it and stir frequently so it doesn't burn.",
+            "When it's nice and thick, take it off the burner and add the basil, salt and pepper. Stir well and leave it for a while. An hour is ideal.",
+            "Serve on pasta with Parmesan."
+        ],
+        "notes": [
+            "If you want some meat, you can very easily throw in some Italian sausages and brown them in Step 1. Alternatively, cooking some frozen meatballs in the oven and dropping them in during Step 3 works great too!"
+        ]
     }
 ]

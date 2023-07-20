@@ -396,4 +396,7 @@ nav a:hover {
     .bigPic {
         margin-bottom: 10px;
     }
+    #ingredients {
+    grid-template-columns: 1fr;
+}
 }

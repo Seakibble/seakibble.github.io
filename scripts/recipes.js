@@ -191,24 +191,6 @@ function init() {
         "tags": []
     },
     {
-        "name": "Kalar's Sauce"
-    },
-    {
-        "name": "Picadillo",
-        "pic": "picadillo.jpg",
-        "tags": [
-            "Serves 4-6"
-        ]
-    },
-    {
-        "name": "Chana Masala",
-        "pic": "chana_masala.jpg",
-        "isVegetarian": "true",
-        "tags": [
-            ""
-        ]
-    },
-    {
         "name": "Pizza",
         "pic": "pizza.jpg",
         "isVegetarian": "true",
