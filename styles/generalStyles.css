@@ -316,6 +316,7 @@ div > p:first-of-type {
 #ingredients {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
 }
 
 .bigPic {

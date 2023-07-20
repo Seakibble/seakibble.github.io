@@ -99,7 +99,7 @@ function getTable() {
 }
 
 function makeURLFriendly(text) {
-    return text.replaceAll(' ', '_').toLowerCase()
+    return text.replaceAll(' ', '_').replaceAll("'", "").toLowerCase()
 }
 
 function selectRecipe(e) {
@@ -132,11 +132,7 @@ function init() {
 /// Recipes to add
 
 ,
-    {
-        "name": "Paneer",
-        "isVegetarian": "true",
-        "tags": []
-    },
+    
     {
         "name": "Lentils and Rice",
         "isVegetarian": "true",
@@ -145,10 +141,7 @@ function init() {
     {
         "name": "Bowtie Pasta",
         "isVegetarian": "true"
-    },
-    {
-        "name": "Italian Sausage and Zucchini"
-    },
+    }
     {
         "name": "Sterz"
     },
@@ -171,23 +164,7 @@ function init() {
         "tags": []
     },
     {
-        "name": "Picadillo",
-        "tags": [
-            "Serves 4-6"
-        ]
-    },
-    {
-        "name": "Chana Masala",
-        "isVegetarian": "true",
-        "tags": [""]
-    },
-    {
         "name": "Korosht",
-        "tags": []
-    },
-    {
-        "name": "Cheese Biscuits",
-        "isVegetarian": "true",
         "tags": []
     },
     {
