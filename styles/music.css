@@ -1,0 +1,12 @@
+.cardHolder {
+    grid-template-columns: 1fr;
+}
+.cardHolder.wrapper {
+    max-width: 1200px;
+}
+
+.tag {
+    float: right;
+    min-width: 80px;
+    text-align: right;
+}

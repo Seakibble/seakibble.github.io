@@ -92,6 +92,10 @@ footer p {
     margin: 0;
 }
 
+iframe {
+    border-radius: 10px;
+}
+
 .wrapper {
     max-width: 800px;
     padding-left: 20px;

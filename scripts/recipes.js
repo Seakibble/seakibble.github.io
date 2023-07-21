@@ -98,10 +98,6 @@ function getTable() {
     }    
 }
 
-function makeURLFriendly(text) {
-    return text.replaceAll(' ', '_').replaceAll("'", "").toLowerCase()
-}
-
 function selectRecipe(e) {
     let $clicked = e.target
     if ($clicked.dataset.id) {
