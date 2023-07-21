@@ -73,6 +73,7 @@ a.anchor {
 
 .content {
     min-height: 92vh;
+    background-image: linear-gradient(rgb(10, 25, 94), rgb(5, 10, 32));
 }
 
 footer {
@@ -127,123 +128,7 @@ h3 + .seperator {
     border: 5px solid rgba(255, 255, 255, 0.5);
 }
 
-#displayedRecipe.card {
-    display: grid;
-    grid-gap: 1em;
-    grid-template-columns: 1fr;
-}
 
-h3 {
-    font-family: 'Satisfy', cursive;
-    text-align: center;
-}
-h3::before, h3::after {
-    content: "—";
-    margin: 0.5em;
-}
-
-#table.card {
-    align-self: start;
-}
-
-#tableDiv {
-    display: grid;
-    border-top: solid 1px rgba(70,120,250, 0.5);
-    border-bottom: solid 1px rgba(70,120,250, 0.5);
-}
-
-#tableDiv div {
-    padding: 5px 10px;
-    border-top: solid 1px rgba(70,120,250, 0.5);
-    border-bottom: solid 1px rgba(70,120,250, 0.5);
-    background: white;
-    box-sizing: border-box;
-    
-    transition: background-color 0.1s, color 0.1s, padding 0.2s;
-}
-
-#tableDiv a:nth-child(odd) div {
-    background: rgb(70,120,250, 0.25);
-}
-
-#tableDiv a:nth-child(even) div {
-    background: rgb(120,120,250, 0.15);
-}
-
-#tableDiv a:hover div { 
-    background: rgb(70,120,250);
-    color: white;
-    cursor: pointer;
-}
-
-#tableDiv a {
-    color: black;
-    text-decoration: none;
-    font-weight: normal;
-    border: none;
-}
-#tableDiv .selected {
-    background: rgb(0, 31, 109);
-    color: white;
-}
-
-#tableDiv .selected div {
-    padding-left: 30px;
-}
-
-#tableDiv .selected:hover div {
-    background:rgb(0, 21, 74)
-}
-
-.veg {
-    float: right;
-    background: rgb(0, 63, 0, 0.75);
-    color: rgb(68, 255, 68);
-    font-weight: bold;
-    padding: 3px 5px 2px;
-    border-radius: 20px;
-    position: relative;
-    font-size: 0.8em;
-    top: -1px;
-
-    transition: color 0.2s, background-color 0.2s;
-}
-
-.selected .veg {
-    background: rgb(68, 255, 68, 0.8);
-    color: rgb(0, 63, 0);    
-}
-
-/* 
-.card .nameBox, .card .instructionBox {
-    grid-column: span 2;
-} */
-
-.card .instructionBox {
-    padding-top: 1em;
-    border-top: 2px solid rgba(0,0,0, 0.05);
-}
-
-.instructionBox > ol {
-    list-style: none;
-    counter-reset: my-awesome-counter;
-}
-.instructionBox > ol li {
-    list-style-type: none;
-    counter-increment: my-awesome-counter;
-    position: relative;
-}
-.instructionBox > ol li::before {
-    position: absolute;
-    left: -1.3em;
-    content: counter(my-awesome-counter) ". ";
-    color: rgb(70,120,250);
-    font-weight: bold;
-}
-
-.noteBox li {
-    list-style-type: decimal;
-}
 
 
 .card h3 {
@@ -258,76 +143,7 @@ div > p:first-of-type {
     margin-top: 0;
 }
 
-.tags {
-    display: grid;
-    grid-gap: 10px;
-    grid-auto-flow: column;
-    justify-content: start;
-    
-    padding: 0.25em 0;
-    border-bottom: 2px solid rgba(0,0,0, 0.05);
-    border-top: 2px solid rgba(0,0,0, 0.05);
-}
 
-.noteBox {
-    padding: 15px 0 0;
-    margin-top: 10px;
-    border-top: 2px solid rgba(0,0,0, 0.05);
-    font-size: 0.9em;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-column-gap: 10px;
-}
-
-.tags span {
-    justify-self: start;
-    padding: 3px 8px;
-    background: rgb(0, 31, 109);
-    color: white;
-    border-radius: 5px;
-    font-size: 0.8em;
-}
-
-.tags span.green {
-    background: rgb(0, 63, 0);
-}
-
-.recipes {
-    background-image: linear-gradient(rgb(10, 25, 94), rgb(5, 10, 32));
-    min-height: 92vh;
-}
-.recipes .wrapper {
-    max-width: 1500px;
-}
-
-.aboutBox {
-    display: grid;
-    align-items: flex-start;
-    align-content: start;
-    border-bottom: 2px solid rgba(0,0,0, 0.05);
-    grid-template-columns: auto auto;
-    grid-template-rows: auto 1fr;
-    padding-bottom: 20px;
-}
-.aboutBox img + p {
-    margin-left: 20px;
-}
-
-#ingredients {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 20px;
-}
-
-.bigPic {
-    box-sizing: border-box;
-    width: 100%;
-    max-height: 200px;
-    object-fit: cover;
-    align-self: center;
-    justify-self: center;
-    border: 2px solid rgba(0,0,0, 0.05);
-}
 
 p.emphasis {
     font-weight: bold;
@@ -361,42 +177,4 @@ nav a:hover {
     background:rgb(70,120,250);
     color: white;
     border-right: 2px solid rgba(0, 0, 0, 0.1);
-}
-
-@media only screen and (max-width: 1200px) {
-    .cardHolder {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-@media only screen and (max-width: 700px) {
-    h3::before, h3::after {
-        content: '';
-        margin: 0;
-    }
-    .card {
-        border-radius: 0;
-        border-right: none;
-        border-left: none;
-    }
-    .wrapper {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    #displayedRecipe.card {
-        grid-template-columns: 1fr;
-    }
-    .card .nameBox, .card .instructionBox {
-        grid-column: span 1;
-    }
-    .aboutBox {
-        grid-template-columns: auto;
-    }
-    .bigPic {
-        margin-bottom: 10px;
-    }
-    #ingredients {
-    grid-template-columns: 1fr;
-}
 }

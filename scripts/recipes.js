@@ -21,7 +21,6 @@ function setSelectedRecipe(index) {
 
     // generate name
     $name.innerHTML = recipe.name ? recipe.name : '???'
-    $name.insertAdjacentHTML('afterEnd', '<a class="anchor" id="top"></a>')
     
     $about.innerHTML = ''
     // generate image
