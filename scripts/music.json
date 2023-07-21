@@ -1,5 +1,98 @@
 [
     {
+        "name": "Valea, City of Hope",
+        "code": "1ek4oq24",
+        "length": "6:00",
+        "year": 2019,
+        "album": "Other Realms"
+    },
+    {
+        "name": "Skollenhaug",
+        "code": "1lvfdqhq",
+        "length": "1:28",
+        "year": 2021,
+        "album": "Other Realms"
+    },
+    {
+        "name": "The Severed Hand",
+        "code": "zro32j0c",
+        "length": "2:10",
+        "year": 2023,
+        "album": "Other Realms"
+    },
+    
+    {
+        "name": "Relicbound",
+        "code": "iku4uqga",
+        "length": "3:17",
+        "year": 2020,
+        "album": "Music from the Reaches"
+    },
+    {
+        "name": "The New Galaxy",
+        "code": "hqufofgk",
+        "length": "1:38",
+        "year": 2020,
+        "album": "Music from the Reaches"
+    },
+    {
+        "name": "Trial by Dust",
+        "code": "ki2jvf2k",
+        "length": "1:49",
+        "year": 2020,
+        "album": "Music from the Reaches"
+    },
+    {
+        "name": "What Came Before",
+        "code": "0oxwwi1w",
+        "length": "3:06",
+        "year": 2020,
+        "album": "Music from the Reaches"
+    },
+    {
+        "name": "In Search of Greatness",
+        "code": "aab0onmp",
+        "length": "1:44",
+        "year": 2020,
+        "album": "Music from the Reaches"
+    },
+    {
+        "name": "Dawn on a Strange World",
+        "code": "1zk1fkat",
+        "length": "2:04",
+        "year": 2020,
+        "album": "Music from the Reaches"
+    },
+    {
+        "name": "Teltona Tunnels",
+        "code": "glo0z5z5",
+        "length": "1:39",
+        "year": 2020,
+        "album": "Music from the Reaches"
+    },
+    {
+        "name": "Discovery",
+        "code": "ipr4kuhe",
+        "length": "3:46",
+        "year": 2020,
+        "album": "Music from the Reaches"
+    },
+    {
+        "name": "A Heart of Shards",
+        "code": "nembjp0m",
+        "length": "5:48",
+        "year": 2020,
+        "album": "Music from the Reaches"
+    },
+    {
+        "name": "Wondrous Artefact",
+        "code": "ehkybqci",
+        "length": "2:48",
+        "year": 2020,
+        "album": "Music from the Reaches"
+    },
+
+    {
         "name": "A Vegetable's Lament",
         "code": "bcd54mpc",
         "length": "1:36",
