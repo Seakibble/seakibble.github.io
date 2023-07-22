@@ -16,6 +16,7 @@ let $filterFavourites = document.getElementById('filterFavourites')
 let $filterCollection = document.getElementById('filterCollection')
 let $filterYear = document.getElementById('filterYear')
 
+let $tableHeader = document.getElementById('tableHeader')
 
 function loadClyp(index) {
     let code = music[index].code
@@ -31,7 +32,11 @@ function loadClyp(index) {
     }
 }
 
+const sortUp = '&#9652;'
+const sortDown = '&#9662;'
+
 function loadTable() {
+    sort()
     applyFilter()
 
     $tableDiv.innerHTML = ""
@@ -39,16 +44,16 @@ function loadTable() {
         let track = music[musicFiltered[i]]
         let urlName = makeURLFriendly(track.name)
         let output = ''
-        output += "<a href=#" + urlName + " id='music-" + musicFiltered[i] + "'><div data-id='" + musicFiltered[i] + "'>"
+        output += "<a href=#" + urlName + " id='music-" + musicFiltered[i] + "'><div class='track' data-id='" + musicFiltered[i] + "'>"
         
-        output += "<span class='title'>" + track.name
+        output += "<div class='title'>" + track.name
         track.favourite ? output += "<span class='favourite'>Favourite!</span>" : ""
-        output += "</span>"
+        output += "</div>"
         
-        output += "<span class='tag'>" + (track.album ? track.album : "-") + "</span>"
+        output += "<div class='tag'>" + (track.album ? track.album : "-") + "</div>"
         
-        output += "<span class='tag'>" + (track.year ? track.year : "-")  + "</span>"
-        output += "<span class='tag'>" + (track.length ? track.length : "-") + "</span>"
+        output += "<div class='tag'>" + (track.year ? track.year : "-")  + "</div>"
+        output += "<div class='tag'>" + (track.length ? track.length : "-") + "</div>"
         output += "</div></a>"
         $tableDiv.innerHTML += output
     }
@@ -68,7 +73,7 @@ function scrollToClyp() {
 }
 
 function selectTrack(e) {
-    let $clicked = e.target.closest('div')
+    let $clicked = e.target.closest('.track')
     if ($clicked.dataset.id) {
         loadClyp($clicked.dataset.id)
     }
@@ -125,6 +130,11 @@ function countTime() {
     }
     
     return hours + ":" + minutes + ":" + seconds
+}
+
+function convertLengthToSeconds(length) {
+    let time = length.split(":")
+    return parseInt(time[0]) * 60 + parseInt(time[1])
 }
 
 let filter = {
@@ -206,8 +216,102 @@ function loadFilterCollectionOptions() {
     }
 }
 
+function sortEvent(e) {
+    let $clicked = e.target
+    let $sortSpan = $clicked.getElementsByClassName('sort')[0]
+    if ($sortSpan == undefined) {
+        $sortSpan = e.target
+        $clicked = $clicked.parentElement
+    }
+    let allSortUp = $tableHeader.getElementsByClassName('sortUp')
+    let allSortDown = $tableHeader.getElementsByClassName('sortDown')
+    
+    sortBy.type = $clicked.dataset.sort
+    if ($clicked.classList.contains('sortUp')) sortBy.reverse = true
+    else sortBy.reverse = false
+    
+    for (let i = 0; i < allSortUp.length; i++){
+        allSortUp[i].getElementsByClassName('sort')[0].innerHTML = ''
+        
+        allSortUp[i].classList.remove('sortUp')
+    }
+    for (let i = 0; i < allSortDown.length; i++) {
+        allSortDown[i].getElementsByClassName('sort')[0].innerHTML = ''
+        allSortDown[i].classList.remove('sortDown')
+    }
+
+    if (sortBy.reverse) {
+        $sortSpan.innerHTML = sortDown
+        $clicked.classList.add('sortDown')
+    } else {
+        $sortSpan.innerHTML = sortUp
+        $clicked.classList.add('sortUp')
+    }
+
+    loadTable()
+}
+
+let sortBy = {
+    type: 'title',
+    reverse: false
+}
+function sort() {
+    switch (sortBy.type) {
+        case 'title':
+            music.sort((a, b) => {
+                let fa = a.name
+                fa === undefined ? fa = '-' : fa = fa.toLowerCase()
+                let fb = b.name
+                fb === undefined ? fb = '-' : fb = fb.toLowerCase()
+
+                if (fa < fb) return -1
+                if (fa > fb) return 1
+                return 0
+            })
+            break
+        case 'collection':
+            music.sort((a, b) => {
+                let fa = a.album
+                fa === undefined ? fa = '-' : fa = fa.toLowerCase()
+                let fb = b.album
+                fb === undefined ? fb = '-' : fb = fb.toLowerCase()
+
+                if (fa < fb) return -1
+                if (fa > fb) return 1
+                return 0
+            })
+            break
+        case 'year':
+            music.sort((a, b) => {
+                let fa = a.year
+                fa === undefined ? fa = '-' : fa = parseInt(fa)
+                let fb = b.year
+                fb === undefined ? fb = '-' : fb = parseInt(fb)
+
+                if (fa < fb) return -1
+                if (fa > fb) return 1
+                return 0
+            })
+            break
+        case 'length':
+            music.sort((a, b) => {
+                let fa = a.length
+                fa === undefined ? fa = '-' : fa = convertLengthToSeconds(fa)
+                let fb = b.length
+                fb === undefined ? fb = '-' : fb = convertLengthToSeconds(fb)
+
+                if (fa < fb) return -1
+                if (fa > fb) return 1
+                return 0
+            })
+            break
+    }
+    if (sortBy.reverse) music.reverse()
+}
+
 function init() {
     loadFilterCollectionOptions()
+
     loadTable()
     loadTime()
     
@@ -225,4 +329,6 @@ function init() {
     $filterFavourites.addEventListener("click", updateFilter)
     $filterCollection.addEventListener("change", updateFilterSelect)
     $filterYear.addEventListener("change", updateFilterSelect)
+
+    $tableHeader.addEventListener("click", sortEvent)
 }

@@ -5,7 +5,7 @@
     background:rgb(185, 197, 255);
 }
 
-#tableDiv div, .tableHeader {
+#tableDiv a > div, .tableHeader {
     padding: 5px 10px;
     border-top: solid 1px rgba(70,120,250, 0.5);
     border-bottom: solid 1px rgba(70,120,250, 0.5);
@@ -15,15 +15,27 @@
     transition: background-color 0.1s, color 0.1s, padding 0.2s;
 }
 
-#tableDiv a:nth-child(odd) div {
+.tableHeader {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    cursor: pointer;
+}
+
+.tableHeader > div {
+    padding: 10px;
+}
+
+#tableDiv a:nth-child(odd) > div {
     background: rgb(70,120,250, 0.25);
 }
 
-#tableDiv a:nth-child(even) div {
+#tableDiv a:nth-child(even) > div {
     background: rgb(120,120,250, 0.15);
 }
 
-#tableDiv a:hover div { 
+#tableDiv a:hover > div { 
     background: rgb(70,120,250);
     color: white;
     cursor: pointer;
@@ -40,19 +52,18 @@
     color: white;
 }
 
-#tableDiv .selected div {
+#tableDiv .selected > div {
     padding-left: 30px;
 }
 
-#tableDiv .selected:hover div {
+#tableDiv .selected:hover > div {
     background:rgb(0, 21, 74)
 }
 
 #table .tableHeader {
     background: #111;
     color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 0;
     border-top: none;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
