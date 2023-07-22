@@ -4,14 +4,16 @@
         "code": "1ek4oq24",
         "length": "6:00",
         "year": 2019,
-        "album": "Other Realms"
+        "album": "Other Realms",
+        "favourite": true
     },
     {
         "name": "Skollenhaug",
         "code": "1lvfdqhq",
         "length": "1:28",
         "year": 2021,
-        "album": "Other Realms"
+        "album": "Other Realms",
+        "favourite": true
     },
     {
         "name": "The Severed Hand",
@@ -20,13 +22,178 @@
         "year": 2023,
         "album": "Other Realms"
     },
+    {
+        "name": "The Fate of Kavakos",
+        "code": "4fup4j1i",
+        "length": "2:01",
+        "year": 2022,
+        "album": "Other Realms"
+    },
+    {
+        "name": "The Infinite Labyrinth",
+        "code": "5xjwojtw",
+        "length": "1:16",
+        "year": 2022,
+        "album": "Other Realms"
+    },
+    {
+        "name": "Death on Eight Legs",
+        "code": "0bpkt0vb",
+        "length": "3:46",
+        "year": 2022,
+        "album": "Other Realms"
+    },
+    {
+        "name": "Mothership",
+        "code": "a5rel02m",
+        "length": "0:36",
+        "year": 2020,
+        "album": "Other Realms"
+    },
+    {
+        "name": "Anxiety",
+        "code": "pfphzdqy",
+        "length": "1:31",
+        "year": 2021,
+        "album": "Other Realms"
+    },
+    {
+        "name": "His Name is Addelbrech",
+        "code": "vve0nnar",
+        "length": "2:33",
+        "year": 2020,
+        "album": "Other Realms"
+    },
+    {
+        "name": "Secrets of The Dungeon",
+        "code": "20k4s2y2",
+        "length": "2:02",
+        "year": 2021,
+        "album": "Other Realms"
+    },
+    {
+        "name": "Castle Something Something Vampire",
+        "code": "z4qt3bzo",
+        "length": "1:02",
+        "year": 2021,
+        "album": "Other Realms",
+        "favourite": true
+    },
+    {
+        "name": "The Ghosts of Cause",
+        "code": "5a2so4ea",
+        "length": "2:19",
+        "year": 2019,
+        "album": "Other Realms"
+    },
+    {
+        "name": "The Watchdog",
+        "code": "k0tdgu1c",
+        "length": "3:07",
+        "year": 2019,
+        "album": "Other Realms",
+        "favourite": true
+    },
+    {
+        "name": "The Regent",
+        "code": "wtckoycl",
+        "length": "4:13",
+        "year": 2019,
+        "album": "Other Realms"
+    },
+
+
+
+    {
+        "name": "Gods and Titans",
+        "code": "quo2s1n3",
+        "length": "3:50",
+        "year": 2020,
+        "album": "Gods and Titans",
+        "favourite": true
+    },
+    {
+        "name": "Loyalty and Bloodshed",
+        "code": "yzlkl3e3",
+        "length": "2:34",
+        "year": 2020,
+        "album": "Gods and Titans"
+    },
+    {
+        "name": "The Fate of a Nation",
+        "code": "ixofe1oh",
+        "length": "0:50",
+        "year": 2020,
+        "album": "Gods and Titans"
+    },
+    {
+        "name": "King of Terror",
+        "code": "gd2nlt22",
+        "length": "1:44",
+        "year": 2020,
+        "album": "Gods and Titans"
+    },
+    {
+        "name": "Survive or Die",
+        "code": "5bi1wpvr",
+        "length": "2:16",
+        "year": 2020,
+        "album": "Gods and Titans",
+        "favourite": true
+    },
+    {
+        "name": "The Dead Fleet",
+        "code": "01z4niw2",
+        "length": "4:05",
+        "year": 2020,
+        "album": "Gods and Titans"
+    },
+    {
+        "name": "It's a Last Stand Only If We Lose",
+        "code": "bxmo2wgq",
+        "length": "1:25",
+        "year": 2020,
+        "album": "Gods and Titans"
+    },
+    {
+        "name": "Earth's Final Hour",
+        "code": "oeougno4",
+        "length": "2:03",
+        "year": 2020,
+        "album": "Gods and Titans"
+    },
+    {
+        "name": "Relentless War",
+        "code": "odvhkmw3",
+        "length": "2:16",
+        "year": 2020,
+        "album": "Gods and Titans"
+    },
+    {
+        "name": "Flame-Scorched Battlefield",
+        "code": "2ty13ytn",
+        "length": "1:12",
+        "year": 2020,
+        "album": "Gods and Titans"
+    },
+    {
+        "name": "The Eternal Tree",
+        "code": "srbmfua5",
+        "length": "2:38",
+        "year": 2020,
+        "album": "Gods and Titans"
+    },
+
+
+
     
     {
         "name": "Relicbound",
         "code": "iku4uqga",
         "length": "3:17",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "favourite": true
     },
     {
         "name": "The New Galaxy",
@@ -75,22 +242,56 @@
         "code": "ipr4kuhe",
         "length": "3:46",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "favourite": true
     },
     {
         "name": "A Heart of Shards",
         "code": "nembjp0m",
         "length": "5:48",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "favourite": true
     },
     {
         "name": "Wondrous Artefact",
         "code": "ehkybqci",
         "length": "2:48",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "favourite": true
     },
+
+
+    {
+        "name": "Ballad of the Rave Thief",
+        "code": "444d5u5l",
+        "length": "2:07",
+        "year": 2020
+    },
+    {
+        "name": "Raceblob",
+        "code": "2xxjw1pk",
+        "length": "1:46",
+        "year": 2020,
+        "album": "The Blobs Fight"
+    },
+    {
+        "name": "The Blobs Battle Gloriously",
+        "code": "0gou3puz",
+        "length": "1:04",
+        "year": 2020,
+        "album": "The Blobs Fight"
+    },
+    {
+        "name": "Mobpocalypse",
+        "code": "woaryapu",
+        "length": "1:010",
+        "year": 2019,
+        "album": "The Blobs Fight"
+    },
+
+
 
     {
         "name": "A Vegetable's Lament",
@@ -106,6 +307,9 @@
         "year": 2023,
         "album": "Root Rage"
     },
+
+
+
     {
         "name": "Winter Defender",
         "code": "0v22rrxn",
@@ -118,21 +322,24 @@
         "code": "d3utappi",
         "length": "1:18",
         "year": 2021,
-        "album": "Quiet Things"
+        "album": "Quiet Things",
+        "favourite": true
     },
     {
         "name": "Cthulhu Gunslinger",
         "code": "f3bnotxh",
         "length": "2:13",
         "year": 2022,
-        "album": "Quiet Things"
+        "album": "Quiet Things",
+        "favourite": true
     },
     {
         "name": "Autumn Skies",
         "code": "uxi3hk3u",
         "length": "1:24",
         "year": 2021,
-        "album": "Quiet Things"
+        "album": "Quiet Things",
+        "favourite": true
     },
     {
         "name": "High Orbit",
@@ -188,7 +395,8 @@
         "code": "vjtihwok",
         "length": "1:47",
         "year": 2021,
-        "album": "Quiet Things"
+        "album": "Quiet Things",
+        "favourite": true
     },
     {
         "name": "We're Not Supposed to Be Here",
