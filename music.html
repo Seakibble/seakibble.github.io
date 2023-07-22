@@ -34,27 +34,26 @@
                 <div id="clypDiv"></div>
 
                 <div class="toolbar">
-                    <div>
-                        Random: 
-                        <button id="random">Random Track</button>
-                        <button id="randomFavourite">Random Favourite Track</button>
-                    </div>
+                    <div id="time"></div>
                     <div id="filter">
                         Filters: 
                         <button id="filterFavourites" class="filter" data-filter="favourites">Favourites</button>
                         <select id="filterCollection" class="filter" data-filter="collection"></select>
                         <select id="filterYear" class="filter" data-filter="year"></select>
                     </div>
-                    <div id="time"></div>
+                    <div id="randomButtons">
+                        <button id="random">Random Track</button>
+                        <button id="randomFavourite">Random Favourite Track</button>
+                    </div>
                 </div>
 
                 <div id="table">
                     <!-- <h3>Tracks</h3> -->
                     <div id="tableHeader" class='tableHeader'>
-                        <div data-sort="title">Title<span class="sort"></span></div>
-                        <div class='tag' data-sort="collection">Collection<span class="sort"></span></div>
-                        <div class='tag' data-sort="year">Year<span class="sort"></span></div>
-                        <div class='tag' data-sort="length">Length<span class="sort"></span></div>
+                        <div class="titleHeader sortUp" data-sort="title">Title<span class="sort">▴</span></div>
+                        <div data-sort="collection">Collection<span class="sort"></span></div>
+                        <div data-sort="year">Year<span class="sort"></span></div>
+                        <div data-sort="length">Length<span class="sort"></span></div>
                     </div>
                     <div id="tableDiv">
                         <a><div>Valea, City of Hope</div></a>

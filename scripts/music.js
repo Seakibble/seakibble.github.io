@@ -27,6 +27,7 @@ function loadClyp(index) {
         if (document.getElementById('music-' + index)) document.getElementById('music-' + index).classList.add('selected')
 
         scrollToClyp()
+        location.hash = makeURLFriendly(music[index].name)
     } else {
         console.log('No code!')
     }
@@ -50,7 +51,7 @@ function loadTable() {
         track.favourite ? output += "<span class='favourite'>Favourite!</span>" : ""
         output += "</div>"
         
-        output += "<div class='tag'>" + (track.album ? track.album : "-") + "</div>"
+        output += "<div class='tag album'>" + (track.album ? track.album : "-") + "</div>"
         
         output += "<div class='tag'>" + (track.year ? track.year : "-")  + "</div>"
         output += "<div class='tag'>" + (track.length ? track.length : "-") + "</div>"
@@ -107,7 +108,7 @@ function loadRandomFavourite() {
 }
 
 function loadTime() {
-    $time.innerHTML += "<span>Total music Max has made: </span><span>" + countTime()+"</span>"
+    $time.innerHTML += "<span>Max has produced </span><span class='emphasis'>" + music.length +"</span> tracks, with a total duration of <span class='emphasis'>" + countTime()+"</span>."
 }
 
 function countTime() {
@@ -128,6 +129,10 @@ function countTime() {
         minutes -= 60
         hours++
     }
+
+    // Account for leading 0s.
+    if (seconds < 10) seconds = "0" + seconds
+    if (minutes < 10) minutes = "0" + minutes
     
     return hours + ":" + minutes + ":" + seconds
 }
@@ -255,55 +260,62 @@ let sortBy = {
     type: 'title',
     reverse: false
 }
+
+function sortByName(a, b) {
+    let fa = a.name
+    fa === undefined ? fa = '-' : fa = fa.toLowerCase()
+    let fb = b.name
+    fb === undefined ? fb = '-' : fb = fb.toLowerCase()
+
+    if (fa < fb) return -1
+    if (fa > fb) return 1
+    return 0
+}
+function sortByAlbum(a, b) {
+    let fa = a.album
+    fa === undefined ? fa = 'zzz' : fa = fa.toLowerCase()
+    let fb = b.album
+    fb === undefined ? fb = 'zzz' : fb = fb.toLowerCase()
+
+    if (fa < fb) return -1
+    if (fa > fb) return 1
+    return sortByName(a, b)
+}
+function sortByYear(a, b) {
+    let fa = a.year
+    fa === undefined ? fa = 'zzz' : fa = parseInt(fa)
+    let fb = b.year
+    fb === undefined ? fb = 'zzz' : fb = parseInt(fb)
+
+    if (fa < fb) return -1
+    if (fa > fb) return 1
+    return sortByAlbum(a, b)
+}
+
+function sortByLength(a, b) {
+    let fa = a.length
+    fa === undefined ? fa = 'zzz' : fa = convertLengthToSeconds(fa)
+    let fb = b.length
+    fb === undefined ? fb = 'zzz' : fb = convertLengthToSeconds(fb)
+
+    if (fa < fb) return -1
+    if (fa > fb) return 1
+    return 0
+}
+
 function sort() {
     switch (sortBy.type) {
         case 'title':
-            music.sort((a, b) => {
-                let fa = a.name
-                fa === undefined ? fa = '-' : fa = fa.toLowerCase()
-                let fb = b.name
-                fb === undefined ? fb = '-' : fb = fb.toLowerCase()
-
-                if (fa < fb) return -1
-                if (fa > fb) return 1
-                return 0
-            })
+            music.sort((a, b) => sortByName(a, b))
             break
         case 'collection':
-            music.sort((a, b) => {
-                let fa = a.album
-                fa === undefined ? fa = '-' : fa = fa.toLowerCase()
-                let fb = b.album
-                fb === undefined ? fb = '-' : fb = fb.toLowerCase()
-
-                if (fa < fb) return -1
-                if (fa > fb) return 1
-                return 0
-            })
+            music.sort((a, b) => sortByAlbum(a, b))
             break
         case 'year':
-            music.sort((a, b) => {
-                let fa = a.year
-                fa === undefined ? fa = '-' : fa = parseInt(fa)
-                let fb = b.year
-                fb === undefined ? fb = '-' : fb = parseInt(fb)
-
-                if (fa < fb) return -1
-                if (fa > fb) return 1
-                return 0
-            })
+            music.sort((a, b) => sortByYear(a, b))
             break
         case 'length':
-            music.sort((a, b) => {
-                let fa = a.length
-                fa === undefined ? fa = '-' : fa = convertLengthToSeconds(fa)
-                let fb = b.length
-                fb === undefined ? fb = '-' : fb = convertLengthToSeconds(fb)
-
-                if (fa < fb) return -1
-                if (fa > fb) return 1
-                return 0
-            })
+            music.sort((a, b) => sortByLength(a, b))
             break
     }
     if (sortBy.reverse) music.reverse()

@@ -69,9 +69,3 @@
     border-top-right-radius: 5px;
     border-bottom: solid 2px rgba(70,120,250);
 }
-
-@media only screen and (max-width: 700px) { 
-    #tableDiv div, .tableHeader {
-        padding: 15px 10px;
-    }
-}
