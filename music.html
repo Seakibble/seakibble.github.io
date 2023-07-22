@@ -32,6 +32,22 @@
             <div class="cardHolder wrapper">
                 <a class="anchor" id="top"></a>
                 <div id="clypDiv"></div>
+
+                <div class="toolbar">
+                    <div>
+                        Random: 
+                        <button id="random">Random Track</button>
+                        <button id="randomFavourite">Random Favourite Track</button>
+                    </div>
+                    <div id="filter">
+                        Filters: 
+                        <button id="filterFavourites" class="filter" data-filter="favourites">Favourites</button>
+                        <select id="filterCollection" class="filter" data-filter="collection"></select>
+                        <select id="filterYear" class="filter" data-filter="year"></select>
+                    </div>
+                    <div id="time"></div>
+                </div>
+
                 <div id="table">
                     <!-- <h3>Tracks</h3> -->
                     <div class='tableHeader'>Title <span class='tag'>Collection</span><span class='tag'>Year</span><span class='tag'>Length</span></div>

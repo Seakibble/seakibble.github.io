@@ -29,6 +29,19 @@
     border: 2px solid rgba(0, 0, 0, 0.5);
 }
 
+.toolbar {
+    display: grid;
+    grid-gap: 10px;
+}
+
+.filter.include {
+    background: green;
+}
+.filter.exclude {
+    background: red;
+}
+
+
 
 @media only screen and (max-width: 950px) { 
     #tableDiv div {
