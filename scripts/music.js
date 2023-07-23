@@ -30,7 +30,9 @@ function loadClyp(index) {
         if (document.getElementById('music-' + index)) document.getElementById('music-' + index).classList.add('selected')
 
         scrollToClyp()
+        // For when a track is assigned, not selected by the user (i.e. randomly through code)
         location.hash = makeURLFriendly(music[index].name)
+        setTimeout(modifyState, 10)
     } else {
         console.log('No code!')
     }
@@ -89,8 +91,10 @@ function selectTrack(e) {
 
 function selectTrackFromURL() {
     if (window.location.hash) {
+        let track = window.location.hash.split('?')[0]
+        
         for (let i = 0; i < music.length; i++) {
-            if (music[i] && music[i].name && '#' + makeURLFriendly(music[i].name) == window.location.hash) {
+            if (music[i] && music[i].name && '#' + makeURLFriendly(music[i].name) == track) {
                 loadClyp(i)
                 break
             }
@@ -150,6 +154,7 @@ function convertLengthToSeconds(length) {
 }
 
 let filter = {
+    search: '',
     favourites: null,
     collection: '',
     year: ''
@@ -164,7 +169,7 @@ function applyFilter() {
         
         if (
             filter.collection != ''
-            && track.album !== filter.collection
+            && makeURLFriendly(track.album) !== filter.collection
         ) continue
         if (filter.year != '' && track.year !== parseInt(filter.year)) continue
 
@@ -193,7 +198,8 @@ function updateFilter(e) {
                     e.target.classList.add('include')
                     filter[e.target.dataset.filter] = true
                 }
-
+                filter.favourites = filter[e.target.dataset.filter]
+                modifyState()
                 loadTable()
                 break
         }
@@ -201,9 +207,16 @@ function updateFilter(e) {
 }
 function updateFilterSelect(e) {
     if (e.target.classList.contains('filter')) {
-        if (e.target.dataset.filter == 'collection') filter.collection = e.target.value
-        else if (e.target.dataset.filter == 'year') filter.year = e.target.value
-
+        if (e.target.dataset.filter == 'collection') {
+            filter.collection = e.target.value
+            filter.collection = e.target.value
+            modifyState()
+        } else if (e.target.dataset.filter == 'year') {
+            filter.year = e.target.value
+            filter.year = e.target.value
+            modifyState()
+        }
+        
         if (filter.collection === '-') filter.collection = undefined
         loadTable()
     }
@@ -224,7 +237,7 @@ function loadFilterCollectionOptions() {
 
     $filterCollection.innerHTML = "<option value=''>All Collections</option>"
     for (let i = 0; i < albums.length; i++) {
-        $filterCollection.innerHTML += "<option value='" + albums[i]+"'>"+albums[i]+"</option>"
+        $filterCollection.innerHTML += "<option value='" + makeURLFriendly(albums[i])+"'>"+albums[i]+"</option>"
     }
     $filterCollection.innerHTML += "<option value='-'>Other</option>"
 
@@ -334,42 +347,86 @@ function sort() {
     if (sortBy.reverse) music.reverse()
 }
 
-function search(e) {
-    let query = e.target.value.toLowerCase()
+function searchEvent(e) {
+    search(e.target.value)
+}
+
+function search(query) {
+    query = query.toLowerCase()
     if (query === '') {
         musicSearchResults = null
+        filter.search = ''
     } else {
+        filter.search = query
         musicSearchResults = []
         // get search results
         for (let i = 0; i < music.length; i++) {
             let track = music[i]
+            
             if (track.name && track.name.toLowerCase().search(query) !== -1) {
                 musicSearchResults.push(i)
                 continue
             }
-
             if (track.album && track.album.toLowerCase().search(query) !== -1) {
                 musicSearchResults.push(i)
                 continue
             }
         }
     }
-    console.log(musicSearchResults)
+    modifyState()
+
     loadTable()
+}
+
+function modifyState() {
+    let queryParams = []
+    if (filter.search !== '') queryParams.push('search=' + filter.search)
+    if (filter.favourites !== null) queryParams.push('favourites=' + filter.favourites)
+    if (filter.collection !== '') queryParams.push('collection=' + filter.collection)
+    if (filter.year !== '') queryParams.push('year=' + filter.year)
+    
+    queryParams = queryParams.join('&')
+    if (queryParams !== '') queryParams = "?" + queryParams
+
+    let stateObj = { id: "100" };
+    window.history.replaceState(stateObj,
+        "Search", window.location.href.split('?')[0] + queryParams);
+}
+
+function getQueryParams() {
+    let queryParams = window.location.href.split('?')
+    if (queryParams[1]) queryParams = queryParams[1].split('&')
+
+    for (let i = 0; i < queryParams.length; i++) {
+        let param = queryParams[i].split('=')
+
+        if (param[0] == 'favourites') {
+            if (param[1] == 'true') filter.favourites = true
+            else if (param[1] == 'false') filter.favourites = false
+            if (filter.favourites) $filterFavourites.classList.add('include') 
+            else $filterFavourites.classList.add('exclude')
+        } else if (param[0] == 'collection') {
+            filter.collection = param[1]
+            $filterCollection.value = filter.collection
+        } else if (param[0] == 'year') {
+            filter.year = param[1]
+            $filterYear.value = filter.year
+        } else if (param[0] == 'search') {
+            filter.search = param[1]
+            $search.value = filter.search
+            search(filter.search)
+        }
+    }
 }
 
 function init() {
     loadFilterCollectionOptions()
+    sort()
+    getQueryParams()
 
     loadTable()
     loadTime()
-    
-    if (document.getElementById('music-0')) {
-        document.getElementById('music-0').classList.add('selected')
-        selectTrackFromURL()
-    } else {
-        // No tracks in table, likely due to filter
-    }
+    selectTrackFromURL()
 
     $tableDiv.addEventListener("click", selectTrack)
     $random.addEventListener("click", loadRandom)
@@ -380,5 +437,5 @@ function init() {
     $filterYear.addEventListener("change", updateFilterSelect)
 
     $tableHeader.addEventListener("click", sortEvent)
-    $search.addEventListener("input", search)
+    $search.addEventListener("input", searchEvent)
 }

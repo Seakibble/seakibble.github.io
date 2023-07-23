@@ -1,3 +1,6 @@
 function makeURLFriendly(text) {
-    return text.replaceAll(' ', '_').replaceAll("'", "").toLowerCase()
+    let output = text
+    if (output !== undefined) output = output.replaceAll(' ', '_').replaceAll("'", "").toLowerCase()
+    else output = ''
+    return output
 }

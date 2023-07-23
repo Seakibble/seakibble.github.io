@@ -37,11 +37,14 @@
     justify-self: right;
 }
 
-.filter.include {
-    background: green;
+.include {
+    background: limegreen;
+    border-color: lime;
 }
-.filter.exclude {
-    background: red;
+.exclude {
+    background: darkred;
+    color: white;
+    border-color: crimson;
 }
 
 span.emphasis {
