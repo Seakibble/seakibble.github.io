@@ -80,7 +80,7 @@ select {
     border: 1px solid rgb(70,120,250);
 }
 
-button {
+button, input {
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 0.9em;

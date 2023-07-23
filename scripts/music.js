@@ -4,6 +4,7 @@ fetch('/scripts/music.json')
     .then((json) => music = json)
     .then(() => init())
 
+let musicSearchResults = null
 let musicFiltered = []
 
 let $tableDiv = document.getElementById('tableDiv')
@@ -11,6 +12,8 @@ let $clypDiv = document.getElementById('clypDiv')
 let $random = document.getElementById('random')
 let $randomFavourite = document.getElementById('randomFavourite')
 let $time = document.getElementById('time')
+
+let $search = document.getElementById('search')
 
 let $filterFavourites = document.getElementById('filterFavourites')
 let $filterCollection = document.getElementById('filterCollection')
@@ -56,6 +59,10 @@ function loadTable() {
         output += "<div class='tag'>" + (track.year ? track.year : "-")  + "</div>"
         output += "<div class='tag'>" + (track.length ? track.length : "-") + "</div>"
         output += "</div></a>"
+        $tableDiv.innerHTML += output
+    }
+    if (musicFiltered.length == 0) {
+        let output = "<div class='empty'>No search results...</div>"
         $tableDiv.innerHTML += output
     }
 }
@@ -162,6 +169,12 @@ function applyFilter() {
         if (filter.year != '' && track.year !== parseInt(filter.year)) continue
 
         musicFiltered.push(i)
+    }
+
+    if (musicSearchResults !== null) {
+        for (let i = musicFiltered.length - 1; i >= 0; i--) {
+            if (!musicSearchResults.includes(musicFiltered[i])) musicFiltered.splice(i,1)
+        }
     }
 }
 
@@ -321,6 +334,30 @@ function sort() {
     if (sortBy.reverse) music.reverse()
 }
 
+function search(e) {
+    let query = e.target.value.toLowerCase()
+    if (query === '') {
+        musicSearchResults = null
+    } else {
+        musicSearchResults = []
+        // get search results
+        for (let i = 0; i < music.length; i++) {
+            let track = music[i]
+            if (track.name && track.name.toLowerCase().search(query) !== -1) {
+                musicSearchResults.push(i)
+                continue
+            }
+
+            if (track.album && track.album.toLowerCase().search(query) !== -1) {
+                musicSearchResults.push(i)
+                continue
+            }
+        }
+    }
+    console.log(musicSearchResults)
+    loadTable()
+}
+
 function init() {
     loadFilterCollectionOptions()
 
@@ -343,4 +380,5 @@ function init() {
     $filterYear.addEventListener("change", updateFilterSelect)
 
     $tableHeader.addEventListener("click", sortEvent)
+    $search.addEventListener("change", search)
 }

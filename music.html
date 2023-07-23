@@ -42,8 +42,9 @@
                         <select id="filterYear" class="filter" data-filter="year"></select>
                     </div>
                     <div id="randomButtons">
-                        <button id="random">Random Track</button>
-                        <button id="randomFavourite">Random Favourite Track</button>
+                        <input id="search" placeholder="Search music...">
+                        <button id="random">Random</button>
+                        <button id="randomFavourite">Random Favourite</button>
                     </div>
                 </div>
 
@@ -51,9 +52,9 @@
                     <!-- <h3>Tracks</h3> -->
                     <div id="tableHeader" class='tableHeader'>
                         <div class="titleHeader sortUp" data-sort="title">Title<span class="sort">▴</span></div>
-                        <div data-sort="collection">Collection<span class="sort"></span></div>
-                        <div data-sort="year">Year<span class="sort"></span></div>
-                        <div data-sort="length">Length<span class="sort"></span></div>
+                        <div data-sort="collection" class="headerOffset">Collection<span class="sort"></span></div>
+                        <div data-sort="year" class="headerOffset">Year<span class="sort"></span></div>
+                        <div data-sort="length" class="headerOffset">Length<span class="sort"></span></div>
                     </div>
                     <div id="tableDiv">
                         <a><div>Valea, City of Hope</div></a>

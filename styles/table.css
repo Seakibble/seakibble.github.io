@@ -69,3 +69,13 @@
     border-top-right-radius: 5px;
     border-bottom: solid 2px rgba(70,120,250);
 }
+
+#table .tableHeader .headerOffset {
+    margin-left: -20px;
+}
+
+@media only screen and (max-width: 950px) { 
+    #table .tableHeader .headerOffset:nth-child(2) {
+        margin-left: 0px;
+    }
+}
