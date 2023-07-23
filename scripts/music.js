@@ -380,5 +380,5 @@ function init() {
     $filterYear.addEventListener("change", updateFilterSelect)
 
     $tableHeader.addEventListener("click", sortEvent)
-    $search.addEventListener("change", search)
+    $search.addEventListener("input", search)
 }
