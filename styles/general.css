@@ -53,15 +53,23 @@ li {
     list-style-type: disc;
 }
 a {
-    color:rgb(0, 31, 109);
+    color:rgb(70,120,250);
     font-weight: bold;
     text-decoration: none;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 
     transition: border-color 0.2s, color 0.2s;
 }
 a:hover {
-    border-color: rgb(0, 31, 109);
+    border-bottom: 1px solid rgba(255, 255, 255, 1);
+    color: rgb(135, 169, 255);
+}
+.card a {
+    color:rgb(0, 31, 109);
+    border-bottom: 1px solid rgba(0,0,0, 0.5);
+}
+.card a:hover {
+    border-bottom: 1px solid rgb(0, 31, 109);
     color: rgb(70,120,250);
 }
 
@@ -78,6 +86,9 @@ select {
     font-size: 0.9em;
     background: rgb(185, 197, 255);
     border: 1px solid rgb(70,120,250);
+}
+option:nth-child(even) {
+    background: rgb(202, 211, 255);
 }
 
 button, input {

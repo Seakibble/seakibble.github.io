@@ -1,3 +1,7 @@
+.filter {
+    margin-bottom: 10px;
+}
+
 .cardHolder {
     grid-template-columns: 1fr;
 }
@@ -29,22 +33,35 @@
     grid-gap: 10px;
 }
 #time {
-    grid-column: span 2;
     justify-self: center;
-    padding-bottom: 20px;
+    text-align: center;
+}
+
+a.anchor {
+    top: 0px;
 }
 #randomButtons {
     justify-self: right;
 }
 
+#filterFavourites {
+    min-width: 180px;
+}
 .include {
     background: limegreen;
     border-color: lime;
 }
+.include:hover {
+    background: rgb(122, 221, 122);
+    border-color: rgb(104, 255, 104);
+}
 .exclude {
-    background: darkred;
-    color: white;
+    background: rgb(255, 47, 47);
     border-color: crimson;
+}
+.exclude:hover {
+    background: rgb(255, 137, 137);
+    border-color: rgb(255, 82, 117);
 }
 
 span.emphasis {
@@ -58,6 +75,10 @@ span.emphasis {
     color: #333;
     background-color: lightgrey;
     border: none;
+}
+
+.tag {
+    transition: color 0.1s;
 }
 
 @media only screen and (max-width: 1100px) { 
@@ -75,10 +96,10 @@ span.emphasis {
         padding-bottom: 0;
         font-size: 0.9em;
     }
-}
+    .filter {
+        width: 100%;
+    }
 
-
-@media only screen and (max-width: 950px) { 
     #tableDiv a > div, .tableHeader {
         grid-template-columns: auto 60px 60px;
     }
@@ -102,7 +123,7 @@ span.emphasis {
         color: rgba(0, 0, 0, 0.8);
         /* padding-left: 10px; */
     }
-    .selected .tag {
+    .selected .tag, .track:hover .tag {
         color: rgba(255,255,255, 0.8);
     }
 }

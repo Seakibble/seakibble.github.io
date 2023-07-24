@@ -29,7 +29,6 @@ function loadClyp(index) {
         if ($tableDiv.getElementsByClassName('selected')[0]) $tableDiv.getElementsByClassName('selected')[0].classList.remove('selected')
         if (document.getElementById('music-' + index)) document.getElementById('music-' + index).classList.add('selected')
 
-        scrollToClyp()
         // For when a track is assigned, not selected by the user (i.e. randomly through code)
         location.hash = makeURLFriendly(music[index].name)
         setTimeout(modifyState, 10)
@@ -86,6 +85,7 @@ function selectTrack(e) {
     let $clicked = e.target.closest('.track')
     if ($clicked.dataset.id) {
         loadClyp($clicked.dataset.id)
+        scrollToClyp()
     }
 }
 
@@ -183,28 +183,45 @@ function applyFilter() {
     }
 }
 
-function updateFilter(e) {
+function updateFilterEvent(e) {
     if (e.target.classList.contains('filter')) {
-        switch (e.target.dataset.filter) {
-            case 'favourites':
-                if (e.target.classList.contains('include')) {
-                    e.target.classList.remove('include')
-                    e.target.classList.add('exclude')
-                    filter[e.target.dataset.filter] = false
-                } else if (e.target.classList.contains('exclude')) {
-                    e.target.classList.remove('exclude')
-                    filter[e.target.dataset.filter] = null
-                } else {
-                    e.target.classList.add('include')
-                    filter[e.target.dataset.filter] = true
-                }
-                filter.favourites = filter[e.target.dataset.filter]
-                modifyState()
-                loadTable()
-                break
-        }
+        filterFavourites()
+    }
+
+}
+
+function filterFavourites() {
+    let $btn = $filterFavourites
+    let classes = $btn.classList
+    if (classes.contains('include')) {
+        classes.remove('include')
+        classes.add('exclude')
+        filter[$btn.dataset.filter] = false
+    } else if (classes.contains('exclude')) {
+        classes.remove('exclude')
+        filter[$btn.dataset.filter] = null
+    } else {
+        classes.add('include')
+        filter[$btn.dataset.filter] = true
+    }
+    filter.favourites = filter[$btn.dataset.filter]
+    updateFavouritesText()
+
+    modifyState()
+    loadTable()
+}
+function updateFavouritesText() {
+    let $btn = $filterFavourites
+    let classes = $btn.classList
+    if (classes.contains('include')) {
+        $btn.innerHTML = 'Favourites Only'
+    } else if (classes.contains('exclude')) {
+        $btn.innerHTML = 'Favourites Excluded'
+    } else {
+        $btn.innerHTML = 'Favourites'
     }
 }
+
 function updateFilterSelect(e) {
     if (e.target.classList.contains('filter')) {
         if (e.target.dataset.filter == 'collection') {
@@ -305,7 +322,7 @@ function sortByAlbum(a, b) {
 
     if (fa < fb) return -1
     if (fa > fb) return 1
-    return sortByName(a, b)
+    return sortByTrack(a, b)
 }
 function sortByYear(a, b) {
     let fa = a.year
@@ -327,6 +344,17 @@ function sortByLength(a, b) {
     if (fa < fb) return -1
     if (fa > fb) return 1
     return 0
+}
+
+function sortByTrack(a, b) {
+    let fa = a.track
+    fa === undefined ? fa = 'zzz' : fa = parseInt(fa)
+    let fb = b.track
+    fb === undefined ? fb = 'zzz' : fb = parseInt(fb)
+
+    if (fa < fb) return -1
+    if (fa > fb) return 1
+    return sortByName(a,b)
 }
 
 function sort() {
@@ -423,6 +451,7 @@ function init() {
     loadFilterCollectionOptions()
     sort()
     getQueryParams()
+    updateFavouritesText()
 
     loadTable()
     loadTime()
@@ -432,7 +461,7 @@ function init() {
     $random.addEventListener("click", loadRandom)
     $randomFavourite.addEventListener("click", loadRandomFavourite)
 
-    $filterFavourites.addEventListener("click", updateFilter)
+    $filterFavourites.addEventListener("click", updateFilterEvent)
     $filterCollection.addEventListener("change", updateFilterSelect)
     $filterYear.addEventListener("change", updateFilterSelect)
 

@@ -1,5 +1,98 @@
 [
     {
+        "name": "Metal Shepherd - Main Theme",
+        "code": "4pln2cwe",
+        "length": "2:37",
+        "year": 2019,
+        "album": "Metal Shepherd",
+        "track": 1
+    },
+    {
+        "name": "Homestead - Shepherd's Farm",
+        "code": "dqvl32mj",
+        "length": "1:56",
+        "year": 2019,
+        "track": 2,
+        "album": "Metal Shepherd"
+    },
+    {
+        "name": "Circuit Trees - Electric Forest",
+        "code": "ber5nweq",
+        "length": "2:30",
+        "year": 2019,
+        "album": "Metal Shepherd",
+        "track": 3,
+        "favourite": true
+    },
+    {
+        "name": "Steel Reflection - Crystal Canyon",
+        "code": "jafsdk3i",
+        "length": "3:02",
+        "year": 2019,
+        "album": "Metal Shepherd",
+        "track": 4,
+        "favourite": true
+    },
+    {
+        "name": "Mysterious Mechanisms - Hallowed Temple",
+        "code": "ze14ciw5",
+        "length": "2:44",
+        "year": 2019,
+        "album": "Metal Shepherd",
+        "track": 5        
+    },
+    {
+        "name": "Peak Performance - Volcanic Pass",
+        "code": "noxcwvd3",
+        "length": "2:34",
+        "year": 2019,
+        "album": "Metal Shepherd",
+        "track": 6
+    },
+    {
+        "name": "Productive Machines - Dieselbot Factory",
+        "code": "zoolmvwm",
+        "length": "1:41",
+        "year": 2019,
+        "album": "Metal Shepherd",
+        "track": 7
+    },
+    {
+        "name": "Deprecated Technology - Dieselbot's Theme",
+        "code": "hpis5wni",
+        "length": "2:28",
+        "year": 2019,
+        "album": "Metal Shepherd",
+        "track": 8,
+        "favourite": true
+    },
+    {
+        "name": "Metal Shepherd Medley - Credits",
+        "code": "53dbxy3r",
+        "length": "1:51",
+        "year": 2019,
+        "album": "Metal Shepherd",
+        "track": 9
+    },
+    {
+        "name": "Blade Thief - Halen Remix",
+        "code": "0thvwmop",
+        "length": "1:51",
+        "year": 2019,
+        "album": "Metal Shepherd",
+        "track": 10
+    },
+    {
+        "name": "Inexplicable Piano - Secret",
+        "code": "z1xxo3rs",
+        "length": "1:47",
+        "year": 2019,
+        "album": "Metal Shepherd",
+        "track": 11
+    },
+
+
+    {
         "name": "Valea, City of Hope",
         "code": "1ek4oq24",
         "length": "6:00",
@@ -194,49 +287,56 @@
         "length": "3:17",
         "year": 2020,
         "album": "Music from the Reaches",
-        "favourite": true
+        "favourite": true,
+        "track": 1
     },
     {
         "name": "The New Galaxy",
         "code": "hqufofgk",
         "length": "1:38",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 2
     },
     {
         "name": "Trial by Dust",
         "code": "ki2jvf2k",
         "length": "1:49",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 3
     },
     {
         "name": "What Came Before",
         "code": "0oxwwi1w",
         "length": "3:06",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 4
     },
     {
         "name": "In Search of Greatness",
         "code": "aab0onmp",
         "length": "1:44",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 5
     },
     {
         "name": "Dawn on a Strange World",
         "code": "1zk1fkat",
         "length": "2:04",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 6
     },
     {
         "name": "Teltona Tunnels",
         "code": "glo0z5z5",
         "length": "1:39",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 7
     },
     {
         "name": "Discovery",
@@ -244,7 +344,8 @@
         "length": "3:46",
         "year": 2020,
         "album": "Music from the Reaches",
-        "favourite": true
+        "favourite": true,
+        "track": 8
     },
     {
         "name": "A Heart of Shards",
@@ -252,7 +353,8 @@
         "length": "5:48",
         "year": 2020,
         "album": "Music from the Reaches",
-        "favourite": true
+        "favourite": true,
+        "track": 9
     },
     {
         "name": "Wondrous Artefact",
@@ -260,56 +362,64 @@
         "length": "2:48",
         "year": 2020,
         "album": "Music from the Reaches",
-        "favourite": true
+        "favourite": true,
+        "track": 10
     },
     {
         "name": "The Cargs",
         "code": "p5auc1pl",
         "length": "1:31",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 11
     },
     {
         "name": "The Dedicated",
         "code": "uykimtma",
         "length": "3:39",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 12
     },
     {
         "name": "Alien Caverns",
         "code": "n42pi3on",
         "length": "2:11",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 13
     },
     {
         "name": "Lost Murals",
         "code": "ct5ncqum",
         "length": "2:12",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 14
     },
     {
         "name": "Unsolicited Incursion Detected",
         "code": "mxizurun",
         "length": "2:11",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 15
     },
     {
         "name": "Cargzilla",
         "code": "tcogv2gc",
         "length": "2:20",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 16
     },
     {
         "name": "Exhilaration and Delight",
         "code": "qilthq03",
         "length": "2:20",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 17
     },
     {
         "name": "The Library",
@@ -317,7 +427,8 @@
         "length": "1:52",
         "year": 2020,
         "album": "Music from the Reaches",
-        "favourite": true
+        "favourite": true,
+        "track": 18
     },
     {
         "name": "Aggressive Archaeology",
@@ -325,56 +436,64 @@
         "length": "3:21",
         "year": 2020,
         "album": "Music from the Reaches",
-        "favourite": true
+        "favourite": true,
+        "track": 19
     },
     {
         "name": "Xenofungus",
         "code": "sz21dety",
         "length": "2:19",
         "year": 2023,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 20
     },
     {
         "name": "A Starlit Mountain",
         "code": "f05idnxf",
         "length": "2:02",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 21
     },
     {
         "name": "Monastery of the Ancients",
         "code": "gti0qkdr",
         "length": "1:29",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 22
     },
     {
         "name": "Sacred",
         "code": "bydwhgr1",
         "length": "1:57",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 23
     },
     {
         "name": "Old Galaxy Horrors",
         "code": "sobi2kyk",
         "length": "2:37",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 24
     },
     {
         "name": "The Revenants",
         "code": "ffdbwqjv",
         "length": "2:00",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 25
     },
     {
         "name": "Synchronicity",
         "code": "gyhhdlfc",
         "length": "3:09",
         "year": 2020,
-        "album": "Music from the Reaches"
+        "album": "Music from the Reaches",
+        "track": 26
     },
     {
         "name": "To Languish and Ponder",
@@ -382,7 +501,8 @@
         "length": "2:41",
         "year": 2020,
         "album": "Music from the Reaches",
-        "favourite": true
+        "favourite": true,
+        "track": 27
     },
 
 
