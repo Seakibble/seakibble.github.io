@@ -451,7 +451,11 @@ function searchClear(e) {
     search()
 }
 
+
+
 function init() {
+    cleanURL()
+    
     loadFilterCollectionOptions()
     sort()
     getQueryParams()

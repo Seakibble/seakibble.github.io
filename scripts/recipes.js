@@ -133,6 +133,7 @@ function selectRecipeFromURL() {
 }
 
 function init() {
+    cleanURL()
     getTable()
     selectRecipeFromURL()
 
