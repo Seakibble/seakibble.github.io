@@ -77,15 +77,14 @@ function loadTable() {
 // }
 
 function scrollToClyp() {
-    // if (document.body.clientWidth <= 700)
-    document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
+    if (document.body.clientWidth <= 1100) document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
 }
 
 function selectTrack(e) {
     let $clicked = e.target.closest('.track')
     if ($clicked.dataset.id) {
         loadClyp($clicked.dataset.id)
-        // scrollToClyp()
+        scrollToClyp()
     }
 }
 

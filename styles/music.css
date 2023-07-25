@@ -7,6 +7,7 @@
 
 #tableDiv {
     overflow-y: scroll;
+    max-height: 400px;
 }
 
 #tableDiv a > div, .tableHeader {
@@ -32,6 +33,7 @@
     grid-template-columns: auto auto auto;
     grid-gap: 10px;
 }
+
 #time {
     justify-self: center;
     text-align: center;
@@ -93,8 +95,24 @@ span.emphasis {
         padding-bottom: 0;
         font-size: 0.9em;
     }
-    .filter {
-        /* width: 100%; */
+    #filter {
+        display: grid;
+        grid-gap: 10px;
+        width: 100%;
+    }
+    .filterRow {
+        display: grid;
+        /* grid-template-columns: auto auto; */
+        grid-gap: 10px;
+        width: 100%;
+    }
+    /* .filterRow select {
+        grid-column: span 2;
+    } */
+
+    #tableDiv {
+        overflow-y: hidden;
+        max-height:none;
     }
 
     #tableDiv a > div, .tableHeader {
