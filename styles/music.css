@@ -5,9 +5,16 @@
     max-width: 1200px;
 }
 
+.tableHeader {
+    position: -webkit-sticky; /* Safari & IE */
+    position: sticky;
+    top: 0;
+}
+
 #tableDiv {
     overflow-y: scroll;
     max-height: 400px;
+    border-top: none;
 }
 
 #tableDiv a > div, .tableHeader {

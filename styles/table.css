@@ -65,9 +65,8 @@
     color: white;
     padding: 0 16px 0 0;
     border-top: none;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom: solid 2px rgba(70,120,250);
+    box-shadow: rgba(0, 0, 0, 0.535) 0px 3px 6px;
+    z-index: 5;
 }
 
 #table .tableHeader .headerOffset {
