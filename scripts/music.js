@@ -454,6 +454,7 @@ function searchClear(e) {
 
 
 function init() {
+    redirectToHttps()
     cleanLinks()
     
     loadFilterCollectionOptions()
