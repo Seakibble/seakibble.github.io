@@ -282,7 +282,7 @@ function animate() {
 
 
 function init() {
-    cleanURL()
+    cleanLinks()
     // ctx.globalCompositeOperation = 'source-over';
     ctx.fillStyle = 'rgb(70,120,250)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
