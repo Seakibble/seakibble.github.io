@@ -133,7 +133,7 @@ span.emphasis {
         grid-gap: 10px;
         width: 100%;
     }
-    .filterRow {
+    .filterRow, #search {
         display: grid;
         /* grid-template-columns: auto auto; */
         grid-gap: 10px;
