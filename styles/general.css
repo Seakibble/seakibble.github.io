@@ -80,24 +80,21 @@ a.anchor {
     visibility: hidden;
 }
 
-select {
+select, button, input {
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 0.9em;
     background: rgb(185, 197, 255);
     border: 1px solid rgb(70,120,250);
+    box-sizing: border-box;
+    height: 40px;
+    outline: none;
 }
 option:nth-child(even) {
     background: rgb(202, 211, 255);
 }
 
 button, input {
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.9em;
-    background: rgb(185, 197, 255);
-    border: 1px solid rgb(70,120,250);
-
     transition: background-color 0.10s, border-color 0.20s;
 }
 button:hover {
@@ -199,6 +196,7 @@ nav {
     display: grid;
     grid-auto-flow: column;
     justify-content: center;
+    grid-gap: 2px;
 }
 nav a {
     background:rgb(255,255,255, 0.4);
@@ -207,14 +205,17 @@ nav a {
     height: 100%;
     color: rgba(0, 0, 0, 0.9);
     font-weight: normal;
-    border-right: 2px solid rgba(0, 0, 0, 0.1);
-    border-bottom: none;
+    border: none;
+    
 }
-nav a:first-child {
-    border-left: 2px solid rgba(0, 0, 0, 0.1);
+
+nav a.here {
+    color: rgba(0, 0, 0);
+    background: rgb(70,120,250,0.7);
+    
 }
 nav a:hover {
     background:rgb(70,120,250);
     color: white;
-    border-right: 2px solid rgba(0, 0, 0, 0.1);
+    border: none;
 }

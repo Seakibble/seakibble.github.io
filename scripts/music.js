@@ -85,7 +85,7 @@ function selectTrack(e) {
     let $clicked = e.target.closest('.track')
     if ($clicked.dataset.id) {
         loadClyp($clicked.dataset.id)
-        scrollToClyp()
+        // scrollToClyp()
     }
 }
 
@@ -214,9 +214,9 @@ function updateFavouritesText() {
     let $btn = $filterFavourites
     let classes = $btn.classList
     if (classes.contains('include')) {
-        $btn.innerHTML = 'Favourites Only'
+        $btn.innerHTML = 'Only Favourites'
     } else if (classes.contains('exclude')) {
-        $btn.innerHTML = 'Favourites Excluded'
+        $btn.innerHTML = 'No Favourites'
     } else {
         $btn.innerHTML = 'Favourites'
     }
@@ -300,7 +300,7 @@ function sortEvent(e) {
 }
 
 let sortBy = {
-    type: 'title',
+    type: 'collection',
     reverse: false
 }
 

@@ -198,62 +198,21 @@
 
 
     {
+        "name": "The Fate of a Nation",
+        "code": "ixofe1oh",
+        "length": "0:50",
+        "year": 2020,
+        "album": "Gods and Titans",
+        "track": 1
+    },
+    {
         "name": "Gods and Titans",
         "code": "quo2s1n3",
         "length": "3:50",
         "year": 2020,
         "album": "Gods and Titans",
-        "favourite": true
-    },
-    {
-        "name": "Loyalty and Bloodshed",
-        "code": "yzlkl3e3",
-        "length": "2:34",
-        "year": 2020,
-        "album": "Gods and Titans"
-    },
-    {
-        "name": "The Fate of a Nation",
-        "code": "ixofe1oh",
-        "length": "0:50",
-        "year": 2020,
-        "album": "Gods and Titans"
-    },
-    {
-        "name": "King of Terror",
-        "code": "gd2nlt22",
-        "length": "1:44",
-        "year": 2020,
-        "album": "Gods and Titans"
-    },
-    {
-        "name": "Survive or Die",
-        "code": "5bi1wpvr",
-        "length": "2:16",
-        "year": 2020,
-        "album": "Gods and Titans",
-        "favourite": true
-    },
-    {
-        "name": "The Dead Fleet",
-        "code": "01z4niw2",
-        "length": "4:05",
-        "year": 2020,
-        "album": "Gods and Titans"
-    },
-    {
-        "name": "It's a Last Stand Only If We Lose",
-        "code": "bxmo2wgq",
-        "length": "1:25",
-        "year": 2020,
-        "album": "Gods and Titans"
-    },
-    {
-        "name": "Earth's Final Hour",
-        "code": "oeougno4",
-        "length": "2:03",
-        "year": 2020,
-        "album": "Gods and Titans"
+        "favourite": true,
+        "track": 2
     },
     {
         "name": "Relentless War",
@@ -261,21 +220,81 @@
         "length": "2:16",
         "year": 2020,
         "album": "Gods and Titans",
-        "favourite": true
+        "favourite": true,
+        "track": 3
     },
     {
-        "name": "Flame-Scorched Battlefield",
-        "code": "2ty13ytn",
-        "length": "1:12",
+        "name": "The Dead Fleet",
+        "code": "01z4niw2",
+        "length": "4:05",
         "year": 2020,
-        "album": "Gods and Titans"
+        "album": "Gods and Titans",
+        "track": 4
+    },
+    {
+        "name": "Survive or Die",
+        "code": "5bi1wpvr",
+        "length": "2:16",
+        "year": 2020,
+        "album": "Gods and Titans",
+        "favourite": true,
+        "track": 5
     },
     {
         "name": "The Eternal Tree",
         "code": "srbmfua5",
         "length": "2:38",
         "year": 2020,
-        "album": "Gods and Titans"
+        "album": "Gods and Titans",
+        "track": 6
+    },
+    {
+        "name": "It's a Last Stand Only If We Lose",
+        "code": "bxmo2wgq",
+        "length": "1:25",
+        "year": 2020,
+        "album": "Gods and Titans",
+        "track": 7
+    },
+    {
+        "name": "Flame-Scorched Battlefield",
+        "code": "2ty13ytn",
+        "length": "1:12",
+        "year": 2020,
+        "album": "Gods and Titans",
+        "track": 8
+    },
+    {
+        "name": "Warclan from North of Freezing",
+        "code": "i00nwgvm",
+        "length": "2:29",
+        "year": 2021,
+        "album": "Gods and Titans",
+        "track": 9
+    },
+    {
+        "name": "King of Terror",
+        "code": "gd2nlt22",
+        "length": "1:44",
+        "year": 2020,
+        "album": "Gods and Titans",
+        "track": 10
+    },
+    {
+        "name": "Loyalty and Bloodshed",
+        "code": "yzlkl3e3",
+        "length": "2:34",
+        "year": 2020,
+        "album": "Gods and Titans",
+        "track": 11
+    },
+    {
+        "name": "Earth's Final Hour",
+        "code": "oeougno4",
+        "length": "2:03",
+        "year": 2020,
+        "album": "Gods and Titans",
+        "track": 13
     },
 
 
@@ -522,6 +541,42 @@
     },
 
 
+    {
+        "name": "Life in the Crater",
+        "code": "4mfsgu3a",
+        "length": "1:08",
+        "year": 2018,
+        "album": "Life in the Crater",
+        "track": 1
+    },
+    {
+        "name": "Life in the Crater - Menu",
+        "code": "k5bxt3tn",
+        "length": "1:13",
+        "year": 2018,
+        "album": "Life in the Crater",
+        "track": 2
+    },
+
+
+    {
+        "name": "Minecart Mania",
+        "code": "xmbfoaqn",
+        "length": "1:03",
+        "year": 2019,
+        "album": "Minecart Mania",
+        "track": 1
+    },
+    {
+        "name": "Minecart Menu",
+        "code": "3kjjfyo2",
+        "length": "1:03",
+        "year": 2019,
+        "album": "Minecart Mania",
+        "track": 2
+    },
+
+
 
     {
         "name": "Hullwalkers",
@@ -564,7 +619,8 @@
         "code": "bcd54mpc",
         "length": "1:36",
         "year": 2023,
-        "album": "Root Rage"
+        "album": "Root Rage",
+        "favourite": true
     },
     {
         "name": "Garden Apocalypse",

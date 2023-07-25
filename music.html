@@ -23,23 +23,26 @@
     <div class="content">
         <nav>
             <a href="./index.html">Home</a>
-            <a href="./music.html">Music</a>
+            <a href="./music.html" class="here">Music</a>
             <a href="./recipes.html">Recipes</a>
         </nav>
         <section class="music">
+            <a class="anchor" id="top"></a>
             <h2>Music</h2>
             <span class="seperator"></span>
-            <a class="anchor" id="top"></a>
+            
             <div class="cardHolder wrapper">
                 <div id="time"></div>
                 <div id="clypDiv"></div>
 
                 <div class="toolbar">
-                    <div id="filter">
-                        <button id="filterFavourites" class="filter" data-filter="favourites">Favourites: Unfiltered</button>
+                    <div class="filterRow">
                         <select id="filterCollection" class="filter" data-filter="collection"></select>
                         <select id="filterYear" class="filter" data-filter="year"></select>
+                    </div>
+                    <div class="filterRow">
                         <input id="search" class="filter" placeholder="Search music...">
+                        <button id="filterFavourites" class="filter" data-filter="favourites">Favourites: Unfiltered</button>               
                     </div>
                     <div id="randomButtons">                        
                         <button id="random">Random</button>
@@ -50,8 +53,8 @@
                 <div id="table">
                     <!-- <h3>Tracks</h3> -->
                     <div id="tableHeader" class='tableHeader'>
-                        <div class="titleHeader sortUp" data-sort="title">Title<span class="sort">▴</span></div>
-                        <div data-sort="collection" class="headerOffset">Collection<span class="sort"></span></div>
+                        <div class="titleHeader" data-sort="title">Title<span class="sort"></span></div>
+                        <div data-sort="collection" class="headerOffset sortUp">Collection<span class="sort">▴</span></div>
                         <div data-sort="year" class="headerOffset">Year<span class="sort"></span></div>
                         <div data-sort="length" class="headerOffset">Length<span class="sort"></span></div>
                     </div>

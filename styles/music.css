@@ -1,12 +1,12 @@
-.filter {
-    margin-bottom: 10px;
-}
-
 .cardHolder {
     grid-template-columns: 1fr;
 }
 .cardHolder.wrapper {
     max-width: 1200px;
+}
+
+#tableDiv {
+    overflow-y: scroll;
 }
 
 #tableDiv a > div, .tableHeader {
@@ -29,7 +29,7 @@
 
 .toolbar {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     grid-gap: 10px;
 }
 #time {
@@ -42,7 +42,7 @@
 }
 
 #filterFavourites {
-    min-width: 180px;
+    min-width: 150px;
 }
 .include {
     background: limegreen;
@@ -94,7 +94,7 @@ span.emphasis {
         font-size: 0.9em;
     }
     .filter {
-        width: 100%;
+        /* width: 100%; */
     }
 
     #tableDiv a > div, .tableHeader {
