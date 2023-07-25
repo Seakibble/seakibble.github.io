@@ -30,7 +30,7 @@
 
 .toolbar {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
     grid-gap: 10px;
 }
 
