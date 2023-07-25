@@ -14,6 +14,7 @@ let $randomFavourite = document.getElementById('randomFavourite')
 let $time = document.getElementById('time')
 
 let $search = document.getElementById('search')
+let $searchClear = document.getElementById('searchClear')
 
 let $filterFavourites = document.getElementById('filterFavourites')
 let $filterCollection = document.getElementById('filterCollection')
@@ -378,7 +379,7 @@ function searchEvent(e) {
     search(e.target.value)
 }
 
-function search(query) {
+function search(query = '') {
     query = query.toLowerCase()
     if (query === '') {
         musicSearchResults = null
@@ -401,7 +402,6 @@ function search(query) {
         }
     }
     modifyState()
-
     loadTable()
 }
 
@@ -446,6 +446,11 @@ function getQueryParams() {
     }
 }
 
+function searchClear(e) {
+    $search.value = ''
+    search()
+}
+
 function init() {
     loadFilterCollectionOptions()
     sort()
@@ -466,4 +471,5 @@ function init() {
 
     $tableHeader.addEventListener("click", sortEvent)
     $search.addEventListener("input", searchEvent)
+    $searchClear.addEventListener("click", searchClear)
 }
