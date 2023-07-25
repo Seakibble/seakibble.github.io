@@ -31,9 +31,12 @@ function cleanLinks() {
         // live site
         let links = document.getElementsByTagName('a')
         for (let i = 0; i < links.length; i++) {
-            if (links[i].href.search('.html') !== -1) {
-                
+            if (links[i].href.search('.html') !== -1) {                
                 links[i].href = links[i].href.replace('.html','')
+            }
+
+            if (links[i].href.search('/index') !== -1) {
+                links[i].href = links[i].href.replace('/index', '')
             }
         }
     }
