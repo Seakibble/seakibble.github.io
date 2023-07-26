@@ -54,9 +54,21 @@ function scrollBar() {
     if ($scrollBar !== undefined) {
         let heightOffset = window.innerHeight
         let yPos = window.scrollY
-        let removeHeight = (heightOffset / height) * 100
-        $scrollFill.style.height = removeHeight + "%"
-        $scrollFill.style.top = (yPos / (height - heightOffset)) * (100 - removeHeight) + "%"
+
+        let barHeight = (heightOffset / height) * 100
+        $scrollFill.style.height = barHeight + "%"
+        let barOffset = (yPos / (height - heightOffset)) * (100 - barHeight)
+        $scrollFill.style.top = barOffset + "%"
+
+        if (barOffset == 0) {
+            $scrollFill.classList.add('top')
+        } else if (barOffset + barHeight == 100) {
+            $scrollFill.classList.add('bottom')
+            $scrollFill.classList.remove('top')
+        } else {
+            $scrollFill.classList.remove('top')
+            $scrollFill.classList.remove('bottom')
+        }
     }
 }
 
