@@ -36,3 +36,30 @@ function cleanLinks() {
         }
     }
 }
+
+let $scrollBar = undefined
+let $scrollFill = undefined
+let currentHeight = undefined
+let currentYPos = undefined
+function scrollBar() {
+    let body = document.body, html = document.documentElement;
+    let height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+    if (currentHeight != height) currentHeight = height
+    else if (currentYPos != window.scrollY) currentYPos = window.scrollY
+    else return
+        
+    if ($scrollBar == undefined) $scrollBar = document.getElementsByClassName('scrollBar')[0]
+    if ($scrollFill == undefined) $scrollFill = document.getElementsByClassName('scrollFill')[0]
+
+    if ($scrollBar !== undefined) {
+        let heightOffset = window.innerHeight
+        let yPos = window.scrollY
+        let removeHeight = (heightOffset / height) * 100
+        $scrollFill.style.height = removeHeight + "%"
+        $scrollFill.style.top = (yPos / (height - heightOffset)) * (100 - removeHeight) + "%"
+    }
+}
+
+
+document.addEventListener('scroll', scrollBar)
+setInterval(scrollBar, 100)
