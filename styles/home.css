@@ -148,7 +148,7 @@ h1.titleMask span {
     height: 50vh;
     width: 100%;
     z-index: 1;
-    background-image: linear-gradient(rgb(0, 0, 0, 0), rgb(10, 25, 94));
+    background-image: linear-gradient(rgb(0, 0, 0, 0), var(--blue_deep));
 }
 
 .surfaceFade {
@@ -170,7 +170,7 @@ h1.titleMask span {
 }
 
 section:nth-child(3) {
-    background-image: linear-gradient(rgb(10, 25, 94), rgb(5, 10, 32));
+    background-image: linear-gradient(var(--blue_deep), var(--blue_deeper));
     padding-bottom: 100px;
 }
 
