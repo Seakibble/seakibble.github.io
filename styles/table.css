@@ -3,6 +3,7 @@
     border-top: solid 1px rgba(70,120,250, 0.5);
     border-bottom: solid 1px rgba(70,120,250, 0.5);
     background:rgb(185, 197, 255);
+    position: relative;
 }
 
 #tableDiv a > div, .tableHeader {

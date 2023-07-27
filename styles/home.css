@@ -1,3 +1,10 @@
+body::-webkit-scrollbar {
+    display: none;
+}
+body {
+    -ms-overflow-style: none;
+}
+
 .titleWrapper {
     position: relative;
     display: grid;

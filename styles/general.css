@@ -16,14 +16,26 @@ body {
     color: #eff;
 }
 
-body::-webkit-scrollbar {
-    display: none;
+
+.styled-scrollbars {
+  /* Foreground, Background */
+  scrollbar-color: rgba(255, 255, 255, 0.9) rgba(0, 0, 0, 0.8);
 }
-body {
-    -ms-overflow-style: none;
+.styled-scrollbars::-webkit-scrollbar {
+  width: 8px; /* Mostly for vertical scrollbars */
+  height: 8px; /* Mostly for horizontal scrollbars */
+}
+.styled-scrollbars::-webkit-scrollbar-thumb { /* Foreground */
+  background: rgba(255, 255, 255, 0.9);
+}
+.styled-scrollbars::-webkit-scrollbar-track { /* Background */
+  background: rgba(0, 0, 0, 0.8);
 }
 
-.scrollBar {
+
+
+
+/* .scrollBar {
     width: 12px;
     height: 100vh;
     position: fixed;
@@ -47,7 +59,7 @@ body {
 .scrollFill.bottom {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-}
+} */
 
 
 h1, h2, h3, h4 {

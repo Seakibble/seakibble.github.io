@@ -61,6 +61,7 @@ function loadTable() {
         output += "<div class='tag'>" + (track.year ? track.year : "-")  + "</div>"
         output += "<div class='tag'>" + (track.length ? track.length : "-") + "</div>"
         output += "</div></a>"
+        // output += '<div class="scrollBar"><div class="scrollFill"></div></div>'
         $tableDiv.innerHTML += output
     }
     if (musicFiltered.length == 0) {

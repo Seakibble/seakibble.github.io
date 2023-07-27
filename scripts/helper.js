@@ -37,41 +37,63 @@ function cleanLinks() {
     }
 }
 
-let $scrollBar = undefined
-let $scrollFill = undefined
-let currentHeight = undefined
-let currentYPos = undefined
-function scrollBar() {
-    let body = document.body, html = document.documentElement;
-    let height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
-    if (currentHeight != height) currentHeight = height
-    else if (currentYPos != window.scrollY) currentYPos = window.scrollY
-    else return
-        
-    if ($scrollBar == undefined) $scrollBar = document.getElementsByClassName('scrollBar')[0]
-    if ($scrollFill == undefined) $scrollFill = document.getElementsByClassName('scrollFill')[0]
+// let $scrollBar = undefined
+// let $scrollFill = undefined
+// let currentHeight = undefined
+// let currentYPos = undefined
+// let $scrollBars = document.getElementsByClassName('scrollBar')
 
-    if ($scrollBar !== undefined) {
-        let heightOffset = window.innerHeight
-        let yPos = window.scrollY
+// function scrollBarEvent(e) {
+//     for (let i = 0; i < $scrollBars.length; i++) {
+//         scrollBarUpdate($scrollBars[i])
+//     }
+// }
 
-        let barHeight = (heightOffset / height) * 100
-        $scrollFill.style.height = barHeight + "%"
-        let barOffset = (yPos / (height - heightOffset)) * (100 - barHeight)
-        $scrollFill.style.top = barOffset + "%"
+// function scrollBar() {
+//     if ($scrollBar == undefined) $scrollBar = document.getElementsByClassName('scrollBar')[0]
+//     if ($scrollFill == undefined) $scrollFill = document.getElementsByClassName('scrollFill')[0]
 
-        if (barOffset == 0) {
-            $scrollFill.classList.add('top')
-        } else if (barOffset + barHeight == 100) {
-            $scrollFill.classList.add('bottom')
-            $scrollFill.classList.remove('top')
-        } else {
-            $scrollFill.classList.remove('top')
-            $scrollFill.classList.remove('bottom')
-        }
-    }
-}
+//     for (let i = 0; i < $scrollBars.length; i++) {
+//         // scrollBarUpdate($scrollBars[i])
+//     }
+// }
+
+// function scrollBarUpdate(scrollBar) {
+    
+//     let parent = scrollBar.parentElement
+//     console.log(parent)
+//     let body = document.body, html = document.documentElement;
+//     if (parent == body) parent = html
+//     let scrollPosition = parent.scrollTop
+//     console.log(scrollPosition)
+
+//     let height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+//     if (currentHeight != height) currentHeight = height
+//     else if (currentYPos != window.scrollY) currentYPos = window.scrollY
+//     else return
+    
+
+//     if ($scrollBar !== undefined) {
+//         let heightOffset = window.innerHeight
+//         let yPos = window.scrollY
+
+//         let barHeight = (heightOffset / height) * 100
+//         $scrollFill.style.height = barHeight + "%"
+//         let barOffset = (yPos / (height - heightOffset)) * (100 - barHeight)
+//         $scrollFill.style.top = barOffset + "%"
+
+//         if (barOffset == 0) {
+//             $scrollFill.classList.add('top')
+//         } else if (barOffset + barHeight == 100) {
+//             $scrollFill.classList.add('bottom')
+//             $scrollFill.classList.remove('top')
+//         } else {
+//             $scrollFill.classList.remove('top')
+//             $scrollFill.classList.remove('bottom')
+//         }
+//     }
+// }
 
 
-document.addEventListener('scroll', scrollBar)
-setInterval(scrollBar, 100)
+// document.addEventListener('scroll', scrollBarEvent)
+// setInterval(scrollBar, 100)
