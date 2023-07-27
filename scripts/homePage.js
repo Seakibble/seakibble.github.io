@@ -55,7 +55,7 @@ function Screenwrap(_vec) {
 
 Config = function () {
     config = {
-        maxSpeed: 4,
+        maxSpeed: 3,
         baseWeight: 5,
         alignment: {
             range: 100,
@@ -114,8 +114,8 @@ Boid = function (_id, _x, _y, _master) {
             ctx.globalCompositeOperation = 'source-over';
             ctx.fillStyle = this.config.color;
             ctx.beginPath();
-            let size = 20
-            if (container.offsetWidth < 1000) size = 10
+            let size = 13
+            if (container.offsetWidth < 1000) size = 7
                 
             ctx.arc(this.pos.x, this.pos.y, (this.config.baseWeight - 4) / 3 * size, 0, Math.PI * 2, true);
             ctx.fill();
