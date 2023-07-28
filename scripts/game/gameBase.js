@@ -2,11 +2,12 @@ let $canvas = document.getElementById('canvas')
 let $container = document.getElementById('container')
 let $content = document.getElementById('content')
 
-let $resume = document.getElementById('resume')
 let $pauseMenu = document.getElementById('pauseMenu')
+let $resume = document.getElementById('resume')
+let $options = document.getElementById('options')
 
 let $optionsMenu = document.getElementById('optionsMenu')
-let $options = document.getElementById('options')
+let $keyboardLayout = document.getElementById('keyboardLayout')
 let $optionsBack = document.getElementById('optionsBack')
 
 let $startMenu = document.getElementById('startMenu')
@@ -103,18 +104,32 @@ let game = {
         }
 
     },
+    saveSettings: function () {
+        localStorage.setItem('workman', game.input.workman)
+        console.log(localStorage)
+    },
+    loadSettings: function () {
+        let workman = localStorage.getItem('workman')
+        this.input.workman = (workman === 'true')
+        setWorkmanMenuText()
+    },
     init: function () {
         // document.body.requestFullscreen()
+        this.loadSettings()
 
         // Set the canvas size, and add the listener so it resizes properly later
         this.resize()
         $startMenu.style.display = 'none'
         $pauseMenu.style.display = 'grid'
-        this.pause()
+
         window.addEventListener('resize', () => game.resize())
         $resume.addEventListener('click', () => game.pause())
         $options.addEventListener('click', () => game.optionsMenu())
         $optionsBack.addEventListener('click', () => game.optionsMenu())
+        $keyboardLayout.addEventListener('click', () => {
+            setWorkman()
+            this.saveSettings()
+        })
 
         // ctx.globalCompositeOperation = 'source-over';
 
@@ -126,7 +141,6 @@ let game = {
         // }
 
         this.player = Player(CV.x / 2, CV.y / 2)
-        console.log(this.player)
         this.objects.push(this.player)
 
         this.objects.push(Platform(-100, CV.y - 100, CV.x + 200, 200))
@@ -138,6 +152,7 @@ let game = {
 
         this.startAnimating()
         this.initialized = true
+        this.pause()
     },
     tick: function () {
         // request another frame

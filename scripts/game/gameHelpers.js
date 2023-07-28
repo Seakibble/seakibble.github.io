@@ -17,3 +17,14 @@ function IsInside(a, b) {
     return (a.x > b.pos.x && a.x < b.pos.x + b.size.x
         && a.y > b.pos.y && a.y < b.pos.y + b.size.y)
 }
+
+function setWorkman() {
+    if (game.input.workman) game.input.workman = false
+    else game.input.workman = true
+    
+    setWorkmanMenuText()
+}
+function setWorkmanMenuText() { 
+    if (game.input.workman) $keyboardLayout.innerHTML = 'Keyboard: WORKMAN'
+    else $keyboardLayout.innerHTML = 'Keyboard: QWERTY'
+}

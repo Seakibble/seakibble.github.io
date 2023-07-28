@@ -1,5 +1,6 @@
 Input = function () {
     return {
+        workman: false,
         up: false,
         down: false,
         left: false,
@@ -36,24 +37,65 @@ document.addEventListener("keyup", (event) => {
 })
 
 function setInput(key, value) {
-    switch (key) {
-        case 'Escape':
-            if (value) game.pause()
-            break
-        case 'ArrowLeft':
-            game.input.left = value
-            break
-        case 'ArrowRight':
-            game.input.right = value
-            break
-        case 'ArrowUp':
-            game.input.up = value
-            break
-        case 'ArrowDown':
-            game.input.down = value
-            break
-        case ' ':
-            game.input.jump = value
-            break
+    if (game.input.workman) {
+        // WORKMAN LAYOUT
+        switch (key) {
+            case 'Escape':
+                if (value) game.pause()
+                break
+            case 'A':
+            case 'a':
+            case 'ArrowLeft':
+                game.input.left = value
+                break
+            case 'ArrowRight':
+            case 'H':
+            case 'h':
+                game.input.right = value
+                break
+            case 'D':
+            case 'd':
+            case 'ArrowUp':
+                game.input.up = value
+                break
+            case 'S':
+            case 's':
+            case 'ArrowDown':
+                game.input.down = value
+                break
+            case ' ':
+                game.input.jump = value
+                break
+        }
+    } else {
+        // QUERTY LAYOUT
+        switch (key) {
+            case 'Escape':
+                if (value) game.pause()
+                break
+            case 'A':
+            case 'a':
+            case 'ArrowLeft':
+                game.input.left = value
+                break
+            case 'D':
+            case 'd':
+            case 'ArrowRight':
+                game.input.right = value
+                break
+            case 'W':
+            case 'w':
+            case 'ArrowUp':
+                game.input.up = value
+                break
+            case 'S':
+            case 's':
+            case 'ArrowDown':
+                game.input.down = value
+                break
+            case ' ':
+                game.input.jump = value
+                break
+        }
     }
 }
