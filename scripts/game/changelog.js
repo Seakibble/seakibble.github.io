@@ -1,5 +1,6 @@
 const CHANGELOG = [
     // { version: '', log: '' },
+    { version: 'v0.4.0', log: 'Random levels, camera tracking' },
     { version: 'v0.3.1', log: 'Screens now use CSS classes' },
     { version: 'v0.3.0', log: 'Added drag, player facing, wall jumping/sticking' },
     { version: 'v0.2.0', log: 'Refactored gameBase, added screens.js and refrences.js' },

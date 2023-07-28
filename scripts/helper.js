@@ -37,7 +37,7 @@ function cleanLinks() {
     }
 }
 
-Vector = function (_x, _y) {
+Vector = function (_x = 0, _y = 0) {
     return {
         x: _x,
         y: _y,

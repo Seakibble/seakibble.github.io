@@ -6,8 +6,8 @@ Goal = function (x, y, w, h) {
     obj.color = "goldenrod"
     obj.collision = true
 
-    obj.onCollision = function () {
-        game.win()
+    obj.onCollision = function (other) {
+        if (other.player) game.win()
     }
 
     return obj

@@ -1,8 +1,8 @@
-Obj = function (x, y) {
+Obj = function (x, y, w=10, h=10) {
     return {
         pos: Vector(x, y),
         vel: Vector(0, 0),
-        size: Vector(10, 10),
+        size: Vector(w, h),
         color: 'white',
         gravity: false,
         moves: false,
@@ -13,16 +13,7 @@ Obj = function (x, y) {
         onCollision: null,
         facing: null,
         draw: function () {
-            ctx.fillStyle = this.color;
-            ctx.translate(this.pos.x, this.pos.y)
-            ctx.fillRect(0, 0, this.size.x, this.size.y);
-            ctx.resetTransform()
-
-            // ctx.beginPath();
-            // ctx.translate(this.pos.x, this.pos.y);
-            // ctx.arc(0, 0, this.size.x / 2, 0, 2 * Math.PI);
-            // ctx.fill();
-            // ctx.resetTransform()
+            game.camera.RenderObj(this)
         },
         update: function () {
             if (this.gravity && !this.grounded) {
@@ -30,7 +21,6 @@ Obj = function (x, y) {
             }
             
             this.pos.Add(this.vel)
-            Screenwrap(this)
         },
         checkCollision: function () {
             if (!this.collision) return
@@ -48,7 +38,7 @@ Obj = function (x, y) {
                         }
                     }
 
-                    if (this.onCollision !== null) this.onCollision()
+                    if (this.onCollision !== null) this.onCollision(that)
                 }
             }
         }

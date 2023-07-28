@@ -8,6 +8,7 @@ let game = {
     },
     debug: false,
     input: Input(),
+    camera: Camera(),
     player: null,
     zoom: 1,
     fpsInterval: null,
@@ -22,19 +23,24 @@ let game = {
     draw: function () {
         ctx.fillStyle = 'grey'
         ctx.fillRect(0, 0, $canvas.width, $canvas.height)
-
-        ctx.font = 'bold 40px Red Hat Display';
         let pulse = Math.sin((this.now - this.startTime) / 1000) * 5 + 30
-        ctx.fillStyle = "hsl(0,0%, " + pulse + "%)";
-        ctx.textAlign = "center";
-        ctx.fillText("Press Esc to quit...", canvas.width / 2, canvas.height / 2);
-        ctx.fillText("A/D or Arrow keys to move.", canvas.width / 2, canvas.height / 2+50);
-        ctx.fillText("Spacebar to jump.", canvas.width / 2, canvas.height / 2+100);
+        let style = "hsl(0,0%, " + pulse + "%)";
+        // ctx.textAlign = "center";
+
+        game.camera.Render(DrawText(500,500, "Press Esc to quit...", style))
+        game.camera.Render(DrawText(500, 550, "A/D or Arrow keys to move.", style))
+        game.camera.Render(DrawText(500, 600, "Spacebar to jump.", style))
+        
 
 
         for (let i = 0; i < this.objects.length; i++) {
             this.objects[i].draw()
         }
+
+        if (this.debug) {
+            this.camera.Render(Draw(0,0,10,10,'red'))
+        }
+        this.camera.DrawToScreen()
     },
     resize: function () {
         if ($container.offsetHeight / this.zoom < 1 || $container.offsetWidth / this.zoom < 1) {
@@ -71,19 +77,36 @@ let game = {
     },
     start: function () {
         this.objects = []
-        // Player
-        this.player = Player(CV.x / 2, CV.y / 2)
-        this.objects.push(this.player)
-
-        // Goal
-        this.objects.push(Goal(300, CV.y - 800, 50, 50))
 
         // Terrain
-        this.objects.push(Platform(-100, CV.y - 100, CV.x + 200, 200))
-        this.objects.push(Platform(100, CV.y - 300, 100, 100))
-        this.objects.push(Platform(CV.x - 300, CV.y - 500, 200, 100))
-        this.objects.push(Platform(100, CV.y - 700, 400, 30))
+        let gridX = 20
+        let gridY = 10
+        let gridSize = 120
+        let wall = 1000
 
+        this.objects.push(Platform(-wall, gridY * gridSize, gridX * gridSize + wall*2, wall))// bottom
+        this.objects.push(Platform(-wall, -wall, gridX * gridSize + wall*2, wall)) // top
+
+        this.objects.push(Platform(-wall, -wall, wall, gridY * gridSize + wall*2)) // left
+        this.objects.push(Platform(gridX * gridSize, -wall, wall, gridY * gridSize + wall * 2)) // right
+        
+        
+        for (let i = 0; i < gridX; i++) {
+            for (let j = 0; j < gridY; j++) {
+                if (i == 0 && j == gridY - 1) {
+                    // Player
+                    this.player = Player(i * gridSize+50, j * gridSize - 50)
+                    this.objects.push(this.player)
+                } else if (i == gridX-1 && j == 0) {
+                    // Goal
+                    this.objects.push(Goal(i * gridSize, j * gridSize, gridSize, gridSize))
+                } else if (Math.random() > 0.85) {
+                    this.objects.push(Platform(i * gridSize, j * gridSize, gridSize, gridSize))
+                }
+            }
+        }
+
+        this.camera.Track(this.player)
         this.startAnimating()
         this.initialized = true
         this.pause()
@@ -117,6 +140,7 @@ let game = {
         for (let i = 0; i < this.objects.length; i++) this.objects[i].update()
         for (let i = 0; i < this.objects.length; i++) this.objects[i].checkCollision()
         
+        this.camera.Update()
         this.draw()
     },
     startAnimating: function () {

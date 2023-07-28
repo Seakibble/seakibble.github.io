@@ -29,15 +29,24 @@ function setWorkmanMenuText() {
     else $keyboardLayout.innerHTML = 'Keyboard: QWERTY'
 }
 
-
+let x = 0
 function drawRect(obj) {
-    ctx.fillRect(obj.pos.x, obj.pos.y, obj.size.x, obj.size.y)
+    let cameraSpace = game.camera.CameraSpace(obj.pos)
+    x = obj
+    ctx.fillRect(cameraSpace.x, cameraSpace.y, obj.size.x, obj.size.y)
 }
 
 
-Box = function (x,y,w,h) {
+Box = function (x,y,w,h, color='red') {
     return {
         pos: Vector(x, y),
-        size: Vector(w, h)
+        size: Vector(w, h),
+        color: color
     }
+}
+
+function LerpVec(a, b, t) {
+    let newPos = b.Diff(a)
+    newPos.Mult(t)
+    return newPos
 }

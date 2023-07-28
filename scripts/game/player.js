@@ -1,7 +1,8 @@
 Player = function (x, y) {
     let obj = Obj(x, y)
-    obj.size.x = 50
-    obj.size.y = 80
+    obj.player = true
+    obj.size.x = 35
+    obj.size.y = 60
     obj.color = "teal"
     obj.gravity = true
     obj.collision = true
@@ -103,24 +104,18 @@ Player = function (x, y) {
     }
 
     obj.draw = function () {
-        ctx.fillStyle = this.color;
-        ctx.translate(this.pos.x, this.pos.y)
-        ctx.fillRect(0, 0, this.size.x, this.size.y);
-
-        ctx.fillStyle = 'lightblue';
+        game.camera.RenderObj(this)
         if (this.facing == 'left') {
-            ctx.fillRect(0, 10, 20, 30);
+            game.camera.Render(Draw(this.pos.x, this.pos.y + 10, 20, 30, 'lightblue'))
         } else if (this.facing == 'right') {
-            ctx.fillRect(this.size.x-20, 10, 20, 30);
+            game.camera.Render(Draw(this.pos.x+this.size.x-20, this.pos.y + 10, 20, 30, 'lightblue'))
         }
-        ctx.resetTransform()
 
         if (game.debug) {
-            ctx.fillStyle = 'red';
-            drawRect(this.colBoxes.Up())
-            drawRect(this.colBoxes.Down())
-            drawRect(this.colBoxes.Left())
-            drawRect(this.colBoxes.Right())
+            game.camera.RenderObj(this.colBoxes.Up())
+            game.camera.RenderObj(this.colBoxes.Down())
+            game.camera.RenderObj(this.colBoxes.Left())
+            game.camera.RenderObj(this.colBoxes.Right())
         }
         
     }

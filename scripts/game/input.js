@@ -38,8 +38,8 @@ Input = function () {
                     game.player.grounded = false
                     game.player.vel.y = -game.player.jumpPower
                     if (game.player.sticking) {
-                        if (game.player.facing == 'left') game.player.vel.x -= game.player.jumpPower
-                        else game.player.vel.x += game.player.jumpPower
+                        if (game.player.facing == 'left') game.player.vel.x -= game.player.jumpPower*0.5
+                        else game.player.vel.x += game.player.jumpPower*0.5
                     }
                     
                     game.player.jumped = true
