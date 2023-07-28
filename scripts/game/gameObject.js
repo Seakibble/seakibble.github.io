@@ -7,7 +7,9 @@ Obj = function (x, y) {
         gravity: false,
         moves: false,
         collision: false,
+        obstructs: false,
         grounded: false,
+        onCollision: null,
         draw: function () {
             ctx.fillStyle = this.color;
             ctx.translate(this.pos.x, this.pos.y)
@@ -31,15 +33,18 @@ Obj = function (x, y) {
 
             for (let i = 0; i < game.objects.length; i++) {
                 let that = game.objects[i]
-                if (!this.moves) continue
                 if (this == that) continue
 
-                if (Collides(this, that) || Collides(that, this)) {
-                    this.pos.y = that.pos.y - this.size.y
-                    this.vel.y = 0
-                    if (this.moves) {
-                        this.grounded = true
+                if (Collides(this, that)) {
+                    if (!this.moves && this.obstructs && that.obstructs) {
+                        this.pos.y = that.pos.y - this.size.y
+                        this.vel.y = 0
+                        if (this.moves) {
+                            this.grounded = true
+                        }
                     }
+
+                    if (this.onCollision !== null) this.onCollision()
                 }
             }
         }

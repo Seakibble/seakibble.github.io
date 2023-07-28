@@ -37,30 +37,32 @@ Player = function (x, y) {
             if (!this.moves) continue
             if (this == that) continue
 
-            // Collide ground
-            if (Collides(this.colBoxes.Down(), that)) {
-                this.pos.y = that.pos.y - this.size.y
-                this.vel.y = 0
-                if (this.moves) {
-                    this.grounded = true
+            if (that.obstructs) {
+                // Collide ground
+                if (Collides(this.colBoxes.Down(), that)) {
+                    this.pos.y = that.pos.y - this.size.y
+                    this.vel.y = 0
+                    if (this.moves) {
+                        this.grounded = true
+                    }
+                    noGroundCollision = false
                 }
-                noGroundCollision = false
-            }
 
-            // Collide up
-            if (Collides(this.colBoxes.Up(), that)) {
-                this.pos.y = that.pos.y + that.size.y
-                if (this.vel.y < 0) this.vel.y = 0
-            }
-            // Collide left
-            if (Collides(this.colBoxes.Left(), that)) {
-                this.pos.x = that.pos.x + that.size.x
-                if (this.vel.x < 0) this.vel.x = 0
-            }
-            // Collide right
-            if (Collides(this.colBoxes.Right(), that)) {
-                this.pos.x = that.pos.x - this.size.x
-                if (this.vel.x > 0) this.vel.x = 0
+                // Collide up
+                if (Collides(this.colBoxes.Up(), that)) {
+                    this.pos.y = that.pos.y + that.size.y
+                    if (this.vel.y < 0) this.vel.y = 0
+                }
+                // Collide left
+                if (Collides(this.colBoxes.Left(), that)) {
+                    this.pos.x = that.pos.x + that.size.x
+                    if (this.vel.x < 0) this.vel.x = 0
+                }
+                // Collide right
+                if (Collides(this.colBoxes.Right(), that)) {
+                    this.pos.x = that.pos.x - this.size.x
+                    if (this.vel.x > 0) this.vel.x = 0
+                }
             }
         }
         if (noGroundCollision) {

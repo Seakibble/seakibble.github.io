@@ -1,4 +1,5 @@
 const CHANGELOG = [
+    { version: 'v0.09', log: 'Added goal, victory screen, game loop' },
     { version: 'v0.08', log: 'Added tolerance for delayed jumps' },
     { version: 'v0.07', log: 'Added debug mode (F4 to toggle), cleaned up input.js' },
     { version: 'v0.06', log: 'Player now collides with walls' },
@@ -11,6 +12,8 @@ const CHANGELOG = [
 ]
 
 const VERSION = CHANGELOG[0].version
+
+
 document.getElementById('version').textContent = "CHANGELOG | "+VERSION
 document.getElementById('version').addEventListener('click', () => {
     console.log('%cCHANGELOG', "font-weight: bold; color: lime")

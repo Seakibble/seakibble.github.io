@@ -5,6 +5,7 @@ Platform = function (x, y, w, h) {
 
     obj.color = "lightgrey"
     obj.collision = true
+    obj.obstructs = true
     
     return obj
 }

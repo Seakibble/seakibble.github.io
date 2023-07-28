@@ -28,10 +28,13 @@ body {
     justify-content: center;
 }
 
-#optionsMenu {
+#optionsScreen {
     display: none;
 }
-#pauseMenu {
+#pauseScreen {
+    display: none;
+}
+#victoryScreen {
     display: none;
 }
 

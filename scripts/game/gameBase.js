@@ -2,16 +2,19 @@ let $canvas = document.getElementById('canvas')
 let $container = document.getElementById('container')
 let $content = document.getElementById('content')
 
-let $pauseMenu = document.getElementById('pauseMenu')
+let $pauseScreen = document.getElementById('pauseScreen')
 let $resume = document.getElementById('resume')
 let $options = document.getElementById('options')
 
-let $optionsMenu = document.getElementById('optionsMenu')
+let $optionsScreen = document.getElementById('optionsScreen')
 let $keyboardLayout = document.getElementById('keyboardLayout')
 let $optionsBack = document.getElementById('optionsBack')
 
-let $startMenu = document.getElementById('startMenu')
+let $startScreen = document.getElementById('startScreen')
 let $start = document.getElementById('start')
+
+let $victoryScreen = document.getElementById('victoryScreen')
+let $playAgain = document.getElementById('playAgain')
 
 let ctx = canvas.getContext('2d');
 let CV = Vector()
@@ -120,8 +123,8 @@ let game = {
 
         // Set the canvas size, and add the listener so it resizes properly later
         this.resize()
-        $startMenu.style.display = 'none'
-        $pauseMenu.style.display = 'grid'
+        $startScreen.style.display = 'none'
+        $pauseScreen.style.display = 'grid'
 
         window.addEventListener('resize', () => game.resize())
         $resume.addEventListener('click', () => game.pause())
@@ -130,6 +133,10 @@ let game = {
         $keyboardLayout.addEventListener('click', () => {
             setWorkman()
             this.saveSettings()
+        })
+        $playAgain.addEventListener('click', () => {
+            this.menuState = ''
+            game.start()
         })
 
         // ctx.globalCompositeOperation = 'source-over';
@@ -141,9 +148,18 @@ let game = {
         //     this.objects[i].vel.y = Math.random() * speed - (speed / 2)
         // }
 
+        this.start()
+    },
+    start: function () {
+        this.objects = []
+        // Player
         this.player = Player(CV.x / 2, CV.y / 2)
         this.objects.push(this.player)
 
+        // Goal
+        this.objects.push(Goal(300, CV.y - 800, 50, 50))
+
+        // Terrain
         this.objects.push(Platform(-100, CV.y - 100, CV.x + 200, 200))
         this.objects.push(Platform(100, CV.y - 300, 100, 100))
         this.objects.push(Platform(CV.x - 300, CV.y - 500, 200, 100))
@@ -211,13 +227,19 @@ let game = {
     optionsMenu: function () {
         if (this.menuState == 'options') {
             this.menuState = ''
-            $pauseMenu.style.display = 'grid'
-            $optionsMenu.style.display = 'none'
+            $pauseScreen.style.display = 'grid'
+            $optionsScreen.style.display = 'none'
         } else {
             this.menuState = 'options'
-            $pauseMenu.style.display = 'none'
-            $optionsMenu.style.display = 'grid'
+            $pauseScreen.style.display = 'none'
+            $optionsScreen.style.display = 'grid'
         }
+    },
+    win: function () {
+        this.pause()
+        this.menuState = 'victory'
+        $victoryScreen.style.display = 'grid'
+        $pauseScreen.style.display = 'none'
     }
 }
 
