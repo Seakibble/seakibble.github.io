@@ -36,66 +36,67 @@ document.addEventListener("keyup", (event) => {
     setInput(event.key, false)
 })
 
-function setInput(key, value) {
+function setInput(key, keyDown) {
     if (game.input.workman) {
         // WORKMAN LAYOUT
         switch (key) {
-            case 'Escape':
-                if (value) game.pause()
-                break
             case 'A':
             case 'a':
             case 'ArrowLeft':
-                game.input.left = value
+                game.input.left = keyDown
                 break
             case 'ArrowRight':
             case 'H':
             case 'h':
-                game.input.right = value
+                game.input.right = keyDown
                 break
             case 'D':
             case 'd':
             case 'ArrowUp':
-                game.input.up = value
+                game.input.up = keyDown
                 break
             case 'S':
             case 's':
             case 'ArrowDown':
-                game.input.down = value
-                break
-            case ' ':
-                game.input.jump = value
+                game.input.down = keyDown
                 break
         }
     } else {
         // QUERTY LAYOUT
         switch (key) {
-            case 'Escape':
-                if (value) game.pause()
-                break
             case 'A':
             case 'a':
             case 'ArrowLeft':
-                game.input.left = value
+                game.input.left = keyDown
                 break
             case 'D':
             case 'd':
             case 'ArrowRight':
-                game.input.right = value
+                game.input.right = keyDown
                 break
             case 'W':
             case 'w':
             case 'ArrowUp':
-                game.input.up = value
+                game.input.up = keyDown
                 break
             case 'S':
             case 's':
             case 'ArrowDown':
-                game.input.down = value
-                break
-            case ' ':
-                game.input.jump = value
+                game.input.down = keyDown
                 break
         }
+    }
+
+    // Common keys
+    switch (key) {
+        case 'Escape':
+            if (keyDown) game.pause()
+            break
+        case 'F4':
+            if (keyDown) game.debug = !game.debug
+            break
+        case ' ':
+            game.input.jump = keyDown
+            break
     }
 }

@@ -20,10 +20,10 @@ Player = function (x, y) {
             return Box(this.offset + obj.pos.x, obj.size.y + obj.pos.y, obj.size.x - this.offset * 2, this.size)
         },
         Left: function () {
-            return Box(-this.size + obj.pos.x, this.offset * 2 + obj.pos.y, this.size, obj.size.y - this.offset * 4)
+            return Box(-this.size + obj.pos.x, this.offset + obj.pos.y, this.size, obj.size.y - this.offset * 2)
         },
         Right: function () {
-            return Box(obj.size.x + obj.pos.x, this.offset * 2 + obj.pos.y, this.size, obj.size.y - this.offset * 4)
+            return Box(obj.size.x + obj.pos.x, this.offset + obj.pos.y, this.size, obj.size.y - this.offset * 2)
         }
     }
 
@@ -75,12 +75,13 @@ Player = function (x, y) {
         ctx.fillRect(0, 0, this.size.x, this.size.y);
         ctx.resetTransform()
 
-        ctx.fillStyle = 'red';
-        drawRect(this.colBoxes.Up())
-        drawRect(this.colBoxes.Down())
-        drawRect(this.colBoxes.Left())
-        drawRect(this.colBoxes.Right())
-
+        if (game.debug) {
+            ctx.fillStyle = 'red';
+            drawRect(this.colBoxes.Up())
+            drawRect(this.colBoxes.Down())
+            drawRect(this.colBoxes.Left())
+            drawRect(this.colBoxes.Right())
+        }
         
     }
 

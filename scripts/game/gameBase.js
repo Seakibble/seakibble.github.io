@@ -35,6 +35,7 @@ let game = {
     options: {
         music: true
     },
+    debug: false,
     input: Input(),
     player: null,
     zoom: 1,
