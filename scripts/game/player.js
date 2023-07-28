@@ -9,6 +9,7 @@ Player = function (x, y) {
     obj.acceleration = 1
     obj.maxSpeed = 10
     obj.jumpPower = 15
+    obj.jumpLate = 0
 
     obj.colBoxes = {
         size: 3,
@@ -65,6 +66,9 @@ Player = function (x, y) {
         if (noGroundCollision) {
             if (this.grounded && this.moves) {
                 this.grounded = false
+                this.jumpLate = 0
+            } else {
+                this.jumpLate++
             }
         }
     }

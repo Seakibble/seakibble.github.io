@@ -88,7 +88,7 @@ let game = {
             this.player.vel.x = 0
         }
 
-        if (this.input.jump && this.player.grounded && this.input.jumpLock == false) {
+        if (this.input.jump && (this.player.grounded || this.player.jumpLate < JUMP_LATE_TOLERANCE) && this.input.jumpLock == false) {
             this.player.grounded = false
             this.player.vel.y = -this.player.jumpPower
             this.player.jumped = true
