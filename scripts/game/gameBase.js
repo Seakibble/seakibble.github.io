@@ -86,16 +86,20 @@ let game = {
             this.player.vel.x = 0
         }
 
-        if (this.input.jump && this.player.grounded) {
+        if (this.input.jump && this.player.grounded && this.input.jumpLock == false) {
             this.player.grounded = false
             this.player.vel.y = -this.player.jumpPower
             this.player.jumped = true
+            this.input.jumpLock = true
         }
         if (!this.input.jump && this.player.jumped && this.player.vel.y < 0) {
             this.player.vel.y = 0
         }
         if (this.player.grounded) {
             this.player.jumped = false
+            if (!this.input.jump) {
+                this.input.jumpLock = false
+            }
         }
 
     },
@@ -127,6 +131,8 @@ let game = {
 
         this.objects.push(Platform(-100, CV.y - 100, CV.x + 200, 200))
         this.objects.push(Platform(100, CV.y - 300, 100, 100))
+        this.objects.push(Platform(CV.x - 300, CV.y - 500, 200, 100))
+        this.objects.push(Platform(100, CV.y - 700, 400, 30))
 
 
 

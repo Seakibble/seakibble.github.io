@@ -4,6 +4,8 @@ Input = function () {
         down: false,
         left: false,
         right: false,
+        jump: false,
+        jumpLock: false,
         reset: function () {
             this.up = false
             this.left = false
