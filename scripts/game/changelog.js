@@ -1,4 +1,5 @@
 const CHANGELOG = [
+    { version: 'v0.06', log: 'Player now collides with walls' },
     { version: 'v0.05', log: 'Player now collides with ceilings' },
     { version: 'v0.04', log: 'Refined player collision, added changelog' },
     { version: 'v0.03', log: 'Added workman/qwerty keyboard layout option' },

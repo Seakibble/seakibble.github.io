@@ -51,6 +51,16 @@ Player = function (x, y) {
                 this.pos.y = that.pos.y + that.size.y
                 if (this.vel.y < 0) this.vel.y = 0
             }
+            // Collide left
+            if (Collides(this.colBoxes.Left(), that)) {
+                this.pos.x = that.pos.x + that.size.x
+                if (this.vel.x < 0) this.vel.x = 0
+            }
+            // Collide right
+            if (Collides(this.colBoxes.Right(), that)) {
+                this.pos.x = that.pos.x - this.size.x
+                if (this.vel.x > 0) this.vel.x = 0
+            }
         }
         if (noGroundCollision) {
             if (this.grounded && this.moves) {
