@@ -27,16 +27,14 @@ body {
     grid-gap: 20px;
     justify-content: center;
 }
+.screen {
+    display: none;
+}
 
-#optionsScreen {
-    display: none;
+.screen.active {
+    display: grid;
 }
-#pauseScreen {
-    display: none;
-}
-#victoryScreen {
-    display: none;
-}
+
 
 h1, h2 {
     text-align: center;
@@ -74,7 +72,7 @@ button, a > button {
     transition: color var(--quick), background var(--quick);
 }
 
-button:hover, button:focus {
+button:hover, button:focus, button.selected {
     color: darkblue;
     background: white;
     cursor: pointer;
@@ -93,7 +91,7 @@ button .flare {
     transition: width var(--quick);
 }
 
-button:hover .flare,button:focus .flare {
+button:hover .flare, button:focus .flare, button.selected .flare {
     width: 15px;
 }
 

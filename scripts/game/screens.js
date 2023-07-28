@@ -9,19 +9,19 @@ Screens = function () {
                     break
                 case 'options':
                     this.state = 'options'
-                    $optionsScreen.style.display = 'grid'
+                    $optionsScreen.classList.add('active')
                     break
                 case 'start':
                     this.state = 'start'
-                    $startScreen.style.display = 'grid'
+                    $startScreen.classList.add('active')
                     break
                 case 'win':
                     this.state = 'win'
-                    $victoryScreen.style.display = 'grid'
+                    $victoryScreen.classList.add('active')
                     break
                 case 'pause':
                     this.state = 'pause'
-                    $pauseScreen.style.display = 'grid'
+                    $pauseScreen.classList.add('active')
                     break
             }
         },
@@ -39,10 +39,10 @@ Screens = function () {
         },
         clear: function () {
             $content.style.display = 'grid'
-            $victoryScreen.style.display = 'none'
-            $pauseScreen.style.display = 'none'
-            $optionsScreen.style.display = 'none'
-            $startScreen.style.display = 'none'
+            $victoryScreen.classList.remove('active')
+            $pauseScreen.classList.remove('active')
+            $optionsScreen.classList.remove('active')
+            $startScreen.classList.remove('active')
         }
     }
 }

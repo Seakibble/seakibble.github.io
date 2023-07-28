@@ -23,26 +23,26 @@
 </head>
 <body>
     <div id="content" class="content">
-        <div id="pauseScreen" class="menu">
+        <div id="pauseScreen" class="menu screen">
             <h2>GAME PAUSED</h2>
             <button id="resume"><span class="flare"></span>Resume</button>
             <button id="options"><span class="flare"></span>Options</button>
             <a href="./index.html" class='button' tabindex="-1"><button><span class="flare"></span>Quit Game</button></a>
         </div>
-        <div id="optionsScreen" class="menu">
+        <div id="optionsScreen" class="menu screen">
             <h2>OPTIONS</h2>
             <button id="toggleMusic"><span class="flare"></span>Toggle Music: ON</button>
             <button id="keyboardLayout"><span class="flare"></span>Keyboard:</button>
             <button id="optionsBack"><span class="flare"></span>Back</button>
         </div>
-        <div id="startScreen"> 
+        <div id="startScreen" class="screen active"> 
             <h1>Sharkside: The Game</h1>
             <div class="menu">
                 <h2>PRESS START</h2>
                 <button id="start"><span class="flare"></span>Start</button>
             </div>
         </div>
-        <div id="victoryScreen">
+        <div id="victoryScreen" class="screen">
             <h1>YOU WIN</h1>
             <div class="menu">
                 <button id="playAgain"><span class="flare"></span>Play Again</button>
@@ -57,7 +57,7 @@
     <script src="/scripts/game/references.js"></script>
     <script src="/scripts/game/constants.js"></script>
     <script src="/scripts/game/gameHelpers.js"></script>
-    
+
     <script src="/scripts/game/input.js"></script>
     <script src="/scripts/game/screens.js"></script>
 
