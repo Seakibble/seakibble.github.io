@@ -9,7 +9,9 @@ Obj = function (x, y) {
         collision: false,
         obstructs: false,
         grounded: false,
+        sticking: false,
         onCollision: null,
+        facing: null,
         draw: function () {
             ctx.fillStyle = this.color;
             ctx.translate(this.pos.x, this.pos.y)
@@ -23,7 +25,9 @@ Obj = function (x, y) {
             // ctx.resetTransform()
         },
         update: function () {
-            if (this.gravity && !this.grounded) this.vel.Add(GRAVITY)
+            if (this.gravity && !this.grounded) {
+                this.vel.Add(GRAVITY)
+            }
             
             this.pos.Add(this.vel)
             Screenwrap(this)

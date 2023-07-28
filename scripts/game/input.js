@@ -14,19 +14,29 @@ Input = function () {
             this.down = false
         },
         applyInput: function () {
+            let drag = FLOOR_DRAG
+            if (!game.player.grounded) drag = AIR_DRAG
+
             if (this.left && game.player.vel.x > -game.player.maxSpeed) {
-                if (game.player.vel.x > 0) game.player.vel.x = 0
+                if (game.player.vel.x > 0) game.player.vel.x *= drag
+                if (!game.player.sticking) game.player.facing = 'left'
                 game.player.vel.Add(Vector(-game.player.acceleration, 0))
             } else if (this.right && game.player.vel.x < game.player.maxSpeed) {
-                if (game.player.vel.x < 0) game.player.vel.x = 0
+                if (game.player.vel.x < 0) game.player.vel.x *= drag
                 game.player.vel.Add(Vector(game.player.acceleration, 0))
+                if (!game.player.sticking) game.player.facing = 'right'
             } else if (!this.left && !this.right) {
-                game.player.vel.x = 0
+                game.player.vel.x *= drag
             }
 
             if (this.jump && (game.player.grounded || game.player.jumpLate < JUMP_LATE_TOLERANCE) && this.jumpLock == false) {
                 game.player.grounded = false
                 game.player.vel.y = -game.player.jumpPower
+                if (game.player.sticking) {
+                    if (game.player.facing == 'left') game.player.vel.x -= game.player.jumpPower
+                    else game.player.vel.x += game.player.jumpPower
+                }
+                    
                 game.player.jumped = true
                 this.jumpLock = true
             }
@@ -49,7 +59,7 @@ document.addEventListener("keydown", (event) => {
         return;
     }
     // do something
-    console.log(event.key)
+    // console.log(event.key)
 
     if (!game.initialized) return
     setInput(event.key, true)
