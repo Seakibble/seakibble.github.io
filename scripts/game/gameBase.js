@@ -117,6 +117,36 @@ let game = {
         this.input.workman = (workman === 'true')
         setWorkmanMenuText()
     },
+    setScreen: function (screen) {
+        this.clearScreens()
+        switch (screen) {
+            case '':
+                $content.style.display = 'none'
+                break
+            case 'options':
+                this.menuState = 'options'
+                $optionsScreen.style.display = 'grid'
+                break
+            case 'start':
+                this.menuState = 'start'
+                $startScreen.style.display = 'grid'
+                break
+            case 'win':
+                this.menuState = 'win'
+                $winScreen.style.display = 'grid'
+                break
+            case 'pause':
+                this.menuState = 'pause'
+                $pauseScreen.style.display = 'grid'
+                break
+        }
+    },
+    clearScreens: function () {
+        $victoryScreen.style.display = 'none'
+        $pauseScreen.style.display = 'none'
+        $optionsScreen.style.display = 'none'
+        $startScreen.style.display = 'none'
+    },
     init: function () {
         // document.body.requestFullscreen()
         this.loadSettings()
@@ -128,8 +158,8 @@ let game = {
 
         window.addEventListener('resize', () => game.resize())
         $resume.addEventListener('click', () => game.pause())
-        $options.addEventListener('click', () => game.optionsMenu())
-        $optionsBack.addEventListener('click', () => game.optionsMenu())
+        $options.addEventListener('click', () => this.setScreen('options'))
+        $optionsBack.addEventListener('click', () => this.setScreen('pause'))
         $keyboardLayout.addEventListener('click', () => {
             setWorkman()
             this.saveSettings()
@@ -219,20 +249,9 @@ let game = {
         console.log('pause: ', this.paused)
         if (this.paused) {
             $content.style.display = 'grid'
+            this.setScreen('pause')
         } else {
-            $content.style.display = 'none'
-            if (this.menuState == 'options') this.optionsMenu()
-        }
-    },
-    optionsMenu: function () {
-        if (this.menuState == 'options') {
-            this.menuState = ''
-            $pauseScreen.style.display = 'grid'
-            $optionsScreen.style.display = 'none'
-        } else {
-            this.menuState = 'options'
-            $pauseScreen.style.display = 'none'
-            $optionsScreen.style.display = 'grid'
+            this.setScreen('')
         }
     },
     win: function () {

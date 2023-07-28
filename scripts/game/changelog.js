@@ -1,4 +1,5 @@
 const CHANGELOG = [
+    { version: 'v0.1.0', log: 'Refactored screen switching, new version format' },
     { version: 'v0.09', log: 'Added goal, victory screen, game loop' },
     { version: 'v0.08', log: 'Added tolerance for delayed jumps' },
     { version: 'v0.07', log: 'Added debug mode (F4 to toggle), cleaned up input.js' },
