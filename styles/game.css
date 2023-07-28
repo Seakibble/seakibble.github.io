@@ -1,0 +1,105 @@
+* {
+    font-size: 30px;
+}
+
+body {
+    background: black;
+    color: white;
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 30px;
+    box-sizing: border-box;
+
+    --quick: 0.15s
+}
+
+.content {
+    display: grid;
+    grid-gap: 20px;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    place-content: center;
+    background: hsl(0,0%,0%,0.8);
+}
+
+.menu {
+    display: grid;
+    grid-gap: 20px;
+    justify-content: center;
+}
+
+#optionsMenu {
+    display: none;
+}
+#pauseMenu {
+    display: none;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 1em;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 3em;
+}
+h2 {
+    font-size: 1.5em;
+    min-width: 400px;
+}
+
+a.button {
+    text-decoration: none;
+}
+
+button, a > button {
+    background: darkblue;
+    
+    width: 100%;
+    height: 50px;
+    position: relative;
+    
+    padding: 5px 25px;
+    display: block;
+    color: white;
+    border: none;
+    box-sizing: border-box;
+    text-align: left;
+    font-weight: bold;
+
+    transition: color var(--quick), background var(--quick);
+}
+
+button:hover, button:focus {
+    color: darkblue;
+    background: white;
+    cursor: pointer;
+}
+
+button .flare {
+    display: block;
+    position: absolute;
+
+    background: darkblue;
+
+    left: 0;
+    top: 0;
+    width: 0px;
+    height: 100%;
+    transition: width var(--quick);
+}
+
+button:hover .flare,button:focus .flare {
+    width: 15px;
+}
+
+#container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+canvas {
+    width: 100%;
+}

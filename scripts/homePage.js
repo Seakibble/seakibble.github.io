@@ -1,41 +1,4 @@
 ////// INITIALIZE
-Vector = function (_x, _y) {
-    return {
-        x: _x,
-        y: _y,
-        Add: function (_vec) {
-            this.x += _vec.x;
-            this.y += _vec.y;
-        },
-        Subtract: function (_vec) {
-            this.x -= _vec.x;
-            this.y -= _vec.y;
-        },
-        Diff: function (_vec) {
-            return Vector(this.x - _vec.x, this.y - _vec.y);
-        },
-        Set: function (_x, _y) {
-            this.x = _x;
-            this.y = _y;
-        },
-        Mult: function (_n) {
-            this.x *= _n;
-            this.y *= _n;
-        },
-        Dist: function (_vec) {
-            var diff = this.Diff(_vec);
-            return Math.sqrt(diff.x * diff.x + diff.y * diff.y);
-        },
-        Normalize: function (_n) {
-            var d = this.Dist(Vector(0, 0));
-            return this.Mult(_n / d);
-        },
-        Report: function () {
-            console.log(this.x + ", " + this.y);
-        }
-    }
-};
-
 function Screenwrap(_vec) {
     if (_vec.x > canvas.width) {
         _vec.x -= canvas.width;

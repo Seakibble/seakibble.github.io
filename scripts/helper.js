@@ -37,63 +37,39 @@ function cleanLinks() {
     }
 }
 
-// let $scrollBar = undefined
-// let $scrollFill = undefined
-// let currentHeight = undefined
-// let currentYPos = undefined
-// let $scrollBars = document.getElementsByClassName('scrollBar')
-
-// function scrollBarEvent(e) {
-//     for (let i = 0; i < $scrollBars.length; i++) {
-//         scrollBarUpdate($scrollBars[i])
-//     }
-// }
-
-// function scrollBar() {
-//     if ($scrollBar == undefined) $scrollBar = document.getElementsByClassName('scrollBar')[0]
-//     if ($scrollFill == undefined) $scrollFill = document.getElementsByClassName('scrollFill')[0]
-
-//     for (let i = 0; i < $scrollBars.length; i++) {
-//         // scrollBarUpdate($scrollBars[i])
-//     }
-// }
-
-// function scrollBarUpdate(scrollBar) {
-    
-//     let parent = scrollBar.parentElement
-//     console.log(parent)
-//     let body = document.body, html = document.documentElement;
-//     if (parent == body) parent = html
-//     let scrollPosition = parent.scrollTop
-//     console.log(scrollPosition)
-
-//     let height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
-//     if (currentHeight != height) currentHeight = height
-//     else if (currentYPos != window.scrollY) currentYPos = window.scrollY
-//     else return
-    
-
-//     if ($scrollBar !== undefined) {
-//         let heightOffset = window.innerHeight
-//         let yPos = window.scrollY
-
-//         let barHeight = (heightOffset / height) * 100
-//         $scrollFill.style.height = barHeight + "%"
-//         let barOffset = (yPos / (height - heightOffset)) * (100 - barHeight)
-//         $scrollFill.style.top = barOffset + "%"
-
-//         if (barOffset == 0) {
-//             $scrollFill.classList.add('top')
-//         } else if (barOffset + barHeight == 100) {
-//             $scrollFill.classList.add('bottom')
-//             $scrollFill.classList.remove('top')
-//         } else {
-//             $scrollFill.classList.remove('top')
-//             $scrollFill.classList.remove('bottom')
-//         }
-//     }
-// }
-
-
-// document.addEventListener('scroll', scrollBarEvent)
-// setInterval(scrollBar, 100)
+Vector = function (_x, _y) {
+    return {
+        x: _x,
+        y: _y,
+        Add: function (_vec) {
+            this.x += _vec.x;
+            this.y += _vec.y;
+        },
+        Subtract: function (_vec) {
+            this.x -= _vec.x;
+            this.y -= _vec.y;
+        },
+        Diff: function (_vec) {
+            return Vector(this.x - _vec.x, this.y - _vec.y);
+        },
+        Set: function (_x, _y) {
+            this.x = _x;
+            this.y = _y;
+        },
+        Mult: function (_n) {
+            this.x *= _n;
+            this.y *= _n;
+        },
+        Dist: function (_vec) {
+            var diff = this.Diff(_vec);
+            return Math.sqrt(diff.x * diff.x + diff.y * diff.y);
+        },
+        Normalize: function (_n) {
+            var d = this.Dist(Vector(0, 0));
+            return this.Mult(_n / d);
+        },
+        Report: function () {
+            console.log(this.x + ", " + this.y);
+        }
+    }
+};
