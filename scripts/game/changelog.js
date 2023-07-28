@@ -1,4 +1,5 @@
 const CHANGELOG = [
+    { version: 'v0.05', log: 'Player now collides with ceilings' },
     { version: 'v0.04', log: 'Refined player collision, added changelog' },
     { version: 'v0.03', log: 'Added workman/qwerty keyboard layout option' },
     { version: 'v0.02', log: "Added jump lock (so you can only jump once), tweaks to demo level" },

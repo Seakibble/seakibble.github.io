@@ -38,13 +38,18 @@ Player = function (x, y) {
 
             // Collide ground
             if (Collides(this.colBoxes.Down(), that)) {
-                console.log('hit')
                 this.pos.y = that.pos.y - this.size.y
                 this.vel.y = 0
                 if (this.moves) {
                     this.grounded = true
                 }
                 noGroundCollision = false
+            }
+
+            // Collide up
+            if (Collides(this.colBoxes.Up(), that)) {
+                this.pos.y = that.pos.y + that.size.y
+                if (this.vel.y < 0) this.vel.y = 0
             }
         }
         if (noGroundCollision) {
