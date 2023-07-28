@@ -36,7 +36,7 @@ document.addEventListener("keyup", (event) => {
 function setInput(key, value) {
     switch (key) {
         case 'Escape':
-            game.pause()
+            if (value) game.pause()
             break
         case 'ArrowLeft':
             game.input.left = value

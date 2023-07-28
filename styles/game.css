@@ -103,3 +103,13 @@ button:hover .flare,button:focus .flare {
 canvas {
     width: 100%;
 }
+
+.watermark {
+    position: fixed;
+    bottom: 0;
+    font-size: 0.5em;
+    padding: 10px;
+    background: black;
+    opacity: 0.7;
+    z-index: 10;
+}
