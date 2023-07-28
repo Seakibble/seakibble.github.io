@@ -28,3 +28,16 @@ function setWorkmanMenuText() {
     if (game.input.workman) $keyboardLayout.innerHTML = 'Keyboard: WORKMAN'
     else $keyboardLayout.innerHTML = 'Keyboard: QWERTY'
 }
+
+
+function drawRect(obj) {
+    ctx.fillRect(obj.pos.x, obj.pos.y, obj.size.x, obj.size.y)
+}
+
+
+Box = function (x,y,w,h) {
+    return {
+        pos: Vector(x, y),
+        size: Vector(w, h)
+    }
+}

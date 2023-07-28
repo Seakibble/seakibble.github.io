@@ -25,6 +25,23 @@ Obj = function (x, y) {
             
             this.pos.Add(this.vel)
             Screenwrap(this)
+        },
+        checkCollision: function () {
+            if (!this.collision) return
+
+            for (let i = 0; i < game.objects.length; i++) {
+                let that = game.objects[i]
+                if (!this.moves) continue
+                if (this == that) continue
+
+                if (Collides(this, that) || Collides(that, this)) {
+                    this.pos.y = that.pos.y - this.size.y
+                    this.vel.y = 0
+                    if (this.moves) {
+                        this.grounded = true
+                    }
+                }
+            }
         }
     }
 }

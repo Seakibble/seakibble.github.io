@@ -112,4 +112,10 @@ canvas {
     background: black;
     opacity: 0.7;
     z-index: 10;
+    cursor: pointer;
+}
+.version:hover {
+    background: white;
+    color: black;
+    
 }

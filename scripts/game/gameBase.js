@@ -187,22 +187,7 @@ let game = {
             this.objects[i].update()
         }
         for (let i = 0; i < this.objects.length; i++) {
-            let a = this.objects[i]
-            if (!a.collision) continue
-
-            for (let j = 0; j < this.objects.length; j++) {
-                let b = this.objects[j]
-                if (!a.moves && !b.moves) continue
-                if (j == i) continue
-
-                if (Collides(a, b) || Collides(b, a)) {
-                    a.pos.y = b.pos.y - a.size.y
-                    a.vel.y = 0
-                    if (a.moves) {
-                        a.grounded = true
-                    }
-                }
-            }
+            this.objects[i].checkCollision()
         }
         // Put your drawing code here
         this.draw()
