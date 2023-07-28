@@ -12,8 +12,35 @@ Input = function () {
             this.left = false
             this.right = false
             this.down = false
-        }
-    }
+        },
+        applyInput: function () {
+            if (this.left && game.player.vel.x > -game.player.maxSpeed) {
+                if (game.player.vel.x > 0) game.player.vel.x = 0
+                game.player.vel.Add(Vector(-game.player.acceleration, 0))
+            } else if (this.right && game.player.vel.x < game.player.maxSpeed) {
+                if (game.player.vel.x < 0) game.player.vel.x = 0
+                game.player.vel.Add(Vector(game.player.acceleration, 0))
+            } else if (!this.left && !this.right) {
+                game.player.vel.x = 0
+            }
+
+            if (this.jump && (game.player.grounded || game.player.jumpLate < JUMP_LATE_TOLERANCE) && this.jumpLock == false) {
+                game.player.grounded = false
+                game.player.vel.y = -game.player.jumpPower
+                game.player.jumped = true
+                this.jumpLock = true
+            }
+            if (!this.jump && game.player.jumped && game.player.vel.y < 0) {
+                game.player.vel.y = 0
+            }
+            if (game.player.grounded) {
+                game.player.jumped = false
+                if (!this.jump) {
+                    this.jumpLock = false
+                }
+            }
+        },
+    }    
 }
 
 
