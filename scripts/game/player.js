@@ -78,17 +78,19 @@ Player = function (x, y) {
             }
         }
         if (!noWallCollision && this.upgrades.wallClimb) {
-            this.jumped = false
             this.sticking = true
-
+            
             if (collideLeft) this.facing = 'right'
             else this.facing = 'left'
 
+            if (collideLeft && game.input.left || collideRight && game.input.right) {
+                this.vel.y = 0
+                this.jumped = false
+            }
             if (!game.input.jump) {
                 game.input.jumpLock = false
                 this.jumpLate = 0
-            }
-            this.vel.y = 0
+            } 
         } else {
             this.sticking = false
         }

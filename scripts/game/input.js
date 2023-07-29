@@ -35,12 +35,12 @@ Input = function () {
                 }
 
                 if (this.jump && (game.player.grounded || game.player.jumpLate < JUMP_LATE_TOLERANCE) && this.jumpLock == false) {
-                    game.player.grounded = false
-                    game.player.vel.y = -game.player.jumpPower
-                    if (game.player.sticking) {
+                    if (game.player.sticking && !game.player.grounded) {
                         if (game.player.facing == 'left') game.player.vel.x -= game.player.jumpPower*0.5
                         else game.player.vel.x += game.player.jumpPower*0.5
                     }
+                    game.player.grounded = false
+                    game.player.vel.y = -game.player.jumpPower
                     
                     game.player.jumped = true
                     this.jumpLock = true

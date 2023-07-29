@@ -27,9 +27,9 @@ let game = {
         let style = "hsl(0,0%, " + pulse + "%)";
         // ctx.textAlign = "center";
 
-        game.camera.Render(DrawText(500,500, "Press Esc to quit...", style),1)
-        game.camera.Render(DrawText(500, 550, "A/D or Arrow keys to move.", style),1)
-        game.camera.Render(DrawText(500, 600, "Spacebar to jump.", style),1)
+        game.camera.Render(DrawText(500,1300, "Press Esc to quit...", style),1)
+        game.camera.Render(DrawText(500, 1350, "A/D or Arrow keys to move.", style),1)
+        game.camera.Render(DrawText(500, 1400, "Spacebar to jump.", style),1)
         
 
 
