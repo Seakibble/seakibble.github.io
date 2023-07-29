@@ -104,11 +104,11 @@ Player = function (x, y) {
     }
 
     obj.draw = function () {
-        game.camera.RenderObj(this)
+        game.camera.RenderObj(this, 3)
         if (this.facing == 'left') {
-            game.camera.Render(Draw(this.pos.x, this.pos.y + 10, 20, 30, 'lightblue'))
+            game.camera.Render(Draw(this.pos.x, this.pos.y + 10, 20, 30, 'lightblue'),2)
         } else if (this.facing == 'right') {
-            game.camera.Render(Draw(this.pos.x+this.size.x-20, this.pos.y + 10, 20, 30, 'lightblue'))
+            game.camera.Render(Draw(this.pos.x+this.size.x-20, this.pos.y + 10, 20, 30, 'lightblue'),2)
         }
 
         if (game.debug) {

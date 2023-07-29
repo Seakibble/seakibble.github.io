@@ -17,6 +17,14 @@ Camera = function () {
             }
         },
         DrawToScreen: function () {
+            // console.log(this.renderList)
+            this.renderList.sort((a, b) => {
+                if (a.priority > b.priority) return -1
+                else if (a.priority < b.priority) return 1
+                else return 0
+            })
+            // console.log(this.renderList)
+            // alert()
             this.DrawToScreenArray(this.renderList)
             this.renderList = []
         },
@@ -40,11 +48,14 @@ Camera = function () {
                 ctx.resetTransform()
             } 
         },
-        Render: function (drawThis) {
+        Render: function (drawThis, priority = 5) {
+            drawThis.priority = priority
             this.renderList.push(drawThis)
         },
-        RenderObj: function (drawThis) {
-            this.renderList.push(DrawObj(drawThis))
+        RenderObj: function (drawThis, priority = 5) {
+            let obj = DrawObj(drawThis)
+            obj.priority = priority
+            this.renderList.push(obj)
         }, 
         CameraSpace: function (vec) {
             let newVec = Vector(vec.x, vec.y)
@@ -56,7 +67,7 @@ Camera = function () {
     }
 }
 
-Draw = function (x,y,w,h,color) {
+Draw = function (x,y,w,h,color = 'white') {
     return {
         x: x,
         y: y,

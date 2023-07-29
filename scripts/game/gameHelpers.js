@@ -5,17 +5,22 @@ function Screenwrap(obj) {
     else if (obj.pos.y > CV.y + obj.size.y) obj.pos.y -= (CV.y + obj.size.y * 2)
 }
 
+
+// Checks to see if a box is overlapping with another box, point by point
+// NOT SYMETRICAL! This tells you if each corner of a is inside b, will fail if b is inside a!!!
+// Call Collides(a,b) AND Collides (b, a) to be sure if there was a collision!
 function Collides(a, b) {
-    return (IsInside(Vector(a.pos.x, a.pos.y), b)
-        || IsInside(Vector(a.pos.x + a.size.x, a.pos.y), b)
-        || IsInside(Vector(a.pos.x + a.size.x, a.pos.y + a.size.y), b)
-        || IsInside(Vector(a.pos.x, a.pos.y + a.size.y), b)
+    return (IsInside(Vector(a.pos.x, a.pos.y), b) // a top left is inside b?
+        || IsInside(Vector(a.pos.x + a.size.x, a.pos.y), b) // a top right is inside b?
+        || IsInside(Vector(a.pos.x + a.size.x, a.pos.y + a.size.y), b) // a bottom right is inside b?
+        || IsInside(Vector(a.pos.x, a.pos.y + a.size.y), b) // a bottom left is inside b?
     ) 
 }
 
+/// Checks to see if a point is inside a box
 function IsInside(a, b) {
-    return (a.x > b.pos.x && a.x < b.pos.x + b.size.x
-        && a.y > b.pos.y && a.y < b.pos.y + b.size.y)
+    return (a.x > b.pos.x && a.x < b.pos.x + b.size.x // a is between box left and right
+        && a.y > b.pos.y && a.y < b.pos.y + b.size.y) // a is between box top and bottom
 }
 
 function setWorkman() {
