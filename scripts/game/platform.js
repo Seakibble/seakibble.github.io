@@ -3,7 +3,7 @@ Platform = function (x, y, w, h) {
     obj.size.x = w
     obj.size.y = h
 
-    obj.color = "lightgrey"
+    obj.color = "#111"
     obj.collision = true
     obj.obstructs = true
     

@@ -3,7 +3,7 @@ Player = function (x, y) {
     obj.player = true
     obj.size.x = 35
     obj.size.y = 60
-    obj.color = "teal"
+    obj.color = "black"
     obj.gravity = true
     obj.collision = true
     obj.moves = true
@@ -105,10 +105,22 @@ Player = function (x, y) {
 
     obj.draw = function () {
         game.camera.RenderObj(this, 3)
+        let visorColor = 'limegreen'
+
+        let pulse = Pulse(700, 2)-2
+
+        game.camera.Render(Draw(this.pos.x, this.pos.y + pulse-2, this.size.x, 10, this.color), 3)
+
         if (this.facing == 'left') {
-            game.camera.Render(Draw(this.pos.x, this.pos.y + 10, 20, 30, 'lightblue'),2)
+            game.camera.Render(Draw(this.pos.x + this.size.x - 7, this.pos.y - 15 + pulse, 2, 16, this.color), 3)
+            
+            game.camera.Render(Draw(this.pos.x, this.pos.y + 5 + pulse, 20, 6, visorColor), 2)
+            game.camera.Render(Draw(this.pos.x, this.pos.y + 10 + pulse, 12, 10, visorColor), 2)
         } else if (this.facing == 'right') {
-            game.camera.Render(Draw(this.pos.x+this.size.x-20, this.pos.y + 10, 20, 30, 'lightblue'),2)
+            game.camera.Render(Draw(this.pos.x + 7, this.pos.y - 15 + pulse, 2, 16, this.color), 3)
+
+            game.camera.Render(Draw(this.pos.x + this.size.x - 20, this.pos.y + 5 + pulse, 20, 6, visorColor), 2)
+            game.camera.Render(Draw(this.pos.x + this.size.x - 12, this.pos.y + 10 + pulse, 12, 10, visorColor), 2)
         }
 
         if (game.debug) {

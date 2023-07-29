@@ -55,3 +55,7 @@ function LerpVec(a, b, t) {
     newPos.Mult(t)
     return newPos
 }
+
+function Pulse(frequency, amplitude) {
+    return Math.sin((game.now - game.startTime) / frequency) * amplitude
+}

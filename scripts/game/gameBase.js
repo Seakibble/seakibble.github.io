@@ -23,17 +23,16 @@ let game = {
     screen: Screens(),
     initialized: false,
     draw: function () {
-        ctx.fillStyle = 'grey'
+        ctx.fillStyle = '#777'
         ctx.fillRect(0, 0, $canvas.width, $canvas.height)
-        let pulse = Math.sin((this.now - this.startTime) / 1000) * 5 + 30
-        let style = "hsl(0,0%, " + pulse + "%)";
+        // let style = "hsl(0,0%, " + pulse + "%)";
         // ctx.textAlign = "center";
 
-        game.camera.Render(DrawText(500,1300, "Press Esc to quit...", style),1)
-        game.camera.Render(DrawText(500, 1350, "A/D or Arrow keys to move.", style),1)
-        game.camera.Render(DrawText(500, 1400, "Spacebar to jump.", style),1)
+        game.camera.Render(DrawText(500, 1300, "Get to the OBJECTIVE.", 'goldenrod'), 1)
+        game.camera.Render(DrawText(500,1350, "Press Esc to quit.", 'grey'),1)
+        game.camera.Render(DrawText(500, 1400, "A/D or Arrow keys to move.", 'grey'),1)
+        game.camera.Render(DrawText(500, 1450, "Spacebar to jump.", 'grey'), 1)
         
-
 
         for (let i = 0; i < this.objects.length; i++) {
             this.objects[i].draw()
