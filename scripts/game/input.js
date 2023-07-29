@@ -22,25 +22,25 @@ Input = function () {
                 let drag = FLOOR_DRAG
                 if (!game.player.grounded) drag = AIR_DRAG
 
-                if (this.left && game.player.vel.x > -game.player.maxSpeed) {
+                if (this.left && game.player.vel.x > -MAX_SPEED) {
                     if (game.player.vel.x > 0) game.player.vel.x *= drag
                     if (!game.player.sticking) game.player.facing = 'left'
-                    game.player.vel.Add(Vector(-game.player.acceleration, 0))
-                } else if (this.right && game.player.vel.x < game.player.maxSpeed) {
+                    game.player.vel.Add(Vector(-ACCELERATION, 0))
+                } else if (this.right && game.player.vel.x < MAX_SPEED) {
                     if (game.player.vel.x < 0) game.player.vel.x *= drag
-                    game.player.vel.Add(Vector(game.player.acceleration, 0))
+                    game.player.vel.Add(Vector(ACCELERATION, 0))
                     if (!game.player.sticking) game.player.facing = 'right'
                 } else if (!this.left && !this.right) {
                     game.player.vel.x *= drag
                 }
 
                 if (this.jump && (game.player.grounded || game.player.jumpLate < JUMP_LATE_TOLERANCE) && this.jumpLock == false) {
-                    if (game.player.sticking && !game.player.grounded) {
-                        if (game.player.facing == 'left') game.player.vel.x -= game.player.jumpPower*0.5
-                        else game.player.vel.x += game.player.jumpPower*0.5
+                    if (game.player.sticking && (!game.player.grounded || (game.player.sticking && (this.left || this.right)))) {
+                        if (game.player.facing == 'left') game.player.vel.x -= JUMP_POWER * WALL_JUMP_POWER
+                        else game.player.vel.x += JUMP_POWER*WALL_JUMP_POWER
                     }
                     game.player.grounded = false
-                    game.player.vel.y = -game.player.jumpPower
+                    game.player.vel.y = -JUMP_POWER
                     
                     game.player.jumped = true
                     this.jumpLock = true

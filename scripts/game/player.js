@@ -7,9 +7,7 @@ Player = function (x, y) {
     obj.gravity = true
     obj.collision = true
     obj.moves = true
-    obj.acceleration = 1
-    obj.maxSpeed = 10
-    obj.jumpPower = 15
+
     obj.jumpLate = 0
     obj.facing = 'right'
     obj.upgrades = {

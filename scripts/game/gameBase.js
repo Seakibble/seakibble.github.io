@@ -18,6 +18,8 @@ let game = {
     elapsed: null,
     objects: [],
     paused: true,
+    timerStart: null,
+    timerElapsed: null,
     screen: Screens(),
     initialized: false,
     draw: function () {
@@ -41,6 +43,16 @@ let game = {
             this.camera.Render(Draw(0,0,10,10,'red'))
         }
         this.camera.DrawToScreen()
+        if (this.timerStart !== null && this.timerElapsed !== null) {
+            let min = this.timerElapsed.getMinutes()
+            if (min < 10) min = '0'+min
+            let sec = this.timerElapsed.getSeconds()
+            if (sec < 10) sec = '0' + sec
+            let mil = this.timerElapsed.getMilliseconds()
+            if (mil < 10) mil = '00' + mil
+            if (mil < 100) mil = '0' + mil
+            $timer.innerHTML = `<span>${min}</span>:<span>${sec}</span><span class=mil>:${mil}</span>`
+        }
     },
     resize: function () {
         if ($container.offsetHeight / this.zoom < 1 || $container.offsetWidth / this.zoom < 1) {
@@ -109,6 +121,7 @@ let game = {
         this.camera.Track(this.player)
         this.startAnimating()
         this.initialized = true
+        this.timerStart = Date.now()
         this.pause()
     },
     tick: function () {
@@ -141,6 +154,8 @@ let game = {
         for (let i = 0; i < this.objects.length; i++) this.objects[i].checkCollision()
         
         this.camera.Update()
+        this.timerElapsed = Date.now() - this.timerStart
+        this.timerElapsed = new Date(this.timerElapsed)
         this.draw()
     },
     startAnimating: function () {

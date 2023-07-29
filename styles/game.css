@@ -20,6 +20,7 @@ body {
     width: 100vw;
     place-content: center;
     background: hsl(0,0%,0%,0.8);
+    z-index: 5;
 }
 
 .menu {
@@ -119,4 +120,24 @@ canvas {
     background: white;
     color: black;
     
+}
+
+#ui {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    padding: 30px;
+    z-index: 1;
+}
+
+#timer {
+    background: rgba(0,0,0, 0.5);
+    padding: 10px;
+    width: 200px;
+}
+
+#timer span.mil {
+    font-size: 0.7em;
 }

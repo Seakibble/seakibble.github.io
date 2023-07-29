@@ -2,7 +2,6 @@ Camera = function () {
     return {
         pos: Vector(0,0),
         tracking: null,
-        lag: 0.1,
         renderList: [],
         Track: function (obj) {
             this.tracking = obj
@@ -13,7 +12,7 @@ Camera = function () {
             if (this.tracking) {
                 // console.log(this.pos)
                 // this.pos = this.tracking.pos
-                this.pos.Add(LerpVec(this.pos, this.tracking.pos, this.lag))
+                this.pos.Add(LerpVec(this.pos, this.tracking.pos, CAMERA_LAG))
             }
         },
         DrawToScreen: function () {

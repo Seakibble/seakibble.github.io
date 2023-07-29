@@ -15,3 +15,5 @@ let $start = document.getElementById('start')
 
 let $victoryScreen = document.getElementById('victoryScreen')
 let $playAgain = document.getElementById('playAgain')
+
+let $timer = document.getElementById('timer')

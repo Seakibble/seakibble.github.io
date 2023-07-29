@@ -1,5 +1,6 @@
 const CHANGELOG = [
     // { version: '', log: '' },
+    { version: 'v0.4.3', log: 'Added half-baked timer, more constants' },
     { version: 'v0.4.2', log: 'Added sick wall slides, player less sticky' },
     { version: 'v0.4.1', log: 'Collision bugfix, added priority system to renderer' },
     { version: 'v0.4.0', log: 'Random levels, camera tracking' },
