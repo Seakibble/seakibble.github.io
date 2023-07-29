@@ -6,6 +6,7 @@ Screens = function () {
             switch (screen) {
                 case '':
                     $content.style.display = 'none'
+                    $ui.classList.add('active')
                     break
                 case 'options':
                     this.state = 'options'
@@ -14,6 +15,7 @@ Screens = function () {
                 case 'start':
                     this.state = 'start'
                     $startScreen.classList.add('active')
+                    $ui.classList.remove('active')
                     break
                 case 'win':
                     this.state = 'win'

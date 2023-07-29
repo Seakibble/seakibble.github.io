@@ -50,7 +50,8 @@ let game = {
             let mil = this.timerElapsed.getMilliseconds()
             if (mil < 10) mil = '00' + mil
             if (mil < 100) mil = '0' + mil
-            $timer.innerHTML = `<span>${min}</span>:<span>${sec}</span><span class=mil>:${mil}</span>`
+            $timer.innerHTML = `<span>${min}</span>:<span>${sec}</span>`
+            // $imer.innerHTML += `<span class=mil>:${mil}</span>`
         }
     },
     resize: function () {

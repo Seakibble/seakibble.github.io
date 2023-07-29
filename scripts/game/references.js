@@ -19,3 +19,5 @@ let $playAgain = document.getElementById('playAgain')
 let $timer = document.getElementById('timer')
 
 let $version = document.getElementById('version')
+
+let $ui = document.getElementById('ui')

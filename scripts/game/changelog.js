@@ -1,5 +1,6 @@
 const CHANGELOG = [
     // { version: '', log: '' },
+    { version: 'v0.4.5', log: 'UI is hidden on win and start menus' },
     { version: 'v0.4.4', log: 'Added some visual flare and an objective' },
     { version: 'v0.4.3', log: 'Added half-baked timer, more constants' },
     { version: 'v0.4.2', log: 'Added sick wall slides, player less sticky' },
