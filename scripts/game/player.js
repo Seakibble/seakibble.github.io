@@ -3,7 +3,7 @@ Player = function (x, y) {
     obj.player = true
     obj.size.x = 35
     obj.size.y = 60
-    obj.color = "black"
+    obj.color = "#333"
     obj.gravity = true
     obj.collision = true
     obj.moves = true
@@ -137,7 +137,7 @@ Player = function (x, y) {
 
         if (this.facing == 'left') {
             // Antenna
-            game.camera.Render(Draw(this.pos.x + this.size.x - 7, this.pos.y - 15 + pulse, 2, 16, gearColor), 3)
+            game.camera.Render(Draw(this.pos.x + this.size.x - 7, this.pos.y - 15 + pulse, 2, 16, this.color), 4)
             
             // Visor
             game.camera.Render(Draw(this.pos.x, this.pos.y + 5 + pulse, 20, 6, visorColor), 2)
@@ -150,7 +150,7 @@ Player = function (x, y) {
             }
         } else if (this.facing == 'right') {
             // Antenna
-            game.camera.Render(Draw(this.pos.x + 7, this.pos.y - 15 + pulse, 2, 16, gearColor), 3)
+            game.camera.Render(Draw(this.pos.x + 7, this.pos.y - 15 + pulse, 2, 16, this.color), 4)
 
             // Visor
             game.camera.Render(Draw(this.pos.x + this.size.x - 20, this.pos.y + 5 + pulse, 20, 6, visorColor), 2)
