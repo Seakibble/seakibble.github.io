@@ -172,7 +172,7 @@ function setInput(key, keyDown) {
             if (keyDown) game.pause()
             break
         case 'Shift':
-            if (keyDown) game.input.dash = true
+            game.input.dash = keyDown
             break
         case 'F4':
             if (keyDown) game.debug = !game.debug
