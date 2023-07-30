@@ -12,7 +12,7 @@ function loadAudio() {
      audio.music = new Howl({
         src: ['scripts/game/audio/music/01-galactic-agent.mp3'],
         loop: true,
-        volume: 0.2
+        volume: 0.4
     })
 
     audio.player.jump = new Howl({
