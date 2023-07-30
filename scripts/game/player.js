@@ -33,6 +33,14 @@ Player = function (x, y) {
         }
     }
 
+    obj.update = function () {
+        if (this.gravity && !this.grounded && this.dashCooldown < 0) {
+            this.vel.Add(GRAVITY)
+        }
+
+        this.pos.Add(this.vel)
+    }
+
     obj.checkCollision = function () {
         if (!this.collision) return
 
@@ -110,17 +118,17 @@ Player = function (x, y) {
         }
 
         this.dashCooldown--
-        if (this.dashCooldown <= 0) this.dashed = false
+        if (this.dashCooldown <= DASH_RECHARGE) this.dashed = false
     }
 
     obj.draw = function () {
         // Dude
         game.camera.RenderObj(this, 3)
         let visorColor = 'limegreen'
-        let gearColor = '#090909'
+        let gearColor = '#ccc'
         let thrusterColor = 'olive'
-        if (this.dashCooldown > 40) thrusterColor = 'yellow'
-        else if (this.dashCooldown > 0 || this.dashed) thrusterColor = '#332'
+        if (this.dashCooldown > 0) thrusterColor = 'yellow'
+        else if (this.dashCooldown > DASH_RECHARGE || this.dashed) thrusterColor = '#332'
 
         let pulse = Pulse(700, 2)-2
 
@@ -137,7 +145,7 @@ Player = function (x, y) {
 
             if (game.player.upgrades.dash) {
                 // Backpack
-                game.camera.Render(Draw(this.pos.x + this.size.x - 4, this.pos.y + pulse + 20, 10, 30, gearColor), 3)
+                game.camera.Render(Draw(this.pos.x + this.size.x - 9, this.pos.y + pulse + 20, 15, 30, gearColor), 3)
                 game.camera.Render(Draw(this.pos.x + this.size.x - 2, this.pos.y + pulse + 25, 8, 20, thrusterColor), 2)
             }
         } else if (this.facing == 'right') {
@@ -150,7 +158,7 @@ Player = function (x, y) {
 
             if (game.player.upgrades.dash) {
                 // Backpack
-                game.camera.Render(Draw(this.pos.x - 6, this.pos.y + pulse + 20, 10, 30, gearColor), 3)
+                game.camera.Render(Draw(this.pos.x - 6, this.pos.y + pulse + 20, 15, 30, gearColor), 3)
                 game.camera.Render(Draw(this.pos.x - 6, this.pos.y + pulse + 25, 8, 20, thrusterColor), 2)
             }
         }

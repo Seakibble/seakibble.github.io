@@ -37,16 +37,18 @@ Input = function () {
 
 
             // Left and Right
-            if (this.left && game.player.vel.x > -MAX_SPEED) {
-                if (game.player.vel.x > 0) game.player.vel.x *= drag
-                if (!game.player.sticking) game.player.facing = 'left'
-                game.player.vel.Add(Vector(-ACCELERATION, 0))
-            } else if (this.right && game.player.vel.x < MAX_SPEED) {
-                if (game.player.vel.x < 0) game.player.vel.x *= drag
-                game.player.vel.Add(Vector(ACCELERATION, 0))
-                if (!game.player.sticking) game.player.facing = 'right'
-            } else if (!this.left && !this.right) {
-                game.player.vel.x *= drag
+            if (game.player.dashCooldown <= 0) {
+                if (this.left && game.player.vel.x > -MAX_SPEED) {
+                    if (game.player.vel.x > 0) game.player.vel.x *= drag
+                    if (!game.player.sticking) game.player.facing = 'left'
+                    game.player.vel.Add(Vector(-ACCELERATION, 0))
+                } else if (this.right && game.player.vel.x < MAX_SPEED) {
+                    if (game.player.vel.x < 0) game.player.vel.x *= drag
+                    game.player.vel.Add(Vector(ACCELERATION, 0))
+                    if (!game.player.sticking) game.player.facing = 'right'
+                } else if (!this.left && !this.right) {
+                    game.player.vel.x *= drag
+                }
             }
 
 
@@ -85,9 +87,9 @@ Input = function () {
                 this.dashLock = true
                 this.dash = false
                 game.player.dashed = true
-                game.player.dashCooldown = DASH_RECHARGE
+                game.player.dashCooldown = DASH_DURATION
                 game.player.vel.y = 0
-                game.player.vel.x += DASH_POWER * game.player.Facing()
+                game.player.vel.x = DASH_POWER * game.player.Facing()
             }
         },
     }    
