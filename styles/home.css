@@ -225,6 +225,8 @@ iframe {
     .buttons {
         grid-auto-flow: row;
         padding-top: 5vh;
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
     }
 
     .nameplate {
