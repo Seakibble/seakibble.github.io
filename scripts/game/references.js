@@ -5,6 +5,7 @@ let $content = document.getElementById('content')
 let $pauseScreen = document.getElementById('pauseScreen')
 let $resume = document.getElementById('resume')
 let $options = document.getElementById('options')
+let $restart = document.getElementById('restart')
 
 let $optionsScreen = document.getElementById('optionsScreen')
 let $keyboardLayout = document.getElementById('keyboardLayout')

@@ -1,5 +1,6 @@
 const CHANGELOG = [
     // { version: '', log: '' },
+    { version: 'v0.5.3', log: 'Added restart in case the seed is fucked' },
     { version: 'v0.5.2', log: 'Jump now also antigrav-pack' },
     { version: 'v0.5.1', log: 'Added rudimentary dash upgrade' },
     { version: 'v0.5.0', log: 'Added music and sfx, larger levels with smaller grid' },

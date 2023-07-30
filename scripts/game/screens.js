@@ -30,6 +30,9 @@ Screens = function () {
         init: function () {
             $resume.addEventListener('click', () => game.pause())
             $options.addEventListener('click', () => this.set('options'))
+            $restart.addEventListener('click', () => {
+                game.start()
+            })
             $optionsBack.addEventListener('click', () => this.set('pause'))
             $keyboardLayout.addEventListener('click', () => {
                 setWorkman()
