@@ -8,6 +8,8 @@ Input = function () {
         enter: false,
         jump: false,
         jumpLock: false,
+        dash: false,
+        dashLock: false,
         reset: function () {
             this.up = false
             this.left = false
@@ -17,8 +19,13 @@ Input = function () {
         menuInput: function () {
             // if (this.up) $('button.selected')
             if (this.enter) {
-                if (game.screen.state == 'win') {
-                    $playAgain.click()
+                switch (game.screen.state) {
+                    case 'win':
+                        $playAgain.click()
+                        break
+                    case 'start':
+                        $start.click()
+                        break
                 }
             }
             
@@ -28,6 +35,8 @@ Input = function () {
             let drag = FLOOR_DRAG
             if (!game.player.grounded) drag = AIR_DRAG
 
+
+            // Left and Right
             if (this.left && game.player.vel.x > -MAX_SPEED) {
                 if (game.player.vel.x > 0) game.player.vel.x *= drag
                 if (!game.player.sticking) game.player.facing = 'left'
@@ -40,10 +49,13 @@ Input = function () {
                 game.player.vel.x *= drag
             }
 
+
+            // Play walking SFX
             if (game.player.grounded && (this.left || this.right)) {
                 if (!audio.player.walk.playing()) audio.player.walk.play()
             }
 
+            // Jumping
             if (this.jump && (game.player.grounded || game.player.jumpLate < JUMP_LATE_TOLERANCE) && this.jumpLock == false) {
                 if (game.player.sticking && (!game.player.grounded || (game.player.sticking && (this.left || this.right)))) {
                     if (game.player.facing == 'left') game.player.vel.x -= JUMP_POWER * WALL_JUMP_POWER
@@ -61,9 +73,21 @@ Input = function () {
             }
             if (game.player.grounded) {
                 game.player.jumped = false
+                game.player.dashed = false
                 if (!this.jump) {
                     this.jumpLock = false
+                    this.dashLock = false
                 }
+            }
+
+            // Dashing
+            if (this.dash && !this.dashLock && game.player.dashCooldown <= 0) {
+                this.dashLock = true
+                this.dash = false
+                game.player.dashed = true
+                game.player.dashCooldown = DASH_RECHARGE
+                game.player.vel.y = 0
+                game.player.vel.x += DASH_POWER * game.player.Facing()
             }
         },
     }    
@@ -144,6 +168,9 @@ function setInput(key, keyDown) {
     switch (key) {
         case 'Escape':
             if (keyDown) game.pause()
+            break
+        case 'Shift':
+            if (keyDown) game.input.dash = true
             break
         case 'F4':
             if (keyDown) game.debug = !game.debug

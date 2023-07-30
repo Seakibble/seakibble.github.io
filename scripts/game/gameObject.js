@@ -29,6 +29,7 @@ Obj = function (x, y, w=10, h=10) {
                 let that = game.objects[i]
 
                 if (this == that) continue
+                if (!this.moves && !that.moves) continue
 
                 if (Collides(this, that) || Collides(that, this)) {
                     if (this.player) console.log('player hit') 
@@ -44,6 +45,11 @@ Obj = function (x, y, w=10, h=10) {
                     if (this.onCollision !== null) this.onCollision(that)
                 }
             }
+        },
+        Facing: function () {
+            if (this.facing == 'left') return -1
+            else if (this.facing == 'right') return 1
+            else return 0
         }
     }
 }

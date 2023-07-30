@@ -1,5 +1,6 @@
 const CHANGELOG = [
     // { version: '', log: '' },
+    { version: 'v0.5.1', log: 'Added rudimentary dash upgrade' },
     { version: 'v0.5.0', log: 'Added music and sfx, larger levels with smaller grid' },
     { version: 'v0.4.5', log: 'UI is hidden on win and start menus' },
     { version: 'v0.4.4', log: 'Added some visual flare and an objective' },

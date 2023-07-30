@@ -9,9 +9,11 @@ Player = function (x, y) {
     obj.moves = true
 
     obj.jumpLate = 0
+    obj.dashCooldown = 0
     obj.facing = 'right'
     obj.upgrades = {
-        wallClimb: true
+        wallClimb: true,
+        dash: true
     }
 
     obj.colBoxes = {
@@ -106,26 +108,51 @@ Player = function (x, y) {
                 this.jumpLate++
             }
         }
+
+        this.dashCooldown--
+        if (this.dashCooldown <= 0) this.dashed = false
     }
 
     obj.draw = function () {
+        // Dude
         game.camera.RenderObj(this, 3)
         let visorColor = 'limegreen'
+        let gearColor = '#090909'
+        let thrusterColor = 'olive'
+        if (this.dashCooldown > 40) thrusterColor = 'yellow'
+        else if (this.dashCooldown > 0 || this.dashed) thrusterColor = '#332'
 
         let pulse = Pulse(700, 2)-2
 
-        game.camera.Render(Draw(this.pos.x, this.pos.y + pulse - 2, this.size.x, this.size.x, this.color), 3)
+        // Helmet
+        game.camera.Render(Draw(this.pos.x, this.pos.y + pulse - 2, this.size.x, this.size.x-5, gearColor), 3)
 
         if (this.facing == 'left') {
-            game.camera.Render(Draw(this.pos.x + this.size.x - 7, this.pos.y - 15 + pulse, 2, 16, this.color), 3)
+            // Antenna
+            game.camera.Render(Draw(this.pos.x + this.size.x - 7, this.pos.y - 15 + pulse, 2, 16, gearColor), 3)
             
+            // Visor
             game.camera.Render(Draw(this.pos.x, this.pos.y + 5 + pulse, 20, 6, visorColor), 2)
             game.camera.Render(Draw(this.pos.x, this.pos.y + 10 + pulse, 12, 10, visorColor), 2)
-        } else if (this.facing == 'right') {
-            game.camera.Render(Draw(this.pos.x + 7, this.pos.y - 15 + pulse, 2, 16, this.color), 3)
 
+            if (game.player.upgrades.dash) {
+                // Backpack
+                game.camera.Render(Draw(this.pos.x + this.size.x - 4, this.pos.y + pulse + 20, 10, 30, gearColor), 3)
+                game.camera.Render(Draw(this.pos.x + this.size.x - 2, this.pos.y + pulse + 25, 8, 20, thrusterColor), 2)
+            }
+        } else if (this.facing == 'right') {
+            // Antenna
+            game.camera.Render(Draw(this.pos.x + 7, this.pos.y - 15 + pulse, 2, 16, gearColor), 3)
+
+            // Visor
             game.camera.Render(Draw(this.pos.x + this.size.x - 20, this.pos.y + 5 + pulse, 20, 6, visorColor), 2)
             game.camera.Render(Draw(this.pos.x + this.size.x - 12, this.pos.y + 10 + pulse, 12, 10, visorColor), 2)
+
+            if (game.player.upgrades.dash) {
+                // Backpack
+                game.camera.Render(Draw(this.pos.x - 6, this.pos.y + pulse + 20, 10, 30, gearColor), 3)
+                game.camera.Render(Draw(this.pos.x - 6, this.pos.y + pulse + 25, 8, 20, thrusterColor), 2)
+            }
         }
 
         if (game.debug) {
