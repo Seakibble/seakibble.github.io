@@ -87,6 +87,7 @@ h1.titleMask span {
 .buttons {
     position: relative;
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
     grid-auto-flow: column;
     z-index:2;
@@ -96,7 +97,7 @@ h1.titleMask span {
 
 .buttons a {
     width: 100%;
-    max-width: 230px;
+    max-width: 250px;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.375);
     padding: 0.5em 0;

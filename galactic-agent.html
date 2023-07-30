@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Red+Hat+Display&family=Satisfy&display=swap"
+            rel="stylesheet">
+
+        <link rel="stylesheet" href="/styles/reset.css">
+        <link rel="stylesheet" href="/styles/game.css">
+
+        <link rel="icon" type="image/x-icon" href="/images/cute-sharp-tiny.png">
+
+
+        <script src="/scripts/jquery-3.7.0.min.js"></script>
+        <script src="/scripts/helper.js"></script>
+        <title>Galactic Agent</title>
+    </head>
+
+    <body>
+        <div id="content" class="content">
+            <div id="pauseScreen" class="menu screen">
+                <h2>GAME PAUSED</h2>
+                <button id="resume"><span class="flare"></span>Resume</button>
+                <button id="options"><span class="flare"></span>Options</button>
+                <button id="restart"><span class="flare"></span>Restart Mission</button>
+                <a href="./index.html" class='button' tabindex="-1"><button><span class="flare"></span>Quit
+                        Game</button></a>
+            </div>
+            <div id="optionsScreen" class="menu screen">
+                <h2>OPTIONS</h2>
+                <button id="toggleMusic"><span class="flare"></span>Toggle Music: ON</button>
+                <button id="keyboardLayout"><span class="flare"></span>Keyboard:</button>
+                <button id="optionsBack"><span class="flare"></span>Back</button>
+            </div>
+            <div id="startScreen" class="screen active">
+                <h1>Galactic Agent</h1>
+                <div class="menu">
+                    <h2>PRESS START</h2>
+                    <button id="start" autofocus><span class="flare"></span>Start</button>
+                </div>
+            </div>
+            <div id="victoryScreen" class="screen">
+                <h1>YOU WIN</h1>
+                <div class="menu">
+                    <button id="playAgain"><span class="flare"></span>Play Again</button>
+                </div>
+            </div>
+        </div>
+        <div id="ui">
+            <div id="timer">0:00:00:00</div>
+        </div>
+        <p class="version" id="version"></p>
+        <div id="container"><canvas id="canvas"></canvas></div>
+
+        <script src="/scripts/game/3rd-party/howler.min.js"></script>
+
+        <script src="/scripts/game/references.js"></script>
+        <script src="/scripts/game/constants.js"></script>
+
+        <script src="/scripts/game/changelog.js"></script>
+        <script src="/scripts/game/gameHelpers.js"></script>
+
+        <script src="/scripts/game/audio.js"></script>
+
+        <script src="/scripts/game/input.js"></script>
+        <script src="/scripts/game/screens.js"></script>
+        <script src="/scripts/game/camera.js"></script>
+
+        <script src="/scripts/game/gameObject.js"></script>
+
+        <script src="/scripts/game/goal.js"></script>
+        <script src="/scripts/game/platform.js"></script>
+        <script src="/scripts/game/player.js"></script>
+
+        <script src="/scripts/game/gameBase.js"></script>
+    </body>
+
+</html>
