@@ -5,6 +5,7 @@ Input = function () {
         down: false,
         left: false,
         right: false,
+        enter: false,
         jump: false,
         jumpLock: false,
         reset: function () {
@@ -13,46 +14,55 @@ Input = function () {
             this.right = false
             this.down = false
         },
-        applyInput: function () {
-            // menu input
-            if (game.paused) {
-                // if (this.up) $('button.selected')
-            } else {
-                // game input
-                let drag = FLOOR_DRAG
-                if (!game.player.grounded) drag = AIR_DRAG
+        menuInput: function () {
+            // if (this.up) $('button.selected')
+            if (this.enter) {
+                if (game.screen.state == 'win') {
+                    $playAgain.click()
+                }
+            }
+            
+        },
+        gameInput: function () {
+            // game input
+            let drag = FLOOR_DRAG
+            if (!game.player.grounded) drag = AIR_DRAG
 
-                if (this.left && game.player.vel.x > -MAX_SPEED) {
-                    if (game.player.vel.x > 0) game.player.vel.x *= drag
-                    if (!game.player.sticking) game.player.facing = 'left'
-                    game.player.vel.Add(Vector(-ACCELERATION, 0))
-                } else if (this.right && game.player.vel.x < MAX_SPEED) {
-                    if (game.player.vel.x < 0) game.player.vel.x *= drag
-                    game.player.vel.Add(Vector(ACCELERATION, 0))
-                    if (!game.player.sticking) game.player.facing = 'right'
-                } else if (!this.left && !this.right) {
-                    game.player.vel.x *= drag
-                }
+            if (this.left && game.player.vel.x > -MAX_SPEED) {
+                if (game.player.vel.x > 0) game.player.vel.x *= drag
+                if (!game.player.sticking) game.player.facing = 'left'
+                game.player.vel.Add(Vector(-ACCELERATION, 0))
+            } else if (this.right && game.player.vel.x < MAX_SPEED) {
+                if (game.player.vel.x < 0) game.player.vel.x *= drag
+                game.player.vel.Add(Vector(ACCELERATION, 0))
+                if (!game.player.sticking) game.player.facing = 'right'
+            } else if (!this.left && !this.right) {
+                game.player.vel.x *= drag
+            }
 
-                if (this.jump && (game.player.grounded || game.player.jumpLate < JUMP_LATE_TOLERANCE) && this.jumpLock == false) {
-                    if (game.player.sticking && (!game.player.grounded || (game.player.sticking && (this.left || this.right)))) {
-                        if (game.player.facing == 'left') game.player.vel.x -= JUMP_POWER * WALL_JUMP_POWER
-                        else game.player.vel.x += JUMP_POWER*WALL_JUMP_POWER
-                    }
-                    game.player.grounded = false
-                    game.player.vel.y = -JUMP_POWER
-                    
-                    game.player.jumped = true
-                    this.jumpLock = true
+            if (game.player.grounded && (this.left || this.right)) {
+                if (!audio.player.walk.playing()) audio.player.walk.play()
+            }
+
+            if (this.jump && (game.player.grounded || game.player.jumpLate < JUMP_LATE_TOLERANCE) && this.jumpLock == false) {
+                if (game.player.sticking && (!game.player.grounded || (game.player.sticking && (this.left || this.right)))) {
+                    if (game.player.facing == 'left') game.player.vel.x -= JUMP_POWER * WALL_JUMP_POWER
+                    else game.player.vel.x += JUMP_POWER * WALL_JUMP_POWER
                 }
-                if (!this.jump && game.player.jumped && game.player.vel.y < 0) {
-                    game.player.vel.y = 0
-                }
-                if (game.player.grounded) {
-                    game.player.jumped = false
-                    if (!this.jump) {
-                        this.jumpLock = false
-                    }
+                game.player.grounded = false
+                game.player.vel.y = -JUMP_POWER
+
+                game.player.jumped = true
+                this.jumpLock = true
+                audio.player.jump.play()
+            }
+            if (!this.jump && game.player.jumped && game.player.vel.y < 0) {
+                game.player.vel.y = 0
+            }
+            if (game.player.grounded) {
+                game.player.jumped = false
+                if (!this.jump) {
+                    this.jumpLock = false
                 }
             }
         },
@@ -140,6 +150,9 @@ function setInput(key, keyDown) {
             break
         case ' ':
             game.input.jump = keyDown
+            break
+        case 'Enter':
+            game.input.enter = keyDown
             break
     }
 }

@@ -47,7 +47,12 @@ Player = function (x, y) {
                 // Collide ground
                 if (Collides(this.colBoxes.Down(), that)) {
                     this.pos.y = that.pos.y - this.size.y
+
+                    if (this.vel.y > 25) audio.player.landHeavy.play() 
+                    else if (this.vel.y > 5) audio.player.land.play()
+                        
                     this.vel.y = 0
+                    
                     if (this.moves) {
                         this.grounded = true
                     }
@@ -109,7 +114,7 @@ Player = function (x, y) {
 
         let pulse = Pulse(700, 2)-2
 
-        game.camera.Render(Draw(this.pos.x, this.pos.y + pulse-2, this.size.x, 10, this.color), 3)
+        game.camera.Render(Draw(this.pos.x, this.pos.y + pulse - 2, this.size.x, this.size.x, this.color), 3)
 
         if (this.facing == 'left') {
             game.camera.Render(Draw(this.pos.x + this.size.x - 7, this.pos.y - 15 + pulse, 2, 16, this.color), 3)

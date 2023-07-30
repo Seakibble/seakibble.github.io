@@ -82,18 +82,19 @@ let game = {
         this.resize()
         this.screen.set('')
         this.screen.init()
+        loadAudio()
 
         window.addEventListener('resize', () => game.resize())
-        
+        audio.music.play()
         this.start()
     },
     start: function () {
         this.objects = []
 
         // Terrain
-        let gridX = 20
-        let gridY = 10
-        let gridSize = 120
+        let gridX = 50
+        let gridY = 12
+        let gridSize = 100
         let wall = 1000
 
         this.objects.push(Platform(-wall, gridY * gridSize, gridX * gridSize + wall*2, wall))// bottom
@@ -133,7 +134,7 @@ let game = {
         this.elapsed = this.now - this.then;
 
         if (this.paused) {
-            console.log('paused')
+            this.input.menuInput()
             return
         }
 
@@ -148,7 +149,7 @@ let game = {
         }
     },
     onFrame: function () {
-        this.input.applyInput()
+        this.input.gameInput()
 
         for (let i = 0; i < this.objects.length; i++) this.objects[i].update()
         for (let i = 0; i < this.objects.length; i++) this.objects[i].checkCollision()
