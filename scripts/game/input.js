@@ -75,22 +75,24 @@ Input = function () {
             }
             if (game.player.grounded) {
                 game.player.jumped = false
-                game.player.dashed = false
                 if (!this.jump) {
                     this.jumpLock = false
-                    this.dashLock = false
                 }
+            }
+            if (game.player.sticking || game.player.grounded) {
+                game.player.dashed = false
+                this.dashLock = false
             }
 
             // Dashing
-            if (this.dash && !this.dashLock && game.player.dashCooldown <= 0) {
+            if (this.dash && !this.dashLock && game.player.dashCooldown <= DASH_RECHARGE) {
                 this.dashLock = true
-                this.dash = false
                 game.player.dashed = true
                 game.player.dashCooldown = DASH_DURATION
                 game.player.vel.y = 0
                 game.player.vel.x = DASH_POWER * game.player.Facing()
             }
+            this.dash = false
         },
     }    
 }
