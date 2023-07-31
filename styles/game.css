@@ -13,6 +13,7 @@ body {
 
     --primary: black;
     --secondary: white;
+    --tertiarty: #ccffff;
     --quick: 0.15s;
 }
 
@@ -48,8 +49,39 @@ body {
     background-image: linear-gradient(to right, #111122, #0f1332, #0c1442, #061552, #011462, #011462, #011462, #011462, #061552, #0c1442, #0f1332, #111122);
 }
 
+/* #screenEffects {
+    position: fixed;
+    cursor: default;
+    pointer-events: none;
+    z-index: 15;
+    width: 100vw;
+    height: 102vh;
+    --scanColorA: rgba(0, 0, 139, 0.02);
+    --scanColorB: rgba(0, 128, 128, 0.01);
+    --scanOffset: 20px;
+    --scanLineWidth: 40px;
+    background: repeating-linear-gradient(
+        0deg,
+        var(--scanColorA),
+        var(--scanColorA) var(--scanOffset),
+        var(--scanColorB) var(--scanOffset),
+        var(--scanColorB) var(--scanLineWidth)
+        );
 
-h1, h2 {
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
+    animation: scanlines 1s linear infinite;
+}
+@keyframes scanlines {
+  from {transform: translate(0px, 0px);}
+  to {transform: translate(0px, var(--scanLineWidth));}
+} */
+
+h1, h2, h3 {
     text-align: center;
     margin-bottom: 1em;
     font-weight: bold;
@@ -62,6 +94,48 @@ h1 {
 h2 {
     font-size: 1.5em;
     min-width: 400px;
+}
+h3 {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    color: var(--primary);
+}
+
+p {
+    color: var(--primary);
+    font-size: 0.8em;
+    line-height: 1.5em;
+}
+
+#stats {
+    background: var(--tertiarty);
+    padding: 20px;
+    position: relative;
+}
+
+.emphasis{
+    font-weight: bold;
+}
+
+.grade {
+    font-size: 1.5em;
+    line-height: 1em;
+    display: grid;
+    position: absolute;
+    right: -15px;
+    bottom: -15px;
+    place-items: center;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    background: var(--secondary);
+    color: var(--primary);
+    padding: 5px;
+    border: 4px solid var(--primary);
+    border-radius: 50px;
+    box-shadow: var(--primary) 0 0 10px;
+    font-weight: bold;
+    transform: rotate(10deg);
 }
 
 a.button {

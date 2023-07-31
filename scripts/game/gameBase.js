@@ -22,6 +22,9 @@ let game = {
     screen: Screens(),
     initialized: false,
     over: false,
+    gridX: 0,
+    gridY: 0,
+    winStreak: 0,
     draw: function () {
         ctx.fillStyle = '#777'
         ctx.fillRect(0, 0, $canvas.width, $canvas.height)
@@ -52,17 +55,21 @@ let game = {
             this.camera.Render(Draw(0,0,10,10,'red'))
         }
         this.camera.DrawToScreen()
-        if (this.timer > 0) {
-            let sec = Math.floor(this.timer / FPS)
-            let min = Math.floor(sec / 60)
-            sec = sec % 60
-            if (min < 10) min = '0'+min
-            if (sec < 10) sec = '0' + sec
-            // if (mil < 10) mil = '00' + mil
-            // if (mil < 100) mil = '0' + mil
-            $timer.innerHTML = `<span>${min}</span>:<span>${sec}</span>`
-            // $imer.innerHTML += `<span class=mil>:${mil}</span>`
-        }
+
+        let time = this.getTime()
+        $timer.innerHTML = `<span>${time[0]}</span>:<span>${time[1]}</span>`
+    },
+    getTime() {
+        let sec = Math.floor(this.timer / FPS)
+        let min = Math.floor(sec / 60)
+        sec = sec % 60
+        if (min < 10) min = '0' + min
+        if (sec < 10) sec = '0' + sec
+        // if (mil < 10) mil = '00' + mil
+        // if (mil < 100) mil = '0' + mil
+        
+        // $imer.innerHTML += `<span class=mil>:${mil}</span>`
+        return [min,sec]
     },
     resize: function () {
         if ($container.offsetHeight / this.zoom < 1 || $container.offsetWidth / this.zoom < 1) {
@@ -101,24 +108,26 @@ let game = {
         this.objects = []
         this.over = false
         // Terrain
-        let gridX = 50
-        let gridY = 12
+        let x = (GRID_SCALE_X * this.winStreak + GRID_MINIMUM_X)
+        let y = (GRID_SCALE_Y * this.winStreak + GRID_MINIMUM_Y)
+        this.gridX = Math.floor(Math.random() * x) + x
+        this.gridY = Math.floor(Math.random() * y) + y
         let gridSize = 100
         let wall = 1000
 
-        Platform(-wall, gridY * gridSize, gridX * gridSize + wall*2, wall)// bottom
-        Platform(-wall, -wall, gridX * gridSize + wall*2, wall) // top
+        Platform(-wall, this.gridY * gridSize, this.gridX * gridSize + wall*2, wall)// bottom
+        Platform(-wall, -wall, this.gridX * gridSize + wall*2, wall) // top
 
-        Platform(-wall, -wall, wall, gridY * gridSize + wall*2) // left
-        Platform(gridX * gridSize, -wall, wall, gridY * gridSize + wall * 2) // right
+        Platform(-wall, -wall, wall, this.gridY * gridSize + wall*2) // left
+        Platform(this.gridX * gridSize, -wall, wall, this.gridY * gridSize + wall * 2) // right
         
         
-        for (let i = 0; i < gridX; i++) {
-            for (let j = 0; j < gridY; j++) {
-                if (i == 0 && j == gridY - 1) {
+        for (let i = 0; i < this.gridX; i++) {
+            for (let j = 0; j < this.gridY; j++) {
+                if (i == 0 && j == this.gridY - 1) {
                     // Player
                     this.player = Player(i * gridSize + 50, j * gridSize - 50)
-                } else if (i == gridX - 1 && j == 0) {
+                } else if (i == this.gridX - 1 && j == 0) {
                     // Goal
                     Goal(i * gridSize, j * gridSize, gridSize, gridSize)
                 } else {
@@ -193,12 +202,15 @@ let game = {
     },
     win: function () {
         this.pause()
+        this.winStreak++
         this.over = true
+        this.screen.getStats()
         this.screen.set('win')
     },
     dead: function () {
         this.pause()
         this.over = true
+        this.winStreak = 0
         this.screen.set('dead')
     }
 }

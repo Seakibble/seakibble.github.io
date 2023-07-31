@@ -1,13 +1,23 @@
-// General
+// UI
 const UI_COLOR_PRIMARY = 'rgb(0, 16, 42)'
 const UI_COLOR_SECONDARY = 'rgb(68, 214, 255)'
+const UI_COLOR_TERTIARY = '#ccffff'
 document.body.style.setProperty('--primary', UI_COLOR_PRIMARY)
 document.body.style.setProperty('--secondary', UI_COLOR_SECONDARY)
+document.body.style.setProperty('--tertiary', UI_COLOR_TERTIARY)
 
+// General
 const FPS = 60
 const GRAVITY = Vector(0, 0.5)
-
 const CAMERA_LAG = 0.08
+
+// World
+const GRID_MINIMUM_X = 8
+const GRID_MINIMUM_Y = 5
+
+const GRID_SCALE_X = 4
+const GRID_SCALE_Y = 1
+
 
 // Player
 const JUMP_LATE_TOLERANCE = 0.1 * FPS

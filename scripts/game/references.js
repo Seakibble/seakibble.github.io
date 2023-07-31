@@ -15,6 +15,7 @@ let $startScreen = document.getElementById('startScreen')
 let $start = document.getElementById('start')
 
 let $victoryScreen = document.getElementById('victoryScreen')
+let $stats = document.getElementById('stats')
 let $playAgain = document.getElementById('playAgain')
 
 let $deadScreen = document.getElementById('deadScreen')
