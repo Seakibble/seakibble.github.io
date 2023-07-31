@@ -9,9 +9,7 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Red+Hat+Display&family=Satisfy&display=swap"
-            rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Red+Hat+Display&display=swap" rel="stylesheet">
 
         <link rel="stylesheet" href="/styles/reset.css">
         <link rel="stylesheet" href="/styles/game.css">
@@ -26,6 +24,13 @@
 
     <body oncontextmenu="return false;">
         <div id="content" class="content">
+            <div id="startScreen" class="screen active">
+                <h1>Galactic Agent</h1>
+                <div class="menu">
+                    <h2>PRESS START</h2>
+                    <button id="start" autofocus><span class="flare"></span>Start</button>
+                </div>
+            </div>
             <div id="pauseScreen" class="menu screen">
                 <h2>GAME PAUSED</h2>
                 <button id="resume"><span class="flare"></span>Resume</button>
@@ -39,22 +44,15 @@
                 <button id="toggleMusic"><span class="flare"></span>Toggle Music: ON</button>
                 <button id="keyboardLayout"><span class="flare"></span>Keyboard:</button>
                 <button id="optionsBack"><span class="flare"></span>Back</button>
-            </div>
-            <div id="startScreen" class="screen active">
-                <h1>Galactic Agent</h1>
-                <div class="menu">
-                    <h2>PRESS START</h2>
-                    <button id="start" autofocus><span class="flare"></span>Start</button>
-                </div>
-            </div>
+            </div>            
             <div id="victoryScreen" class="screen">
-                <h1>OBJECTIVE SECURED</h1>
+                <h2>OBJECTIVE SECURED</h2>
                 <div class="menu">
                     <button id="playAgain"><span class="flare"></span>Take Another Mission</button>
                 </div>
             </div>
             <div id="deadScreen" class="screen">
-                <h1>AGENT DOWN</h1>
+                <h2>AGENT DOWN</h2>
                 <div class="menu">
                     <button id="tryAgain"><span class="flare"></span>Send Another One</button>
                 </div>

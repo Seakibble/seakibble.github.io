@@ -5,11 +5,14 @@
 body {
     background: black;
     color: white;
-    font-family: 'Red Hat Display', sans-serif;
+    font-family: 'Fira Mono', monospace;
+    /* font-family: 'Red Hat Display', sans-serif; */
     font-size: 30px;
     box-sizing: border-box;
     cursor: none;
 
+    --primary: black;
+    --secondary: white;
     --quick: 0.15s;
 }
 
@@ -32,10 +35,17 @@ body {
 }
 .screen {
     display: none;
+    width: 100vw;
+    height: 100vh;
+    place-content: center;
 }
 
 .screen.active {
     display: grid;
+}
+
+#startScreen {
+    background-image: linear-gradient(to right, #111122, #0f1332, #0c1442, #061552, #011462, #011462, #011462, #011462, #061552, #0c1442, #0f1332, #111122);
 }
 
 
@@ -46,6 +56,7 @@ h1, h2 {
 }
 
 h1 {
+    font-family: 'Red Hat Display', sans-serif;
     font-size: 3em;
 }
 h2 {
@@ -58,7 +69,10 @@ a.button {
 }
 
 button, a > button {
-    background: darkblue;
+    background: var(--primary);
+    color: var(--secondary);
+
+    font-family: 'Fira Mono', monospace;
     
     width: 100%;
     height: 50px;
@@ -66,7 +80,6 @@ button, a > button {
     
     padding: 5px 25px;
     display: block;
-    color: white;
     border: none;
     box-sizing: border-box;
     text-align: left;
@@ -76,8 +89,8 @@ button, a > button {
 }
 
 button:hover, button:focus, button.selected {
-    color: darkblue;
-    background: white;
+    color: var(--primary);
+    background: var(--secondary);
     cursor: pointer;
 }
 
@@ -85,7 +98,7 @@ button .flare {
     display: block;
     position: absolute;
 
-    background: darkblue;
+    background: var(--primary);
 
     left: 0;
     top: 0;
@@ -114,13 +127,14 @@ canvas {
     font-size: 0.5em;
     padding: 10px;
     background: black;
+    color: var(--secondary);
     opacity: 0.7;
-    z-index: 10;
+    z-index: 6;
     cursor: pointer;
 }
 .version:hover {
-    background: white;
-    color: black;
+    background: var(--secondary);
+    color: var(--primary);
     
 }
 
@@ -145,6 +159,7 @@ canvas {
 
 #timer {
     background: rgba(0,0,0, 0.5);
+    color: var(--secondary);
     padding: 10px;
     width: 100px;
 }

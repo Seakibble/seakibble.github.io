@@ -55,6 +55,7 @@ let game = {
         if (this.timer > 0) {
             let sec = Math.floor(this.timer / FPS)
             let min = Math.floor(sec / 60)
+            sec = sec % 60
             if (min < 10) min = '0'+min
             if (sec < 10) sec = '0' + sec
             // if (mil < 10) mil = '00' + mil

@@ -1,4 +1,9 @@
 // General
+const UI_COLOR_PRIMARY = 'rgb(0, 16, 42)'
+const UI_COLOR_SECONDARY = 'rgb(68, 214, 255)'
+document.body.style.setProperty('--primary', UI_COLOR_PRIMARY)
+document.body.style.setProperty('--secondary', UI_COLOR_SECONDARY)
+
 const FPS = 60
 const GRAVITY = Vector(0, 0.5)
 
