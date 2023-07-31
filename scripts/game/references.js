@@ -17,6 +17,9 @@ let $start = document.getElementById('start')
 let $victoryScreen = document.getElementById('victoryScreen')
 let $playAgain = document.getElementById('playAgain')
 
+let $deadScreen = document.getElementById('deadScreen')
+let $tryAgain = document.getElementById('tryAgain')
+
 let $timer = document.getElementById('timer')
 
 let $version = document.getElementById('version')

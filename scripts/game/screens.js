@@ -21,6 +21,10 @@ Screens = function () {
                     this.state = 'win'
                     $victoryScreen.classList.add('active')
                     break
+                case 'dead':
+                    this.state = 'dead'
+                    $deadScreen.classList.add('active')
+                    break
                 case 'pause':
                     this.state = 'pause'
                     $pauseScreen.classList.add('active')
@@ -41,6 +45,9 @@ Screens = function () {
             $playAgain.addEventListener('click', () => {
                 game.start()
             })  
+            $tryAgain.addEventListener('click', () => {
+                game.start()
+            })  
         },
         clear: function () {
             $content.style.display = 'grid'
@@ -48,6 +55,7 @@ Screens = function () {
             $pauseScreen.classList.remove('active')
             $optionsScreen.classList.remove('active')
             $startScreen.classList.remove('active')
+            $deadScreen.classList.remove('active')
         }
     }
 }

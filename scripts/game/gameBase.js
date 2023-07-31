@@ -117,16 +117,15 @@ let game = {
             for (let j = 0; j < gridY; j++) {
                 if (i == 0 && j == gridY - 1) {
                     // Player
-                    this.player = Player(i * gridSize+50, j * gridSize - 50)
-                } else if (i == gridX-1 && j == 0) {
+                    this.player = Player(i * gridSize + 50, j * gridSize - 50)
+                } else if (i == gridX - 1 && j == 0) {
                     // Goal
                     Goal(i * gridSize, j * gridSize, gridSize, gridSize)
-                } else if (Math.random() > 0.85) {
-                    if (Math.random() > 0.8) {
-                        GlassPane(i * gridSize, j * gridSize, gridSize, gridSize)
-                    } else {
-                        Platform(i * gridSize, j * gridSize, gridSize, gridSize)
-                    }
+                } else {
+                    let rand = Math.random()
+                    if (rand > 0.95) GlassPane(i * gridSize, j * gridSize, gridSize, gridSize)
+                    else if (rand > 0.94) DamageBox(i * gridSize, j * gridSize, gridSize, gridSize)
+                    else if (rand > .8) Platform(i * gridSize, j * gridSize, gridSize, gridSize)
                 }
             }
         }        
@@ -194,6 +193,10 @@ let game = {
     win: function () {
         this.pause()
         this.screen.set('win')
+    },
+    dead: function () {
+        this.pause()
+        this.screen.set('dead')
     }
 }
 

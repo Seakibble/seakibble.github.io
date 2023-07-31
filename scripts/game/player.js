@@ -4,11 +4,14 @@ Player = function (x, y) {
     obj.size.x = 35
     obj.size.y = 60
     obj.color = "#333"
+    
     obj.gravity = true
     obj.collision = true
     obj.moves = true
     obj.aimingAngle = 0
     obj.reticulePos = Vector()
+
+    obj.health = 3
 
     obj.jumpLate = 0
     obj.dashCooldown = 0
@@ -17,6 +20,13 @@ Player = function (x, y) {
         wallClimb: true,
         dash: true,
         gun: true,
+    }
+
+    obj.damage = function (dam) {
+        if (this.health) {
+            this.health -= dam
+            if (this.health <= 0) game.dead()
+        }
     }
 
     obj.colBoxes = {
