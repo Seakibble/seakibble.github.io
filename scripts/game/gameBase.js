@@ -18,10 +18,10 @@ let game = {
     elapsed: null,
     objects: [],
     paused: true,
-    timerStart: null,
-    timerElapsed: null,
+    timer: 0,
     screen: Screens(),
     initialized: false,
+    over: false,
     draw: function () {
         ctx.fillStyle = '#777'
         ctx.fillRect(0, 0, $canvas.width, $canvas.height)
@@ -52,14 +52,13 @@ let game = {
             this.camera.Render(Draw(0,0,10,10,'red'))
         }
         this.camera.DrawToScreen()
-        if (this.timerStart !== null && this.timerElapsed !== null) {
-            let min = this.timerElapsed.getMinutes()
+        if (this.timer > 0) {
+            let sec = Math.floor(this.timer / FPS)
+            let min = Math.floor(sec / 60)
             if (min < 10) min = '0'+min
-            let sec = this.timerElapsed.getSeconds()
             if (sec < 10) sec = '0' + sec
-            let mil = this.timerElapsed.getMilliseconds()
-            if (mil < 10) mil = '00' + mil
-            if (mil < 100) mil = '0' + mil
+            // if (mil < 10) mil = '00' + mil
+            // if (mil < 100) mil = '0' + mil
             $timer.innerHTML = `<span>${min}</span>:<span>${sec}</span>`
             // $imer.innerHTML += `<span class=mil>:${mil}</span>`
         }
@@ -99,7 +98,7 @@ let game = {
     },
     start: function () {
         this.objects = []
-
+        this.over = false
         // Terrain
         let gridX = 50
         let gridY = 12
@@ -133,7 +132,7 @@ let game = {
         this.camera.Track(this.player)
         this.startAnimating()
         this.initialized = true
-        this.timerStart = Date.now()
+        this.timer = 0
         this.pause()
     },
     tick: function () {
@@ -161,14 +160,13 @@ let game = {
         }
     },
     onFrame: function () {
+        this.timer++
         this.input.gameInput()
 
         for (let i = 0; i < this.objects.length; i++) this.objects[i].update()
         for (let i = 0; i < this.objects.length; i++) this.objects[i].checkCollision()
         
         this.camera.Update()
-        this.timerElapsed = Date.now() - this.timerStart
-        this.timerElapsed = new Date(this.timerElapsed)
         this.draw()
     },
     cleanUp: function () {
@@ -185,17 +183,21 @@ let game = {
         this.tick()
     },
     pause: function () {
-        this.paused = !this.paused
-        console.log('pause: ', this.paused)
-        if (this.paused) this.screen.set('pause')
-        else this.screen.set('')
+        if (!this.over) {
+            this.paused = !this.paused
+            console.log('pause: ', this.paused)
+            if (this.paused) this.screen.set('pause')
+            else this.screen.set('')
+        }
     },
     win: function () {
         this.pause()
+        this.over = true
         this.screen.set('win')
     },
     dead: function () {
         this.pause()
+        this.over = true
         this.screen.set('dead')
     }
 }

@@ -1,5 +1,6 @@
 const CHANGELOG = [
     // { version: '', log: '' },
+    { version: 'v0.6.4', log: 'In-game timer now pauses correctly' },
     { version: 'v0.6.3', log: 'Added killboxes' },
     { version: 'v0.6.2', log: 'Added a targeting reticule' },
     { version: 'v0.6.1', log: 'Added aiming, UI no longer selectable' },
