@@ -7,6 +7,8 @@ Player = function (x, y) {
     obj.gravity = true
     obj.collision = true
     obj.moves = true
+    obj.aimingAngle = 0
+    obj.reticulePos = Vector()
 
     obj.jumpLate = 0
     obj.dashCooldown = 0
@@ -40,6 +42,16 @@ Player = function (x, y) {
         }
 
         this.pos.Add(this.vel)
+
+        // 
+        if (game.input.aiming) {
+            this.reticulePos = getWorldSpace(game.input.mouse)
+            let gun = this.getGun()
+            let diff = this.reticulePos.Diff(gun.pos)
+            this.aimingAngle = Math.atan2(diff.y, diff.x)
+        } else {
+            this.aimingAngle = 0
+        }
     }
 
     obj.checkCollision = function () {
@@ -129,17 +141,39 @@ Player = function (x, y) {
         this.dashCooldown--
         if (this.dashCooldown <= DASH_RECHARGE) this.dashed = false
     }
-
+    obj.getGun = function () {
+        let pulse = Pulse(700, 2) - 2
+        if (this.Facing() == 1) {
+            return Box(this.pos.x + this.size.x / 2 - 5, this.pos.y + pulse + this.size.y / 2, 40, 8, GEAR_COLOR)
+        } else {
+            return Box(this.pos.x + this.size.x / 2 - 35, this.pos.y + pulse + this.size.y / 2, 40, 8, GEAR_COLOR)
+        }
+    }
     obj.draw = function () {
         // Dude
         game.camera.RenderObj(this, 3)
-        let visorColor = 'limegreen'
-        let gearColor = '#ccc'
-        let thrusterColor = 'olive'
+        let visorColor = VISOR_COLOR
+        let gearColor = GEAR_COLOR
+        let thrusterColor = THRUSTER_COLOR
         if (this.dashCooldown > 0) thrusterColor = 'yellow'
         else if (this.dashCooldown > DASH_RECHARGE || this.dashed) thrusterColor = '#332'
 
-        let pulse = Pulse(700, 2)-2
+        let pulse = Pulse(700, 2) - 2
+
+        let gun = this.getGun()
+        let pivot = Pivot()
+        if (game.input.aiming) {
+            if (this.Facing() == 1) pivot = Pivot(4, 4, this.aimingAngle)
+            else pivot = Pivot(36, 4, this.aimingAngle + Math.PI)
+            
+            game.camera.Render(DrawLine(
+                this.reticulePos.x, this.reticulePos.y,
+                this.pos.x + this.size.x / 2, this.pos.y + pulse + this.size.y / 2,
+                'red'))
+        }
+        if (game.player.upgrades.gun) {
+            game.camera.Render(DrawObj(gun, pivot), 1)
+        }
 
         // Helmet
         game.camera.Render(Draw(this.pos.x, this.pos.y + pulse - 2, this.size.x, this.size.x-5, gearColor), 3)
@@ -158,9 +192,7 @@ Player = function (x, y) {
                 game.camera.Render(Draw(this.pos.x + this.size.x - 2, this.pos.y + pulse + 25, 8, 20, thrusterColor), 2)
             }
 
-            if (game.player.upgrades.gun) {
-                game.camera.Render(Draw(this.pos.x + this.size.x / 2-40, this.pos.y + pulse + this.size.y / 2, 40, 8, 'white'), 1)
-            }
+            
         } else if (this.facing == 'right') {
             // Antenna
             game.camera.Render(Draw(this.pos.x + 7, this.pos.y - 15 + pulse, 2, 16, this.color), 4)
@@ -173,10 +205,6 @@ Player = function (x, y) {
                 // Backpack
                 game.camera.Render(Draw(this.pos.x - 6, this.pos.y + pulse + 20, 15, 30, gearColor), 3)
                 game.camera.Render(Draw(this.pos.x - 6, this.pos.y + pulse + 25, 8, 20, thrusterColor), 2)
-            }
-
-            if (game.player.upgrades.gun) {
-                game.camera.Render(Draw(this.pos.x + this.size.x / 2, this.pos.y + pulse + this.size.y / 2, 40, 8, gearColor), 1)
             }
         }
 

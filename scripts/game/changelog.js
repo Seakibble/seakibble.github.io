@@ -1,5 +1,6 @@
 const CHANGELOG = [
     // { version: '', log: '' },
+    { version: 'v0.6.1', log: 'Added aiming, UI no longer selectable' },
     { version: 'v0.6.0', log: 'Added a gun =D' },
     { version: 'v0.5.8', log: 'Added glass blocks' },
     { version: 'v0.5.7', log: 'Made music louder' },

@@ -15,3 +15,7 @@ const AIR_DRAG = 0.96
 const FLOOR_DRAG = 0.7
 const MAX_SPEED = 10
 const ACCELERATION = 1
+
+const VISOR_COLOR = 'limegreen'
+const GEAR_COLOR = '#ccc'
+const THRUSTER_COLOR = 'olive'

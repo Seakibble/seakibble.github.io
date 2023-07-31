@@ -35,14 +35,28 @@ Camera = function () {
                 ctx.translate(center.x, center.y) // center offset
                 ctx.translate(-this.pos.x, -this.pos.y) // tracking offset
 
-                if (target.text !== undefined) { 
-                    ctx.font = target.font;
-                    ctx.fillStyle = target.styles;
-                    ctx.textAlign = target.align;
-                    ctx.fillText(target.text, 0,0);
+                if (target.line) {
+                    // line
+                    ctx.strokeStyle = target.color;
+                    ctx.beginPath()
+                    ctx.moveTo(target.x1, target.y1)
+                    ctx.lineTo(target.x2, target.y2)
+                    
+                    ctx.stroke()
                 } else {
-                    ctx.fillStyle = target.color
-                    ctx.fillRect(0, 0, target.w, target.h)
+                    // Rect or text
+                    ctx.translate(target.pivot.x, target.pivot.y)
+                    ctx.rotate(target.pivot.r)
+
+                    if (target.text !== undefined) {
+                        ctx.font = target.font;
+                        ctx.fillStyle = target.styles;
+                        ctx.textAlign = target.align;
+                        ctx.fillText(target.text, -target.pivot.x, -target.pivot.y);
+                    } else {
+                        ctx.fillStyle = target.color
+                        ctx.fillRect(-target.pivot.x, -target.pivot.y, target.w, target.h)
+                    }
                 }
                 ctx.resetTransform()
             } 
@@ -66,41 +80,70 @@ Camera = function () {
     }
 }
 
-Draw = function (x,y,w,h,color = 'white') {
+function getWorldSpace(target) {
+    let dest = Vector(target.x, target.y)
+    dest.Subtract(center)
+    dest.Add(game.camera.pos)
+    return dest
+}
+
+Pivot = function (x = 0, y = 0, r = 0) {
+    return {
+        x: x,
+        y: y,
+        r: r
+    }
+}
+DrawLine = function (x1, y1, x2, y2, color = 'white') {
+    return {
+        line: true,
+        x1: x1,
+        y1: y1,
+        x2: x2,
+        y2: y2,
+        color: color
+    }
+}
+
+Draw = function (x,y,w,h,color = 'white', pivot = Pivot()) {
     return {
         x: x,
         y: y,
         w: w,
         h: h,
-        color: color
+        color: color,
+        pivot: pivot
     }
 }
-DrawObjVec = function (pos,size,color) {
+DrawObjVec = function (pos, size, color, pivot = Pivot()) {
     return {
         x: pos.x,
         y: pos.y,
         w: size.x,
         h: size.y,
-        color: color
+        color: color,
+        pivot: pivot
     }
 }
-DrawObj = function (obj) {
+DrawObj = function (obj, pivot = Pivot()) {
     return {
         x: obj.pos.x,
         y: obj.pos.y,
         w: obj.size.x,
         h: obj.size.y,
-        color: obj.color
+        color: obj.color,
+        pivot: pivot
     }
 }
 
-DrawText = function (x, y, text, styles = '', align = 'center', font = 'bold 40px Red Hat Display') {
+DrawText = function (x, y, text, styles = '', align = 'center', font = 'bold 40px Red Hat Display', pivot = Pivot()) {
     return {
         x: x,
         y: y,
         font: font,
         styles: styles,
         align: align,
-        text: text
+        text: text,
+        pivot: pivot
     }
 }

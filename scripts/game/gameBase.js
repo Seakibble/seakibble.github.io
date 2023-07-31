@@ -167,7 +167,6 @@ let game = {
             if (this.objects[i].destroy) {
                 this.objects[i].onDestroy()
                 this.objects.splice(i, 1)
-                console.log('Deleted: ' + i)
             }
         }
     },

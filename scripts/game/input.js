@@ -11,10 +11,8 @@ Input = function () {
         dash: false,
         dashLock: false,
         shoot: false,
-        mouse: {
-            x: 0,
-            y: 0
-        },
+        aiming: false,
+        mouse: Vector(0,0),
         reset: function () {
             this.up = false
             this.left = false
@@ -56,13 +54,23 @@ Input = function () {
                 }
             }
 
+            // Aiming
+            if (this.aiming) {
+
+            }
+
             // Shooting
             if (this.shoot) {
                 this.shoot = false
-                console.log('shoot!')
                 let facing = game.player.Facing()
                 audio.player.shoot.play()
-                Projectile(game.player.pos.x + game.player.size.x / 2 + facing * 10, game.player.pos.y + game.player.size.y /2, 5, 5, facing * 50, 0)
+                let velocity = Vector(Math.cos(game.player.aimingAngle), Math.sin(game.player.aimingAngle))
+                velocity.Mult(50)
+                Projectile(
+                    game.player.pos.x + game.player.size.x / 2 + facing * 10,
+                    game.player.pos.y + game.player.size.y / 2,
+                    5, 5,
+                    velocity.x, velocity.y)
             }
 
 
@@ -114,8 +122,7 @@ Input = function () {
 document.addEventListener("mousemove", (event) => {
     if (!game.initialized) return
 
-    game.input.mouse.x = event.pageX
-    game.input.mouse.y = event.pageY
+    game.input.mouse.Set(event.pageX, event.pageY)
 })
 document.addEventListener("mousedown", (event) => {
     if (!game.initialized) return
@@ -222,10 +229,20 @@ function setInput(key, keyDown) {
             game.input.enter = keyDown
             break
         case 'Left Click':
-            if (!keyDown) game.input.shoot = true
+            if (keyDown) {
+                game.input.aiming = true
+            } else {
+                game.input.aiming = false
+                game.input.shoot = true
+            }
             break
         case 'Right Click':
-            if (!keyDown) game.input.shoot = true
+            if (keyDown) {
+                game.input.aiming = true
+            } else {
+                game.input.aiming = false
+                game.input.shoot = true
+            }
             break
     }
 }
