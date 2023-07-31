@@ -23,6 +23,12 @@ Obj = function (x, y, w=10, h=10) {
             
             this.pos.Add(this.vel)
         },
+        damage: function (dam) {
+            if (this.health) {
+                this.health -= dam
+                if (this.health <= 0) this.destroy = true
+            }
+        },
         checkCollision: function () {
             if (!this.collision) return
 
@@ -44,6 +50,9 @@ Obj = function (x, y, w=10, h=10) {
                     }
                 }
             }
+        },
+        onDestroy: function () {
+
         },
         Facing: function () {
             if (this.facing == 'left') return -1

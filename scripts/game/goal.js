@@ -11,5 +11,6 @@ Goal = function (x, y, w, h) {
         if (other.player) game.win()
     }
 
+    game.objects.push(obj)
     return obj
 }

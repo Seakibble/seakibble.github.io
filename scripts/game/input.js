@@ -10,6 +10,11 @@ Input = function () {
         jumpLock: false,
         dash: false,
         dashLock: false,
+        shoot: false,
+        mouse: {
+            x: 0,
+            y: 0
+        },
         reset: function () {
             this.up = false
             this.left = false
@@ -49,6 +54,15 @@ Input = function () {
                 } else if (!this.left && !this.right) {
                     game.player.vel.x *= drag
                 }
+            }
+
+            // Shooting
+            if (this.shoot) {
+                this.shoot = false
+                console.log('shoot!')
+                let facing = game.player.Facing()
+                audio.player.shoot.play()
+                Projectile(game.player.pos.x + game.player.size.x / 2 + facing * 10, game.player.pos.y + game.player.size.y /2, 5, 5, facing * 50, 0)
             }
 
 
@@ -97,6 +111,28 @@ Input = function () {
     }    
 }
 
+document.addEventListener("mousemove", (event) => {
+    if (!game.initialized) return
+
+    game.input.mouse.x = event.pageX
+    game.input.mouse.y = event.pageY
+})
+document.addEventListener("mousedown", (event) => {
+    if (!game.initialized) return
+
+    let btn = 'Left Click'
+    if (event.buttons == 2) btn = 'Right Click'
+        
+    setInput(btn, true)
+})
+document.addEventListener("mouseup", (event) => {
+    if (!game.initialized) return
+
+    let btn = 'Left Click'
+    if (event.buttons == 2) btn = 'Right Click'
+
+    setInput(btn, false)
+})
 
 document.addEventListener("keydown", (event) => {
     if (event.isComposing || event.keyCode === 229) {
@@ -184,6 +220,12 @@ function setInput(key, keyDown) {
             break
         case 'Enter':
             game.input.enter = keyDown
+            break
+        case 'Left Click':
+            if (!keyDown) game.input.shoot = true
+            break
+        case 'Right Click':
+            if (!keyDown) game.input.shoot = true
             break
     }
 }

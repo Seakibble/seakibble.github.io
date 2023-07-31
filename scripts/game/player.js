@@ -13,7 +13,8 @@ Player = function (x, y) {
     obj.facing = 'right'
     obj.upgrades = {
         wallClimb: true,
-        dash: true
+        dash: true,
+        gun: true,
     }
 
     obj.colBoxes = {
@@ -156,6 +157,10 @@ Player = function (x, y) {
                 game.camera.Render(Draw(this.pos.x + this.size.x - 9, this.pos.y + pulse + 20, 15, 30, gearColor), 3)
                 game.camera.Render(Draw(this.pos.x + this.size.x - 2, this.pos.y + pulse + 25, 8, 20, thrusterColor), 2)
             }
+
+            if (game.player.upgrades.gun) {
+                game.camera.Render(Draw(this.pos.x + this.size.x / 2-40, this.pos.y + pulse + this.size.y / 2, 40, 8, 'white'), 1)
+            }
         } else if (this.facing == 'right') {
             // Antenna
             game.camera.Render(Draw(this.pos.x + 7, this.pos.y - 15 + pulse, 2, 16, this.color), 4)
@@ -169,6 +174,10 @@ Player = function (x, y) {
                 game.camera.Render(Draw(this.pos.x - 6, this.pos.y + pulse + 20, 15, 30, gearColor), 3)
                 game.camera.Render(Draw(this.pos.x - 6, this.pos.y + pulse + 25, 8, 20, thrusterColor), 2)
             }
+
+            if (game.player.upgrades.gun) {
+                game.camera.Render(Draw(this.pos.x + this.size.x / 2, this.pos.y + pulse + this.size.y / 2, 40, 8, gearColor), 1)
+            }
         }
 
         if (game.debug) {
@@ -180,5 +189,6 @@ Player = function (x, y) {
         
     }
 
+    game.objects.push(obj)
     return obj
 }

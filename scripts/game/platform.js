@@ -7,5 +7,6 @@ Platform = function (x, y, w, h) {
     obj.collision = true
     obj.obstructs = true
     
+    game.objects.push(obj)
     return obj
 }

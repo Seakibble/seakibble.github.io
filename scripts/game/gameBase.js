@@ -96,11 +96,11 @@ let game = {
         let gridSize = 100
         let wall = 1000
 
-        this.objects.push(Platform(-wall, gridY * gridSize, gridX * gridSize + wall*2, wall))// bottom
-        this.objects.push(Platform(-wall, -wall, gridX * gridSize + wall*2, wall)) // top
+        Platform(-wall, gridY * gridSize, gridX * gridSize + wall*2, wall)// bottom
+        Platform(-wall, -wall, gridX * gridSize + wall*2, wall) // top
 
-        this.objects.push(Platform(-wall, -wall, wall, gridY * gridSize + wall*2)) // left
-        this.objects.push(Platform(gridX * gridSize, -wall, wall, gridY * gridSize + wall * 2)) // right
+        Platform(-wall, -wall, wall, gridY * gridSize + wall*2) // left
+        Platform(gridX * gridSize, -wall, wall, gridY * gridSize + wall * 2) // right
         
         
         for (let i = 0; i < gridX; i++) {
@@ -108,15 +108,14 @@ let game = {
                 if (i == 0 && j == gridY - 1) {
                     // Player
                     this.player = Player(i * gridSize+50, j * gridSize - 50)
-                    this.objects.push(this.player)
                 } else if (i == gridX-1 && j == 0) {
                     // Goal
-                    this.objects.push(Goal(i * gridSize, j * gridSize, gridSize, gridSize))
+                    Goal(i * gridSize, j * gridSize, gridSize, gridSize)
                 } else if (Math.random() > 0.85) {
                     if (Math.random() > 0.8) {
-                        this.objects.push(GlassPane(i * gridSize, j * gridSize, gridSize, gridSize))
+                        GlassPane(i * gridSize, j * gridSize, gridSize, gridSize)
                     } else {
-                        this.objects.push(Platform(i * gridSize, j * gridSize, gridSize, gridSize))
+                        Platform(i * gridSize, j * gridSize, gridSize, gridSize)
                     }
                 }
             }
@@ -166,6 +165,7 @@ let game = {
     cleanUp: function () {
         for (let i = this.objects.length - 1; i >= 0; i--) {
             if (this.objects[i].destroy) {
+                this.objects[i].onDestroy()
                 this.objects.splice(i, 1)
                 console.log('Deleted: ' + i)
             }

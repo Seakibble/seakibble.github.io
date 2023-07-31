@@ -8,14 +8,18 @@ GlassPane = function (x, y, w, h) {
     obj.obstructs = true
     obj.breakable = true
     obj.breakingThreshhold = 15
+    obj.health = 1
     
     obj.onCollision = function (other, velocity) {
-        console.log(velocity)
         if (velocity >= this.breakingThreshhold) {
             this.destroy = true
-            audio.glassBreak.play()
         }
     }
+
+    obj.onDestroy = function () {
+        audio.glassBreak.play()
+    }
     
+    game.objects.push(obj)
     return obj
 }
