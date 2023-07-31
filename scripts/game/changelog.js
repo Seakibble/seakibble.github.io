@@ -1,5 +1,6 @@
 const CHANGELOG = [
     // { version: '', log: '' },
+    { version: 'v0.5.8', log: 'Added glass blocks' },
     { version: 'v0.5.7', log: 'Made music louder' },
     { version: 'v0.5.6', log: 'Tweaks to constants, costume change' },
     { version: 'v0.5.5', log: 'No dash queueing (again), no floor dash spam' },

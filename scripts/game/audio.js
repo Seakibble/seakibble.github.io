@@ -5,7 +5,8 @@ let audio = {
         walk: null,
         land: null,
         landHeavy: null
-    }
+    },
+    glassBreak: null
 }
 
 function loadAudio() {
@@ -26,5 +27,10 @@ function loadAudio() {
     })
     audio.player.walk = new Howl({
         src: ['scripts/game/audio/sfx/walk.mp3']
+    })
+
+    audio.glassBreak = new Howl({
+        src: ['scripts/game/audio/sfx/glassBreak.mp3'],
+        volume: 0.7
     })
 }

@@ -75,8 +75,7 @@ let game = {
         let workman = localStorage.getItem('workman')
         this.input.workman = (workman === 'true')
         setWorkmanMenuText()
-    },
-    
+    },    
     init: function () {
         this.loadSettings()
         this.resize()
@@ -114,7 +113,11 @@ let game = {
                     // Goal
                     this.objects.push(Goal(i * gridSize, j * gridSize, gridSize, gridSize))
                 } else if (Math.random() > 0.85) {
-                    this.objects.push(Platform(i * gridSize, j * gridSize, gridSize, gridSize))
+                    if (Math.random() > 0.8) {
+                        this.objects.push(GlassPane(i * gridSize, j * gridSize, gridSize, gridSize))
+                    } else {
+                        this.objects.push(Platform(i * gridSize, j * gridSize, gridSize, gridSize))
+                    }
                 }
             }
         }        
@@ -146,6 +149,7 @@ let game = {
             this.then = this.now - (this.elapsed % this.fpsInterval);
 
             this.onFrame()
+            this.cleanUp()
         }
     },
     onFrame: function () {
@@ -158,6 +162,14 @@ let game = {
         this.timerElapsed = Date.now() - this.timerStart
         this.timerElapsed = new Date(this.timerElapsed)
         this.draw()
+    },
+    cleanUp: function () {
+        for (let i = this.objects.length - 1; i >= 0; i--) {
+            if (this.objects[i].destroy) {
+                this.objects.splice(i, 1)
+                console.log('Deleted: ' + i)
+            }
+        }
     },
     startAnimating: function () {
         this.fpsInterval = 1000 / FPS

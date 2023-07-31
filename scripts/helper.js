@@ -60,9 +60,12 @@ Vector = function (_x = 0, _y = 0) {
             this.x *= _n;
             this.y *= _n;
         },
+        Magnitude: function () {
+            return Math.sqrt(this.x * this.x + this.y * this.y)
+        },
         Dist: function (_vec) {
             var diff = this.Diff(_vec);
-            return Math.sqrt(diff.x * diff.x + diff.y * diff.y);
+            return diff.Magnitude()
         },
         Normalize: function (_n) {
             var d = this.Dist(Vector(0, 0));

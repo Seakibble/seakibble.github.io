@@ -54,8 +54,11 @@ Player = function (x, y) {
             if (this == that) continue
 
             if (that.obstructs) {
+                let collision = false
+                let velocity = this.vel.Magnitude()
                 // Collide ground
                 if (Collides(this.colBoxes.Down(), that)) {
+                    collision = true
                     this.pos.y = that.pos.y - this.size.y
 
                     if (this.vel.y > 25) audio.player.landHeavy.play() 
@@ -71,11 +74,13 @@ Player = function (x, y) {
 
                 // Collide up
                 if (Collides(this.colBoxes.Up(), that)) {
+                    collision = true
                     this.pos.y = that.pos.y + that.size.y
                     if (this.vel.y < 0) this.vel.y = 0
                 }
                 // Collide left
                 if (Collides(this.colBoxes.Left(), that)) {
+                    collision = true
                     this.pos.x = that.pos.x + that.size.x
                     if (this.vel.x < 0) this.vel.x = 0
                     noWallCollision = false
@@ -83,11 +88,14 @@ Player = function (x, y) {
                 }
                 // Collide right
                 if (Collides(this.colBoxes.Right(), that)) {
+                    collision = true
                     this.pos.x = that.pos.x - this.size.x
                     if (this.vel.x > 0) this.vel.x = 0
                     noWallCollision = false
                     collideRight = true
                 }
+
+                if (collision && that.onCollision) that.onCollision(this, velocity)
             }
         }
         if (!noWallCollision && this.upgrades.wallClimb) {
