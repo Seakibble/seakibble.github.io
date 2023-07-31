@@ -1,5 +1,6 @@
 const CHANGELOG = [
     // { version: '', log: '' },
+    { version: 'v0.7.1', log: 'Movement tweaks for more deliberate play, updated help text' },
     { version: 'v0.7.0', log: 'Added mission grading, scaling levels with more variance' },
     { version: 'v0.6.5', log: 'Timer fix, style overhaul, new font' },
     { version: 'v0.6.4', log: 'In-game timer now pauses correctly' },

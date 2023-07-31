@@ -136,7 +136,7 @@ DrawObj = function (obj, pivot = Pivot()) {
     }
 }
 
-DrawText = function (x, y, text, styles = '', align = 'center', font = 'bold 40px Fira Mono', pivot = Pivot()) {
+DrawText = function (x, y, text, styles = '', align = 'left', font = 'bold 28px Fira Mono', pivot = Pivot()) {
     return {
         x: x,
         y: y,

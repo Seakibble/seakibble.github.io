@@ -28,8 +28,8 @@ const DASH_RECHARGE = -0.7 * FPS
 const DASH_DURATION = 0.3 * FPS
 const AIR_DRAG = 0.96
 const FLOOR_DRAG = 0.7
-const MAX_SPEED = 10
-const ACCELERATION = 1
+const MAX_SPEED = 7
+const ACCELERATION = 0.8
 
 const VISOR_COLOR = 'limegreen'
 const GEAR_COLOR = '#ccc'

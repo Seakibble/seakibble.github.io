@@ -31,11 +31,14 @@ let game = {
         // let style = "hsl(0,0%, " + pulse + "%)";
         // ctx.textAlign = "center";
 
-        this.camera.Render(DrawText(500, 1300, "Get to the OBJECTIVE.", 'goldenrod'), 1)
-        this.camera.Render(DrawText(500,1350, "Press Esc to quit.", 'grey'),1)
-        this.camera.Render(DrawText(500, 1400, "A/D or Arrow keys to move.", 'grey'),1)
-        this.camera.Render(DrawText(500, 1450, "Spacebar to jump.", 'grey'), 1)
-        
+        if (this.winStreak == 0) {
+            this.camera.Render(DrawText(25, this.gridY * 100 + 50, "GET TO THE OBJECTIVE.", 'goldenrod'), 1)
+            this.camera.Render(DrawText(50, this.gridY * 100 + 80, "Press Esc to quit.", 'grey'), 1)
+            this.camera.Render(DrawText(50, this.gridY * 100 + 110, "A/D or Arrow keys to move.", 'grey'), 1)
+            this.camera.Render(DrawText(50, this.gridY * 100 + 140, "Spacebar to jump.", 'grey'), 1)
+            this.camera.Render(DrawText(50, this.gridY * 100 + 170, "Shift to dash.", 'grey'), 1)
+            this.camera.Render(DrawText(50, this.gridY * 100 + 200, "LMB to shoot gun.", 'grey'), 1)
+        }
 
         for (let i = 0; i < this.objects.length; i++) {
             this.objects[i].draw()
