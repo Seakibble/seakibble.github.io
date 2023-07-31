@@ -28,15 +28,25 @@ let game = {
         // let style = "hsl(0,0%, " + pulse + "%)";
         // ctx.textAlign = "center";
 
-        game.camera.Render(DrawText(500, 1300, "Get to the OBJECTIVE.", 'goldenrod'), 1)
-        game.camera.Render(DrawText(500,1350, "Press Esc to quit.", 'grey'),1)
-        game.camera.Render(DrawText(500, 1400, "A/D or Arrow keys to move.", 'grey'),1)
-        game.camera.Render(DrawText(500, 1450, "Spacebar to jump.", 'grey'), 1)
+        this.camera.Render(DrawText(500, 1300, "Get to the OBJECTIVE.", 'goldenrod'), 1)
+        this.camera.Render(DrawText(500,1350, "Press Esc to quit.", 'grey'),1)
+        this.camera.Render(DrawText(500, 1400, "A/D or Arrow keys to move.", 'grey'),1)
+        this.camera.Render(DrawText(500, 1450, "Spacebar to jump.", 'grey'), 1)
         
 
         for (let i = 0; i < this.objects.length; i++) {
             this.objects[i].draw()
         }
+
+        // Reticule
+        let cursor = getWorldSpace(this.input.mouse)
+        let retThickness = 2
+        let retLength = 12
+        let retOffset = 8
+        this.camera.Render(Draw(cursor.x + retOffset, cursor.y, retLength, retThickness, 'black'), 1)
+        this.camera.Render(Draw(cursor.x - retOffset - retLength, cursor.y, retLength, retThickness, 'black'), 1)
+        this.camera.Render(Draw(cursor.x, cursor.y + retOffset, retThickness, retLength, 'black'), 1)
+        this.camera.Render(Draw(cursor.x, cursor.y - retOffset - retLength, retThickness, retLength, 'black'), 1)
 
         if (this.debug) {
             this.camera.Render(Draw(0,0,10,10,'red'))
