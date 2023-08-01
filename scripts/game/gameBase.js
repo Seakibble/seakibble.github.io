@@ -124,15 +124,37 @@ let game = {
         Platform(-wall, -wall, wall, this.gridY * gridSize + wall*2) // left
         Platform(this.gridX * gridSize, -wall, wall, this.gridY * gridSize + wall * 2) // right
         
-        
+        let world = []
+        for (let i = 0; i < this.gridX; i++) {
+            let row = []
+            for (let j = 0; j < this.gridY; j++) {
+                row.push(null)
+            }
+            world.push(row)
+        }
+
+        let goal = 0
+        let start = this.gridY-1
+        if (Math.random() < 0.5) {
+            goal = start
+            start = 0
+        }
+        let randX = Math.floor(Math.random() * this.gridX)
+        world[randX][start] = 'player' 
+        if (start == 0) world[randX][1] = 'block'
+
+        randX = Math.floor(Math.random() * this.gridX)
+
+        world[randX][goal] = 'goal'
+            
         for (let i = 0; i < this.gridX; i++) {
             for (let j = 0; j < this.gridY; j++) {
-                if (i == 0 && j == this.gridY - 1) {
-                    // Player
-                    this.player = Player(i * gridSize + 50, j * gridSize - 50)
-                } else if (i == this.gridX - 1 && j == 0) {
-                    // Goal
+                if (world[i][j] == 'player') {
+                    this.player = Player(i * gridSize + 50, j * gridSize)
+                } else if (world[i][j] == 'goal') {
                     Goal(i * gridSize, j * gridSize, gridSize, gridSize)
+                } else if (world[i][j] == 'block') {
+                    Platform(i * gridSize, j * gridSize, gridSize, gridSize)
                 } else {
                     let rand = Math.random()
                     if (rand > 0.95) GlassPane(i * gridSize, j * gridSize, gridSize, gridSize)
