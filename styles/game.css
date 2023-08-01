@@ -46,7 +46,9 @@ body {
 }
 
 #startScreen {
-    background-image: linear-gradient(to right, #111122, #0f1332, #0c1442, #061552, #011462, #011462, #011462, #011462, #061552, #0c1442, #0f1332, #111122);
+    background: linear-gradient(110deg, #5b002a, #13026c, #004260, #600080);
+    background-size: 400% 400%;
+	animation: gradient 20s infinite;
 }
 
 /* #screenEffects {
@@ -240,4 +242,16 @@ canvas {
 
 #timer span.mil {
     font-size: 0.7em;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
