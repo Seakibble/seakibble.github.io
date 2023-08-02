@@ -259,6 +259,10 @@ nav a:hover {
     nav {
         font-size: 1em;
     }
+    nav a {
+        min-width: 60px;
+        padding: 10px 5px;
+    }
 }
 
 
