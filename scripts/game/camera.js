@@ -22,13 +22,27 @@ Camera = function () {
                 if (this.targetPos.y < center.y - CAMERA_BOUNDARY) up = true
                 if (this.targetPos.y > game.gridY * GRID_SIZE - center.y + CAMERA_BOUNDARY) down = true
 
-                if (CV.x > game.gridX * GRID_SIZE + CAMERA_BOUNDARY * 2) this.targetPos.x = game.gridX * GRID_SIZE/2
-                else if (left) this.targetPos.x = center.x - CAMERA_BOUNDARY
-                else if (right) this.targetPos.x = game.gridX * GRID_SIZE - center.x + CAMERA_BOUNDARY
+                if (CV.x > game.gridX * GRID_SIZE + CAMERA_BOUNDARY * 2) {
+                    this.pos.x = game.gridX * GRID_SIZE / 2
+                    this.targetPos.x = game.gridX * GRID_SIZE / 2
+                } else if (isLeft(this.targetPos)) {
+                    this.targetPos.x = center.x - CAMERA_BOUNDARY
+                    if (isLeft(this.pos)) this.pos.x = center.x - CAMERA_BOUNDARY
+                } else if (isRight(this.targetPos)) {
+                    this.targetPos.x = game.gridX * GRID_SIZE - center.x + CAMERA_BOUNDARY
+                    if (isRight(this.pos)) this.pos.x = game.gridX * GRID_SIZE - center.x + CAMERA_BOUNDARY
+                }
 
-                if (CV.y > game.gridY * GRID_SIZE + CAMERA_BOUNDARY*2) this.targetPos.y = game.gridY * GRID_SIZE / 2
-                else if (up) this.targetPos.y = center.y - CAMERA_BOUNDARY
-                else if (down) this.targetPos.y = game.gridY * GRID_SIZE - center.y + CAMERA_BOUNDARY
+                if (CV.y > game.gridY * GRID_SIZE + CAMERA_BOUNDARY * 2) {
+                    this.pos.y = game.gridY * GRID_SIZE / 2
+                    this.targetPos.y = game.gridY * GRID_SIZE / 2
+                } else if (isUp(this.targetPos)) {
+                    this.targetPos.y = center.y - CAMERA_BOUNDARY
+                    if (isUp(this.pos)) this.pos.y = center.y - CAMERA_BOUNDARY
+                } else if (isDown(this.targetPos)) {
+                    this.targetPos.y = game.gridY * GRID_SIZE - center.y + CAMERA_BOUNDARY
+                    if (isDown(this.pos)) this.pos.y = game.gridY * GRID_SIZE - center.y + CAMERA_BOUNDARY
+                }
  
                 this.pos.Add(LerpVec(this.pos, this.targetPos, CAMERA_LAG))
             }
@@ -164,4 +178,17 @@ DrawText = function (x, y, text, styles = '', align = 'left', font = 'bold 28px 
         text: text,
         pivot: pivot
     }
+}
+
+function isLeft(pos) {
+    return (pos.x < center.x - CAMERA_BOUNDARY)
+}
+function isRight(pos) {
+    return (pos.x > game.gridX * GRID_SIZE - center.x + CAMERA_BOUNDARY)
+}
+function isUp(pos) {
+    return (pos.y < center.y - CAMERA_BOUNDARY)
+}
+function isDown(pos) {
+    return (pos.y > game.gridY * GRID_SIZE - center.y + CAMERA_BOUNDARY)
 }

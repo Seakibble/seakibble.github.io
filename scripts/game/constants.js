@@ -10,7 +10,7 @@ document.body.style.setProperty('--tertiary', UI_COLOR_TERTIARY)
 const FPS = 60
 const GRAVITY = Vector(0, 0.5)
 const CAMERA_LAG = 0.08
-const CAMERA_BOUNDARY = 250
+const CAMERA_BOUNDARY = 200
 
 // World
 const GRID_MINIMUM_X = 8
