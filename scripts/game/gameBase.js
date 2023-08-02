@@ -34,6 +34,7 @@ let game = {
     gridX: 0,
     gridY: 0,
     winStreak: 0,
+    world: 1,
     levelColor: 'hsl(210,35%, 40%)',
     displayObjectives: function () {
         $objectives.innerHTML = ''
@@ -131,13 +132,14 @@ let game = {
         this.start()
     },
     start: function () {
-        this.levelColor = 'hsl(' + (this.winStreak * 55 + 210)%360 + ',35%, 40%)'
+        this.world = Math.floor(this.winStreak / LEVELS_PER_WORLD)+1
+        this.levelColor = 'hsl(' + ((this.world-1) * 55 + 210)%360 + ',35%, 40%)'
         $levelStart.classList.remove('start')
         this.objects = []
         this.over = false
         // Terrain
-        let x = (GRID_SCALE_X * this.winStreak + GRID_MINIMUM_X)
-        let y = (GRID_SCALE_Y * this.winStreak + GRID_MINIMUM_Y)
+        let x = (GRID_SCALE_X * this.winStreak % LEVELS_PER_WORLD + GRID_MINIMUM_X)
+        let y = (GRID_SCALE_Y * this.winStreak % LEVELS_PER_WORLD + GRID_MINIMUM_Y)
         this.gridX = Math.floor(Math.random() * x) + x
         this.gridY = Math.floor(Math.random() * y) + y
         let gridSize = GRID_SIZE
@@ -149,13 +151,13 @@ let game = {
         Platform(-wall, -wall, wall, this.gridY * gridSize + wall*2) // left
         Platform(this.gridX * gridSize, -wall, wall, this.gridY * gridSize + wall * 2) // right
         
-        let world = []
+        let map = []
         for (let i = 0; i < this.gridX; i++) {
             let row = []
             for (let j = 0; j < this.gridY; j++) {
                 row.push(null)
             }
-            world.push(row)
+            map.push(row)
         }
 
         let goal = 0
@@ -165,20 +167,20 @@ let game = {
             start = 0
         }
         let randX = Math.floor(Math.random() * this.gridX)
-        world[randX][start] = 'player' 
-        if (start == 0) world[randX][1] = 'block'
+        map[randX][start] = 'player' 
+        if (start == 0) map[randX][1] = 'block'
 
         randX = Math.floor(Math.random() * this.gridX)
 
-        world[randX][goal] = 'goal'
+        map[randX][goal] = 'goal'
             
         for (let i = 0; i < this.gridX; i++) {
             for (let j = 0; j < this.gridY; j++) {
-                if (world[i][j] == 'player') {
+                if (map[i][j] == 'player') {
                     this.player = Player(i * gridSize + 50, j * gridSize)
-                } else if (world[i][j] == 'goal') {
+                } else if (map[i][j] == 'goal') {
                     Goal(i * gridSize, j * gridSize, gridSize, gridSize)
-                } else if (world[i][j] == 'block') {
+                } else if (map[i][j] == 'block') {
                     Platform(i * gridSize, j * gridSize, gridSize, gridSize)
                 } else {
                     let rand = Math.random()
@@ -193,7 +195,7 @@ let game = {
         this.startAnimating()
         this.initialized = true
         this.timer = 0
-        $levelStart.innerHTML = 'LEVEL ' + (this.winStreak+1)
+        $levelStart.innerHTML = 'LEVEL ' + this.world + '-' + ((this.winStreak % LEVELS_PER_WORLD)+1)
         setTimeout(() => { $levelStart.classList.add('start') }, 500)
         this.displayObjectives()
 
