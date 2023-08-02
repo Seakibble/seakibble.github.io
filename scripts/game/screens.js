@@ -25,6 +25,10 @@ Screens = function () {
                 case 'dead':
                     this.state = 'dead'
                     $deadScreen.classList.add('active')
+                    if (audio.music) {
+                        audio.music.stop()
+                        loadMusic()
+                    }
                     break
                 case 'pause':
                     this.state = 'pause'

@@ -15,11 +15,16 @@ const CAMERA_BOUNDARY = 200
 // World
 const GRID_MINIMUM_X = 8
 const GRID_MINIMUM_Y = 5
-
 const GRID_SCALE_X = 4
 const GRID_SCALE_Y = 1
-
 const GRID_SIZE = 100
+
+// Audio
+const MUSIC = [
+    "01-galactic-agent",
+    "02-clearly-the-bad-guys",
+    "03-mildly-intoxicating"
+]
 
 
 // Player

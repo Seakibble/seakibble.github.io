@@ -34,6 +34,7 @@ let game = {
     gridX: 0,
     gridY: 0,
     winStreak: 0,
+    levelColor: 'hsl(210,35%, 40%)',
     displayObjectives: function () {
         $objectives.innerHTML = ''
         for (let i = 0; i < this.objectiveTimeouts.length; i++) {
@@ -47,7 +48,7 @@ let game = {
         }
     },
     draw: function () {
-        ctx.fillStyle = '#777'
+        ctx.fillStyle = this.levelColor
         ctx.fillRect(0, 0, $canvas.width, $canvas.height)
         // let style = "hsl(0,0%, " + pulse + "%)";
         // ctx.textAlign = "center";
@@ -124,10 +125,10 @@ let game = {
         loadAudio()
 
         window.addEventListener('resize', () => game.resize())
-        audio.music.play()
         this.start()
     },
     start: function () {
+        this.levelColor = 'hsl(' + (this.winStreak * 55 + 210)%360 + ',35%, 40%)'
         $levelStart.classList.remove('start')
         this.objects = []
         this.over = false
@@ -193,6 +194,7 @@ let game = {
         setTimeout(() => { $levelStart.classList.add('start') }, 500)
         this.displayObjectives()
 
+        if (!audio.music.playing()) audio.music.play()
         this.pause()
     },
     tick: function () {
