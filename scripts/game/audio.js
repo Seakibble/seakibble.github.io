@@ -1,5 +1,6 @@
 let audio = {
     music: null,
+    muteMusic: false,
     player: {
         jump: null,
         walk: null,
@@ -46,7 +47,7 @@ function loadMusic() {
     audio.music = new Howl({
         src: ['scripts/game/audio/music/' + MUSIC[track] + '.mp3'],
         loop: true,
-        volume: 0.4,
+        volume: MUSIC_VOLUME,
         html5: true
     })
 }

@@ -7,7 +7,7 @@ Screens = function () {
                 case '':
                     $content.style.display = 'none'
                     $ui.classList.add('active')
-                    if (audio.music) audio.music.volume(0.4)
+                    if (audio.music) audio.music.volume(MUSIC_VOLUME)
                     break
                 case 'options':
                     this.state = 'options'
@@ -33,7 +33,7 @@ Screens = function () {
                 case 'pause':
                     this.state = 'pause'
                     $pauseScreen.classList.add('active')
-                    if (audio.music) audio.music.volume(0.15)
+                    if (audio.music) audio.music.volume(MUSIC_VOLUME * 0.35)
                     break
             }
         },
@@ -46,6 +46,10 @@ Screens = function () {
             $optionsBack.addEventListener('click', () => this.set('pause'))
             $keyboardLayout.addEventListener('click', () => {
                 setWorkman()
+                game.saveSettings()
+            })
+            $toggleMusic.addEventListener('click', () => {
+                toggleMusic()
                 game.saveSettings()
             })
             $playAgain.addEventListener('click', () => {

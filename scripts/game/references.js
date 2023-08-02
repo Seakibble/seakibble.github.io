@@ -9,6 +9,7 @@ let $restart = document.getElementById('restart')
 
 let $optionsScreen = document.getElementById('optionsScreen')
 let $keyboardLayout = document.getElementById('keyboardLayout')
+let $toggleMusic = document.getElementById('toggleMusic')
 let $optionsBack = document.getElementById('optionsBack')
 
 let $startScreen = document.getElementById('startScreen')

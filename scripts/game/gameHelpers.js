@@ -23,6 +23,17 @@ function IsInside(a, b) {
         && a.y > b.pos.y && a.y < b.pos.y + b.size.y) // a is between box top and bottom
 }
 
+function toggleMusic() {
+    audio.muteMusic = !audio.muteMusic
+    if (audio.music.playing()) audio.music.pause()
+    else audio.music.play()
+
+    setMusicMenuText()
+}
+function setMusicMenuText() {
+    $toggleMusic.innerHTML = 'Toggle Music: ' + (audio.muteMusic ? 'OFF' : 'ON')
+}
+
 function setWorkman() {
     if (game.input.workman) game.input.workman = false
     else game.input.workman = true

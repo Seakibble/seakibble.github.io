@@ -12,6 +12,9 @@ const GRAVITY = Vector(0, 0.5)
 const CAMERA_LAG = 0.08
 const CAMERA_BOUNDARY = 200
 
+// Audio
+const MUSIC_VOLUME = 0.4
+
 // World
 const GRID_MINIMUM_X = 8
 const GRID_MINIMUM_Y = 5

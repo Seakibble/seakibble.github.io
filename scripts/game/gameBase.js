@@ -110,11 +110,14 @@ let game = {
     },
     saveSettings: function () {
         localStorage.setItem('workman', game.input.workman)
-        console.log(localStorage)
+        localStorage.setItem('music', audio.muteMusic)
     },
     loadSettings: function () {
         let workman = localStorage.getItem('workman')
         this.input.workman = (workman === 'true')
+        let music = localStorage.getItem('music')
+        audio.muteMusic = (music === 'true')
+        setMusicMenuText()
         setWorkmanMenuText()
     },    
     init: function () {
@@ -194,7 +197,7 @@ let game = {
         setTimeout(() => { $levelStart.classList.add('start') }, 500)
         this.displayObjectives()
 
-        if (!audio.music.playing()) audio.music.play()
+        if (!audio.music.playing() && !audio.muteMusic) audio.music.play()
         this.pause()
     },
     tick: function () {

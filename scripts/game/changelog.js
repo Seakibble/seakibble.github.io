@@ -1,5 +1,6 @@
 const CHANGELOG = [
     // { version: '', log: '' },
+    { version: 'v0.7.9', log: 'Toggling music actually does something now' },
     { version: 'v0.7.8', log: 'More music, unique colours for levels' },
     { version: 'v0.7.7', log: 'Camera constraint bug fixes' },
     { version: 'v0.7.6', log: 'Camera constrained to level, pausing quiets music' },
