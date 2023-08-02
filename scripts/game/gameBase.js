@@ -17,6 +17,15 @@ let game = {
     then: null,
     elapsed: null,
     objects: [],
+    objectives: [
+        "Get to the OBJECTIVE",
+        "Press ESC to pause",
+        "A/D or arrow keys to move",
+        "Spacebar to jump",
+        "Shift to dash",
+        "LMB to shoot gun"
+    ],
+    objectiveTimeouts: [],
     paused: true,
     timer: 0,
     screen: Screens(),
@@ -25,20 +34,23 @@ let game = {
     gridX: 0,
     gridY: 0,
     winStreak: 0,
+    displayObjectives: function () {
+        $objectives.innerHTML = ''
+        for (let i = 0; i < this.objectiveTimeouts.length; i++) {
+            clearTimeout(this.objectiveTimeouts[i])
+        }
+        for (let i = 0; i < this.objectives.length; i++) {
+            $objectives.innerHTML += `<div id="objective-${i}" class="box ${i == 0 ? 'primary' : ''}">${this.objectives[i]}</div>`
+            this.objectiveTimeouts.push(setTimeout(() => {
+                document.getElementById('objective-' + i).classList.add('objective')
+            }, 400 * i + 1000))
+        }
+    },
     draw: function () {
         ctx.fillStyle = '#777'
         ctx.fillRect(0, 0, $canvas.width, $canvas.height)
         // let style = "hsl(0,0%, " + pulse + "%)";
         // ctx.textAlign = "center";
-
-        if (this.winStreak == 0) {
-            this.camera.Render(DrawText(25, this.gridY * 100 + 50, "GET TO THE OBJECTIVE.", 'goldenrod'), 1)
-            this.camera.Render(DrawText(50, this.gridY * 100 + 80, "Press Esc to quit.", 'grey'), 1)
-            this.camera.Render(DrawText(50, this.gridY * 100 + 110, "A/D or Arrow keys to move.", 'grey'), 1)
-            this.camera.Render(DrawText(50, this.gridY * 100 + 140, "Spacebar to jump.", 'grey'), 1)
-            this.camera.Render(DrawText(50, this.gridY * 100 + 170, "Shift to dash.", 'grey'), 1)
-            this.camera.Render(DrawText(50, this.gridY * 100 + 200, "LMB to shoot gun.", 'grey'), 1)
-        }
 
         for (let i = 0; i < this.objects.length; i++) {
             this.objects[i].draw()
@@ -116,6 +128,7 @@ let game = {
         this.start()
     },
     start: function () {
+        $levelStart.classList.remove('start')
         this.objects = []
         this.over = false
         // Terrain
@@ -176,6 +189,10 @@ let game = {
         this.startAnimating()
         this.initialized = true
         this.timer = 0
+        $levelStart.innerHTML = 'LEVEL ' + (this.winStreak+1)
+        setTimeout(() => { $levelStart.classList.add('start') }, 500)
+        this.displayObjectives()
+
         this.pause()
     },
     tick: function () {

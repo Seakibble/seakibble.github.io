@@ -22,6 +22,8 @@ let $deadScreen = document.getElementById('deadScreen')
 let $tryAgain = document.getElementById('tryAgain')
 
 let $timer = document.getElementById('timer')
+let $levelStart = document.getElementById('levelStart')
+let $objectives = document.getElementById('objectives')
 
 let $version = document.getElementById('version')
 

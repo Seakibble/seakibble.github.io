@@ -22,7 +22,7 @@ const GRID_SCALE_Y = 1
 // Player
 const JUMP_LATE_TOLERANCE = 0.1 * FPS
 const JUMP_POWER = 15
-const WALL_JUMP_POWER = 0.65
+const WALL_JUMP_POWER = 0.5
 const DASH_POWER = 15
 const DASH_RECHARGE = -0.7 * FPS
 const DASH_DURATION = 0.3 * FPS
