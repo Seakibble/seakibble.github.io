@@ -136,7 +136,7 @@ let game = {
         let y = (GRID_SCALE_Y * this.winStreak + GRID_MINIMUM_Y)
         this.gridX = Math.floor(Math.random() * x) + x
         this.gridY = Math.floor(Math.random() * y) + y
-        let gridSize = 100
+        let gridSize = GRID_SIZE
         let wall = 1000
 
         Platform(-wall, this.gridY * gridSize, this.gridX * gridSize + wall*2, wall)// bottom
@@ -245,21 +245,22 @@ let game = {
     pause: function () {
         if (!this.over) {
             this.paused = !this.paused
-            console.log('pause: ', this.paused)
             if (this.paused) this.screen.set('pause')
             else this.screen.set('')
+        } else {
+            if (!this.paused) this.paused = true
         }
     },
     win: function () {
+        this.over = true
         this.pause()
         this.winStreak++
-        this.over = true
         this.screen.getStats()
         this.screen.set('win')
     },
     dead: function () {
-        this.pause()
         this.over = true
+        this.pause()
         this.winStreak = 0
         this.screen.set('dead')
     }

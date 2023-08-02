@@ -2,6 +2,7 @@ Camera = function () {
     return {
         pos: Vector(0,0),
         tracking: null,
+        targetPos: Vector(0,0),
         renderList: [],
         Track: function (obj) {
             this.tracking = obj
@@ -10,9 +11,26 @@ Camera = function () {
         },
         Update: function () {
             if (this.tracking) {
-                // console.log(this.pos)
-                // this.pos = this.tracking.pos
-                this.pos.Add(LerpVec(this.pos, this.tracking.pos, CAMERA_LAG))
+                this.targetPos = Vector(this.tracking.pos.x, this.tracking.pos.y)
+                let left = false
+                let right = false
+                let up = false
+                let down = false
+
+                if (this.targetPos.x < center.x - CAMERA_BOUNDARY) left = true
+                if (this.targetPos.x > game.gridX * GRID_SIZE - center.x + CAMERA_BOUNDARY) right = true
+                if (this.targetPos.y < center.y - CAMERA_BOUNDARY) up = true
+                if (this.targetPos.y > game.gridY * GRID_SIZE - center.y + CAMERA_BOUNDARY) down = true
+
+                if (CV.x > game.gridX * GRID_SIZE + CAMERA_BOUNDARY * 2) this.targetPos.x = game.gridX * GRID_SIZE/2
+                else if (left) this.targetPos.x = center.x - CAMERA_BOUNDARY
+                else if (right) this.targetPos.x = game.gridX * GRID_SIZE - center.x + CAMERA_BOUNDARY
+
+                if (CV.y > game.gridY * GRID_SIZE + CAMERA_BOUNDARY*2) this.targetPos.y = game.gridY * GRID_SIZE / 2
+                else if (up) this.targetPos.y = center.y - CAMERA_BOUNDARY
+                else if (down) this.targetPos.y = game.gridY * GRID_SIZE - center.y + CAMERA_BOUNDARY
+ 
+                this.pos.Add(LerpVec(this.pos, this.targetPos, CAMERA_LAG))
             }
         },
         DrawToScreen: function () {

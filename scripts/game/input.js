@@ -23,6 +23,9 @@ Input = function () {
             // if (this.up) $('button.selected')
             if (this.enter) {
                 switch (game.screen.state) {
+                    case 'dead':
+                        $tryAgain.click()
+                        break
                     case 'win':
                         $playAgain.click()
                         break

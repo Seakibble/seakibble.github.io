@@ -1,5 +1,6 @@
 const CHANGELOG = [
     // { version: '', log: '' },
+    { version: 'v0.7.6', log: 'Camera constrained to level, pausing quiets music' },
     { version: 'v0.7.5', log: 'Added objectives and level indicator' },
     { version: 'v0.7.4', log: "Glass doesn't vanish when broken, high-vis reticule" },
     { version: 'v0.7.3', log: 'Improved start screen gradient' },

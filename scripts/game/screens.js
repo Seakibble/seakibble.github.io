@@ -7,6 +7,7 @@ Screens = function () {
                 case '':
                     $content.style.display = 'none'
                     $ui.classList.add('active')
+                    if (audio.music) audio.music.volume(0.4)
                     break
                 case 'options':
                     this.state = 'options'
@@ -28,6 +29,7 @@ Screens = function () {
                 case 'pause':
                     this.state = 'pause'
                     $pauseScreen.classList.add('active')
+                    if (audio.music) audio.music.volume(0.15)
                     break
             }
         },
