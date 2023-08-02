@@ -49,9 +49,17 @@ let game = {
         let retThickness = 2
         let retLength = 12
         let retOffset = 8
+        
+        this.camera.Render(Draw(cursor.x + retOffset - 1, cursor.y - 1, retLength + 2, retThickness + 2, 'white'), 2)
         this.camera.Render(Draw(cursor.x + retOffset, cursor.y, retLength, retThickness, 'black'), 1)
+
+        this.camera.Render(Draw(cursor.x - retOffset - retLength - 1, cursor.y -1, retLength +2, retThickness +2, 'white'), 2)
         this.camera.Render(Draw(cursor.x - retOffset - retLength, cursor.y, retLength, retThickness, 'black'), 1)
+        
+        this.camera.Render(Draw(cursor.x-1, cursor.y + retOffset-1, retThickness+2, retLength+2, 'white'), 2)
         this.camera.Render(Draw(cursor.x, cursor.y + retOffset, retThickness, retLength, 'black'), 1)
+
+        this.camera.Render(Draw(cursor.x-1, cursor.y - retOffset - retLength-1, retThickness+2, retLength+2, 'white'), 2)
         this.camera.Render(Draw(cursor.x, cursor.y - retOffset - retLength, retThickness, retLength, 'black'), 1)
 
         if (this.debug) {

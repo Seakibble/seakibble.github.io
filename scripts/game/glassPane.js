@@ -4,20 +4,26 @@ GlassPane = function (x, y, w, h) {
     obj.size.y = h
 
     obj.color = "rgba(200,200,255,0.3)"
+    obj.brokenColor = "rgba(50,50,100,0.3)"
     obj.collision = true
     obj.obstructs = true
     obj.breakable = true
+    obj.broken = false
     obj.breakingThreshhold = 15
     obj.health = 1
     
     obj.onCollision = function (other, velocity) {
         if (velocity >= this.breakingThreshhold) {
-            this.destroy = true
+            this.break()
         }
     }
 
-    obj.onDestroy = function () {
+    obj.break = function () {
+        this.broken = true
         audio.glassBreak.play()
+        obj.collision = false
+        obj.obstructs = false
+        this.color = this.brokenColor
     }
     
     game.objects.push(obj)

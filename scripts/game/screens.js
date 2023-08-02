@@ -54,7 +54,6 @@ Screens = function () {
             let time = game.getTime()
             let grade = 'F'
             let seconds = parseInt(time[0]) * 60 + parseInt(time[1])
-            console.log(seconds)
 
             if (seconds > 80) grade = 'D'
             else if (seconds > 40) grade = 'C'

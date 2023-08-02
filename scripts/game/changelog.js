@@ -1,5 +1,6 @@
 const CHANGELOG = [
     // { version: '', log: '' },
+    { version: 'v0.7.4', log: "Glass doesn't vanish when broken, high-vis reticule" },
     { version: 'v0.7.3', log: 'Improved start screen gradient' },
     { version: 'v0.7.2', log: 'Randomised player/goal spawns, no more death spawns' },
     { version: 'v0.7.1', log: 'Movement tweaks for more deliberate play, updated help text' },

@@ -26,7 +26,13 @@ Obj = function (x, y, w=10, h=10) {
         damage: function (dam) {
             if (this.health) {
                 this.health -= dam
-                if (this.health <= 0) this.destroy = true
+                if (this.health <= 0) {
+                    if (this.breakable) {
+                        if (!this.broken) this.break()
+                    } else {
+                        this.destroy = true
+                    }                    
+                }
             }
         },
         checkCollision: function () {
@@ -35,6 +41,7 @@ Obj = function (x, y, w=10, h=10) {
             for (let i = 0; i < game.objects.length; i++) {
                 let that = game.objects[i]
 
+                if (!that.collision) continue
                 if (this == that) continue
                 if (!this.moves && !that.moves) continue
 
