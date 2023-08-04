@@ -111,4 +111,65 @@ class Pyre {
             return diff.multiply(t)
         }
     }
+
+
+
+    static Audio = class {
+        constructor() {
+            this.volume = {
+                master: 1,
+                music: 1,
+                sfx: 1,
+                voice: 1
+            }
+            this.music = null
+            this.sfx = {}
+        }
+        setSFXVolume(volume) {
+            this.volume.sfx = volume
+            this._updateSFXVolume()
+        }
+        _updateSFXVolume() {
+            for (let name in this.sfx) {
+                this.sfx[name].volume(this._calculateVolume('sfx'))
+            }
+        }
+        setMasterVolume(volume) {
+            this.volume.master = volume
+            if (this.music) this.music.volume(this._calculateVolume('music'))
+            this._updateSFXVolume()
+        }
+        setMusicVolume(volume) {
+            this.volume.music = volume
+            if (this.music) this.music.volume(this._calculateVolume('music'))
+        }
+        loadMusic(src) {
+            if (this.music) {
+                // fade
+                this.music.fade(this._calculateVolume('music'), 0, 1000)
+                this.music.once('fade', () => { this._loadTrack(src) })
+            } else {
+                // just go
+                this._loadTrack(src)
+            }
+        }
+        _loadTrack(src) {
+            this.music = new Howl({
+                src: ['scripts/game/audio/music/' + src + '.mp3'],
+                loop: true,
+                volume: this._calculateVolume('music'),
+                html5: true,
+                autoplay: true
+            })
+        }
+        loadSFX(src, name = src) {
+            this.sfx[name] = new Howl({
+                src: ['scripts/game/audio/sfx/' + src + '.mp3'],
+                volume: this._calculateVolume('sfx'),
+            })
+        }
+        _calculateVolume(type) {
+            return this.volume.master * this.volume[type]
+        }
+    }
 }

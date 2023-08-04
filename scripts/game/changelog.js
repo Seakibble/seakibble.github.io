@@ -1,5 +1,6 @@
 const CHANGELOG = [
     // { version: '', log: '' },
+    { version: 'v0.8.2', log: 'Added Pyre Audio class' },
     { version: 'v0.8.1', log: 'Refactored Vector with Pyre Vector' },
     { version: 'v0.8.0', log: 'Added Pyre Vector class' },
     { version: 'v0.7.10', log: 'There are now worlds with 5 levels each' },
