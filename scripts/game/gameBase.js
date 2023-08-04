@@ -1,5 +1,5 @@
 let ctx = canvas.getContext('2d');
-let CV = Vector()
+let CV = new Pyre.Vector()
 let center = null
 
 let game = {
@@ -105,7 +105,7 @@ let game = {
         CV.y = $container.offsetHeight / this.zoom
         $canvas.width = CV.x
         $canvas.height = CV.y
-        center = Vector($canvas.width / 2, $canvas.height / 2);
+        center = new Pyre.Vector($canvas.width / 2, $canvas.height / 2);
 
         this.draw()
     },

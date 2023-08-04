@@ -9,7 +9,7 @@ Player = function (x, y) {
     obj.collision = true
     obj.moves = true
     obj.aimingAngle = 0
-    obj.reticulePos = Vector()
+    obj.reticulePos = new Pyre.Vector()
 
     obj.health = 3
 
@@ -48,16 +48,16 @@ Player = function (x, y) {
 
     obj.update = function () {
         if (this.gravity && !this.grounded && this.dashCooldown < 0) {
-            this.vel.Add(GRAVITY)
+            this.vel.add(GRAVITY)
         }
 
-        this.pos.Add(this.vel)
+        this.pos.add(this.vel)
 
         // 
         if (game.input.aiming) {
             this.reticulePos = getWorldSpace(game.input.mouse)
             let gun = this.getGun()
-            let diff = this.reticulePos.Diff(gun.pos)
+            let diff = this.reticulePos.difference(gun.pos)
             this.aimingAngle = Math.atan2(diff.y, diff.x)
         } else {
             this.aimingAngle = 0
@@ -78,7 +78,7 @@ Player = function (x, y) {
 
             if (that.obstructs) {
                 let collision = false
-                let velocity = this.vel.Magnitude()
+                let velocity = this.vel.magnitude()
                 // Collide ground
                 if (Collides(this.colBoxes.Down(), that)) {
                     collision = true

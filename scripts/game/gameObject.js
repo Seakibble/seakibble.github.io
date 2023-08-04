@@ -1,8 +1,8 @@
 Obj = function (x, y, w=10, h=10) {
     return {
-        pos: Vector(x, y),
-        vel: Vector(0, 0),
-        size: Vector(w, h),
+        pos: new Pyre.Vector(x, y),
+        vel: new Pyre.Vector(0, 0),
+        size: new Pyre.Vector(w, h),
         color: 'white',
         gravity: false,
         moves: false,
@@ -18,10 +18,10 @@ Obj = function (x, y, w=10, h=10) {
         },
         update: function () {
             if (this.gravity && !this.grounded) {
-                this.vel.Add(GRAVITY)
+                this.vel.add(GRAVITY)
             }
             
-            this.pos.Add(this.vel)
+            this.pos.add(this.vel)
         },
         damage: function (dam) {
             if (this.health) {

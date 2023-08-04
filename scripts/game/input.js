@@ -12,7 +12,7 @@ Input = function () {
         dashLock: false,
         shoot: false,
         aiming: false,
-        mouse: Vector(0,0),
+        mouse: new Pyre.Vector(0,0),
         reset: function () {
             this.up = false
             this.left = false
@@ -47,10 +47,10 @@ Input = function () {
                 if (this.left && game.player.vel.x > -MAX_SPEED) {
                     if (game.player.vel.x > 0) game.player.vel.x *= drag
                     if (!game.player.sticking) game.player.facing = 'left'
-                    game.player.vel.Add(Vector(-ACCELERATION, 0))
+                    game.player.vel.add(new Pyre.Vector(-ACCELERATION, 0))
                 } else if (this.right && game.player.vel.x < MAX_SPEED) {
                     if (game.player.vel.x < 0) game.player.vel.x *= drag
-                    game.player.vel.Add(Vector(ACCELERATION, 0))
+                    game.player.vel.add(new Pyre.Vector(ACCELERATION, 0))
                     if (!game.player.sticking) game.player.facing = 'right'
                 } else if (!this.left && !this.right) {
                     game.player.vel.x *= drag
@@ -67,8 +67,8 @@ Input = function () {
                 this.shoot = false
                 let facing = game.player.Facing()
                 audio.player.shoot.play()
-                let velocity = Vector(Math.cos(game.player.aimingAngle), Math.sin(game.player.aimingAngle))
-                velocity.Mult(50)
+                let velocity = new Pyre.Vector(Math.cos(game.player.aimingAngle), Math.sin(game.player.aimingAngle))
+                velocity.multiply(50)
                 Projectile(
                     game.player.pos.x + game.player.size.x / 2 + facing * 10,
                     game.player.pos.y + game.player.size.y / 2,
@@ -125,7 +125,7 @@ Input = function () {
 document.addEventListener("mousemove", (event) => {
     if (!game.initialized) return
 
-    game.input.mouse.Set(event.pageX, event.pageY)
+    game.input.mouse.set(event.pageX, event.pageY)
 })
 document.addEventListener("mousedown", (event) => {
     if (!game.initialized) return

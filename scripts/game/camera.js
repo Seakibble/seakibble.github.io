@@ -1,8 +1,8 @@
 Camera = function () {
     return {
-        pos: Vector(0,0),
+        pos: new Pyre.Vector(0,0),
         tracking: null,
-        targetPos: Vector(0,0),
+        targetPos: new Pyre.Vector(0,0),
         renderList: [],
         Track: function (obj) {
             this.tracking = obj
@@ -11,7 +11,7 @@ Camera = function () {
         },
         Update: function () {
             if (this.tracking) {
-                this.targetPos = Vector(this.tracking.pos.x, this.tracking.pos.y)
+                this.targetPos = new Pyre.Vector(this.tracking.pos.x, this.tracking.pos.y)
                 let left = false
                 let right = false
                 let up = false
@@ -44,7 +44,7 @@ Camera = function () {
                     if (isDown(this.pos)) this.pos.y = game.gridY * GRID_SIZE - center.y + CAMERA_BOUNDARY
                 }
  
-                this.pos.Add(LerpVec(this.pos, this.targetPos, CAMERA_LAG))
+                this.pos.lerp(this.targetPos, CAMERA_LAG)
             }
         },
         DrawToScreen: function () {
@@ -105,7 +105,7 @@ Camera = function () {
         CameraSpace: function (vec) {
             let newVec = Vector(vec.x, vec.y)
             let otherVec = Vector(this.pos.x + CV.x / 2, this.pos.y + CV.y / 2)
-            newVec.Subtract(otherVec)
+            newVec.subtract(otherVec)
 
             return newVec
         }
@@ -113,9 +113,9 @@ Camera = function () {
 }
 
 function getWorldSpace(target) {
-    let dest = Vector(target.x, target.y)
-    dest.Subtract(center)
-    dest.Add(game.camera.pos)
+    let dest = new Pyre.Vector(target.x, target.y)
+    dest.subtract(center)
+    dest.add(game.camera.pos)
     return dest
 }
 
