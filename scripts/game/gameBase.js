@@ -1,6 +1,7 @@
 let ctx = canvas.getContext('2d');
 let CV = new Pyre.Vector()
 let center = null
+let Sound = new Pyre.Audio()
 
 let game = {
     options: {
@@ -111,13 +112,14 @@ let game = {
     },
     saveSettings: function () {
         localStorage.setItem('workman', game.input.workman)
-        localStorage.setItem('music', audio.muteMusic)
+        localStorage.setItem('musicEnabled', Sound.musicEnabled())
     },
     loadSettings: function () {
         let workman = localStorage.getItem('workman')
         this.input.workman = (workman === 'true')
-        let music = localStorage.getItem('music')
-        audio.muteMusic = (music === 'true')
+        let musicEnabled = localStorage.getItem('musicEnabled')
+        Sound.enableMusic(musicEnabled === 'true')
+        
         setMusicMenuText()
         setWorkmanMenuText()
     },    
@@ -126,7 +128,7 @@ let game = {
         this.resize()
         this.screen.set('')
         this.screen.init()
-        loadAudio()
+        // loadAudio()
 
         window.addEventListener('resize', () => game.resize())
         this.start()
@@ -199,7 +201,12 @@ let game = {
         setTimeout(() => { $levelStart.classList.add('start') }, 500)
         this.displayObjectives()
 
-        if (!audio.music.playing() && !audio.muteMusic) audio.music.play()
+        if (Sound.music == null) {
+            let track = ChooseRandom(MUSIC)
+            Sound.loadMusic(track)
+        }
+        Sound.startMusic()
+        
         this.pause()
     },
     tick: function () {

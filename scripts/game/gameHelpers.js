@@ -23,15 +23,8 @@ function IsInside(a, b) {
         && a.y > b.pos.y && a.y < b.pos.y + b.size.y) // a is between box top and bottom
 }
 
-function toggleMusic() {
-    audio.muteMusic = !audio.muteMusic
-    if (audio.music.playing()) audio.music.pause()
-    else audio.music.play()
-
-    setMusicMenuText()
-}
 function setMusicMenuText() {
-    $toggleMusic.innerHTML = 'Toggle Music: ' + (audio.muteMusic ? 'OFF' : 'ON')
+    $toggleMusic.innerHTML = 'Toggle Music: ' + (Sound.musicEnabled() ? 'ON' : 'OFF')
 }
 
 function setWorkman() {
@@ -69,4 +62,8 @@ function LerpVec(a, b, t) {
 
 function Pulse(frequency, amplitude) {
     return Math.sin((game.now - game.startTime) / frequency) * amplitude
+}
+
+function ChooseRandom(array) {
+    return array[Math.floor(Math.random()*array.length)]
 }

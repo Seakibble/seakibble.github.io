@@ -7,7 +7,7 @@ Screens = function () {
                 case '':
                     $content.style.display = 'none'
                     $ui.classList.add('active')
-                    if (audio.music) audio.music.volume(MUSIC_VOLUME)
+                    Sound.pauseFade(false)
                     break
                 case 'options':
                     this.state = 'options'
@@ -25,15 +25,14 @@ Screens = function () {
                 case 'dead':
                     this.state = 'dead'
                     $deadScreen.classList.add('active')
-                    if (audio.music) {
-                        audio.music.stop()
-                        loadMusic()
-                    }
+                    Sound.music.stop()
+                    Sound.music = null
+                    Sound.loadMusic(ChooseRandom(MUSIC))
                     break
                 case 'pause':
                     this.state = 'pause'
                     $pauseScreen.classList.add('active')
-                    if (audio.music) audio.music.volume(MUSIC_VOLUME * 0.35)
+                    Sound.pauseFade(true)
                     break
             }
         },
@@ -49,7 +48,9 @@ Screens = function () {
                 game.saveSettings()
             })
             $toggleMusic.addEventListener('click', () => {
-                toggleMusic()
+                console.log('hi')
+                Sound.enableMusic(!Sound.musicEnabled())
+                setMusicMenuText()
                 game.saveSettings()
             })
             $playAgain.addEventListener('click', () => {

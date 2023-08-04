@@ -66,7 +66,8 @@ Input = function () {
             if (this.shoot) {
                 this.shoot = false
                 let facing = game.player.Facing()
-                audio.player.shoot.play()
+                // audio.player.shoot.play()
+                Sound.playSFX('shoot')
                 let velocity = new Pyre.Vector(Math.cos(game.player.aimingAngle), Math.sin(game.player.aimingAngle))
                 velocity.multiply(50)
                 Projectile(
@@ -79,7 +80,8 @@ Input = function () {
 
             // Play walking SFX
             if (game.player.grounded && (this.left || this.right)) {
-                if (!audio.player.walk.playing()) audio.player.walk.play()
+                // if (!audio.player.walk.playing()) audio.player.walk.play()
+                Sound.playSFXNoSpam('walk')
             }
 
             // Jumping
@@ -93,7 +95,8 @@ Input = function () {
 
                 game.player.jumped = true
                 this.jumpLock = true
-                audio.player.jump.play()
+                // audio.player.jump.play()
+                Sound.playSFX('jump')
             }
             if (!this.jump && game.player.jumped && game.player.vel.y < 0) {
                 game.player.vel.y = 0

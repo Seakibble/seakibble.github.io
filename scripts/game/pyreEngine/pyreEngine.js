@@ -123,7 +123,32 @@ class Pyre {
                 voice: 1
             }
             this.music = null
+            this._enableMusic = true
+            this._pauseFade = false
+            this._pauseFadeValue = 0.35
             this.sfx = {}
+        }
+        pauseFade(enabled = null) {
+            if (enabled === null) enabled = !this._pauseFade
+            this._pauseFade = enabled
+            this._updateMusicVolume()
+            this._updateSFXVolume()
+        }
+        stopMusic() {
+            this.music.fade(this._calculateVolume('music'), 0, 100)
+            this.music.once('fade', () => {
+                this.music.stop()
+                this.music.volume(this._calculateVolume('music'))
+            })
+        }
+        startMusic() {
+            if (this.music && !this.music.playing() && this._enableMusic) this.music.play()
+        }
+        playSFXNoSpam(name) {
+            if (!this.sfx[name].playing()) this.sfx[name].play()
+        }
+        playSFX(name) {
+            this.sfx[name].play()
         }
         setSFXVolume(volume) {
             this.volume.sfx = volume
@@ -134,14 +159,28 @@ class Pyre {
                 this.sfx[name].volume(this._calculateVolume('sfx'))
             }
         }
+        _updateMusicVolume() {
+            if (this.music) this.music.volume(this._calculateVolume('music'))
+        }
         setMasterVolume(volume) {
             this.volume.master = volume
-            if (this.music) this.music.volume(this._calculateVolume('music'))
+            this._updateMusicVolume()
             this._updateSFXVolume()
         }
         setMusicVolume(volume) {
             this.volume.music = volume
-            if (this.music) this.music.volume(this._calculateVolume('music'))
+            this._updateMusicVolume()
+        }
+        enableMusic(b = true) {
+            this._enableMusic = b
+            if (this.music) {
+                if (this._enableMusic) this.music.play()
+                else this.music.stop() 
+
+            }
+        }
+        musicEnabled() {
+            return this._enableMusic
         }
         loadMusic(src) {
             if (this.music) {
@@ -158,8 +197,12 @@ class Pyre {
                 src: ['scripts/game/audio/music/' + src + '.mp3'],
                 loop: true,
                 volume: this._calculateVolume('music'),
-                html5: true,
-                autoplay: true
+                html5: true
+            })
+        }
+        loadSFXArray(list) {
+            list.forEach(sfx => {
+                this.loadSFX(sfx)
             })
         }
         loadSFX(src, name = src) {
@@ -169,7 +212,7 @@ class Pyre {
             })
         }
         _calculateVolume(type) {
-            return this.volume.master * this.volume[type]
+            return this.volume.master * this.volume[type] * (this._pauseFade ? this._pauseFadeValue : 1)
         }
     }
 }

@@ -20,12 +20,14 @@ GlassPane = function (x, y, w, h) {
 
     obj.break = function () {
         this.broken = true
-        audio.glassBreak.play()
+        // audio.glassBreak.play()
+        Sound.playSFX('glassBreak')
         obj.collision = false
         obj.obstructs = false
         this.color = this.brokenColor
     }
     
+    Sound.loadSFX('glassBreak')
     game.objects.push(obj)
     return obj
 }

@@ -84,8 +84,10 @@ Player = function (x, y) {
                     collision = true
                     this.pos.y = that.pos.y - this.size.y
 
-                    if (this.vel.y > 25) audio.player.landHeavy.play() 
-                    else if (this.vel.y > 5) audio.player.land.play()
+                    if (this.vel.y > 25) Sound.playSFX('landHeavy')
+                    else if (this.vel.y > 5) Sound.playSFX('land')
+                    // if (this.vel.y > 25) audio.player.landHeavy.play() 
+                    // else if (this.vel.y > 5) audio.player.land.play()
                         
                     this.vel.y = 0
                     
@@ -226,7 +228,8 @@ Player = function (x, y) {
         }
         
     }
-
+    Sound.loadSFXArray(['jump', 'walk', 'land', 'landHeavy', 'shoot'])
+    
     game.objects.push(obj)
     return obj
 }
