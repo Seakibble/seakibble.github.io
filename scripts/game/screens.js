@@ -27,7 +27,6 @@ Screens = function () {
                     $deadScreen.classList.add('active')
                     Sound.music.stop()
                     Sound.music = null
-                    Sound.loadMusic(ChooseRandom(MUSIC))
                     break
                 case 'pause':
                     this.state = 'pause'
