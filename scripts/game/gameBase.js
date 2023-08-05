@@ -2,6 +2,7 @@ let ctx = canvas.getContext('2d');
 let CV = new Pyre.Vector()
 let center = null
 let Sound = new Pyre.Audio()
+let Level = new Pyre.Level()
 
 let game = {
     options: {
@@ -139,75 +140,77 @@ let game = {
         $levelStart.classList.remove('start')
         this.objects = []
         this.over = false
-        // Terrain
-        let x = (GRID_SCALE_X * this.winStreak % LEVELS_PER_WORLD + GRID_MINIMUM_X)
-        let y = (GRID_SCALE_Y * this.winStreak % LEVELS_PER_WORLD + GRID_MINIMUM_Y)
-        this.gridX = Math.floor(Math.random() * x) + x
-        this.gridY = Math.floor(Math.random() * y) + y
-        let gridSize = GRID_SIZE
-        let wall = 1000
-
-        Platform(-wall, this.gridY * gridSize, this.gridX * gridSize + wall*2, wall)// bottom
-        Platform(-wall, -wall, this.gridX * gridSize + wall*2, wall) // top
-
-        Platform(-wall, -wall, wall, this.gridY * gridSize + wall*2) // left
-        Platform(this.gridX * gridSize, -wall, wall, this.gridY * gridSize + wall * 2) // right
-        
-        let map = []
-        for (let i = 0; i < this.gridX; i++) {
-            let row = []
-            for (let j = 0; j < this.gridY; j++) {
-                row.push(null)
-            }
-            map.push(row)
-        }
-
-        let goal = 0
-        let start = this.gridY-1
-        if (Math.random() < 0.5) {
-            goal = start
-            start = 0
-        }
-        let randX = Math.floor(Math.random() * this.gridX)
-        map[randX][start] = 'player' 
-        if (start == 0) map[randX][1] = 'block'
-
-        randX = Math.floor(Math.random() * this.gridX)
-
-        map[randX][goal] = 'goal'
-            
-        for (let i = 0; i < this.gridX; i++) {
-            for (let j = 0; j < this.gridY; j++) {
-                if (map[i][j] == 'player') {
-                    this.player = Player(i * gridSize + 50, j * gridSize)
-                } else if (map[i][j] == 'goal') {
-                    Goal(i * gridSize, j * gridSize, gridSize, gridSize)
-                } else if (map[i][j] == 'block') {
-                    Platform(i * gridSize, j * gridSize, gridSize, gridSize)
-                } else {
-                    let rand = Math.random()
-                    if (rand > 0.95) GlassPane(i * gridSize, j * gridSize, gridSize, gridSize)
-                    else if (rand > 0.94) DamageBox(i * gridSize, j * gridSize, gridSize, gridSize)
-                    else if (rand > .8) Platform(i * gridSize, j * gridSize, gridSize, gridSize)
-                }
-            }
-        }        
-
-        this.camera.Track(this.player)
-        this.startAnimating()
-        this.initialized = true
         this.timer = 0
-        $levelStart.innerHTML = 'LEVEL ' + this.world + '-' + ((this.winStreak % LEVELS_PER_WORLD)+1)
-        setTimeout(() => { $levelStart.classList.add('start') }, 500)
-        this.displayObjectives()
+        // Terrain
+        // let x = (GRID_SCALE_X * this.winStreak % LEVELS_PER_WORLD + GRID_MINIMUM_X)
+        // let y = (GRID_SCALE_Y * this.winStreak % LEVELS_PER_WORLD + GRID_MINIMUM_Y)
+        // this.gridX = Math.floor(Math.random() * x) + x
+        // this.gridY = Math.floor(Math.random() * y) + y
+        // let gridSize = GRID_SIZE
+        // let wall = 1000
 
-        if (Sound.music == null) {
-            let track = ChooseRandom(MUSIC)
-            Sound.loadMusic(track)
-        }
-        Sound.startMusic()
+        // Platform(-wall, this.gridY * gridSize, this.gridX * gridSize + wall*2, wall)// bottom
+        // Platform(-wall, -wall, this.gridX * gridSize + wall*2, wall) // top
+
+        // Platform(-wall, -wall, wall, this.gridY * gridSize + wall*2) // left
+        // Platform(this.gridX * gridSize, -wall, wall, this.gridY * gridSize + wall * 2) // right
         
-        this.pause()
+        // let map = []
+        // for (let i = 0; i < this.gridX; i++) {
+        //     let row = []
+        //     for (let j = 0; j < this.gridY; j++) {
+        //         row.push(null)
+        //     }
+        //     map.push(row)
+        // }
+
+        // let goal = 0
+        // let start = this.gridY-1
+        // if (Math.random() < 0.5) {
+        //     goal = start
+        //     start = 0
+        // }
+        // let randX = Math.floor(Math.random() * this.gridX)
+        // map[randX][start] = 'player' 
+        // if (start == 0) map[randX][1] = 'block'
+
+        // randX = Math.floor(Math.random() * this.gridX)
+
+        // map[randX][goal] = 'goal'
+            
+        // for (let i = 0; i < this.gridX; i++) {
+        //     for (let j = 0; j < this.gridY; j++) {
+        //         if (map[i][j] == 'player') {
+        //             this.player = Player(i * gridSize + 50, j * gridSize)
+        //         } else if (map[i][j] == 'goal') {
+        //             Goal(i * gridSize, j * gridSize, gridSize, gridSize)
+        //         } else if (map[i][j] == 'block') {
+        //             Platform(i * gridSize, j * gridSize, gridSize, gridSize)
+        //         } else {
+        //             let rand = Math.random()
+        //             if (rand > 0.95) GlassPane(i * gridSize, j * gridSize, gridSize, gridSize)
+        //             else if (rand > 0.94) DamageBox(i * gridSize, j * gridSize, gridSize, gridSize)
+        //             else if (rand > .8) Platform(i * gridSize, j * gridSize, gridSize, gridSize)
+        //         }
+        //     }
+        // }        
+        let levelToLoad = this.winStreak + 1
+        if (levelToLoad > 3) levelToLoad = 'win'
+        Level.loadLevel('level-' + levelToLoad)
+            .then((player) => {
+                this.player = Level.player
+                this.camera.Track(this.player)
+                
+                // $levelStart.innerHTML = 'LEVEL ' + this.world + '-' + ((this.winStreak % LEVELS_PER_WORLD) + 1)
+                $levelStart.innerHTML = Level.name
+                setTimeout(() => { $levelStart.classList.add('start') }, 500)
+                this.displayObjectives()
+
+                this.startAnimating()
+                this.initialized = true
+                this.pause()
+            })
+        
     },
     tick: function () {
         // request another frame

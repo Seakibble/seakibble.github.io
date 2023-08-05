@@ -33,6 +33,7 @@ Input = function () {
                         $start.click()
                         break
                 }
+                this.enter = false
             }
             
         },
@@ -232,7 +233,7 @@ function setInput(key, keyDown) {
             game.input.jump = keyDown
             break
         case 'Enter':
-            game.input.enter = keyDown
+            if (keyDown) game.input.enter = true
             break
         case 'Left Click':
             if (keyDown) {

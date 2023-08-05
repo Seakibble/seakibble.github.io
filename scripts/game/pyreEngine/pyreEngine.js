@@ -122,6 +122,7 @@ class Pyre {
                 sfx: 1,
                 voice: 1
             }
+            this.musicName = null
             this.music = null
             this._enableMusic = true
             this._pauseFade = false
@@ -174,31 +175,43 @@ class Pyre {
         enableMusic(b = true) {
             this._enableMusic = b
             if (this.music) {
-                if (this._enableMusic) this.music.play()
-                else this.music.stop() 
+                if (this._enableMusic) {
+                    if (!this.music.playing()) this.music.play()
+                } else this.music.stop() 
 
             }
         }
         musicEnabled() {
             return this._enableMusic
         }
-        loadMusic(src) {
-            if (this.music) {
-                // fade
-                this.music.fade(this._calculateVolume('music'), 0, 1000)
-                this.music.once('fade', () => { this._loadTrack(src) })
-            } else {
+        loadMusic(src, autoplay = true) {
+            console.log(this, src)
+            if (!this.music || !this.music.playing()) {
                 // just go
-                this._loadTrack(src)
+                this._loadTrack(src, autoplay)
+            } else if (this.music && this.musicName != src) {
+                // fade 
+                
+                this.music.fade(this._calculateVolume('music'), 0, 4000)
+                console.log('playing:', this.music.playing())
+                this.music.once('fade', () => {
+                    console.log('hi2')
+                    this._loadTrack(src, autoplay)
+                })
             }
+            console.log(this)
         }
-        _loadTrack(src) {
+        _loadTrack(src, autoplay = false) {
+            console.log('hi')
+            if (this.music) this.music.stop()
             this.music = new Howl({
                 src: ['scripts/game/audio/music/' + src + '.mp3'],
                 loop: true,
                 volume: this._calculateVolume('music'),
-                html5: true
+                html5: true,
+                autoplay: autoplay
             })
+            this.musicName = src
         }
         loadSFXArray(list) {
             list.forEach(sfx => {
@@ -219,18 +232,81 @@ class Pyre {
     static Level = class {
         constructor() {
             this.map = []
+            this.name = null
+            this.player = null
+            this.music = null
+            this.gridX = null
+            this.gridY = null
+            this.gridWall = 1000
             this.path = '/scripts/game/levels/'
         }
         loadLevel(src) {
-            fetch(this.path + src + '.csv')
-                .then((response) => response.text())
-                .then((data) => {
-                    const rows = data.split("\n")
-                    rows.forEach(row => {
-                        this.map.push(row.split(','))
+            return new Promise((resolve, reject) => { 
+                fetch(this.path + src + '.csv')
+                    .then((response) => response.text())
+                    .then((data) => {
+                        this.map = []
+                        this.player = null
+                        this.gridX = null
+                        this.gridY = null
+                        let rows = data.split("\n")
+                        rows.forEach(row => {
+                            this.map.push(row.split(','))
+                        })
+                        this.id = this.map[0][0]
+                        this.name = this.map[1][0]
+                        this.music = this.map[2][0]
+                        Sound.loadMusic(this.music)
+                        
+                        
+                        this.map.forEach(row => {
+                            row.shift()
+                            let char = row[row.length-1]
+                            if (char) char = char.split('\r')[0]
+                            console.log(char, char === 'p')
+                            row[row.length - 1] = char
+                        })
+
+                        // this.map.pop()
+                        console.log(this.map.length, this.map[0].length)
+                        this.gridX = this.map[0].length
+                        this.gridY = this.map.length
+
+                        this._generateLevel()
+                        resolve(true)
                     })
-                    console.log(this.map)
-                })
+                    .catch((error) => {
+                        reject(error)
+                    })
+            })
+        }
+        _generateLevel() {
+            Platform(-this.gridWall, this.gridY * GRID_SIZE, this.gridX * GRID_SIZE + this.gridWall * 2, this.gridWall)// bottom
+            Platform(-this.gridWall, -this.gridWall, this.gridX * GRID_SIZE + this.gridWall * 2, this.gridWall) // top
+
+            Platform(-this.gridWall, -this.gridWall, this.gridWall, this.gridY * GRID_SIZE + this.gridWall * 2) // left
+            Platform(this.gridX * GRID_SIZE, -this.gridWall, this.gridWall, this.gridY * GRID_SIZE + this.gridWall * 2) // right
+
+            for (let i = 0; i < this.gridX; i++) {
+                for (let j = 0; j < this.gridY; j++) {
+                    switch (this.map[j][i]) {
+                        case 'p':
+                            if (!this.player) this.player = Player(i * GRID_SIZE + 10, j * GRID_SIZE)
+                            else this.player.pos = new Pyre.Vector(i * GRID_SIZE + 10, j * GRID_SIZE)
+                            break
+                        case 'g': Goal(i * GRID_SIZE, j * GRID_SIZE, GRID_SIZE, GRID_SIZE)
+                            break
+                        case '#': Platform(i * GRID_SIZE, j * GRID_SIZE, GRID_SIZE, GRID_SIZE)
+                            break
+                        case '|': GlassPane(i * GRID_SIZE + (GRID_SIZE-10)/2, j * GRID_SIZE, 10, GRID_SIZE)
+                            break
+                        case '-': GlassPane(i * GRID_SIZE, j * GRID_SIZE, GRID_SIZE, 10)
+                            break
+                        case '^': DamageBox(i * GRID_SIZE, j * GRID_SIZE, GRID_SIZE, GRID_SIZE)
+                            break
+                    }
+                }
+            }
         }
     }
 }

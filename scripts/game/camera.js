@@ -18,30 +18,30 @@ Camera = function () {
                 let down = false
 
                 if (this.targetPos.x < center.x - CAMERA_BOUNDARY) left = true
-                if (this.targetPos.x > game.gridX * GRID_SIZE - center.x + CAMERA_BOUNDARY) right = true
+                if (this.targetPos.x > Level.gridX * GRID_SIZE - center.x + CAMERA_BOUNDARY) right = true
                 if (this.targetPos.y < center.y - CAMERA_BOUNDARY) up = true
-                if (this.targetPos.y > game.gridY * GRID_SIZE - center.y + CAMERA_BOUNDARY) down = true
+                if (this.targetPos.y > Level.gridY * GRID_SIZE - center.y + CAMERA_BOUNDARY) down = true
 
-                if (CV.x > game.gridX * GRID_SIZE + CAMERA_BOUNDARY * 2) {
-                    this.pos.x = game.gridX * GRID_SIZE / 2
-                    this.targetPos.x = game.gridX * GRID_SIZE / 2
+                if (CV.x > Level.gridX * GRID_SIZE + CAMERA_BOUNDARY * 2) {
+                    this.pos.x = Level.gridX * GRID_SIZE / 2
+                    this.targetPos.x = Level.gridX * GRID_SIZE / 2
                 } else if (isLeft(this.targetPos)) {
                     this.targetPos.x = center.x - CAMERA_BOUNDARY
                     if (isLeft(this.pos)) this.pos.x = center.x - CAMERA_BOUNDARY
                 } else if (isRight(this.targetPos)) {
-                    this.targetPos.x = game.gridX * GRID_SIZE - center.x + CAMERA_BOUNDARY
-                    if (isRight(this.pos)) this.pos.x = game.gridX * GRID_SIZE - center.x + CAMERA_BOUNDARY
+                    this.targetPos.x = Level.gridX * GRID_SIZE - center.x + CAMERA_BOUNDARY
+                    if (isRight(this.pos)) this.pos.x = Level.gridX * GRID_SIZE - center.x + CAMERA_BOUNDARY
                 }
 
-                if (CV.y > game.gridY * GRID_SIZE + CAMERA_BOUNDARY * 2) {
-                    this.pos.y = game.gridY * GRID_SIZE / 2
-                    this.targetPos.y = game.gridY * GRID_SIZE / 2
+                if (CV.y > Level.gridY * GRID_SIZE + CAMERA_BOUNDARY * 2) {
+                    this.pos.y = Level.gridY * GRID_SIZE / 2
+                    this.targetPos.y = Level.gridY * GRID_SIZE / 2
                 } else if (isUp(this.targetPos)) {
                     this.targetPos.y = center.y - CAMERA_BOUNDARY
                     if (isUp(this.pos)) this.pos.y = center.y - CAMERA_BOUNDARY
                 } else if (isDown(this.targetPos)) {
-                    this.targetPos.y = game.gridY * GRID_SIZE - center.y + CAMERA_BOUNDARY
-                    if (isDown(this.pos)) this.pos.y = game.gridY * GRID_SIZE - center.y + CAMERA_BOUNDARY
+                    this.targetPos.y = Level.gridY * GRID_SIZE - center.y + CAMERA_BOUNDARY
+                    if (isDown(this.pos)) this.pos.y = Level.gridY * GRID_SIZE - center.y + CAMERA_BOUNDARY
                 }
  
                 this.pos.lerp(this.targetPos, CAMERA_LAG)
@@ -49,6 +49,7 @@ Camera = function () {
         },
         DrawToScreen: function () {
             // console.log(this.renderList)
+            if (game.debug) this.Render(Draw(this.targetPos.x, this.targetPos.y, 5, 5, 'red'))
             this.renderList.sort((a, b) => {
                 if (a.priority > b.priority) return -1
                 else if (a.priority < b.priority) return 1
@@ -184,11 +185,11 @@ function isLeft(pos) {
     return (pos.x < center.x - CAMERA_BOUNDARY)
 }
 function isRight(pos) {
-    return (pos.x > game.gridX * GRID_SIZE - center.x + CAMERA_BOUNDARY)
+    return (pos.x > Level.gridX * GRID_SIZE - center.x + CAMERA_BOUNDARY)
 }
 function isUp(pos) {
     return (pos.y < center.y - CAMERA_BOUNDARY)
 }
 function isDown(pos) {
-    return (pos.y > game.gridY * GRID_SIZE - center.y + CAMERA_BOUNDARY)
+    return (pos.y > Level.gridY * GRID_SIZE - center.y + CAMERA_BOUNDARY)
 }

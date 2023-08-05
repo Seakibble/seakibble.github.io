@@ -20,7 +20,7 @@ const GRID_MINIMUM_X = 8
 const GRID_MINIMUM_Y = 5
 const GRID_SCALE_X = 4
 const GRID_SCALE_Y = 1
-const GRID_SIZE = 100
+const GRID_SIZE = 64
 const DIFFICULTY_SCALE = 1.5
 const LEVELS_PER_WORLD = 5
 
