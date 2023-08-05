@@ -215,4 +215,22 @@ class Pyre {
             return this.volume.master * this.volume[type] * (this._pauseFade ? this._pauseFadeValue : 1)
         }
     }
+
+    static Level = class {
+        constructor() {
+            this.map = []
+            this.path = '/scripts/game/levels/'
+        }
+        loadLevel(src) {
+            fetch(this.path + src + '.csv')
+                .then((response) => response.text())
+                .then((data) => {
+                    const rows = data.split("\n")
+                    rows.forEach(row => {
+                        this.map.push(row.split(','))
+                    })
+                    console.log(this.map)
+                })
+        }
+    }
 }
