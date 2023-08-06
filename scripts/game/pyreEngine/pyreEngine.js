@@ -35,12 +35,12 @@ class Pyre {
             return this
         }
         magnitude() {
-            if (this._magnitude === null || this.x !== this._cachedX || this.y !== this._cachedY) {
-                this._magnitude = Math.sqrt(this.x * this.x + this.y * this.y)
+            if (this._cachedMagnitude === null || this.x !== this._cachedX || this.y !== this._cachedY) {
+                this._cachedMagnitude = Math.sqrt(this.x * this.x + this.y * this.y)
                 this._cachedX = this.x
                 this._cachedY = this.y
             }
-            return this._magnitude
+            return this._cachedMagnitude
         }
         distance(vec) {
             let diff = this.difference(vec)
