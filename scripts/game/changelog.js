@@ -1,5 +1,6 @@
 const CHANGELOG = [
     // { version: '', log: '' },
+    { version: 'v0.9.10', log: "Coins fly to player, won't spawn in pairs" },
     { version: 'v0.9.9', log: 'Coins now float pleasingly' },
     { version: 'v0.9.8', log: 'Collected coins now show up in win screen' },
     { version: 'v0.9.7', log: 'Added coins to collect' },

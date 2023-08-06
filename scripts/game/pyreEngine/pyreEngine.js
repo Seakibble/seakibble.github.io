@@ -315,6 +315,7 @@ class Pyre {
                 let y = Math.floor(Math.random() * this.map.length)
                 if (this.map[y][x] === '') {
                     Coin(x * GRID_SIZE + GRID_SIZE / 2, y * GRID_SIZE + GRID_SIZE / 2)
+                    this.map[y][x] = 'c'
                     coins--
                 }
             }
