@@ -37,6 +37,8 @@ let game = {
     gridX: 0,
     gridY: 0,
     winStreak: 0,
+    coinsBanked: 0,
+    coinsThisLevel: 0,
     world: 1,
     levelColor: 'hsl(210,35%, 40%)',
     displayObjectives: function () {
@@ -142,6 +144,7 @@ let game = {
         this.objects = []
         this.over = false
         this.timer = 0
+        this.coinsThisLevel = 0
         // Terrain
         // let x = (GRID_SCALE_X * this.winStreak % LEVELS_PER_WORLD + GRID_MINIMUM_X)
         // let y = (GRID_SCALE_Y * this.winStreak % LEVELS_PER_WORLD + GRID_MINIMUM_Y)
@@ -275,6 +278,7 @@ let game = {
         this.over = true
         this.pause()
         this.winStreak++
+        game.coinsBanked += game.coinsThisLevel
         this.screen.getStats()
         this.screen.set('win')
     },

@@ -305,10 +305,20 @@ class Pyre {
                             break
                         case '^': DamageBox(i * GRID_SIZE, j * GRID_SIZE, GRID_SIZE, GRID_SIZE)
                             break
-                        default: if (Math.random() > 0.85) Coin(i * GRID_SIZE + GRID_SIZE / 2, j * GRID_SIZE + GRID_SIZE / 2)
                     }
                 }
             }
+
+            let coins = 20
+            while (coins > 0) {
+                let x = Math.floor(Math.random() * this.map[0].length)
+                let y = Math.floor(Math.random() * this.map.length)
+                if (this.map[y][x] === '') {
+                    Coin(x * GRID_SIZE + GRID_SIZE / 2, y * GRID_SIZE + GRID_SIZE / 2)
+                    coins--
+                }
+            }
+
         }
     }
 }

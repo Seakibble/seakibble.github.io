@@ -9,7 +9,7 @@ Coin = function (x, y) {
 
     obj.onCollision = function (other) {
         if (other.player) {
-            game.coins++
+            game.coinsThisLevel++
             Sound.playSFX('coin')
             this.destroy = true
         }

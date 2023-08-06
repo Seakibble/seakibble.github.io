@@ -72,6 +72,7 @@ Screens = function () {
             else grade = 'S'
 
             output += `<p>Mission time: <span class='emphasis'>${time[0]}:${time[1]}</span></p>`
+            output += `<p>Coins: <span class='emphasis'>${(game.coinsBanked)} +(${game.coinsThisLevel}/20)</span></p>`
             output += `<p>Difficulty: <span class='emphasis'>${game.winStreak}</span></p>`
             output += `<span class='emphasis grade'>${grade}</span>`
 
