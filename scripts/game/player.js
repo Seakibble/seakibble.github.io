@@ -248,6 +248,12 @@ Player = function (x, y) {
             }
         }
 
+        if (this.interactTarget) {
+            let t = this.interactTarget
+            let text = t.interactText ? t.interactText : 'Interact'
+            game.camera.Render(DrawText(t.pos.x, t.pos.y-30, text))
+        }
+
         if (game.debug) {
             game.camera.RenderObj(this.colBoxes.Up())
             game.camera.RenderObj(this.colBoxes.Down())

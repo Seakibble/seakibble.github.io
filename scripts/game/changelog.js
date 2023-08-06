@@ -1,5 +1,6 @@
 const CHANGELOG = [
     // { version: '', log: '' },
+    { version: 'v0.9.5', log: 'Text now appears if you can interact' },
     { version: 'v0.9.4', log: 'You can now Interact with things' },
     { version: 'v0.9.3', log: 'Pyre Vector cache bugfix' },
     { version: 'v0.9.2', log: 'Collision detection optimisation' },

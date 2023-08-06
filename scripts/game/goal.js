@@ -4,6 +4,7 @@ Goal = function (x, y, w, h) {
     obj.size.y = h
 
     obj.interactable = true
+    obj.interactText = 'Exit'
     obj.color = "goldenrod"
     obj.goal = true
 

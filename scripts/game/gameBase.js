@@ -25,7 +25,8 @@ let game = {
         "A/D or arrow keys to move",
         "Spacebar to jump",
         "Shift to dash",
-        "LMB to shoot gun"
+        "LMB to shoot gun",
+        "E to interact"
     ],
     objectiveTimeouts: [],
     paused: true,
