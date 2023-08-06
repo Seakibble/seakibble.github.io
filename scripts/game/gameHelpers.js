@@ -60,8 +60,8 @@ function LerpVec(a, b, t) {
     return newPos
 }
 
-function Pulse(frequency, amplitude) {
-    return Math.sin((game.now - game.startTime) / frequency) * amplitude
+function Pulse(frequency = 1000, amplitude = 1, phase = 0) {
+    return Math.sin((game.now - game.startTime) / frequency + phase) * amplitude
 }
 
 function ChooseRandom(array) {
