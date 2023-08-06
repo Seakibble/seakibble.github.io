@@ -286,6 +286,7 @@ let game = {
         this.over = true
         this.pause()
         this.winStreak = 0
+        game.coinsBanked = 0
         this.screen.set('dead')
     }
 }
