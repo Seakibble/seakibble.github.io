@@ -1,5 +1,6 @@
 const CHANGELOG = [
     // { version: '', log: '' },
+    { version: 'v0.9.2', log: 'Collision detection optimisation' },
     { version: 'v0.9.1', log: 'The game has an... ending now' },
     { version: 'v0.9.0', log: 'Levels load from CSVs, refactored with Pyre Level' },
     { version: 'v0.8.4', log: 'Added Pyre Level class' },
