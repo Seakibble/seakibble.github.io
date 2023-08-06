@@ -13,6 +13,8 @@ Player = function (x, y) {
 
     obj.health = 3
 
+    obj.interactTarget = null
+
     obj.jumpLate = 0
     obj.dashCooldown = 0
     obj.facing = 'right'
@@ -153,6 +155,32 @@ Player = function (x, y) {
         this.dashCooldown--
         if (this.dashCooldown <= DASH_RECHARGE) this.dashed = false
     }
+    obj.checkInteract = function () {
+        let targets = []
+        for (let i = 0; i < game.objects.length; i++) {
+            let that = game.objects[i]
+
+            if (this == that) continue
+            if (!that.interactable) continue
+            let distance = this.pos.distance(that.pos)
+            // console.log(this.pos, that.pos, this.pos.distance(that.pos), distance)
+            if (distance < 100) targets.push({
+                obj: that,
+                dist: distance
+            })
+        }
+        if (targets.length > 1) {
+            targets.sort((a, b) => {
+                if (a.dist > b.dist) return -1
+                else if (a.dist < b.dist) return 1
+                else return 0
+            })
+        }
+
+        if (targets.length !== 0) this.interactTarget = targets[0].obj
+        else this.interactTarget = null
+    }
+
     obj.getGun = function () {
         let pulse = Pulse(700, 2) - 2
         if (this.Facing() == 1) {

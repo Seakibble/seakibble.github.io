@@ -3,12 +3,12 @@ Goal = function (x, y, w, h) {
     obj.size.x = w
     obj.size.y = h
 
+    obj.interactable = true
     obj.color = "goldenrod"
-    obj.collision = true
     obj.goal = true
 
-    obj.onCollision = function (other) {
-        if (other.player) game.win()
+    obj.onInteract = function (other) {
+        game.win()
     }
 
     game.objects.push(obj)

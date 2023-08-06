@@ -243,6 +243,8 @@ let game = {
         for (let i = 0; i < this.objects.length; i++) this.objects[i].update()
         for (let i = 0; i < this.objects.length; i++) this.objects[i].checkCollision()
         
+        game.player.checkInteract()
+        
         this.camera.Update()
         this.draw()
     },

@@ -12,7 +12,8 @@ Input = function () {
         dashLock: false,
         shoot: false,
         aiming: false,
-        mouse: new Pyre.Vector(0,0),
+        mouse: new Pyre.Vector(0, 0),
+        interact: false,
         reset: function () {
             this.up = false
             this.left = false
@@ -41,6 +42,12 @@ Input = function () {
             // game input
             let drag = FLOOR_DRAG
             if (!game.player.grounded) drag = AIR_DRAG
+
+            // Interact
+            if (this.interact) {
+                this.interact = false
+                if (game.player.interactTarget !== null) game.player.interactTarget.onInteract()
+            }
 
 
             // Left and Right
@@ -171,6 +178,11 @@ function setInput(key, keyDown) {
     if (game.input.workman) {
         // WORKMAN LAYOUT
         switch (key) {
+            case 'R':
+            case 'r':
+                if (keyDown) game.input.interact = true
+                break
+
             case 'A':
             case 'a':
             case 'ArrowLeft':
@@ -195,6 +207,11 @@ function setInput(key, keyDown) {
     } else {
         // QUERTY LAYOUT
         switch (key) {
+            case 'E':
+            case 'e':
+                if (keyDown) game.input.interact = true
+                break
+            
             case 'A':
             case 'a':
             case 'ArrowLeft':
