@@ -219,6 +219,7 @@ class Pyre {
             })
         }
         loadSFX(src, name = src) {
+            if (this.sfx[name]) return
             this.sfx[name] = new Howl({
                 src: ['scripts/game/audio/sfx/' + src + '.mp3'],
                 volume: this._calculateVolume('sfx'),
@@ -304,6 +305,7 @@ class Pyre {
                             break
                         case '^': DamageBox(i * GRID_SIZE, j * GRID_SIZE, GRID_SIZE, GRID_SIZE)
                             break
+                        default: if (Math.random() > 0.85) Coin(i * GRID_SIZE + GRID_SIZE / 2, j * GRID_SIZE + GRID_SIZE / 2)
                     }
                 }
             }

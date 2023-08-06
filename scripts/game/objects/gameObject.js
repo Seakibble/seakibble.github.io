@@ -45,7 +45,7 @@ Obj = function (x, y, w=10, h=10) {
                 if (this == that) continue
                 if (!this.moves && !that.moves) continue
                 let dist = this.pos.distance(that.pos)
-                if (dist > this.size.x || dist > this.size.y || dist > that.size.x || dist > that.size.y) continue
+                if (dist > this.size.x && dist > this.size.y && dist > that.size.x && dist > that.size.y) continue
 
                 if (Collides(this, that) || Collides(that, this)) {
                     if (this.onCollision !== null) this.onCollision(that)
