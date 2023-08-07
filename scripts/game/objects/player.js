@@ -19,9 +19,9 @@ Player = function (x, y) {
     obj.dashCooldown = 0
     obj.facing = 'right'
     obj.upgrades = {
-        wallClimb: true,
-        dash: true,
-        gun: true,
+        wallClimb: false,
+        dash: false,
+        gun: false,
     }
 
     obj.damage = function (dam) {
@@ -202,7 +202,7 @@ Player = function (x, y) {
 
         let gun = this.getGun()
         let pivot = Pivot()
-        if (game.input.aiming) {
+        if (game.player.upgrades.gun && game.input.aiming) {
             if (this.Facing() == 1) pivot = Pivot(4, 4, this.aimingAngle)
             else pivot = Pivot(36, 4, this.aimingAngle + Math.PI)
             

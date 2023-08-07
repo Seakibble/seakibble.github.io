@@ -18,7 +18,7 @@ Coin = function (x, y) {
     obj.draw = function () {
         if (this.phase == null) this.phase = Math.random() * 2 * Math.PI
         let pulse = Pulse(400, 5, this.phase)
-        let pivot = Pivot(this.size.x/2, this.size.y/2, Math.PI/4)
+        let pivot = Pivot(this.size.x / 2, this.size.y / 2, Math.PI / 4 + pulse)
         game.camera.Render(Draw(this.pos.x, this.pos.y + pulse, this.size.x, this.size.y, this.color, pivot))
     }
     obj.update = function () {

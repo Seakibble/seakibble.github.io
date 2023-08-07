@@ -71,7 +71,7 @@ Input = function () {
             }
 
             // Shooting
-            if (this.shoot) {
+            if (game.player.upgrades.gun && this.shoot) {
                 this.shoot = false
                 let facing = game.player.Facing()
                 // audio.player.shoot.play()
@@ -121,7 +121,7 @@ Input = function () {
             }
 
             // Dashing
-            if (this.dash && !this.dashLock && game.player.dashCooldown <= DASH_RECHARGE) {
+            if (game.player.upgrades.dash && this.dash && !this.dashLock && game.player.dashCooldown <= DASH_RECHARGE) {
                 this.dashLock = true
                 game.player.dashed = true
                 game.player.dashCooldown = DASH_DURATION

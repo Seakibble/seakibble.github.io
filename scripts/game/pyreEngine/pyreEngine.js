@@ -252,15 +252,22 @@ class Pyre {
                         this.gridY = null
                         let rows = data.split("\n")
                         rows.forEach(row => {
-                            this.map.push(row.split(','))
+                            row = row.split(',')
+                            this.map.push(row)
+                            
                         })
-                        this.id = this.map[0][0]
-                        this.name = this.map[1][0]
-                        this.music = this.map[2][0]
+                        this.id = this.map[0][1]
+                        this.name = this.map[1][1]
+                        this.music = this.map[2][1]
+                        this.upgrades = this.map[3][1].split('')
+                        console.log(this.upgrades)
+
+                        
                         Sound.loadMusic(this.music)
                         
                         
                         this.map.forEach(row => {
+                            row.shift()
                             row.shift()
                             let char = row[row.length-1]
                             if (char) char = char.split('\r')[0]
@@ -294,6 +301,15 @@ class Pyre {
                         case 'p':
                             if (!this.player) this.player = Player(i * GRID_SIZE + 10, j * GRID_SIZE)
                             else this.player.pos = new Pyre.Vector(i * GRID_SIZE + 10, j * GRID_SIZE)
+                            this.upgrades.forEach((char) => {
+                                let upgrade = 'none'
+                                switch (char) {
+                                    case 'D': upgrade = 'dash'; break
+                                    case 'W': upgrade = 'wallClimb'; break
+                                    case 'G': upgrade = 'gun'; break
+                                }
+                                this.player.upgrades[upgrade] = true
+                            })
                             break
                         case 'g': Goal(i * GRID_SIZE, j * GRID_SIZE, GRID_SIZE, GRID_SIZE)
                             break
@@ -305,20 +321,28 @@ class Pyre {
                             break
                         case '^': DamageBox(i * GRID_SIZE, j * GRID_SIZE, GRID_SIZE, GRID_SIZE)
                             break
+                        case 'D': Upgrade(i * GRID_SIZE, j * GRID_SIZE, 'dash')
+                            break
+                        case 'W': Upgrade(i * GRID_SIZE, j * GRID_SIZE, 'wallClimb')
+                            break
+                        case 'G': Upgrade(i * GRID_SIZE, j * GRID_SIZE, 'gun')
+                            break
+                        case 'c': Coin(i * GRID_SIZE + GRID_SIZE / 2, j * GRID_SIZE + GRID_SIZE / 2)
+                            break
                     }
                 }
             }
 
-            let coins = 20
-            while (coins > 0) {
-                let x = Math.floor(Math.random() * this.map[0].length)
-                let y = Math.floor(Math.random() * this.map.length)
-                if (this.map[y][x] === '') {
-                    Coin(x * GRID_SIZE + GRID_SIZE / 2, y * GRID_SIZE + GRID_SIZE / 2)
-                    this.map[y][x] = 'c'
-                    coins--
-                }
-            }
+            // let coins = 20
+            // while (coins > 0) {
+            //     let x = Math.floor(Math.random() * this.map[0].length)
+            //     let y = Math.floor(Math.random() * this.map.length)
+            //     if (this.map[y][x] === '') {
+            //         Coin(x * GRID_SIZE + GRID_SIZE / 2, y * GRID_SIZE + GRID_SIZE / 2)
+            //         this.map[y][x] = 'c'
+            //         coins--
+            //     }
+            // }
 
         }
     }
