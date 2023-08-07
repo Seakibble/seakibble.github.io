@@ -6,6 +6,7 @@ Coin = function (x, y) {
     obj.collision = true
     obj.color = "lightyellow"
     obj.collectable = true
+    obj.collectRange = 100
     obj.phase = null
 
     obj.onCollision = function (other) {
@@ -22,8 +23,8 @@ Coin = function (x, y) {
         game.camera.Render(Draw(this.pos.x, this.pos.y + pulse, this.size.x, this.size.y, this.color, pivot))
     }
     obj.update = function () {
-        if (this.pos.distance(game.player.pos) < 100) {
-            let toPlayer = Pyre.Vector.lerpDifference(this.pos, game.player.pos, 0.03)
+        if (this.pos.distance(game.player.center()) < this.collectRange) {
+            let toPlayer = Pyre.Vector.lerpDifference(this.pos, game.player.center(), 0.03)
             this.vel.add(toPlayer)
         } else {
             this.vel.multiply(0.5)

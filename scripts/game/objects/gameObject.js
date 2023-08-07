@@ -13,6 +13,9 @@ Obj = function (x, y, w=10, h=10) {
         onCollision: null,
         facing: null,
         destroy: false,
+        center: function () {
+            return new Pyre.Vector(this.pos.x + this.size.x / 2, this.pos.y + this.size.y / 2)
+        },
         draw: function () {
             game.camera.RenderObj(this)
         },
