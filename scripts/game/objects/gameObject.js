@@ -17,7 +17,7 @@ Obj = function (x, y, w=10, h=10) {
             return new Pyre.Vector(this.pos.x + this.size.x / 2, this.pos.y + this.size.y / 2)
         },
         draw: function () {
-            game.camera.RenderObj(this)
+            camera.RenderObj(this)
         },
         update: function () {
             if (this.gravity && !this.grounded) {
@@ -41,8 +41,8 @@ Obj = function (x, y, w=10, h=10) {
         checkCollision: function () {
             if (!this.collision) return
 
-            for (let i = 0; i < game.objects.length; i++) {
-                let that = game.objects[i]
+            for (let i = 0; i < Data.objects.length; i++) {
+                let that = Data.objects[i]
 
                 if (!that.collision) continue
                 if (this == that) continue

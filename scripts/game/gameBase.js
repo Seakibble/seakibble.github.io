@@ -1,24 +1,21 @@
 let ctx = canvas.getContext('2d');
-let CV = new Pyre.Vector()
+const CV = new Pyre.Vector()
 let center = null
-let Sound = new Pyre.Audio()
-let Level = new Pyre.Level()
+const Sound = new Pyre.Audio()
+const Level = new Pyre.Level()
+const Data = new Pyre.GameData()
+const Game = new Pyre.GameLoop()
+let input = Input()
+let camera = Camera()
 
 let game = {
     options: {
         music: true
     },
-    debug: false,
-    input: Input(),
-    camera: Camera(),
-    player: null,
     zoom: 1,
     fpsInterval: null,
-    startTime: Date.now(),
-    now: null,
     then: null,
-    elapsed: null,
-    objects: [],
+    elapsed: null,    
     objectives: [
         "Get to the OBJECTIVE",
         "Press ESC to pause",
@@ -30,17 +27,13 @@ let game = {
     ],
     objectiveTimeouts: [],
     paused: true,
-    timer: 0,
     screen: Screens(),
     initialized: false,
     over: false,
-    gridX: 0,
-    gridY: 0,
-    winStreak: 0,
-    coinsBanked: 0,
-    coinsThisLevel: 0,
     world: 1,
     levelColor: 'hsl(210,35%, 40%)',
+
+
     displayObjectives: function () {
         $objectives.innerHTML = ''
         for (let i = 0; i < this.objectiveTimeouts.length; i++) {
@@ -54,52 +47,41 @@ let game = {
         }
     },
     draw: function () {
-        ctx.fillStyle = this.levelColor
+        // ctx.fillStyle = this.levelColor
+        ctx.fillStyle = '#68f'
         ctx.fillRect(0, 0, $canvas.width, $canvas.height)
         // let style = "hsl(0,0%, " + pulse + "%)";
         // ctx.textAlign = "center";
 
-        for (let i = 0; i < this.objects.length; i++) {
-            this.objects[i].draw()
+        for (let i = 0; i < Data.objects.length; i++) {
+            Data.objects[i].draw()
         }
 
         // Reticule
-        let cursor = getWorldSpace(this.input.mouse)
+        let cursor = getWorldSpace(input.mouse)
         let retThickness = 2
         let retLength = 12
         let retOffset = 8
         
-        this.camera.Render(Draw(cursor.x + retOffset - 1, cursor.y - 1, retLength + 2, retThickness + 2, 'white'), 2)
-        this.camera.Render(Draw(cursor.x + retOffset, cursor.y, retLength, retThickness, 'black'), 1)
+        camera.Render(Draw(cursor.x + retOffset - 1, cursor.y - 1, retLength + 2, retThickness + 2, 'white'), 2)
+        camera.Render(Draw(cursor.x + retOffset, cursor.y, retLength, retThickness, 'black'), 1)
 
-        this.camera.Render(Draw(cursor.x - retOffset - retLength - 1, cursor.y -1, retLength +2, retThickness +2, 'white'), 2)
-        this.camera.Render(Draw(cursor.x - retOffset - retLength, cursor.y, retLength, retThickness, 'black'), 1)
+        camera.Render(Draw(cursor.x - retOffset - retLength - 1, cursor.y -1, retLength +2, retThickness +2, 'white'), 2)
+        camera.Render(Draw(cursor.x - retOffset - retLength, cursor.y, retLength, retThickness, 'black'), 1)
         
-        this.camera.Render(Draw(cursor.x-1, cursor.y + retOffset-1, retThickness+2, retLength+2, 'white'), 2)
-        this.camera.Render(Draw(cursor.x, cursor.y + retOffset, retThickness, retLength, 'black'), 1)
+        camera.Render(Draw(cursor.x-1, cursor.y + retOffset-1, retThickness+2, retLength+2, 'white'), 2)
+        camera.Render(Draw(cursor.x, cursor.y + retOffset, retThickness, retLength, 'black'), 1)
 
-        this.camera.Render(Draw(cursor.x-1, cursor.y - retOffset - retLength-1, retThickness+2, retLength+2, 'white'), 2)
-        this.camera.Render(Draw(cursor.x, cursor.y - retOffset - retLength, retThickness, retLength, 'black'), 1)
+        camera.Render(Draw(cursor.x-1, cursor.y - retOffset - retLength-1, retThickness+2, retLength+2, 'white'), 2)
+        camera.Render(Draw(cursor.x, cursor.y - retOffset - retLength, retThickness, retLength, 'black'), 1)
 
-        if (this.debug) {
-            this.camera.Render(Draw(0,0,10,10,'red'))
+        if (Data.debug) {
+            camera.Render(Draw(0,0,10,10,'red'))
         }
-        this.camera.DrawToScreen()
+        camera.DrawToScreen()
 
-        let time = this.getTime()
+        let time = getTime(Data.timer)
         $timer.innerHTML = `<span>${time[0]}</span>:<span>${time[1]}</span>`
-    },
-    getTime() {
-        let sec = Math.floor(this.timer / FPS)
-        let min = Math.floor(sec / 60)
-        sec = sec % 60
-        if (min < 10) min = '0' + min
-        if (sec < 10) sec = '0' + sec
-        // if (mil < 10) mil = '00' + mil
-        // if (mil < 100) mil = '0' + mil
-        
-        // $imer.innerHTML += `<span class=mil>:${mil}</span>`
-        return [min,sec]
     },
     resize: function () {
         if ($container.offsetHeight / this.zoom < 1 || $container.offsetWidth / this.zoom < 1) {
@@ -115,12 +97,12 @@ let game = {
         this.draw()
     },
     saveSettings: function () {
-        localStorage.setItem('workman', game.input.workman)
+        localStorage.setItem('workman', input.workman)
         localStorage.setItem('musicEnabled', Sound.musicEnabled())
     },
     loadSettings: function () {
         let workman = localStorage.getItem('workman')
-        this.input.workman = (workman === 'true')
+        input.workman = (workman === 'true')
         let musicEnabled = localStorage.getItem('musicEnabled')
         Sound.enableMusic(musicEnabled === 'true')
         
@@ -138,16 +120,16 @@ let game = {
         this.start()
     },
     start: function () {
-        this.world = Math.floor(this.winStreak / LEVELS_PER_WORLD)+1
+        this.world = Math.floor(Data.winStreak / LEVELS_PER_WORLD)+1
         this.levelColor = 'hsl(' + ((this.world-1) * 55 + 210)%360 + ',35%, 40%)'
         $levelStart.classList.remove('start')
-        this.objects = []
+        Data.objects = []
         this.over = false
-        this.timer = 0
-        this.coinsThisLevel = 0
+        Data.timer = 0
+        Data.coinsThisLevel = 0
         // Terrain
-        // let x = (GRID_SCALE_X * this.winStreak % LEVELS_PER_WORLD + GRID_MINIMUM_X)
-        // let y = (GRID_SCALE_Y * this.winStreak % LEVELS_PER_WORLD + GRID_MINIMUM_Y)
+        // let x = (GRID_SCALE_X * Data.winStreak % LEVELS_PER_WORLD + GRID_MINIMUM_X)
+        // let y = (GRID_SCALE_Y * Data.winStreak % LEVELS_PER_WORLD + GRID_MINIMUM_Y)
         // this.gridX = Math.floor(Math.random() * x) + x
         // this.gridY = Math.floor(Math.random() * y) + y
         // let gridSize = GRID_SIZE
@@ -198,65 +180,66 @@ let game = {
         //         }
         //     }
         // }        
-        let levelToLoad = this.winStreak + 1
+        let levelToLoad = Data.winStreak + 1
         if (levelToLoad > 3) levelToLoad = 'win'
         Level.loadLevel('level-' + levelToLoad)
             .then((player) => {
-                this.player = Level.player
-                this.camera.Track(this.player)
+                Data.player = Level.player
+                camera.Track(Data.player)
                 
                 // $levelStart.innerHTML = 'LEVEL ' + this.world + '-' + ((this.winStreak % LEVELS_PER_WORLD) + 1)
                 $levelStart.innerHTML = Level.name
                 setTimeout(() => { $levelStart.classList.add('start') }, 500)
                 this.displayObjectives()
 
-                this.startAnimating()
-                this.initialized = true
+                // this.startAnimating()
+                // this.initialized = true
                 this.pause()
+                Game.start()
             })
         
     },
     tick: function () {
+
         // request another frame
-        requestAnimationFrame(() => game.tick())
+        // requestAnimationFrame(() => game.tick())
 
         // calc elapsed time since last loop
         this.now = Date.now();
         this.elapsed = this.now - this.then;
 
         if (this.paused) {
-            this.input.menuInput()
+            input.menuInput()
             return
         }
 
         // if enough time has elapsed, draw the next frame
         if (this.elapsed > this.fpsInterval) {
-
             // Get ready for next frame by setting then=now, but also adjust for your
             // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
             this.then = this.now - (this.elapsed % this.fpsInterval);
 
-            this.onFrame()
-            this.cleanUp()
+            game.onFrame()
+            game.cleanUp()
         }
     },
     onFrame: function () {
-        this.timer++
-        this.input.gameInput()
+        Data.timer++
+        input.gameInput()
 
-        for (let i = 0; i < this.objects.length; i++) this.objects[i].update()
-        for (let i = 0; i < this.objects.length; i++) this.objects[i].checkCollision()
+        for (let i = 0; i < Data.objects.length; i++) Data.objects[i].update()
+        for (let i = 0; i < Data.objects.length; i++) Data.objects[i].checkCollision()
         
-        game.player.checkInteract()
+        Data.player.checkInteract()
         
-        this.camera.Update()
-        this.draw()
+        camera.Update()
+        // this.draw()
     },
     cleanUp: function () {
-        for (let i = this.objects.length - 1; i >= 0; i--) {
-            if (this.objects[i].destroy) {
-                this.objects[i].onDestroy()
-                this.objects.splice(i, 1)
+        for (let i = Data.objects.length - 1; i >= 0; i--) {
+            if (Data.objects[i].destroy) {
+                Data.objects[i].onDestroy()
+                Data.objects.splice(i, 1)
             }
         }
     },
@@ -277,21 +260,27 @@ let game = {
     win: function () {
         this.over = true
         this.pause()
-        this.winStreak++
-        game.coinsBanked += game.coinsThisLevel
+        Data.winStreak++
+        Data.coinsBanked += Data.coinsThisLevel
         this.screen.getStats()
         this.screen.set('win')
     },
     dead: function () {
         this.over = true
         this.pause()
-        this.winStreak = 0
-        game.coinsBanked = 0
+        Data.winStreak = 0
+        Data.coinsBanked = 0
         this.screen.set('dead')
     }
 }
 
+
+Game.setUpdateCallback(game.tick)
+Game.setDrawCallback(game.draw)
+
 // Initial code when page loads
 redirectToHttps()
 cleanLinks()
-$start.addEventListener('click', () => game.init())
+$start.addEventListener('click', () => { 
+    game.init()
+})

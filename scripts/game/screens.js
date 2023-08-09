@@ -47,7 +47,6 @@ Screens = function () {
                 game.saveSettings()
             })
             $toggleMusic.addEventListener('click', () => {
-                console.log('hi')
                 Sound.enableMusic(!Sound.musicEnabled())
                 setMusicMenuText()
                 game.saveSettings()
@@ -61,7 +60,7 @@ Screens = function () {
         },
         getStats: function () {
             let output = `<h3>MISSION DEBRIEFING</h3>`
-            let time = game.getTime()
+            let time = getTime()
             let grade = 'F'
             let seconds = parseInt(time[0]) * 60 + parseInt(time[1])
 
@@ -72,8 +71,8 @@ Screens = function () {
             else grade = 'S'
 
             output += `<p>Mission time: <span class='emphasis'>${time[0]}:${time[1]}</span></p>`
-            output += `<p>Coins: <span class='emphasis'>${(game.coinsBanked)} +(${game.coinsThisLevel}/20)</span></p>`
-            output += `<p>Difficulty: <span class='emphasis'>${game.winStreak}</span></p>`
+            output += `<p>Coins: <span class='emphasis'>${(Data.coinsBanked)} +(${Data.coinsThisLevel}/20)</span></p>`
+            output += `<p>Difficulty: <span class='emphasis'>${Data.winStreak}</span></p>`
             output += `<span class='emphasis grade'>${grade}</span>`
 
             $stats.innerHTML = output

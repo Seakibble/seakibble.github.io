@@ -14,6 +14,6 @@ Projectile = function (x, y, w, h, vx, vy) {
         this.destroy = true
     }
 
-    game.objects.push(obj)
+    Data.objects.push(obj)
     return obj
 }

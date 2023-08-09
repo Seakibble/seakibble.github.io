@@ -27,14 +27,27 @@ function setMusicMenuText() {
     $toggleMusic.innerHTML = 'Toggle Music: ' + (Sound.musicEnabled() ? 'ON' : 'OFF')
 }
 
+function getTime(timer) {
+    let sec = Math.floor(Data.timer / FPS)
+    let min = Math.floor(sec / 60)
+    sec = sec % 60
+    if (min < 10) min = '0' + min
+    if (sec < 10) sec = '0' + sec
+    // if (mil < 10) mil = '00' + mil
+    // if (mil < 100) mil = '0' + mil
+
+    // $imer.innerHTML += `<span class=mil>:${mil}</span>`
+    return [min, sec]
+}
+
 function setWorkman() {
-    if (game.input.workman) game.input.workman = false
-    else game.input.workman = true
+    if (input.workman) input.workman = false
+    else input.workman = true
     
     setWorkmanMenuText()
 }
 function setWorkmanMenuText() { 
-    if (game.input.workman) $keyboardLayout.innerHTML = 'Keyboard: WORKMAN'
+    if (input.workman) $keyboardLayout.innerHTML = 'Keyboard: WORKMAN'
     else $keyboardLayout.innerHTML = 'Keyboard: QWERTY'
 }
 
@@ -61,7 +74,7 @@ function LerpVec(a, b, t) {
 }
 
 function Pulse(frequency = 1000, amplitude = 1, phase = 0) {
-    return Math.sin((game.now - game.startTime) / frequency + phase) * amplitude
+    return Math.sin((Game.now - Game.startTime) / frequency + phase) * amplitude
 }
 
 function ChooseRandom(array) {

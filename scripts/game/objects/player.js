@@ -56,8 +56,8 @@ Player = function (x, y) {
         this.pos.add(this.vel)
 
         // 
-        if (game.input.aiming) {
-            this.reticulePos = getWorldSpace(game.input.mouse)
+        if (input.aiming) {
+            this.reticulePos = getWorldSpace(input.mouse)
             let gun = this.getGun()
             let diff = this.reticulePos.difference(gun.pos)
             this.aimingAngle = Math.atan2(diff.y, diff.x)
@@ -73,8 +73,8 @@ Player = function (x, y) {
         let noWallCollision = true
         let collideLeft = false
         let collideRight = false
-        for (let i = 0; i < game.objects.length; i++) {
-            let that = game.objects[i]
+        for (let i = 0; i < Data.objects.length; i++) {
+            let that = Data.objects[i]
             if (!this.moves) continue
             if (this == that) continue
 
@@ -131,12 +131,12 @@ Player = function (x, y) {
             if (collideLeft) this.facing = 'right'
             else this.facing = 'left'
 
-            if (collideLeft && game.input.left || collideRight && game.input.right) {
+            if (collideLeft && input.left || collideRight && input.right) {
                 this.vel.y = 0
                 this.jumped = false
             }
-            if (!game.input.jump) {
-                game.input.jumpLock = false
+            if (!input.jump) {
+                input.jumpLock = false
                 this.jumpLate = 0
             } 
         } else {
@@ -157,8 +157,8 @@ Player = function (x, y) {
     }
     obj.checkInteract = function () {
         let targets = []
-        for (let i = 0; i < game.objects.length; i++) {
-            let that = game.objects[i]
+        for (let i = 0; i < Data.objects.length; i++) {
+            let that = Data.objects[i]
 
             if (this == that) continue
             if (!that.interactable) continue
@@ -191,7 +191,7 @@ Player = function (x, y) {
     }
     obj.draw = function () {
         // Dude
-        game.camera.RenderObj(this, 3)
+        camera.RenderObj(this, 3)
         let visorColor = VISOR_COLOR
         let gearColor = GEAR_COLOR
         let thrusterColor = THRUSTER_COLOR
@@ -202,68 +202,69 @@ Player = function (x, y) {
 
         let gun = this.getGun()
         let pivot = Pivot()
-        if (game.player.upgrades.gun && game.input.aiming) {
+        if (this.upgrades.gun && input.aiming) {
             if (this.Facing() == 1) pivot = Pivot(4, 4, this.aimingAngle)
             else pivot = Pivot(36, 4, this.aimingAngle + Math.PI)
             
-            game.camera.Render(DrawLine(
+            camera.Render(DrawLine(
                 this.reticulePos.x, this.reticulePos.y,
                 this.pos.x + this.size.x / 2, this.pos.y + pulse + this.size.y / 2,
                 'red'))
         }
-        if (game.player.upgrades.gun) {
-            game.camera.Render(DrawObj(gun, pivot), 1)
+        if (this.upgrades.gun) {
+            camera.Render(DrawObj(gun, pivot), 1)
         }
 
         // Helmet
-        game.camera.Render(Draw(this.pos.x, this.pos.y + pulse - 2, this.size.x, this.size.x-5, gearColor), 3)
+        camera.Render(Draw(this.pos.x, this.pos.y + pulse - 2, this.size.x, this.size.x-5, gearColor), 3)
 
         if (this.facing == 'left') {
             // Antenna
-            game.camera.Render(Draw(this.pos.x + this.size.x - 7, this.pos.y - 15 + pulse, 2, 16, this.color), 4)
+            camera.Render(Draw(this.pos.x + this.size.x - 7, this.pos.y - 15 + pulse, 2, 16, this.color), 4)
             
             // Visor
-            game.camera.Render(Draw(this.pos.x, this.pos.y + 5 + pulse, 20, 6, visorColor), 2)
-            game.camera.Render(Draw(this.pos.x, this.pos.y + 10 + pulse, 12, 10, visorColor), 2)
+            camera.Render(Draw(this.pos.x, this.pos.y + 5 + pulse, 20, 6, visorColor), 2)
+            camera.Render(Draw(this.pos.x, this.pos.y + 10 + pulse, 12, 10, visorColor), 2)
 
-            if (game.player.upgrades.dash) {
+            if (this.upgrades.dash) {
                 // Backpack
-                game.camera.Render(Draw(this.pos.x + this.size.x - 9, this.pos.y + pulse + 20, 15, 30, gearColor), 3)
-                game.camera.Render(Draw(this.pos.x + this.size.x - 2, this.pos.y + pulse + 25, 8, 20, thrusterColor), 2)
+                camera.Render(Draw(this.pos.x + this.size.x - 9, this.pos.y + pulse + 20, 15, 30, gearColor), 3)
+                camera.Render(Draw(this.pos.x + this.size.x - 2, this.pos.y + pulse + 25, 8, 20, thrusterColor), 2)
             }
 
             
         } else if (this.facing == 'right') {
             // Antenna
-            game.camera.Render(Draw(this.pos.x + 7, this.pos.y - 15 + pulse, 2, 16, this.color), 4)
+            camera.Render(Draw(this.pos.x + 7, this.pos.y - 15 + pulse, 2, 16, this.color), 4)
 
             // Visor
-            game.camera.Render(Draw(this.pos.x + this.size.x - 20, this.pos.y + 5 + pulse, 20, 6, visorColor), 2)
-            game.camera.Render(Draw(this.pos.x + this.size.x - 12, this.pos.y + 10 + pulse, 12, 10, visorColor), 2)
+            camera.Render(Draw(this.pos.x + this.size.x - 20, this.pos.y + 5 + pulse, 20, 6, visorColor), 2)
+            camera.Render(Draw(this.pos.x + this.size.x - 12, this.pos.y + 10 + pulse, 12, 10, visorColor), 2)
 
-            if (game.player.upgrades.dash) {
+            if (this.upgrades.dash) {
                 // Backpack
-                game.camera.Render(Draw(this.pos.x - 6, this.pos.y + pulse + 20, 15, 30, gearColor), 3)
-                game.camera.Render(Draw(this.pos.x - 6, this.pos.y + pulse + 25, 8, 20, thrusterColor), 2)
+                camera.Render(Draw(this.pos.x - 6, this.pos.y + pulse + 20, 15, 30, gearColor), 3)
+                camera.Render(Draw(this.pos.x - 6, this.pos.y + pulse + 25, 8, 20, thrusterColor), 2)
             }
         }
 
         if (this.interactTarget) {
             let t = this.interactTarget
             let text = t.interactText ? t.interactText : 'Interact'
-            game.camera.Render(DrawText(t.pos.x, t.pos.y-30, text))
+            camera.Render(DrawText(t.pos.x, t.pos.y-30, text))
         }
 
         if (game.debug) {
-            game.camera.RenderObj(this.colBoxes.Up())
-            game.camera.RenderObj(this.colBoxes.Down())
-            game.camera.RenderObj(this.colBoxes.Left())
-            game.camera.RenderObj(this.colBoxes.Right())
+            camera.RenderObj(this.colBoxes.Up())
+            camera.RenderObj(this.colBoxes.Down())
+            camera.RenderObj(this.colBoxes.Left())
+            camera.RenderObj(this.colBoxes.Right())
         }
         
     }
     Sound.loadSFXArray(['jump', 'walk', 'land', 'landHeavy', 'shoot'])
     
-    game.objects.push(obj)
+    Data.objects.push(obj)
+    Data.player = obj
     return obj
 }

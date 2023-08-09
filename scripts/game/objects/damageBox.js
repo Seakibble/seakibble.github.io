@@ -12,6 +12,6 @@ DamageBox = function (x, y, w, h, damage = 1) {
         if (other.player) other.damage(this.contactDamage)
     }
 
-    game.objects.push(obj)
+    Data.objects.push(obj)
     return obj
 }

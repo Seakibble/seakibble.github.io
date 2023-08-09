@@ -20,8 +20,8 @@ Upgrade = function (x, y, type = 'dash') {
         if (this.phase == null) this.phase = Math.random() * 2 * Math.PI
         let pulse = Pulse(3000, 5, this.phase)
         let pivot = Pivot(this.size.x/2, this.size.y/2, Math.PI/4+pulse)
-        game.camera.Render(Draw(this.pos.x, this.pos.y, this.size.x, this.size.y, this.color, pivot))
-        game.camera.Render(DrawText(this.pos.x+this.size.x/2, this.pos.y + 30, this.type, 'black', 'center','bold 20px Fira Mono'))
+        camera.Render(Draw(this.pos.x, this.pos.y, this.size.x, this.size.y, this.color, pivot))
+        camera.Render(DrawText(this.pos.x+this.size.x/2, this.pos.y + 30, this.type, 'black', 'center','bold 20px Fira Mono'))
     }
     obj.update = function () {
         // if (this.pos.distance(game.player.pos) < 100) {
@@ -33,7 +33,7 @@ Upgrade = function (x, y, type = 'dash') {
         // this.pos.add(this.vel)
     },
 
-    game.objects.push(obj)
+    Data.objects.push(obj)
     Sound.loadSFX('upgrade')
     return obj
 }

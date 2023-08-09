@@ -12,6 +12,6 @@ Goal = function (x, y, w, h) {
         game.win()
     }
 
-    game.objects.push(obj)
+    Data.objects.push(obj)
     return obj
 }

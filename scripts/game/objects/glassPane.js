@@ -28,6 +28,6 @@ GlassPane = function (x, y, w, h) {
     }
     
     Sound.loadSFX('glassBreak')
-    game.objects.push(obj)
+    Data.objects.push(obj)
     return obj
 }

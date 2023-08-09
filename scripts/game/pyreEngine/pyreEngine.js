@@ -346,4 +346,69 @@ class Pyre {
 
         }
     }
+
+    static GameData = class {
+        constructor() {
+            this.player = null
+            this.objects = []
+            this.debug = false
+
+            this.timer = 0
+            this.winStreak = 0
+            this.coinsBanked = 0
+            this.coinsThisLevel = 0
+            
+        }
+    }
+
+    static GameLoop = class {
+        constructor() {
+            this.startTime = Date.now()
+            this.now = null
+            this.elapsed = null
+            this.fpsInterval = null
+
+            this.running = false
+            this.previousTimestamp = 0
+            this.updateCallback = null
+            this.drawCallback = null
+        }
+
+        start() {
+            this.running = true
+            this.fpsInterval = 1000 / FPS
+            this.then = Date.now()
+            requestAnimationFrame(this.loop.bind(this))
+        }
+        stop() {
+            this.running = false
+        }
+
+        setUpdateCallback(callback) {
+            this.updateCallback = callback
+        }
+        setDrawCallback(callback) {
+            this.drawCallback = callback
+        }
+
+        loop(timestamp) {
+            if (!this.running) return
+
+            if (this.previousTimestamp === 0) {
+                this.previousTimestamp = timestamp
+            }
+
+            const deltaTime = (timestamp - this.previousTimestamp) / 1000
+
+            if (this.updateCallback) {
+                this.updateCallback()
+            }
+            if (this.drawCallback) {
+                this.drawCallback()
+            }
+
+            this.previousTimestamp = timestamp
+            requestAnimationFrame(this.loop.bind(this))
+        }
+    }
 }

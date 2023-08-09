@@ -49,7 +49,7 @@ Camera = function () {
         },
         DrawToScreen: function () {
             // console.log(this.renderList)
-            if (game.debug) this.Render(Draw(this.targetPos.x, this.targetPos.y, 5, 5, 'red'))
+            if (Data.debug) this.Render(Draw(this.targetPos.x, this.targetPos.y, 5, 5, 'red'))
             this.renderList.sort((a, b) => {
                 if (a.priority > b.priority) return -1
                 else if (a.priority < b.priority) return 1
@@ -116,7 +116,7 @@ Camera = function () {
 function getWorldSpace(target) {
     let dest = new Pyre.Vector(target.x, target.y)
     dest.subtract(center)
-    dest.add(game.camera.pos)
+    dest.add(camera.pos)
     return dest
 }
 

@@ -1,5 +1,6 @@
 const CHANGELOG = [
     // { version: '', log: '' },
+    { version: 'v0.11.0', log: "Started moving game loop/data to PyreEngine" },
     { version: 'v0.10.3', log: "Updated icon" },
     { version: 'v0.10.2', log: "Added icon for game" },
     { version: 'v0.10.1', log: "Camera boundary fix, coins fly to center" },
