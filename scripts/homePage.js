@@ -63,8 +63,8 @@ var startTime = new Date();
 Boid = function (_id, _x, _y, _master) {
     return {
         id: _id,
-        pos: Vector(_x, _y),
-        velocity: Vector(0, 0),
+        pos: new Pyre.Vector(_x, _y),
+        velocity: new Pyre.Vector(0, 0),
         config: ApplyVariance(masterConfig),
         master: _master,
         SetVelocity: function (vec) {
@@ -85,72 +85,72 @@ Boid = function (_id, _x, _y, _master) {
         },
         Update: function () {
             // Apply weight of initial velocity
-            this.velocity.Mult(this.config.baseWeight);
+            this.velocity.multiply(this.config.baseWeight);
 
             // Setup rule variables
-            var alignment = { vec: Vector(0, 0), agentCount: 0 };
-            var cohesion = { vec: Vector(0, 0), agentCount: 0 };
-            var separation = { vec: Vector(0, 0), agentCount: 0 };
+            var alignment = { vec: new Pyre.Vector(0, 0), agentCount: 0 };
+            var cohesion = { vec: new Pyre.Vector(0, 0), agentCount: 0 };
+            var separation = { vec: new Pyre.Vector(0, 0), agentCount: 0 };
 
             // Collect rule vectors
             for (var i = 0; i < this.master.length; i++) {
                 if (this.id !== i) {
                     // Get the relative distance of the other agent from this agent
-                    var centerOffset = center.Diff(this.pos);
-                    var agentPos = Vector(this.master[i].pos.x, this.master[i].pos.y);
-                    agentPos.Add(centerOffset);
+                    var centerOffset = center.difference(this.pos);
+                    var agentPos = new Pyre.Vector(this.master[i].pos.x, this.master[i].pos.y);
+                    agentPos.add(centerOffset);
                     agentPos = Screenwrap(agentPos);
-                    var dist = this.pos.Dist(agentPos);
+                    var dist = this.pos.distance(agentPos);
 
                     if (dist < this.config.alignment.range && dist > 1) {
                         alignment.agentCount++;
-                        alignment.vec.Add(this.master[i].velocity);
+                        alignment.vec.add(this.master[i].velocity);
                     }
 
                     if (dist < this.config.cohesion.range && dist > 1) {
                         // Fish follow cohesion, unless the other boid is a predator
                         if (!this.master[i].config.predator) {
                             cohesion.agentCount++;
-                            cohesion.vec.Add(agentPos);
+                            cohesion.vec.add(agentPos);
                         }
                     }
 
                     if (dist < this.config.separation.range && dist > 1) {
                         separation.agentCount++;
-                        separation.vec.Add(agentPos.Diff(this.pos));
+                        separation.vec.add(agentPos.difference(this.pos));
                     }
                 }
             }
 
             // Normalize vectors, apply weights then add to velocity
             if (alignment.agentCount > 0) {
-                alignment.vec.Mult(1 / alignment.agentCount);
-                alignment.vec.Normalize(this.config.maxSpeed);
+                alignment.vec.multiply(1 / alignment.agentCount);
+                alignment.vec.normalize(this.config.maxSpeed);
 
-                alignment.vec.Mult(this.config.alignment.weight);
-                this.velocity.Add(alignment.vec);
+                alignment.vec.multiply(this.config.alignment.weight);
+                this.velocity.add(alignment.vec);
             }
 
             if (cohesion.agentCount > 0) {
-                cohesion.vec.Mult(1 / cohesion.agentCount);
-                cohesion.vec = cohesion.vec.Diff(this.pos);
-                cohesion.vec.Normalize(this.config.maxSpeed);
+                cohesion.vec.multiply(1 / cohesion.agentCount);
+                cohesion.vec = cohesion.vec.difference(this.pos);
+                cohesion.vec.normalize(this.config.maxSpeed);
 
-                cohesion.vec.Mult(this.config.cohesion.weight);
-                this.velocity.Add(cohesion.vec);
+                cohesion.vec.multiply(this.config.cohesion.weight);
+                this.velocity.add(cohesion.vec);
             }
 
             if (separation.agentCount > 0) {
-                separation.vec.Mult(1 / separation.agentCount);
-                separation.vec.Normalize(-this.config.maxSpeed);
+                separation.vec.multiply(1 / separation.agentCount);
+                separation.vec.normalize(-this.config.maxSpeed);
 
-                separation.vec.Mult(this.config.separation.weight);
-                this.velocity.Add(separation.vec);
+                separation.vec.multiply(this.config.separation.weight);
+                this.velocity.add(separation.vec);
             }
 
             // Normalize for final velocity, then apply
-            this.velocity.Normalize(this.config.maxSpeed);
-            this.pos.Add(this.velocity);
+            this.velocity.normalize(this.config.maxSpeed);
+            this.pos.add(this.velocity);
 
             // Wrap to other side of the environment if out of frame.
             this.pos = Screenwrap(this.pos);
@@ -162,7 +162,7 @@ Boid = function (_id, _x, _y, _master) {
 function resizeCanvas() {
     canvas.width = container.offsetWidth;
     canvas.height = container.offsetHeight;
-    center = Vector(canvas.width / 2, canvas.height / 2);
+    center = new Pyre.Vector(canvas.width / 2, canvas.height / 2);
 
     ctx.fillStyle = 'rgb(70,120,250)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -200,7 +200,7 @@ var boids = [];
 var boidsCount = 30;
 for (var i = 0; i < boidsCount; i++) {
     boids[i] = Boid(i, Math.random() * canvas.width, Math.random() * canvas.height, boids);
-    boids[i].SetVelocity(Vector(Math.random() * 2 - 1, Math.random() * 2 - 1));
+    boids[i].SetVelocity(new Pyre.Vector(Math.random() * 2 - 1, Math.random() * 2 - 1));
 }
 
 let sharkConfig = Config()
