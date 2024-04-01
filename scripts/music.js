@@ -7,20 +7,22 @@ fetch('/scripts/music.json')
 let musicSearchResults = null
 let musicFiltered = []
 
-let $tableDiv = document.getElementById('tableDiv')
-let $clypDiv = document.getElementById('clypDiv')
-let $random = document.getElementById('random')
-let $randomFavourite = document.getElementById('randomFavourite')
-let $time = document.getElementById('time')
+const $tableDiv = document.getElementById('tableDiv')
+const $clypDiv = document.getElementById('clypDiv')
+const $random = document.getElementById('random')
+const $randomFavourite = document.getElementById('randomFavourite')
+const $time = document.getElementById('time')
 
-let $search = document.getElementById('search')
-let $searchClear = document.getElementById('searchClear')
+const $search = document.getElementById('search')
+const $searchClear = document.getElementById('searchClear')
 
-let $filterFavourites = document.getElementById('filterFavourites')
-let $filterCollection = document.getElementById('filterCollection')
-let $filterYear = document.getElementById('filterYear')
+const $filterFavourites = document.getElementById('filterFavourites')
+const $filterCollection = document.getElementById('filterCollection')
+const $filterYear = document.getElementById('filterYear')
 
-let $tableHeader = document.getElementById('tableHeader')
+const $tableHeader = document.getElementById('tableHeader')
+
+const $stats = document.getElementById('stats')
 
 function loadClyp(index) {
     let code = music[index].code
@@ -67,6 +69,8 @@ function loadTable() {
     if (musicFiltered.length == 0) {
         let output = "<div class='empty'>No search results...</div>"
         $tableDiv.innerHTML += output
+    } else {
+        $stats.innerHTML = `${musicFiltered.length} results (${countTime(musicFiltered,true)})`
     }
 }
 
@@ -120,15 +124,17 @@ function loadRandomFavourite() {
 }
 
 function loadTime() {
-    $time.innerHTML += "<span>Max has produced </span><span class='emphasis'>" + music.length +"</span> tracks, with a total duration of <span class='emphasis'>" + countTime()+"</span>."
+    $time.innerHTML += "<span>Max has produced </span><span class='emphasis'>" + music.length +"</span> tracks, with a total duration of <span class='emphasis'>" + countTime(music)+"</span>."
 }
 
-function countTime() {
+function countTime(x, filtered = false) {
     let minutes = 0
     let seconds = 0
     let hours = 0
-    for (let i = 0; i < music.length; i++) {
-        let time = music[i].length.split(":")
+    for (let i = 0; i < x.length; i++) {
+        let track = music[i]
+        if (filtered) track = music[x[i]]
+        let time = track.length.split(":")
         minutes += parseInt(time[0])
         seconds += parseInt(time[1])
     }

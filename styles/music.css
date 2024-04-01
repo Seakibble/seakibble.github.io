@@ -114,6 +114,14 @@ span.emphasis {
     transition: color 0.1s;
 }
 
+.stats {
+    text-align: right;
+    padding: 10px 30px;
+    font-style: italic;
+    font-size: 0.8em;
+}
+
+
 @media only screen and (max-width: 1100px) { 
     .toolbar {
         grid-template-columns: auto;
