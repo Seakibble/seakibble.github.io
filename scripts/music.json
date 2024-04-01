@@ -309,7 +309,8 @@
         "year": 2023,
         "month": 9,
         "day": 16,
-        "album": "Other Realms"
+        "album": "Other Realms",
+        "favourite": true
     },
     {
         "name": "Visionary (Ceronath's Theme)",
@@ -318,7 +319,8 @@
         "year": 2024,
         "month": 2,
         "day": 14,
-        "album": "Other Realms"
+        "album": "Other Realms",
+        "favourite": true
     },
     {
         "name": "What the Fuck is Happening? (Avlon's Theme)",
