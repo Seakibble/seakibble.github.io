@@ -243,6 +243,8 @@
         "code": "wtckoycl",
         "length": "4:13",
         "year": 2019,
+        "month": 10,
+        "day": 2,
         "album": "Other Realms"
     },
     {
@@ -257,6 +259,8 @@
         "code": "yuti44dj",
         "length": "2:02",
         "year": 2023,
+        "month": 9,
+        "day": 16,
         "album": "Other Realms"
     },
     {
@@ -264,6 +268,8 @@
         "code": "pvmiyiz3",
         "length": "3:08",
         "year": 2023,
+        "month": 9,
+        "day": 16,
         "album": "Other Realms",
         "favourite": true
     },
@@ -272,6 +278,8 @@
         "code": "ndxdlclq",
         "length": "3:17",
         "year": 2023,
+        "month": 9,
+        "day": 23,
         "album": "Other Realms",
         "favourite": true
     },
@@ -280,6 +288,8 @@
         "code": "34w5s0gr",
         "length": "7:07",
         "year": 2023,
+        "month": 9,
+        "day": 25,
         "album": "Other Realms",
         "favourite": true
     },
@@ -288,16 +298,72 @@
         "code": "2dlrjtnp",
         "length": "3:30",
         "year": 2023,
+        "month": 10,
+        "day": 1,
         "album": "Other Realms"
     },
     {
-        "name": "Anomaly Detected (The Vulture)",
+        "name": "Anomaly Detected (The Vulture's Theme)",
         "code": "hp4i3gpv",
         "length": "3:49",
         "year": 2023,
+        "month": 9,
+        "day": 16,
+        "album": "Other Realms"
+    },
+    {
+        "name": "Visionary (Ceronath's Theme)",
+        "code": "sswqh0i4",
+        "length": "2:55",
+        "year": 2024,
+        "month": 2,
+        "day": 14,
+        "album": "Other Realms"
+    },
+    {
+        "name": "What the Fuck is Happening? (Avlon's Theme)",
+        "code": "mmbzro1f",
+        "length": "4:20",
+        "year": 2024,
+        "month": 2,
+        "day": 29,
+        "album": "Other Realms"
+    },
+    {
+        "name": "Six Candles (Odrix Nomar's Theme)",
+        "code": "hoqy5ikx",
+        "length": "1:52",
+        "year": 2024,
+        "month": 2,
+        "day": 26,
+        "album": "Other Realms"
+    },
+    {
+        "name": "Candle Killer",
+        "code": "n2cf5amk",
+        "length": "2:21",
+        "year": 2024,
+        "month": 2,
+        "day": 26,
+        "album": "Other Realms"
+    },
+    {
+        "name": "The First Fang (Rilmok's Theme)",
+        "code": "2do3b5cq",
+        "length": "1:52",
+        "year": 2024,
+        "month": 3,
+        "day": 31,
         "album": "Other Realms"
     },
 
+
+    {
+        "name": "Hollow Knight (Piano)",
+        "code": "sg1hpyb1",
+        "length": "1:28",
+        "year": 2023
+    },
 
 
     {
