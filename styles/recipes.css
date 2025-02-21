@@ -17,7 +17,9 @@ h3::before, h3::after {
     align-self: start;
 }
 
-
+#tableDiv a > div {
+    padding: 5px;
+}
 
 .veg {
     float: right;
