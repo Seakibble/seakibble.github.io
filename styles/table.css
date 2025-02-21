@@ -3,13 +3,13 @@
     position: relative;
 }
 
-#tableDiv a > div, .tableHeader {
-    padding: 5px 10px 5px 4px;
+#tableDiv a > div div, .tableHeader {
+    padding: 5px 10px;
+    transition: background-color 0.1s, color 0.1s, padding 0.1s, border-color 0.1s;
+}
+
+#tableDiv a > div .title {
     border-left: 6px solid hsl(var(--max_blue) 100% 65% / 0);
-    background: white;
-    box-sizing: border-box;
-    
-    transition: background-color 0.1s, color 0.1s, padding 0.2s, border-color 0.2s;
 }
 
 .tableHeader {
@@ -26,12 +26,11 @@
     z-index: 5;
 }
 
-#table .tableHeader .headerOffset {
-    margin-left: -12px;
-}
-
 .tableHeader > div {
     padding: 10px;
+}
+.tableHeader > .titleHeader {
+    padding-left: 16px;
 }
 
 #tableDiv a:nth-child(odd) > div {
@@ -56,11 +55,22 @@
 }
 
 
-#tableDiv a.selected > div {
+#tableDiv a.selected > div .title {
     padding-left: 30px;
+    border-color: var(--blue_vibrant);
+}
+
+#tableDiv a.selected > div {
     background: var(--blue_dark);
     color: white;
-    border-color: var(--blue_vibrant);
+}
+
+#tableDiv a:focus > div div {
+    /* outline: 2px solid var(--focus_outline) !important; */
+    background: var(--focus_bg) !important;
+    color: var(--focus_text) !important;
+    border-color: crimson !important;
+    z-index: 1 !important;
 }
 
 #tableDiv a.selected:hover > div {
@@ -71,7 +81,16 @@
     #table .tableHeader {
         padding: 0;
     }
-    #table .tableHeader .headerOffset:nth-child(2) {
+    /* #table .tableHeader .headerOffset:nth-child(2) {
         margin-left: 0px;
+    } */
+
+    #tableDiv a>div .album {
+        border-left: 6px solid hsl(var(--max_blue) 100% 65% / 0);
+    }
+
+    #tableDiv a.selected > div .album {
+        padding-left: 30px;
+        border-color: var(--blue_vibrant);
     }
 }

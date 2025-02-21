@@ -87,7 +87,15 @@ function scrollToClyp() {
 }
 
 function selectTrack(e) {
-    let $clicked = e.target.closest('.track')
+    console.log(e.target)   
+    let $clicked = e.target
+
+    if ($clicked.tagName === 'A') {
+        $clicked = $clicked.firstElementChild
+    } else {
+        $clicked = $clicked.closest('.track')
+    }
+
     if ($clicked.dataset.id) {
         loadClyp($clicked.dataset.id)
         scrollToClyp()
@@ -474,6 +482,11 @@ function init() {
     selectTrackFromURL()
 
     $tableDiv.addEventListener("click", selectTrack)
+    $tableDiv.addEventListener("keypress", (e) => {
+        console.log('click')
+        if (e.key === "Enter") selectTrack(e)
+    })
+    
     $random.addEventListener("click", loadRandom)
     $randomFavourite.addEventListener("click", loadRandomFavourite)
 
@@ -482,6 +495,8 @@ function init() {
     $filterYear.addEventListener("change", updateFilterSelect)
 
     $tableHeader.addEventListener("click", sortEvent)
+    $tableHeader.addEventListener("keypress", (e) => { if (e.key === "Enter") sortEvent(e) })
+    
     $search.addEventListener("input", searchEvent)
     $searchClear.addEventListener("click", searchClear)
 }

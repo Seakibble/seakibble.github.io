@@ -1,16 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Satisfy&display=swap');
+
 html {
   scroll-behavior: smooth;
+
+    font-size: 20px;
 }
 
 * {
     box-sizing: border-box;
     font-family: 'Red Hat Display', sans-serif;
+    line-height: 1em;
 }
 
 body {
     font-family: 'Red Hat Display', sans-serif;
-    font-size: 20px;
-
+    
     min-height: 100vh;
     background: black;
     color: #eff;
@@ -29,6 +33,9 @@ body {
     --blue_deep: hsl(229, 81%, 20%);
     --blue_deeper: hsl(229, 73%, 7%);
 
+    --focus_bg: rgb(80, 7, 22);
+    --focus_outline: crimson;
+    --focus_text: white;
 }
 
 
@@ -54,6 +61,7 @@ h1, h2, h3, h4 {
     font-family: 'Josefin Sans', sans-serif;
     padding-top: 1em;
     text-align: center;
+    font-weight: 400;
 }
 
 h2 {
@@ -66,10 +74,11 @@ h3 {
 }
 h4 {
     padding-top: 0;
-    font-size: 1.1em;
+    font-size: 1.15em;
     font-weight: bold;
     text-align: left;
     margin-bottom: 0.5em;
+    letter-spacing: -1px;
 }
 
 p {
@@ -92,7 +101,7 @@ a {
     text-decoration: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 
-    transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.1s, color 0.1s;
 }
 a:hover {
     border-bottom: 1px solid rgba(255, 255, 255, 1);
@@ -136,6 +145,14 @@ button:hover {
     border-color: crimson;
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.5) 0 5px 6px;
+}
+
+:focus {
+    outline: none !important; 
+    background: var(--focus_bg) !important;
+    border-color: var(--focus_bg) !important;
+    color: var(--focus_text) !important;
+    z-index: 1 !important;
 }
 
 .content {
