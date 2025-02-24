@@ -8,8 +8,9 @@ p:last-child{
 
 .wrapper {
     max-width: 1400px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 50px;
 }
 .card, .frame {
@@ -19,6 +20,7 @@ p:last-child{
 .cardLink {
     display: block;
     border: none;
+    max-width: 45%;
 }
 .cardLink:hover {
     border: none;
@@ -54,7 +56,9 @@ a:focus .card {
 @media screen and (width < 1000px) {
     .wrapper {
         padding: 0 50px;
-        grid-template-columns: 1fr;
+    }
+    .cardLink{
+        max-width: 100%;
     }
 }
 
