@@ -50,6 +50,43 @@
     },
 
 
+
+
+
+    {
+        "name": "Aquatic Odyssey",
+        "code": "2zn0u5b2",
+        "length": "1:18",
+        "year": 2025,
+        "month": 1,
+        "day": 24,
+        "track": 1,
+        "album": "Deep Blue"
+    },
+    {
+        "name": "Crushing Pressure",
+        "code": "mpudge4c",
+        "length": "2:11",
+        "year": 2025,
+        "month": 1,
+        "day": 25,
+        "track": 2,
+        "album": "Deep Blue"
+    },
+    {
+        "name": "Soggy Survivor",
+        "code": "mza3trcb",
+        "length": "1:26",
+        "year": 2025,
+        "month": 1,
+        "day": 26,
+        "track": 3,
+        "album": "Deep Blue"
+    },
+
+
+
+
     {
         "name": "Metal Shepherd - Main Theme",
         "code": "4pln2cwe",
@@ -381,8 +418,17 @@
         "code": "la3rkawj",
         "length": "2:23",
         "year": 2024,
-        "month": 6,
-        "day": 30,
+        "month": 8,
+        "day": 7,
+        "album": "Other Realms"
+    },
+    {
+        "name": "Colstead",
+        "code": "14wzo14d",
+        "length": "1:43",
+        "year": 2024,
+        "month": 12,
+        "day": 1,
         "album": "Other Realms"
     },
 
