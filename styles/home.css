@@ -30,6 +30,7 @@ h1.titleMask {
 
 h1.titleMask span {
     -webkit-text-stroke: 5px crimson;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .content {
