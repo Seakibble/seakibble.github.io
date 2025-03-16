@@ -474,7 +474,8 @@
         "year": 2023,
         "month": 5,
         "day": 21,
-        "album": "Other Realms"
+        "album": "Other Realms",
+        "favourite": true
     },
 
 
